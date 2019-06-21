@@ -29,4 +29,30 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 
 <p> <span style="color:red">"/path/to/nw"</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
 
-<i>Now your are ready to go</i>
+<i>- Now your are ready to go.</i>
+
+# html: Methodes
+
+<h5> to use html Methodes you have to go to the index.html file :</h5>
+<pre>
+	<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hello world</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body id="app">
+
+<div id="demo">
+    <h1 s-texte="Hello" id="element" class="hello"></h1>
+</div>
+
+<footer s-texte="© Copyright 2003-2018 El Mehdi Labbar | Privacy | Powered by Stream Team" s-couleur="#fff" class="info"></footer>
+
+<script src="js/seule.min.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
+</pre>
