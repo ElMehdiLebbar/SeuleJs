@@ -17,3 +17,13 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	seule.html();
 </pre>
 
+<h5>Run your app</h5>
+	
+<ul>
+	<li>cd /path/to/your/app</li>
+	<li>/path/to/nw .</li>
+</ul>
+
+
+
+<p> <span style="color:red">/path/to/nw</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
