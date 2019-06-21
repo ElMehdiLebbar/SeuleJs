@@ -11,7 +11,7 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 </ul>
 
 # Getting Started
-<h5>when cloning the Seule-js repository download the new js SDK, and extract it to the same folder as Seul-js</h5>
+<h5>When cloning the Seule-js repository download the new js SDK, and extract it to the same folder as Seul-js</h5>
 <h5>Open file App/js/main.js and include Seule object with:</h5>
 <pre>
 	let seule = new Seule('#app');
@@ -27,4 +27,6 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 
 
 
-<p> <span style="color:red">/path/to/nw</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
+<p> <span style="color:red">"/path/to/nw"</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
+
+<i>Now your are ready to go</i>
