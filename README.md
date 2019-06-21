@@ -13,10 +13,10 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 # Getting Started
 <h5>When cloning the Seule-js repository download the new js SDK, and extract it to the same folder as Seul-js</h5>
 <h5>Open file App/js/main.js and include Seule object with:</h5>
-```javascript
+<pre>
 	let seule = new Seule('#app');
 	seule.html();
-```
+</pre>
 
 <h5>Run your app</h5>
 	
