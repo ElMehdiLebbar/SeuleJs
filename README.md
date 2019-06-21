@@ -10,3 +10,10 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li>for Mac OS X 64bit : http://bit.ly/2WTQHbc</li>
 </ul>
 
+# Getting Started
+<h5>open file App/js/main.js and include Seule object with:</h5>
+<pre>
+	let seule = new Seule('#app');
+	seule.html();
+</pre>
+
