@@ -35,6 +35,18 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 
 <h5> to use html Methodes you have to go to the App/index.html file :</h5>
 <p>for exemple if you wont to add a heading to your project you put:</p>
+
 ```html
-   <h1 s-texte="hello seule"></h1>
+<h2>Example of code</h2>
+
+<pre>
+    <div class="container">
+        <div class="block two first">
+            <h2>Your title</h2>
+            <div class="wrap">
+            //Your content
+            </div>
+        </div>
+    </div>
+</pre>
 ```
