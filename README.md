@@ -42,11 +42,8 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 <h4>List of html Methodes</h4>
 <h3>1- Style Methodes</h3>
 <ul>
-	<li><b>s-couleur:<b/> for changing the color of text</li>
-	<li><b>s-police:<b/> for changing the font family of a text</li>
-	<li><b><b/> </li>
-	<li><b><b/> </li>
-	<li><b><b/> </li>
+	<li><b>s-couleur:</b> for changing the color of text</li>
+	<li><b>s-police:</b>  for changing the font family of a text</li>
 </ul>
 
 
