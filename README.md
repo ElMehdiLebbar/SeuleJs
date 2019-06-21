@@ -31,28 +31,10 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 
 <i>- Now your are ready to go.</i>
 
-# html: Methodes
+# html Methodes
 
-<h5> to use html Methodes you have to go to the index.html file :</h5>
+<h5> to use html Methodes you have to go to the App/index.html file :</h5>
+<p>for exemple if you wont to add a heading to your project you put:</p>
 <pre>
-	<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>hello world</title>
-    <link rel="stylesheet" href="css/main.css">
-</head>
-<body id="app">
-
-<div id="demo">
-    <h1 s-texte="Hello" id="element" class="hello"></h1>
-</div>
-
-<footer s-texte="© Copyright 2003-2018 El Mehdi Labbar | Privacy | Powered by Stream Team" s-couleur="#fff" class="info"></footer>
-
-<script src="js/seule.min.js"></script>
-<script src="js/main.js"></script>
-
-</body>
-</html>
+	<h1 s-texte="hello seule"></h1>
 </pre>
