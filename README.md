@@ -33,9 +33,20 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 
 # html Methodes
 
-<h5> to use html Methodes you have to go to the App/index.html file :</h5>
+<h5>To use html Methodes you have to go to the App/index.html file :</h5>
 <p>for exemple if you wont to add a heading to your project you put:</p>
 
 ```html
 <h1 s-texte="Hello World"></h1>
 ```
+<h4>List of html Methodes</h4>
+<h3>1- Style Methodes</h3>
+<ul>
+	<li><b>s-couleur:<b/> for changing the color of text</li>
+	<li><b>s-police:<b/> for changing the font family of a text</li>
+	<li><b><b/> </li>
+	<li><b><b/> </li>
+	<li><b><b/> </li>
+</ul>
+
+
