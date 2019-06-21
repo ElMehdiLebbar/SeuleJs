@@ -1,5 +1,3 @@
-let gui = require('nw.gui');
-let win = gui.Window.get().evalNWBin(null, 'seule.bin');
 let seule = new Seule('#app');
 
 seule.html();
