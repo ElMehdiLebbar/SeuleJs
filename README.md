@@ -48,8 +48,16 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 <h3>Style Methodes</h3>
 
 <ul>
+	<h6><b>HTML Text Formatting</b></h6>
 	<li><b>s-couleur:</b> for changing the color of text</li>
 	<li><b>s-police:</b>  for changing the font family of a text</li>
+	<li><b>s-taille-texte:</b>  Set the font size for different elements</li>
+	<li><b>s-style-police:</b>  Set different font styles for different elementss</li>
+	<li><b>s-effet-texte:</b>  specifies the decoration added to text</li>
+	<li><b>s-couleur-effet-texte:</b>  specifies the color of the text-decoration (underlines, overlines, linethroughs).</li>
+	<li><b>s-ligne-effet-texte:</b>  sets the kind of text decoration to use (like underline, overline, line-through).</li>
+	<li><b>s-style-effet-texte:</b>  sets the style of the text decoration (like solid, wavy, dotted, dashed, double).</li>
+	<li><b>s-alignement-texte:</b>  specifies the horizontal alignment of text in an element.</li>
 </ul>
 
 
