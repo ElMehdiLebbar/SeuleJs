@@ -34,13 +34,19 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 # html Methodes
 
 <h5>To use html Methodes you have to go to the App/index.html file :</h5>
+
 <p>for exemple if you wont to add a heading to your project you put:</p>
 
 ```html
-<h1 s-texte="Hello World"></h1>
+<h1 s-texte="'Hello World'"></h1>
 ```
-<h4>List of html Methodes</h4>
-<h3>1- Style Methodes</h3>
+<p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Methode. exemple : </p>
+
+```html
+<h1 s-texte="click'Hello World'"></h1>
+```	
+<h3>Style Methodes</h3>
+
 <ul>
 	<li><b>s-couleur:</b> for changing the color of text</li>
 	<li><b>s-police:</b>  for changing the font family of a text</li>
