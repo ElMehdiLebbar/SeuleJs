@@ -22,8 +22,8 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 <p>in your terminal:</p>
 
 <pre>
-	<li>cd /path/to/your/app</li>
-	<li>/path/to/nw .</li>
+	cd /path/to/your/app
+	/path/to/nw .
 </pre>
 
 <p> <span style="color:red">"/path/to/nw"</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
