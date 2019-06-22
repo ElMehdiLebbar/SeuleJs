@@ -58,6 +58,14 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-ligne-effet-texte:</b>  sets the kind of text decoration to use (like underline, overline, line-through).</li>
 	<li><b>s-style-effet-texte:</b>  sets the style of the text decoration (like solid, wavy, dotted, dashed, double).</li>
 	<li><b>s-alignement-texte:</b>  specifies the horizontal alignment of text in an element.</li>
+	
+	<h6><b>Format the background</b></h6>
+	<li><b>s-arriere-plan:</b> used to define the background effects for elements.</li>
+	<li><b>s-couleur-arriere-plan:</b> specifies the background color of an element.</li>
+	<li><b>s-image-arriere-plan:</b> specifies an image to use as the background of an element.</li>
+	<li><b>s-position-arriere-plan:</b> Sets the starting position of a background image.</li>
+	<li><b>s-repeat-arriere-plan:</b> Sets how a background image will be repeated.</li>
+	<li><b>s-taille-arriere-plan:</b> Specifies the size of the background image(s).</li>
 </ul>
 
 
