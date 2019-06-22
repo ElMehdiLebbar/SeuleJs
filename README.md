@@ -65,6 +65,12 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-position-arriere-plan:</b> Sets the starting position of a background image.</li>
 	<li><b>s-repeat-arriere-plan:</b> Sets how a background image will be repeated.</li>
 	<li><b>s-taille-arriere-plan:</b> Specifies the size of the background image(s).</li>
+	<h6><b>Borders Style</b></h6>
+	<li><b>s-bordure:</b> Set the style of the borders for different elements.</li>
+	<li><b>s-bordure-inferieure:</b> Set the style of the bottom border for different elements</li>
+	<li><b>s-bordure-superieure:</b> Set the style of the bottom border for different elements</li>
+	<li><b>s-bordure-gauche:</b> Set the style of the left border for different elements</li>
+	<li><b>s-bordure-droite:</b> Set the style of the right border for different elements</li>
 </ul>
 
 
