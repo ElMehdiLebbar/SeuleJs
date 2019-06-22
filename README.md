@@ -71,6 +71,18 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-bordure-superieure:</b> Set the style of the bottom border for different elements</li>
 	<li><b>s-bordure-gauche:</b> Set the style of the left border for different elements</li>
 	<li><b>s-bordure-droite:</b> Set the style of the right border for different elements</li>
+	<h6><b>layout Options</b></h6>
+	<li><b>s-flotte:</b> specifies how an element should float.</li>
+	<li><b>s-position:</b> specifies the type of positioning method used for an element (static, relative, fixed, absolute or sticky).</li>
+	<li><b>s-calque:</b> Set the style of the bottom border for different elements</li>
+	<li><b>s-afficher:</b> specifies the display behavior (the type of rendering box) of an element.</li>
+	<li><b>s-opacite:</b> can take a value from 0.0 - 1.0. The lower value, the more transparent.</li>
+	<li><b>s-visibilite:</b> specifies whether or not an element is visible.</li>
+	<li><b>s-remplissage:</b> are used to generate space around an element's content, inside of any defined borders.</li>
+	<li><b>s-marge:</b> are used to create space around elements, outside of any defined borders.</li>
+	<li><b>s-largeur:</b> Sets the width of an element.</li>
+	<li><b>s-hauteur:</b> Sets the height of an element.</li>
+	
 </ul>
 
 
