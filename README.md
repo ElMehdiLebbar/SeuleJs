@@ -84,7 +84,7 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	
 </ul>
 
-<p>Now with the attribute method, you can define your own attribute in Single js. like this:</p>
+<p>Now with the attribute method, you can define your own attribute in Seule js. like this:</p>
 <pre>
 	seule.attribut('your-custom-attribute','CSS Properties');
 </pre>
