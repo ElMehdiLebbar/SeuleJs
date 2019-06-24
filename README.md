@@ -88,7 +88,7 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 <pre>
 	seule.attribut('your-custom-attribute','CSS Properties');
 </pre>
-<h5>for exp.</h5>
+<h5>for exp:</h5>
 <p>in file App/js/main.js</p>
 <pre>
 	seule.attribut('your-custom-attribute','color');
