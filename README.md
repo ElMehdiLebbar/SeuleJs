@@ -88,14 +88,13 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 <pre>
 	seule.attribut('your-custom-attribute','CSS Properties');
 </pre>
-<h5>for exp.</h3>
+<h5>for exp.</h5>
 <p>in file App/js/main.js</p>
 <pre>
 	seule.attribut('your-custom-attribute','color');
 </pre>
 <p>then you can call the attribut in your html fils</p>
-	
-```
+
 ```html
 <h1 your-custom-attribute="click'#f7af3c'" >Change my color to orange when you click on me</h1>
 ```
