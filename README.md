@@ -117,6 +117,10 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-select:</b>  To define a pre-selected option</li>
 	<li><b>s-desactive:</b>  Specifies that an input element should be disabled.</li>
 	<li><b>s-lecture-mode:</b>   specifies that the input field is read only (cannot be changed).</li>
+	<li><b>s-longueur-maximale:</b>  the input field will not accept more than the allowed number of characters.</li>
+	<li><b>s-autocomplete:</b>   specifies whether a form or input field should have autocomplete on or off.</li>
+	<li><b>s-non-valide:</b>  specifies that the form data should not be validated when submitted.</li>
+	<li><b>s-formulaire:</b>  specifies one or more forms an <input> element belongs to..</li>
 	<li><b>s-taille:</b>  specifies the size (in characters) for the input field</li>
 	<li><b>s-plusieurs:</b>  specifies that the user is allowed to enter more than one value in the <input> element.</li>
 	<li><b>s-rangs:</b>  specifies the lines numbers of a text area.</li>
