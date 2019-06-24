@@ -104,3 +104,26 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 + Change my color to orange when you click on me
 ```
 
+<h3>HTML Attributes Methods</h3>
+<ul>
+	<li><b>s-texte:</b> for changing the color of text</li>
+	<li><b>s-titre:</b>  Specifies extra information about an element (displayed as a tool tip)</li>
+	<li><b>s-valeur:</b>  specifies the value for an input field</li>
+	<li><b>s-type:</b>  specifies the type of <input> element to display.</li>
+	<li><b>s-reserve:</b>  specifies a hint that describes the expected value of an input field (a sample value or a short description of the format).</li>
+	<li><b>s-nom:</b>  Specifies a name for an element</li>
+	<li><b>s-id:</b>  Specifies a unique id for an element.</li>
+	<li><b>s-classe:</b>  change the class name for an element</li>
+	<li><b>s-select:</b>  To define a pre-selected option</li>
+	<li><b>s-desactive:</b>  Specifies that an input element should be disabled.</li>
+	<li><b>s-lecture-mode:</b>   specifies that the input field is read only (cannot be changed).</li>
+	<li><b>s-taille:</b>  specifies the size (in characters) for the input field</li>
+	<li><b>s-plusieurs:</b>  specifies that the user is allowed to enter more than one value in the <input> element.</li>
+	<li><b>s-rangs:</b>  specifies the lines numbers of a text area.</li>
+	<li><b>s-cols:</b>  specifies the visible width of a text area.</li>
+	<li><b>s-alt:</b>  Specifies an alternative text for an image, when the image cannot be displayed.</li>
+	<li><b>s-source:</b>  Specifies the URL (web address) for an image.</li>
+	<li><b>s-cible:</b>  specifies where to open the linked document</li>
+	<li><b>s-lien:</b>  Specifies the URL (web address) for a link.</li>
+</ul>
+
