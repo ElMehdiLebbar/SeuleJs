@@ -94,6 +94,8 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	seule.attribut('your-custom-attribute','color');
 </pre>
 <p>then you can call the attribut in your html fils</p>
+	
+```
 ```html
-	<h1 your-custom-attribute="click'#f7af3c'" >Change my color to orange when you click on me</h1>
+<h1 your-custom-attribute="click'#f7af3c'" >Change my color to orange when you click on me</h1>
 ```
