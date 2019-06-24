@@ -98,3 +98,6 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 ```html
 <h1 your-custom-attribute="click'#f7af3c'" >Change my color to orange when you click on me</h1>
 ```
+<pre>
+- ![#f03c15](https://placehold.it/15/f03c15/000000?text=+) `#f03c15`
+</pre>
