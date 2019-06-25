@@ -130,4 +130,5 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-cible:</b>  specifies where to open the linked document</li>
 	<li><b>s-lien:</b>  Specifies the URL (web address) for a link.</li>
 </ul>
+<p>to open a specific link, there are two ways, one for the <a> element and one for the rest of the elements for exp:</p>
 
