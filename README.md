@@ -130,7 +130,7 @@ A complete Javascript Frameworks like jQuery for nwjs applications that allows y
 	<li><b>s-cible:</b>  specifies where to open the linked document</li>
 	<li><b>s-lien:</b>  Specifies the URL (web address) for a link.</li>
 </ul>
-<p>to open a specific link with s-lien html method, there are two ways, one for the <a> element and one for the rest of the elements for exp:</p>
+<p>to open a specific link with s-lien html method, there are two ways, one for the a element and one for the rest of the elements for exp:</p>
 <i>Fisrt Way with event: automatically Makes Links Open in a New Window</i>
 	
 ```html
