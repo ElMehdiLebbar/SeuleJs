@@ -15,11 +15,10 @@ A complete fast, small, and feature-rich JavaScript library. It makes things lik
   <h1 s-text="'Hello World'"></h1>
 </div>
 ```
-<pre>
+```javascript
 let seule = new Seule('#app');
 seule.htmlSetting();
-</pre>
-
+```
 
 <i>- Now your are ready to go.</i>
 
