@@ -87,7 +87,7 @@ seule.attribute('your-custom-attribute','CSS Properties');
 <p>in file App/js/main.js</p>
 
 ```javascript
-	seule.attribute('your-custom-attribute','color');
+seule.attribute('your-custom-attribute','color');
 ```
 <p>then you can call the attribute in your html fils</p>
 
