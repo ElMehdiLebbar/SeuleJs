@@ -4,6 +4,7 @@ A complete fast, small, and feature-rich JavaScript library. It makes things lik
 
 # Getting Started
 <h5>You can create an index.html file and include Seule with:</h5>
+
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
