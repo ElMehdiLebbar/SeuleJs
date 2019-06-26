@@ -1,18 +1,13 @@
 # Seule Js
-A complete Javascript Frameworks like jQuery for nwjs applications that allows you to create apps with a simple way,
+A complete fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
-# Nw SDK Downloads
-<ul>
-	<li>for Windows 64bit : http://bit.ly/2ItW4oC</li>
-	<li>for Windows 32bit : http://bit.ly/2WVnEzb</li>
-	<li>for Linux 64bit : http://bit.ly/2L5WZNL</li>
-	<li>for Linux 32bit : http://bit.ly/2FqWWbE</li>
-	<li>for Mac OS X 64bit : http://bit.ly/2WTQHbc</li>
-</ul>
 
 # Getting Started
-<h5>When cloning the Seule-js repository download the new js SDK, and extract it to the same folder as Seul-js</h5>
-<h5>Open file App/js/main.js and include Seule object with:</h5>
+<h5>You can create an index.html file and include Seule with:</h5>
+```html
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
+```
+<h5>then create file main.js and include Seule object with:</h5>
 <pre>
 	let seule = new Seule('#app');
 	seule.htmlSetting();
