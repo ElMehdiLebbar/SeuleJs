@@ -79,11 +79,13 @@ seule.htmlSetting();
 </ul>
 
 <p>Now with the attribute method, you can define your own attribute in Seule js. like this:</p>
+
 ```javascript
 seule.attribute('your-custom-attribute','CSS Properties');
 ```
 <h5>for exp:</h5>
 <p>in file App/js/main.js</p>
+
 ```javascript
 	seule.attribute('your-custom-attribute','color');
 ```
