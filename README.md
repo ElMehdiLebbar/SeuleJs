@@ -110,7 +110,7 @@ seule.attribute('your-custom-attribute','color');
 	<li><b>s-text:</b> for changing the color of text</li>
 	<li><b>s-title:</b>  Specifies extra information about an element (displayed as a tool tip)</li>
 	<li><b>s-val:</b>  specifies the value for an input field</li>
-	<li><b>s-type:</b>  specifies the type of <input> element to display.</li>
+	<li><b>s-type:</b>  specifies the type of input element to display.</li>
 	<li><b>s-placeholder:</b>  specifies a hint that describes the expected value of an input field (a sample value or a short description of the format).</li>
 	<li><b>s-name:</b>  Specifies a name for an element</li>
 	<li><b>s-id:</b>  Specifies a unique id for an element.</li>
@@ -121,9 +121,9 @@ seule.attribute('your-custom-attribute','color');
 	<li><b>s-maxlength:</b>  the input field will not accept more than the allowed number of characters.</li>
 	<li><b>s-autocomplete:</b>   specifies whether a form or input field should have autocomplete on or off.</li>
 	<li><b>s-novalidate:</b>  specifies that the form data should not be validated when submitted.</li>
-	<li><b>s-form:</b>  specifies one or more forms an <input> element belongs to..</li>
+	<li><b>s-form:</b>  specifies one or more forms an input element belongs to..</li>
 	<li><b>s-size:</b>  specifies the size (in characters) for the input field</li>
-	<li><b>s-multiple:</b>  specifies that the user is allowed to enter more than one value in the <input> element.</li>
+	<li><b>s-multiple:</b>  specifies that the user is allowed to enter more than one value in the input element.</li>
 	<li><b>s-rows:</b>  specifies the lines numbers of a text area.</li>
 	<li><b>s-cols:</b>  specifies the visible width of a text area.</li>
 	<li><b>s-alt:</b>  Specifies an alternative text for an image, when the image cannot be displayed.</li>
