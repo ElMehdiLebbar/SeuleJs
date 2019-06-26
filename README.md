@@ -8,13 +8,15 @@ A complete fast, small, and feature-rich JavaScript library. It makes things lik
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
-<h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax::</h5>
+<h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
 <div id="app">
   <h1 s-text="'Hello World'"></h1>
 </div>
 ```
+<h5>on your main js file call the Seule Object by using this code bellow:</h5>
+
 ```javascript
 let seule = new Seule('#app');
 seule.htmlSetting();
