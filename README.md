@@ -1,4 +1,4 @@
-# Introduction Js
+# Introduction
 Seule is A complete fast, small, and feature-rich JavaScript library. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
 
@@ -6,12 +6,12 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/dist/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/pro/seule.min.js"></script>
 ```
 <h5>Or</h5>
 
 ```html
-<script src="http://bit.ly/2IMEkVN"></script>
+<script src="http://bit.ly/2Yga7DF"></script>
 ```
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
