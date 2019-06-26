@@ -1,0 +1,22 @@
+{
+  "main": "App/index.html",
+  "name": "seule",
+  "description": "demo app of node-webkit",
+  "version": "0.1.0",
+  "keywords": [
+    "demo",
+    "node-webkit"
+  ],
+  "window": {
+    "title": "seule js Javascript FrameWork",
+    "icon": "logo.png",
+    "toolbar": true,
+    "frame": true,
+    "width": 800,
+    "height": 500,
+    "position": "center"
+  },
+  "webkit": {
+    "plugin": true
+  }
+}
