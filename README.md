@@ -8,21 +8,18 @@ A complete fast, small, and feature-rich JavaScript library. It makes things lik
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
-<h5>then create file main.js and include Seule object with:</h5>
+<h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax::</h5>
+
+```html
+<div id="app">
+  <h1 s-text="'Hello World'"></h1>
+</div>
+```
 <pre>
-	let seule = new Seule('#app');
-	seule.htmlSetting();
+let seule = new Seule('#app');
+seule.htmlSetting();
 </pre>
 
-<h5>Run your app</h5>
-<p>in your terminal:</p>
-
-<pre>
-	cd /path/to/your/app
-	/path/to/nw .
-</pre>
-
-<p> <span style="color:red">"/path/to/nw"</span> is the binary file of NW.js. On Windows, it’s nw.exe; On Linux, it’s nw; On Mac, it’s nwjs.app/Contents/MacOS/nwjs. </p>
 
 <i>- Now your are ready to go.</i>
 
