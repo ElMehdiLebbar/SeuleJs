@@ -8,6 +8,11 @@ A complete fast, small, and feature-rich JavaScript library. It makes things lik
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/dist/seule.min.js"></script>
 ```
+<h5>Or</h5>
+
+```html
+<script src="http://bit.ly/2IMEkVN"></script>
+```
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
