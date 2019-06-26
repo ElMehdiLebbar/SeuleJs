@@ -92,12 +92,12 @@ seule.attribute('your-custom-attribute','color');
 <p>then you can call the attribute in your html fils</p>
 
 ```html
-<h1 your-custom-attribute="click'#22863A'" >Change my color to green when you click on me</h1>
+<h1 your-custom-attribute="click'#22863A'" >Change my color to green by clicking on me</h1>
 ```
 <p>if the user click on the h1 element, the result will be:</p>
 
 ```diff
-+ Change my color to orange when you click on me
++ Change my color to green by clicking on me
 ```
 
 <h3>HTML Attributes Methods</h3>
