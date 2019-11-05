@@ -142,3 +142,17 @@ Seule.attribute('your-custom-attribute','color');
 <!-- or by using href -->
 <a s-href="$https://www.google.co.ma/">click on me to open google</a>
 ```
+<h3>Use your own HTML Methods</h3>
+<p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
+
+```html
+  <h1 your-custom-methode="mouseup${`nom` : `mehdi`}"></h1>
+```
+<h5>on your main js file call the Seule Methode setHtmlMethode with this script bellow:</h5>
+
+```javascript
+Seule.setHtmlMethode('your-custom-methode', function (obj) {
+	//awaiting your instructions
+        console.log(obj.nom);
+    });
+```
