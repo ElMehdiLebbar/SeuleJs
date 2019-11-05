@@ -146,7 +146,7 @@ Seule.attribute('your-custom-attribute','color');
 <p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
 
 ```html
-  <h1 your-custom-methode="mouseup${`nom` : `mehdi`}"></h1>
+  <h1 your-custom-methode="mouseup${`nom` : `mehdi`}">click me to show mehdi on your console</h1>
 ```
 <h5>on your main js file call the Seule Methode setHtmlMethode with this script bellow:</h5>
 
@@ -155,4 +155,28 @@ Seule.setHtmlMethode('your-custom-methode', function (obj) {
 	//awaiting your instructions
         console.log(obj.nom);
     });
+```
+# Seule Selectors
+<p>Like jQuery Selectors, Seule Selectors allow you to select and manipulate HTML element(s).</p>
+
+<p>Seule Selectors are used to "find" (or select) HTML elements based on their name, id, classes, types, attributes, values of attributes and much more. It's based on the existing CSS Selectors, and in addition, it has some own custom selectors.</p>
+
+<p>Howe can i use this Seule Selectors? is too simple by using seule function + the CSS selectors. exemple:</p>
+
+<h5>Html Page</h5>
+
+```html
+  <h1 id="byId" class="by-class"> Hello, I'm Seule Element.</h1>
+```
+<h5>Javascript</h5>
+
+```javascript
+//Use Seul element selector to select elements based on the element name. You can select all <h1> elements on a page like this:
+let title = seule('h1');
+
+//Or you can use The #id Selector, that uses the id attribute of an HTML tag to find the specific element.
+let title = seule('#byId');
+
+//Or The .class Selector To find elements with a specific class
+let title = seule('.by-class');
 ```
