@@ -180,3 +180,17 @@ let title = seule('#byId');
 //Or The .class Selector To find elements with a specific class
 let title = seule('.by-class');
 ```
+<h5>More Examples of Seule Selectors:</h5>
+<ul>
+	<li><b>seule("p.intro")</b>  Selects all p elements with class="intro"</li>
+	<li><b>seule("p:first")</b>  Selects the first p element</li>
+	<li><b>seule("ul li:first")</b>  Selects the first li element of the first ul</li>
+	<li><b>seule("ul li:first-child")</b>  Selects the first li element of every ul</li>
+	<li><b>seule("[href]")</b>  Selects all elements with an href attribute.</li>
+	<li><b>seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
+	<li><b>seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
+	<li><b>seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
+	<li><b>seule("tr:even")</b>   Selects all even tr elements</li>
+	<li><b>seule("tr:odd")</b>  Selects all odd tr elements</li>
+	<li><b>seule("#id, .className, body")</b>  Selects many elements in single time</li>
+</ul>
