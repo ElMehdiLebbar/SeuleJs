@@ -6,12 +6,12 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/src/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1/seule.min.js"></script>
 ```
 <h5>Or</h5>
 
 ```html
-<script src="http://bit.ly/34osZDk"></script>
+<script src="http://bit.ly/36AW5kN"></script>
 ```
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
@@ -152,7 +152,7 @@ Seule.attribute('your-custom-attribute','color');
 
 ```javascript
 Seule.setHtmlMethode('your-custom-methode', function (obj) {
-	//awaiting your instructions
+	// action goes here!!
         console.log(obj.nom);
     });
 ```
@@ -208,3 +208,11 @@ let title = seule('.by-class');
 </ul>
 <p>for mor details about Event reference<a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank"> click me</a></p>
 
+<h3>Seule Syntax For Event Methods</h3>
+
+<p>To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:</p>
+
+```javascript
+	let paragraphs = seule('p');
+	paragraphs.on("click");
+```
