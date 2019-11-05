@@ -195,3 +195,15 @@ let title = seule('.by-class');
 	<li><b>seule("#id, .className, body")</b>  Selects many elements in single time</li>
 </ul>
 
+# Seule Events Methods
+
+<h3>What are Events?</h3>
+
+<p>An event represents the precise moment when something happens. Examples:</p>
+
+<ul>
+	<li>moving a mouse over an element</li>
+	<li>selecting a radio button</li>
+	<li>clicking on an element</li>
+</ul>
+<p>for mor details about events<a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">click me</a>
