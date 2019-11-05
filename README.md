@@ -256,3 +256,30 @@ let title = seule('.by-class');
 		console.log('this is a long press');
 	})
 ```
+<h5>- swipeOn()</h5>
+<p>Detecting a swipe (left, right, top or down) using swipeOn(mouvement, function)</p>
+
+```javascript
+	let div = seule('.main');
+
+	div.swipeOn("left", function () {
+       		console.log("user swipe on left!");
+    	});
+```
+<h5>- emit()</h5>
+<p>The emit() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.</p>
+
+<h5>Html Page</h5>
+
+```html
+	<input type="file" id="uploader">
+	<button id="upload">upload</button>
+```
+<h5>Javascript</h5>
+
+```javascript
+	let button = seule('#upload');
+	
+	//when user double click on button with id upload, is the same think if he click on input file. 
+	button.emit('uploader', 'dblclick', 'click');
+```
