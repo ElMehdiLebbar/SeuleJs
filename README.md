@@ -206,4 +206,5 @@ let title = seule('.by-class');
 	<li>selecting a radio button</li>
 	<li>clicking on an element</li>
 </ul>
-<p>for mor details about events<a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank">click me</a>
+<p>for mor details about Event reference<a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank"> click me</a></p>
+
