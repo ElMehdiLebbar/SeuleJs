@@ -16,15 +16,12 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
-<div id="app">
-  <h1 s-text="'Hello World'"></h1>
-</div>
+  <h1 s-text="$Hello World"></h1>
 ```
 <h5>on your main js file call the Seule Object by using this code bellow:</h5>
 
 ```javascript
-let seule = new Seule('#app');
-seule.htmlSetting();
+Seule.htmlSetting();
 ```
 
 <i>- Now your are ready to go.</i>
