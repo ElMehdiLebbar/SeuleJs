@@ -224,7 +224,7 @@ let title = seule('.by-class');
        		console.log("it's work !");
     	});
 ```
-<h3>Special Methods</h3>
+<h3>Seul Special Events Methods</h3>
 <h5>- click()</h5>
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
