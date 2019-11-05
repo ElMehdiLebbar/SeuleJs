@@ -216,3 +216,11 @@ let title = seule('.by-class');
 	let paragraphs = seule('p');
 	paragraphs.on("click");
 ```
+<p>The next step is to define what should happen when the event fires. You must pass a function to the event:</p>
+
+```javascript
+	let paragraphs = seule('p');
+	paragraphs.on("click", function () {
+       		console.log("it's work !");
+    	});
+```
