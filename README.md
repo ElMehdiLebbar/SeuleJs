@@ -33,12 +33,12 @@ Seule.htmlSetting();
 <p>for exemple if you wont to add a heading to your project you put:</p>
 
 ```html
-<h1 s-text="'Hello World'"></h1>
+<h1 s-text="$Hello World"></h1>
 ```
 <p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
 
 ```html
-<h1 s-text="click'Hello World'"></h1>
+<h1 s-text="click$Hello World"></h1>
 ```	
 <h3>Style Methods</h3>
 
@@ -83,18 +83,18 @@ Seule.htmlSetting();
 <p>Now with the attribute method, you can define your own attribute in Seule js. like this:</p>
 
 ```javascript
-seule.attribute('your-custom-attribute','CSS Properties');
+Seule.attribute('your-custom-attribute','CSS Properties');
 ```
 <h5>for exp:</h5>
 <p>in file App/js/main.js</p>
 
 ```javascript
-seule.attribute('your-custom-attribute','color');
+Seule.attribute('your-custom-attribute','color');
 ```
 <p>then you can call the attribute in your html fils</p>
 
 ```html
-<h1 your-custom-attribute="click'#22863A'" >Change my color to green by clicking on me</h1>
+<h1 your-custom-attribute="click$#22863A" >Change my color to green by clicking on me</h1>
 ```
 <p>if the user click on the h1 element, the result will be:</p>
 
@@ -133,12 +133,12 @@ seule.attribute('your-custom-attribute','color');
 <i>Fisrt Way with event: automatically Makes Links Open in a New Window</i>
 	
 ```html
-<button s-link="click'https://www.google.co.ma/'" >click on me to open google</button>
+<button s-link="click$https://www.google.co.ma/" >click on me to open google</button>
 ```
 <p>As you see, the first way must be accompanied with a javascript event and the URL is automatically Opened in a New Window, to open URL in the same window, you may use s-lien with-out event or by using s-href inside the -a- tag</p>
 
 ```html
-<button s-link="'https://www.google.co.ma/'" >click on me to open google</button>
+<button s-link="$https://www.google.co.ma/" >click on me to open google</button>
 <!-- or by using href -->
-<a s-href="'https://www.google.co.ma/'">click on me to open google</a>
+<a s-href="$https://www.google.co.ma/">click on me to open google</a>
 ```
