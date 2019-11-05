@@ -194,3 +194,4 @@ let title = seule('.by-class');
 	<li><b>seule("tr:odd")</b>  Selects all odd tr elements</li>
 	<li><b>seule("#id, .className, body")</b>  Selects many elements in single time</li>
 </ul>
+
