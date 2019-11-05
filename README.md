@@ -225,13 +225,34 @@ let title = seule('.by-class');
     	});
 ```
 <h3>Special Methods</h3>
-<h5>click()</h5>
+<h5>- click()</h5>
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
 ```javascript
 	let button = seule('button');
 
 	button.click(function () {
-		alert('this is a long press');
+		alert('just a simple click');
+	})
+```
+<h5>- dblclick()</h5>
+<p>The function is executed when the user double-clicks on the HTML element.</p>
+
+```javascript
+	let button = seule('button');
+
+	button.dblclick(function () {
+		alert('you win !');
+	})
+```
+
+<h5>- holdOn()</h5>
+<p>The function is executed when the user make a long presse on the HTML element.</p>
+
+```javascript
+	let button = seule('button');
+
+	button.holdOn(function () {
+		console.log('this is a long press');
 	})
 ```
