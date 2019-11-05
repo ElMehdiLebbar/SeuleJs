@@ -135,7 +135,7 @@ Seule.attribute('your-custom-attribute','color');
 ```html
 <button s-link="click$https://www.google.co.ma/" >click on me to open google</button>
 ```
-<p>As you see, the first way must be accompanied with a javascript event and the URL is automatically Opened in a New Window, to open URL in the same window, you may use s-lien with-out event or by using s-href inside the -a- tag</p>
+<p>As you see, the first way must be accompanied with a javascript event and the URL is automatically Opened in a New Window, to open URL in the same window, you may use s-link with-out event or by using s-href inside the -a- tag</p>
 
 ```html
 <button s-link="$https://www.google.co.ma/" >click on me to open google</button>
