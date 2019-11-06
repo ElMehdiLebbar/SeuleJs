@@ -257,7 +257,15 @@ button.holdOn(function () {
 })
 ```
 <h5>- swipeOn()</h5>
-<p>Detecting a swipe (left, right, top or down) using swipeOn(mouvement, function)</p>
+<p>Detecting a swipe (left, right, top or down) using swipeOn Method</p>
+
+<h5>SwipeOn Syntax</h5>
+
+```javascript
+element.swipeOn('Mouvement', callback);
+```
+
+<h5>Javascript</h5>
 
 ```javascript
 let div = seule('.main');
@@ -269,7 +277,15 @@ div.swipeOn("left", function () {
 <h5>- emit()</h5>
 <p>The emit() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.</p>
 
-<h5>Html Page</h5>
+<h5>Emit Syntax</h5>
+
+```javascript
+element.emit('idOfElement', event, eventToCopy);
+```
+
+<h5>Javascript</h5>
+
+<h5>Exemple : Html Page</h5>
 
 ```html
 <input type="file" id="uploader">
