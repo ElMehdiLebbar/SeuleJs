@@ -146,14 +146,14 @@ Seule.attribute('your-custom-attribute','color');
 <p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
 
 ```html
-  <h1 your-custom-methode="mouseup${`nom` : `mehdi`}">click me to show mehdi on your console</h1>
+  <h1 your-custom-methode="mouseup${`nom` : `Mehdi`}">click me to show mehdi on your console</h1>
 ```
 <h5>on your main js file call the Seule Methode setHtmlMethode with this script bellow:</h5>
 
 ```javascript
 Seule.setHtmlMethode('your-custom-methode', function (obj) {
 	// action goes here!!
-        console.log(obj.nom);
+        console.log('hello M. '+obj.nom);
     });
 ```
 # Seule Selectors
