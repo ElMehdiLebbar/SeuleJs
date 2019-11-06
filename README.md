@@ -11,7 +11,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>Or</h5>
 
 ```html
-<script src="http://bit.ly/33kbVOG"></script>
+<script src="http://bit.ly/33kDpDK"></script>
 ```
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
