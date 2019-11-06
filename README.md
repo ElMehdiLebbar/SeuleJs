@@ -292,6 +292,7 @@ button.emit('uploader', 'dblclick', 'click');
 element.switch(event, callback1, callback2);
 ```
 <h5>Exemple: on html page</h5>
+
 ```html
 <button s-padding="{20px}" >Switch</button>
 ```
