@@ -358,14 +358,39 @@ element.hotkey('Keyboard Keys combination', callback);
 <p>Other special keys are <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>return</code>, <code>capslock</code>, <code>esc</code>, <code>escape</code>, <code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, <code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>ins</code>, <code>del</code>, and <code>plus</code>.</p>
 <p>Any other key you should be able to reference by name like <code>a</code>, <code>/</code>, <code>$</code>, <code>*</code>, or <code>=</code>.</p>
 
-<h3>- Hotkey event with Single key</h3>
+<h3>Exemple</h3>
 
 ```javascript
 let input = seule('input');
 
+//Hotkey event with Single key
 input.hotKey('.', function () {
     /* do something */
     alert('keyboard shortcuts');
 });
+
+//Combination of keys
+input.hotKey('ctrl+s', function () {
+    /* do something */
+    alert('keyboard shortcuts');
+});//On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.
+
+//Sequence of keys like Konami Style (:
+input.hotKey('up up down down left right left right b a enter', function () {
+    /* do something */
+    alert('keyboard shortcuts');
+});
+
+//You can also make a sequence that includes key combinations within it.
+input.hotKey('g o command+enter', function () {
+    /* do something */
+    alert('keyboard shortcuts');
+});
+
+//Global
+Seule.hotKeyGlobal('ctrl+a', function () {
+    /* do something */
+    alert('Global keyboard shortcuts');
+});//This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.
 ```
 # Seule Other features
