@@ -6,7 +6,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.1/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.2/seule.min.js"></script>
 ```
 <h5>Or</h5>
 
@@ -16,7 +16,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
-  <h1 s-text="$Hello World"></h1>
+  <h1 s-text="{Hello World}"></h1>
 ```
 <h5>on your main js file call the Seule Object by using this code bellow:</h5>
 
@@ -33,12 +33,12 @@ Seule.htmlSetting();
 <p>for exemple if you wont to add a heading to your project you put:</p>
 
 ```html
-<h1 s-text="$Hello World"></h1>
+<h1 s-text="{Hello World}"></h1>
 ```
 <p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
 
 ```html
-<h1 s-text="click$Hello World"></h1>
+<h1 s-text="click{Hello World}">Hello HKG</h1>
 ```	
 <h3>Style Methods</h3>
 
@@ -94,7 +94,7 @@ Seule.attribute('your-custom-attribute','color');
 <p>then you can call the attribute in your html fils</p>
 
 ```html
-<h1 your-custom-attribute="click$#22863A" >Change my color to green by clicking on me</h1>
+<h1 your-custom-attribute="click{#22863A}" >Change my color to green by clicking on me</h1>
 ```
 <p>if the user click on the h1 element, the result will be:</p>
 
@@ -133,14 +133,14 @@ Seule.attribute('your-custom-attribute','color');
 <i>Fisrt Way with event: automatically Makes Links Open in a New Window</i>
 	
 ```html
-<button s-link="click$https://www.google.co.ma/" >click on me to open google</button>
+<button s-link="click{https://www.google.co.ma/}" >click on me to open google</button>
 ```
 <p>As you see, the first way must be accompanied with a javascript event and the URL is automatically Opened in a New Window, to open URL in the same window, you may use s-link with-out event or by using s-href inside the -a- tag</p>
 
 ```html
-<button s-link="$https://www.google.co.ma/" >click on me to open google</button>
+<button s-link="{https://www.google.co.ma/}" >click on me to open google</button>
 <!-- or by using href -->
-<a s-href="$https://www.google.co.ma/">click on me to open google</a>
+<a s-href="{https://www.google.co.ma/}">click on me to open google</a>
 ```
 <h3>Use your own HTML Methods</h3>
 <p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
