@@ -343,5 +343,19 @@ element.focus();
 ```javascript
 element.blur();
 ```
+<h3>Seule Keybord Event Methods</h3>
+
+<p>With hotkey Method in Seulejs you can now handling keyboard shortcuts easly in Javascript. </p>
+
+<h5>Hotkey Syntax</h5>
+
+```javascript
+element.hotkey('Keyboard Keys combination', callback);
+```
+<h2>SUPPORTED KEYS</h2>
+<p>For modifier keys you can use  <code>shift</code>, <code>ctrl</code>, <code>alt</code> or <code>meta</code></p>
+<p>You can substitute  <code>option</code> for <code>alt</code> and <code>command</code> for <code>meta</code></p>
+<p>Other special keys are <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>return</code>, <code>capslock</code>, <code>esc</code>, <code>escape</code>, <code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, <code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>ins</code>, <code>del</code>, and <code>plus</code>.</p>
+<p>Any other key you should be able to reference by name like <code>a</code>, <code>/</code>, <code>$</code>, <code>*</code>, or <code>=</code>.</p>
 
 # Seule Other features
