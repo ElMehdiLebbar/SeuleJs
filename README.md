@@ -283,3 +283,26 @@ let button = seule('#upload');
 //when user double click on button with id upload, is the same think if he click on input file. 
 button.emit('uploader', 'dblclick', 'click');
 ```
+<h5>- switch()</h5>
+<p>The switch() method toggles between two custom functions for the selected elements.</p>
+
+<h5>Switch Syntax</h5>
+
+```javascript
+element.switch(event, callback1, callback2);
+```
+<h5>Exemple: on html page</h5>
+```html
+<button s-padding="{20px}" >Switch</button>
+```
+<h5>Javascript</h5>
+
+```javascript
+let button = seule('button');
+button.switch('click', function () {
+   Seule.style('background', '#222');
+},
+    function () {
+        Seule.style('background', '#fff');
+    });
+```
