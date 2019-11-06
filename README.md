@@ -323,3 +323,25 @@ button.switch('click', function () {
         Seule.style('background', '#fff');
     });
 ```
+
+<h5>- focus()</h5>
+
+<p>The focus() Trigger the focus event for selected elements.</p>
+
+<h5>Focus Syntax</h5>
+
+```javascript
+element.focus();
+```
+
+<h5>- blur()</h5>
+
+<p>The blur() Trigger the blur event for the selected elements.</p>
+
+<h5>Blur Syntax</h5>
+
+```javascript
+element.blur();
+```
+
+# Seule Other features
