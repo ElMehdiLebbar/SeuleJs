@@ -153,7 +153,7 @@ Seule.attribute('your-custom-attribute','color');
 ```javascript
 Seule.setHtmlMethode('your-custom-methode', function (obj) {
 	// action goes here!!
-        console.log('hello M. '+obj.nom);
+        console.log('hello M. '+ obj.nom);
     });
 ```
 # Seule Selectors
@@ -166,7 +166,7 @@ Seule.setHtmlMethode('your-custom-methode', function (obj) {
 <h5>Html Page</h5>
 
 ```html
-  <h1 id="byId" class="by-class"> Hello, I'm Seule Element.</h1>
+<h1 id="byId" class="by-class"> Hello, I'm Seule Element.</h1>
 ```
 <h5>Javascript</h5>
 
@@ -213,58 +213,58 @@ let title = seule('.by-class');
 <p>To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:</p>
 
 ```javascript
-	let paragraphs = seule('p');
-	paragraphs.on("click");
+let paragraphs = seule('p');
+paragraphs.on("click");
 ```
 <p>The next step is to define what should happen when the event fires. You must pass a function to the event:</p>
 
 ```javascript
-	let paragraphs = seule('p');
-	paragraphs.on("click", function () {
-       		console.log("it's work !");
-    	});
+let paragraphs = seule('p');
+paragraphs.on("click", function () {
+       	console.log("it's work !");
+    });
 ```
 <h3>Seul Special Events Methods</h3>
 <h5>- click()</h5>
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
 ```javascript
-	let button = seule('button');
+let button = seule('button');
 
-	button.click(function () {
-		alert('just a simple click');
-	})
+button.click(function () {
+	alert('just a simple click');
+})
 ```
 <h5>- dblclick()</h5>
 <p>The function is executed when the user double-clicks on the HTML element.</p>
 
 ```javascript
-	let button = seule('button');
+let button = seule('button');
 
-	button.dblclick(function () {
-		alert('you win !');
-	})
+button.dblclick(function () {
+	alert('you win !');
+})
 ```
 
 <h5>- holdOn()</h5>
 <p>The function is executed when the user make a long presse on the HTML element.</p>
 
 ```javascript
-	let button = seule('button');
+let button = seule('button');
 
-	button.holdOn(function () {
-		console.log('this is a long press');
-	})
+button.holdOn(function () {
+	console.log('this is a long press');
+})
 ```
 <h5>- swipeOn()</h5>
 <p>Detecting a swipe (left, right, top or down) using swipeOn(mouvement, function)</p>
 
 ```javascript
-	let div = seule('.main');
+let div = seule('.main');
 
-	div.swipeOn("left", function () {
-       		console.log("user swipe on left!");
-    	});
+div.swipeOn("left", function () {
+       	console.log("user swipe on left!");
+    });
 ```
 <h5>- emit()</h5>
 <p>The emit() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.</p>
@@ -272,14 +272,14 @@ let title = seule('.by-class');
 <h5>Html Page</h5>
 
 ```html
-	<input type="file" id="uploader">
-	<button id="upload">upload</button>
+<input type="file" id="uploader">
+<button id="upload">upload</button>
 ```
 <h5>Javascript</h5>
 
 ```javascript
-	let button = seule('#upload');
+let button = seule('#upload');
 	
-	//when user double click on button with id upload, is the same think if he click on input file. 
-	button.emit('uploader', 'dblclick', 'click');
+//when user double click on button with id upload, is the same think if he click on input file. 
+button.emit('uploader', 'dblclick', 'click');
 ```
