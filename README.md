@@ -401,6 +401,7 @@ input.hotKey('g o command+enter', function () {
 Seule.hotKeyGlobal('ctrl+a', function () {
     /* do something */
     alert('Global keyboard shortcuts');
-});//This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.
+});
 ```
+<p>This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.</p>
 # Seule Other features
