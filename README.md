@@ -404,4 +404,5 @@ Seule.hotKeyGlobal('ctrl+a', function () {
 });
 ```
 <p>This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.</p>
+
 # Seule Other features
