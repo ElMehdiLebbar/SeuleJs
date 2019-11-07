@@ -360,16 +360,17 @@ element.hotkey('Keyboard Keys combination', callback);
 
 <h3>Exemple</h3>
 
+<h5>Hotkey event with Single key</h5>
+
 ```javascript
 let input = seule('input');
 
-//Hotkey event with Single key
 input.hotKey('.', function () {
     /* do something */
     alert('keyboard shortcuts');
 });
 ```
-<h5>Combination of keys</h5>
+<h5>- Combination of keys</h5>
 
 ```javascript
 input.hotKey('ctrl+s', function () {
@@ -379,7 +380,7 @@ input.hotKey('ctrl+s', function () {
 ```
 <p>On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.</p>
 
-<h5>Sequence of keys like Konami Style (:</h5>
+<h5>- Sequence of keys like Konami Style (:</h5>
 
 ```javascript
 input.hotKey('up up down down left right left right b a enter', function () {
@@ -395,7 +396,7 @@ input.hotKey('g o command+enter', function () {
     alert('keyboard shortcuts');
 });
 ```
-<h5>Global</h5>
+<h5>- Global</h5>
 
 ```javascript
 Seule.hotKeyGlobal('ctrl+a', function () {
