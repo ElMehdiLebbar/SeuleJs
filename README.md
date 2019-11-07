@@ -368,26 +368,36 @@ input.hotKey('.', function () {
     /* do something */
     alert('keyboard shortcuts');
 });
+```
+<h5>Combination of keys</h5>
 
-//Combination of keys
+```javascript
 input.hotKey('ctrl+s', function () {
     /* do something */
     alert('keyboard shortcuts');
-});//On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.
+});
+```
+<p>On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.</p>
 
-//Sequence of keys like Konami Style (:
+<h5>Sequence of keys like Konami Style (:</h5>
+
+```javascript
 input.hotKey('up up down down left right left right b a enter', function () {
     /* do something */
     alert('keyboard shortcuts');
 });
+```
+<p>You can also make a sequence that includes key combinations within it.</p>
 
-//You can also make a sequence that includes key combinations within it.
+```javascript
 input.hotKey('g o command+enter', function () {
     /* do something */
     alert('keyboard shortcuts');
 });
+```
+<h5>Global</h5>
 
-//Global
+```javascript
 Seule.hotKeyGlobal('ctrl+a', function () {
     /* do something */
     alert('Global keyboard shortcuts');
