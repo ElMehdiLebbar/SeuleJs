@@ -6,13 +6,9 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.2/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.3/seule.min.js"></script>
 ```
-<h5>Or</h5>
 
-```html
-<script src="http://bit.ly/33kDpDK"></script>
-```
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
@@ -172,27 +168,27 @@ Seule.setHtmlMethode('your-custom-methode', function (obj) {
 
 ```javascript
 //Use Seul element selector to select elements based on the element name. You can select all <h1> elements on a page like this:
-let title = seule('h1');
+let title = $seule('h1');
 
 //Or you can use The #id Selector, that uses the id attribute of an HTML tag to find the specific element.
-let title = seule('#byId');
+let title = $seule('#byId');
 
 //Or The .class Selector To find elements with a specific class
-let title = seule('.by-class');
+let title = $seule('.by-class');
 ```
 <h5>More Examples of Seule Selectors:</h5>
 <ul>
-	<li><b>seule("p.intro")</b>  Selects all p elements with class="intro"</li>
-	<li><b>seule("p:first")</b>  Selects the first p element</li>
-	<li><b>seule("ul li:first")</b>  Selects the first li element of the first ul</li>
-	<li><b>seule("ul li:first-child")</b>  Selects the first li element of every ul</li>
-	<li><b>seule("[href]")</b>  Selects all elements with an href attribute.</li>
-	<li><b>seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
-	<li><b>seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
-	<li><b>seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
-	<li><b>seule("tr:even")</b>   Selects all even tr elements</li>
-	<li><b>seule("tr:odd")</b>  Selects all odd tr elements</li>
-	<li><b>seule("#id, .className, body")</b>  Selects many elements in single time</li>
+	<li><b>$seule("p.intro")</b>  Selects all p elements with class="intro"</li>
+	<li><b>$seule("p:first")</b>  Selects the first p element</li>
+	<li><b>$seule("ul li:first")</b>  Selects the first li element of the first ul</li>
+	<li><b>$seule("ul li:first-child")</b>  Selects the first li element of every ul</li>
+	<li><b>$seule("[href]")</b>  Selects all elements with an href attribute.</li>
+	<li><b>$seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
+	<li><b>$seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
+	<li><b>$seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
+	<li><b>$seule("tr:even")</b>   Selects all even tr elements</li>
+	<li><b>$seule("tr:odd")</b>  Selects all odd tr elements</li>
+	<li><b>$seule("#id, .className, body")</b>  Selects many elements in single time</li>
 </ul>
 
 # Seule Events Methods
@@ -213,13 +209,13 @@ let title = seule('.by-class');
 <p>To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:</p>
 
 ```javascript
-let paragraphs = seule('p');
+let paragraphs = $seule('p');
 paragraphs.on("click");
 ```
 <p>The next step is to define what should happen when the event fires. You must pass a function to the event:</p>
 
 ```javascript
-let paragraphs = seule('p');
+let paragraphs = $seule('p');
 paragraphs.on("click", function () {
        	console.log("it's work !");
     });
@@ -229,7 +225,7 @@ paragraphs.on("click", function () {
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
 ```javascript
-let button = seule('button');
+let button = $seule('button');
 
 button.click(function () {
 	alert('just a simple click');
@@ -239,7 +235,7 @@ button.click(function () {
 <p>The function is executed when the user double-clicks on the HTML element.</p>
 
 ```javascript
-let button = seule('button');
+let button = $seule('button');
 
 button.dblclick(function () {
 	alert('you win !');
@@ -250,7 +246,7 @@ button.dblclick(function () {
 <p>The function is executed when the user make a long presse on the HTML element.</p>
 
 ```javascript
-let button = seule('button');
+let button = $seule('button');
 
 button.holdOn(function () {
 	console.log('this is a long press');
@@ -268,7 +264,7 @@ element.swipeOn('Mouvement', callback);
 <h5>Javascript</h5>
 
 ```javascript
-let div = seule('.main');
+let div = $seule('.main');
 
 div.swipeOn("left", function () {
        	console.log("user swipe on left!");
@@ -294,7 +290,7 @@ element.emit('idOfElement', event, eventToCopy);
 <h5>Javascript</h5>
 
 ```javascript
-let button = seule('#upload');
+let button = $seule('#upload');
 	
 //when user double click on button with id upload, is the same think if he click on input file. 
 button.emit('uploader', 'dblclick', 'click');
@@ -315,7 +311,7 @@ element.switch(event, callback1, callback2);
 <h5>Javascript</h5>
 
 ```javascript
-let button = seule('button');
+let button = $seule('button');
 button.switch('click', function () {
    Seule.style('background', '#222');
 },
@@ -363,7 +359,7 @@ element.hotkey('Keyboard Keys combination', callback);
 <h5>Hotkey event with Single key</h5>
 
 ```javascript
-let input = seule('input');
+let input = $seule('input');
 
 input.hotKey('.', function () {
     /* do something */
