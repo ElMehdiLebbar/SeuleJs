@@ -555,3 +555,32 @@ btn.click(function () {
     
 });
 ```
+<h5>- classList()</h5>
+<p>The classList Method returns an array that contain  the class name(s) of an element, as a DOMTokenList object.</p>
+<h5>Syntax</h5>
+
+```javascript
+element.classList();
+```
+<h3>Exemple</h3>
+
+<h5>Html Page</h5>
+
+```html
+<div class="style-scope ytd-app" >Hello World</div>
+<button>List Class</button>
+```
+
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+
+let div = $seule('div'),
+    btn = $seule('button');
+
+btn.click(function () {
+    //shows an array on the console like ['style-scope', 'ytd-app']
+    console.log (element.classList());
+});
+```
