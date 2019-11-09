@@ -584,3 +584,34 @@ btn.click(function () {
     console.log (element.classList());
 });
 ```
+<h5>- classListContains()</h5>
+<p>if you want to check if the classList of an element that contain  a class name, we using Seule classListContains() to return true if the class exist or false if it isn't.</p>
+<h5>Syntax</h5>
+
+```javascript
+element.classListContains(className);
+```
+<h3>Exemple</h3>
+
+<h5>Html Page</h5>
+
+```html
+<div class="style-scope ytd-app" >Hello World</div>
+<button>List Class</button>
+```
+
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+
+let div = $seule('div'),
+    btn = $seule('button');
+
+btn.click(function () {
+    //the result will be true 
+    console.log (element.classListContains('style-scope'));
+    //the result will be false 
+    console.log (element.classListContains('style-me'));
+});
+```
