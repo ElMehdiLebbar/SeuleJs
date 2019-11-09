@@ -125,13 +125,13 @@ Seule.attribute('your-custom-attribute','color');
 	<li><b>s-target:</b>  specifies the URL of the page the link goes to.</li>
 	<li><b>s-link:</b>  Specifies the URL (web address) for a link.</li>
 </ul>
-<p>to open a specific link with s-lien html method, there are two ways, one for changing the current location and the other for opening new window, for exp:</p>
-<i>Fisrt Way with event: automatically Makes Links Open in a New Window</i>
+<p>open a specific link with s-link html method, there are two ways.</p>
+<i>Fisrt Way with event</i>
 	
 ```html
 <button s-link="click{https://www.google.co.ma/}" >click on me to open google</button>
 ```
-<p>As you see, the first way must be accompanied with a javascript event and the URL is automatically Opened in a New Window, to open URL in the same window, you may use s-link with-out event or by using s-href inside the -a- tag</p>
+<p>As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag</p>
 
 ```html
 <button s-link="{https://www.google.co.ma/}" >click on me to open google</button>
