@@ -691,7 +691,7 @@ btn.click(function () {
 ```javascript
 element.anime(animation , options);
 ```
-<h3>Basic Exemple</h3>
+<h3>Basic Exemple by using html Method s-anime </h3>
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/MWWXPae"><button>Preview</button></a> </p>
 <h5>Html Page</h5>
 
@@ -703,5 +703,24 @@ element.anime(animation , options);
 
 ```javascript
 Seule.htmlSetting();
+```
+<h3>Basic Exemple by using anime() Method </h3>
+<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL"><button>Preview</button></a> </p>
+<h5>Html Page</h5>
+
+```html
+<p>I love JavaScript</p>
+<button>Play</button>
+```
+
+<h5>Javascript</h5>
+
+```javascript
+let p = $seule('p'),
+    btn = $seule('button');
+
+btn.click(function () {
+    p.anime('flipInX');
+});
 ```
 
