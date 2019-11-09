@@ -402,4 +402,37 @@ Seule.hotKeyGlobal('ctrl+a', function () {
 ```
 <p>This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.</p>
 
-# Seule Other features
+# Seule Effects
+<p>
+When you’re struggling to maintain the attention of your users, cool JavaScript effects are just what the doctor ordered. Now you just need to pick the right animations suited to your niche and users.
+</p>
+<p>10 Easy Seule Methods to Spice Up Your Site with Animations. Then you have Seule.anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.</p>
+
+<h5>- show & hide</h5>
+<p>You can hide and show HTML elements with the hide() and show() methods:</p>
+
+<h5>Syntax</h5>
+
+```javascript
+//show
+element.show();
+//hide
+element.hide();
+```
+
+<h3>Exemple</h3>
+
+```javascript
+let p = $seule('p'),
+    show = $seule('#show'),
+    hide = $seule('#hide');
+
+show.click(function () {
+    p.show();    
+});
+
+hide.click(function () {
+    p.hide();
+});
+```
+
