@@ -408,7 +408,7 @@ When you’re struggling to maintain the attention of your users, cool JavaScrip
 </p>
 <p>10 Easy Seule Methods to Spice Up Your Site with Animations. Then you have Seule.anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.</p>
 
-<h5>- show & hide</h5>
+<h5>- show() & hide()</h5>
 <p>You can hide and show HTML elements with the hide() and show() methods:</p>
 
 <h5>Syntax</h5>
@@ -434,5 +434,46 @@ show.click(function () {
 hide.click(function () {
     p.hide();
 });
+```
+
+<h5>- visible()</h5>
+<p>The seule visible method sets whether an element should be visible or not.</p>
+
+<p>The seule visible method allows the author to show or hide an element. It is similar to the show() & hide() methode. However, the difference is that if you set element.hide(), it hides the entire element, while visible(false) means that the contents of the element will be invisible, but the element stays in its original position and size.</p>
+
+<h5>Syntax</h5>
+
+```javascript
+//visible
+element.visible();
+//hidden
+element.hide(false);
+```
+<h5>- isVisible()</h5>
+<p>The seule isVisible method return whether an element is be visible or hidden. the return result will be true or false</p>
+
+<h5>Syntax</h5>
+
+```javascript
+//visible
+element.isVisible();
+```
+<h3>Exemple</h3>
+
+<h5>Html Page</h5>
+
+```html
+<div  s-visibility="{hidden}" >Hello World</div>
+```
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+
+let div = $seule('div');
+
+if(div.isVisible() === false){
+    div.visible();
+}
 ```
 
