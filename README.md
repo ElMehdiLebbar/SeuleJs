@@ -686,4 +686,22 @@ btn.click(function () {
 <li><code>jackInTheBox</code></li>
 </ul>
 
+<h5>Syntax</h5>
+
+```javascript
+element.anime(animation , options);
+```
+<h3>Basic Exemple</h3>
+<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/MWWXPae"><button>Preview</button></a> </p>
+<h5>Html Page</h5>
+
+```html
+<h1 s-anime="click{jello}">Hello World!</h1>
+```
+
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+```
 
