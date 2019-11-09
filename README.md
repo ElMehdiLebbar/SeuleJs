@@ -25,12 +25,10 @@ Seule.htmlSetting();
 <h3>Hello World Project with Seule Js </h3>
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/pooKBaX"><button>Preview</button></a> </p>
 
-<p class="codepen" data-height="265" data-theme-id="default" data-default-tab="css,result" data-user="el-mehdi-lebbar" data-slug-hash="pooKBaX" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="Start with SeuleJs || Hello WOrld">
-  <span>See the Pen <a href="https://codepen.io/el-mehdi-lebbar/pen/pooKBaX">
-  Start with SeuleJs || Hello WOrld</a> by El Mehdi Lebbar (<a href="https://codepen.io/el-mehdi-lebbar">@el-mehdi-lebbar</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<iframe height="265" style="width: 100%;" scrolling="no" title="Start with SeuleJs || Hello WOrld" src="https://codepen.io/el-mehdi-lebbar/embed/pooKBaX?height=265&theme-id=default&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href='https://codepen.io/el-mehdi-lebbar/pen/pooKBaX'>Start with SeuleJs || Hello WOrld</a> by El Mehdi Lebbar
+  (<a href='https://codepen.io/el-mehdi-lebbar'>@el-mehdi-lebbar</a>) on <a href='https://codepen.io'>CodePen</a>.
+</iframe>
 
 
 # html Methods
