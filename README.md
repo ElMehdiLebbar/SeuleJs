@@ -528,3 +528,32 @@ btn.click(function () {
     }
 });
 ```
+<h5>- class()</h5>
+<p>This Method is useful to add, remove and toggle CSS classes on an element.</p>
+<h5>Syntax</h5>
+
+```javascript
+element.class(className, action);
+```
+<h3>Exemple</h3>
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+
+let div = $seule('div'),
+    btn = $seule('button');
+
+btn.click(function () {
+
+    //to add class style-scope to div 
+    $div.class('style-scope');
+    
+    //to remove class style-scope from div class List
+    $div.class('style-scope', 'remove');
+    
+    //to toggle class style-scope for div
+    $div.class('style-scope', 'toggle');
+    
+});
+```
