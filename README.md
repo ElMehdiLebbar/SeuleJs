@@ -22,7 +22,7 @@ Seule.htmlSetting();
 
 <i>- Now your are ready to go.</i>
 
-<h3>Hello World Project with Seule Js </h3>
+<h3>Hello World Project</h3>
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/pooKBaX"><button>Preview</button></a> </p>
 
 # html Methods
@@ -36,9 +36,12 @@ Seule.htmlSetting();
 ```
 <p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
 
+<h3>Exemple</h3>
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
-```	
+```
+<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd"><button>Preview</button></a> </p>
+
 <h3>Style Methods</h3>
 
 <ul>
