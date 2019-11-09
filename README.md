@@ -476,4 +476,19 @@ if(div.isVisible() === false){
     div.visible();
 }
 ```
+<h5>- opacity()</h5>
+<p>The opacity() Method describes the transparency-level of an element, where 1 is not transperant at all, 0.5 is 50% see-through, and 0 is completely transparent.</p>
+<h5>Syntax</h5>
 
+```javascript
+//value can take from 0 to 1
+element.opacity(Value);
+```
+<h3>Exemple</h3>
+
+```javascript
+
+let div = $seule('div');
+
+div.opacity(0.5);
+```
