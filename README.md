@@ -12,7 +12,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
-  <h1 s-text="{Hello World}"></h1>
+  <h1 s-text={Hello World}></h1>
 ```
 <h5>on your main js file call the Seule Object by using this code bellow:</h5>
 
@@ -32,7 +32,7 @@ Seule.htmlSetting();
 <p>for exemple if you wont to add a heading to your project you put:</p>
 
 ```html
-<h1 s-text="{Hello World}"></h1>
+<h1 s-text={Hello World}></h1>
 ```
 <p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
 
@@ -132,20 +132,20 @@ Seule.attribute('your-custom-attribute','color');
 <i>Fisrt Way with event</i>
 	
 ```html
-<button s-link="click{https://www.google.co.ma/}" >click on me to open google</button>
+<button s-link=click{https://www.google.co.ma/} >click on me to open google</button>
 ```
 <p>As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag</p>
 
 ```html
-<button s-link="{https://www.google.co.ma/}" >click on me to open google</button>
+<button s-link={https://www.google.co.ma/} >click on me to open google</button>
 <!-- or by using href -->
-<a s-href="{https://www.google.co.ma/}">click on me to open google</a>
+<a s-href={https://www.google.co.ma/}>click on me to open google</a>
 ```
 <h3>Use your own HTML Methods</h3>
 <p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
 
 ```html
-  <h1 your-custom-methode="mouseup${`nom` : `Mehdi`}">click me to show mehdi on your console</h1>
+  <h1 your-custom-methode=mouseup${`nom` : `Mehdi`}>click me to show mehdi on your console</h1>
 ```
 <h5>on your main js file call the Seule Methode setHtmlMethode with this script bellow:</h5>
 
@@ -309,7 +309,7 @@ element.switch(event, callback1, callback2);
 <h5>Exemple: on html page</h5>
 
 ```html
-<button s-padding="{20px}" >Switch</button>
+<button s-padding={20px} >Switch</button>
 ```
 <h5>Javascript</h5>
 
@@ -466,7 +466,7 @@ element.isVisible();
 <h5>Html Page</h5>
 
 ```html
-<div  s-visibility="{hidden}" >Hello World</div>
+<div  s-visibility={hidden} >Hello World</div>
 ```
 <h5>Javascript</h5>
 
@@ -513,7 +513,7 @@ element.getStyle(cssProperty);
 <h5>Html Page</h5>
 
 ```html
-<div  s-visibility="{hidden}" >Hello World</div>
+<div  s-visibility={hidden} >Hello World</div>
 <button>Show</button>
 ```
 
@@ -699,7 +699,7 @@ element.anime(animation , options);
 <h5>Html Page</h5>
 
 ```html
-<h1 s-anime="click{jello}">Hello World!</h1>
+<h1 s-anime=click{jello}>Hello World!</h1>
 ```
 
 <h5>Javascript</h5>
