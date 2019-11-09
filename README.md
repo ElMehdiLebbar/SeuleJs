@@ -492,3 +492,39 @@ let div = $seule('div');
 
 div.opacity(0.5);
 ```
+
+
+<h5>- style() & getStyle()</h5>
+<p>The style() method sets one or more style properties for the selected elements. for returning the value of element css propertie you should use getStyle() Method</p>
+<h5>Syntax</h5>
+
+```javascript
+//changing the css propertie for an element
+element.style(cssProperty, value);
+
+//getting the value of css propertie for an element
+element.getStyle(cssProperty);
+```
+<h3>Exemple</h3>
+
+<h5>Html Page</h5>
+
+```html
+<div  s-visibility="{hidden}" >Hello World</div>
+<button>Show</button>
+```
+
+<h5>Javascript</h5>
+
+```javascript
+Seule.htmlSetting();
+
+let div = $seule('div'),
+    btn = $seule('button');
+
+btn.click(function () {
+    if(div.getStyle('visibility') === 'hidden'){
+        div.style('visibility', 'visible');
+    }
+});
+```
