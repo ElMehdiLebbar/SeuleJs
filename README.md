@@ -25,7 +25,9 @@ Seule.htmlSetting();
 <h3>Hello World Project</h3>
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)
-<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/pooKBaX"><button>Preview</button></a> </p>
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+
 
 # html Methods
 
