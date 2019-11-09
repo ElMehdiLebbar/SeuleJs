@@ -25,12 +25,6 @@ Seule.htmlSetting();
 <h3>Hello World Project with Seule Js </h3>
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/pooKBaX"><button>Preview</button></a> </p>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="Start with SeuleJs || Hello WOrld" src="https://codepen.io/el-mehdi-lebbar/embed/pooKBaX?height=265&theme-id=default&default-tab=css,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href='https://codepen.io/el-mehdi-lebbar/pen/pooKBaX'>Start with SeuleJs || Hello WOrld</a> by El Mehdi Lebbar
-  (<a href='https://codepen.io/el-mehdi-lebbar'>@el-mehdi-lebbar</a>) on <a href='https://codepen.io'>CodePen</a>.
-</iframe>
-
-
 # html Methods
 
 <h5>To use html Methods you have to go to the App/index.html file :</h5>
