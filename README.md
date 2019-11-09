@@ -539,8 +539,6 @@ element.class(className, action);
 <h5>Javascript</h5>
 
 ```javascript
-Seule.htmlSetting();
-
 let div = $seule('div'),
     btn = $seule('button');
 
