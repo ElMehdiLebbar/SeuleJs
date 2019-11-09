@@ -37,6 +37,7 @@ Seule.htmlSetting();
 <p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
 
 <h3>Exemple</h3>
+
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
 ```
