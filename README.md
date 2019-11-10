@@ -45,6 +45,7 @@ Seule.htmlSetting();
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
 ```
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/2.jpg)
 
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd"><button>Preview</button></a> </p>
 
