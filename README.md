@@ -24,7 +24,7 @@ Seule.htmlSetting();
 
 <h3>Hello World Project</h3>
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/1.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
