@@ -705,6 +705,9 @@ btn.click(function () {
 element.anime(animation , options);
 ```
 <h3>Basic Exemple by using html Method s-anime </h3>
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/3.jpg)
+
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/MWWXPae"><button>Preview</button></a> </p>
 <h5>Html Page</h5>
 
@@ -718,6 +721,9 @@ element.anime(animation , options);
 Seule.htmlSetting();
 ```
 <h3>Basic Exemple by using anime() Method </h3>
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/4.jpg)
+
 <p> <a href="https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL"><button>Preview</button></a> </p>
 <h5>Html Page</h5>
 
