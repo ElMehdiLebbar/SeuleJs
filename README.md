@@ -6,7 +6,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.4/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.5/seule.min.js"></script>
 ```
 
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
@@ -785,3 +785,34 @@ options = {
 
 h1.anime('zoomIn', options);
 ```
+
+## Players
+
+Seule anime Methode returns an Array of Animation Objects, each one represents a single animation player and provides playback controls and a timeline for an animation node or source.
+
+[See the W3C specification for more details.](https://drafts.csswg.org/web-animations/)
+
+### Exemple by using anime() Method with animation player
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/6.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/jOOpaNy)
+
+##### Html Page
+
+```html
+<h1 id="headline">Oh My God!</h1>
+```
+
+##### Javascript
+
+```javascript
+let h1 = $seule("#headline"),
+    player = h1.anime('wobble');
+
+player[0].onfinish = function() {
+    Seule.style('background-color', '#fff');
+    h1.text('Animation has ended');
+}
+```
+
