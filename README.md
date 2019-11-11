@@ -748,3 +748,40 @@ It is possible to override the default behaviour for an animation, passing an Ob
 
 <code>id</code> **Optional.** A property unique to animate(): a DOMString with which to reference the animation.
 
+<code>delay</code> **Optional.** The number of milliseconds to delay the start of the animation. Defaults to 0.
+
+<code>direction</code> **Optional.** Whether the animation runs forwards (normal), backwards (reverse), switches direction after each iteration (alternate), or runs backwards and switches direction after each iteration (alternate-reverse). Defaults to "normal".
+
+<code>duration</code> **Optional.** The number of milliseconds each iteration of the animation takes to complete. Defaults to 1000. keep in mind that your animation will not run if this value is 0.
+
+<code>fill</code> **Optional.** Dictates whether the animation's effects should be reflected by the element(s) prior to playing ("backwards"), retained after the animation has completed playing ("forwards"), or both. Defaults to "both".
+
+<code>iterations</code> **Optional.** The number of times the animation should repeat. Defaults to 1, and can also take a value of Infinity to make it repeat for as long as the element exists.
+
+### Exemple by using anime() Method with options
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/5.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/KKKBXQz)
+
+##### Html Page
+
+```html
+<h1>Let's Animate The Web</h1>
+```
+
+##### Javascript
+
+```javascript
+let h1 = $seule("h1"),
+options = {
+  duration: 1500,
+  delay: 1000,
+  iterations: Infinity,
+  direction: 'alternate',
+  fill: 'both',
+  id: 'myAnimation'
+};
+
+h1.anime('zoomIn', options);
+```
