@@ -742,4 +742,9 @@ btn.click(function () {
     p.anime('flipInX');
 });
 ```
+## Options
+
+It is possible to override the default behaviour for an animation, passing an Object containing one or more timing properties:
+
+<code>id</code> **Optional.** A property unique to animate(): a DOMString with which to reference the animation.
 
