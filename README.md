@@ -801,7 +801,7 @@ Seule anime Methode returns an Array of Animation Objects, each one represents a
 ##### Html Page
 
 ```html
-<h1 id="headline">Oh My God!</h1>
+<h1 id="headline">Animation is Starting!</h1>
 ```
 
 ##### Javascript
@@ -812,7 +812,13 @@ let h1 = $seule("#headline"),
 
 player[0].onfinish = function() {
     Seule.style('background-color', '#fff');
-    h1.text('Animation has ended');
+    let h1 = $seule("#headline"),
+    player = h1.anime('wobble');
+
+player[0].onfinish = function() {
+    Seule.style('background-color', '#fff');
+    h1.text('Animation has ended', 700);
+}
 }
 ```
 
