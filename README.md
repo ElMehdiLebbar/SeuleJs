@@ -812,13 +812,7 @@ let h1 = $seule("#headline"),
 
 player[0].onfinish = function() {
     Seule.style('background-color', '#fff');
-    let h1 = $seule("#headline"),
-    player = h1.anime('wobble');
-
-player[0].onfinish = function() {
-    Seule.style('background-color', '#fff');
     h1.text('Animation has ended', 700);
-}
 }
 ```
 
