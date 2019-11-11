@@ -98,18 +98,19 @@ Seule.attribute('your-custom-attribute','CSS Properties');
 <p>in file App/js/main.js</p>
 
 ```javascript
-Seule.attribute('your-custom-attribute','color');
+Seule.attribute('your-custom-attribute','background');
+Seule.htmlSetting();
 ```
 <p>then you can call the attribute in your html fils</p>
 
 ```html
-<h1 your-custom-attribute="click{#22863A}" >Change my color to green by clicking on me</h1>
+<button your-custom-attribute="mouseover{#22863A}">hover Me</button>
 ```
-<p>if the user click on the h1 element, the result will be:</p>
+<p>if the mouse over on the button element, the result will be:</p>
 
-```diff
-+ Change my color to green by clicking on me
-```
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/7.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/QWWBmLG)
 
 <h3>HTML Attributes Methods</h3>
 <ul>
