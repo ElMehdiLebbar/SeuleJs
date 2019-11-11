@@ -31,23 +31,23 @@ Seule.htmlSetting();
 
 # html Methods
 
-<h5>To use html Methods you have to go to the App/index.html file :</h5>
+##### To use html Methods you have to go to the App/index.html file :
 
-<p>for exemple if you wont to add a heading to your project you put:</p>
+for exemple if you wont to add a heading to your project you put:
 
 ```html
 <h1 s-text={Hello World}></h1>
 ```
-<p>the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : </p>
+the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : 
 
-<h3>Exemple</h3>
+### Exemple
 
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
 ```
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/2.jpg)
 
-<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd"><button>Preview</button></a> </p>
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd)
 
 <h3>Style Methods</h3>
 
@@ -138,41 +138,59 @@ Seule.attribute('your-custom-attribute','background');
 	<li><b>s-target:</b>  specifies the URL of the page the link goes to.</li>
 	<li><b>s-link:</b>  Specifies the URL (web address) for a link.</li>
 </ul>
-<p>open a specific link with s-link html method, there are two ways.</p>
+
+open a specific link with s-link html method, there are two ways.
+
 <i>Fisrt Way with event</i>
 	
 ```html
 <button s-link=click{https://www.google.co.ma/} >click on me to open google</button>
 ```
-<p>As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag</p>
+As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/8.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/xxxJJZa)
 
 ```html
 <button s-link={https://www.google.co.ma/} >click on me to open google</button>
 <!-- or by using href -->
 <a s-href={https://www.google.co.ma/}>click on me to open google</a>
 ```
-<h3>Use your own HTML Methods</h3>
-<p>in Seule.js you can creat your own html method by using setHtmlMethode for exemple:</p>
+### Use your own HTML Methods
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/9.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+in Seule.js you can creat your own html method by using setHtmlMethode for exemple:
 
 ```html
-  <h1 your-custom-methode=mouseup${`nom` : `Mehdi`}>click me to show mehdi on your console</h1>
+ <button s-methode="click${`nom` : `Mehdi`}">Say Hello To Mehdi</button>
+<p>Result: <span id="response">waiting...</span></p>
 ```
-<h5>on your main js file call the Seule Methode setHtmlMethode with this script bellow:</h5>
+##### on your main js file call the Seule Methode setHtmlMethode with this script bellow:
 
 ```javascript
-Seule.setHtmlMethode('your-custom-methode', function (obj) {
+let p = $seule('p'),
+    btn = $seule('button'),
+    response = $seule('#response');
+
+
+Seule.setHtmlMethode('s-methode', function (obj) {
 	// action goes here!!
-        console.log('hello M. '+ obj.nom);
+       response.text('hello M. '+ obj.nom);
     });
 ```
 # Seule Selectors
-<p>Like jQuery Selectors, Seule Selectors allow you to select and manipulate HTML element(s).</p>
 
-<p>Seule Selectors are used to "find" (or select) HTML elements based on their name, id, classes, types, attributes, values of attributes and much more. It's based on the existing CSS Selectors, and in addition, it has some own custom selectors.</p>
+Like jQuery Selectors, Seule Selectors allow you to select and manipulate HTML element(s).
 
-<p>Howe can i use this Seule Selectors? is too simple by using seule function + the CSS selectors. exemple:</p>
+Seule Selectors are used to "find" (or select) HTML elements based on their name, id, classes, types, attributes, values of attributes and much more. It's based on the existing CSS Selectors, and in addition, it has some own custom selectors.
 
-<h5>Html Page</h5>
+Howe can i use this Seule Selectors? is too simple by using seule function + the CSS selectors. exemple:
+
+##### Html Page
 
 ```html
 <h1 id="byId" class="by-class"> Hello, I'm Seule Element.</h1>
