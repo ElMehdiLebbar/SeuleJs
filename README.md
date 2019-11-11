@@ -99,7 +99,6 @@ Seule.attribute('your-custom-attribute','CSS Properties');
 
 ```javascript
 Seule.attribute('your-custom-attribute','background');
-Seule.htmlSetting();
 ```
 <p>then you can call the attribute in your html fils</p>
 
