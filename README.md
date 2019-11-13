@@ -883,12 +883,32 @@ The val() method returns or sets the value attribute of the selected elements.
 ### Syntax
 
 ```javascript
+element.val(value);
+
+//to get the value of the selected element 
+element.val();
+```
+### Exemple
+
+```javascript
+$seule("button").click(function(){
+  $seule("input").val("Hello world!");
+});
+```
+
+### Seule html() Method
+
+The html() method sets or returns the content (innerHTML) of the selected elements.
+
+### Syntax
+
+```javascript
 element.anime(animation , options);
 ```
 ### Exemple
 
 ```javascript
 $seule("button").click(function(){
-  $seule("p").val("Hello world!");
+  $seule("div").html("<h1>Hello world!</h1>");
 });
 ```
