@@ -903,7 +903,10 @@ The html() method sets or returns the content (innerHTML) of the selected elemen
 ### Syntax
 
 ```javascript
-element.anime(animation , options);
+element.html(value);
+
+//to get the value of the selected element 
+element.html();
 ```
 ### Exemple
 
