@@ -853,3 +853,37 @@ $seule("button").click(function(){
   $seule("p").text("Hello world!");
 });
 ```
+
+### Seule text() Method
+
+The text() method sets or returns the text content of the selected elements.
+
+### Syntax
+
+```javascript
+element.anime(animation , options);
+```
+### Exemple
+
+```javascript
+$seule("button").click(function(){
+  $seule("p").text("Hello world!");
+});
+```
+
+### Seule val() Method
+
+The val() method returns or sets the value attribute of the selected elements.
+
+### Syntax
+
+```javascript
+element.anime(animation , options);
+```
+### Exemple
+
+```javascript
+$seule("button").click(function(){
+  $seule("p").text("Hello world!");
+});
+```
