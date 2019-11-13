@@ -884,6 +884,6 @@ element.anime(animation , options);
 
 ```javascript
 $seule("button").click(function(){
-  $seule("p").text("Hello world!");
+  $seule("p").val("Hello world!");
 });
 ```
