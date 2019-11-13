@@ -833,4 +833,23 @@ player[0].onfinish = function() {
     h1.text('Animation has ended', 700);
 }
 ```
+# Seule HTML DOM
 
+With the HTML DOM, Seule js can access and change all the elements of an HTML document.
+
+### Seule text() Method
+
+The text() method sets or returns the text content of the selected elements.
+
+### Syntax
+
+```javascript
+element.anime(animation , options);
+```
+### Exemple
+
+```javascript
+$seule("button").click(function(){
+  $seule("p").text("Hello world!");
+});
+```
