@@ -252,7 +252,7 @@ paragraphs.on("click", function () {
     });
 ```
 <h3>Seul Special Events Methods</h3>
-<h5>- click()</h5>
+### Seule click()
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
 ```javascript
@@ -262,7 +262,7 @@ button.click(function () {
 	alert('just a simple click');
 })
 ```
-<h5>- dblclick()</h5>
+### Seule dblclick()
 <p>The function is executed when the user double-clicks on the HTML element.</p>
 
 ```javascript
@@ -273,7 +273,7 @@ button.dblclick(function () {
 })
 ```
 
-<h5>- holdOn()</h5>
+### Seule holdOn()
 <p>The function is executed when the user make a long presse on the HTML element.</p>
 
 ```javascript
@@ -283,10 +283,10 @@ button.holdOn(function () {
 	console.log('this is a long press');
 })
 ```
-<h5>- swipeOn()</h5>
-<p>Detecting a swipe (left, right, top or down) using swipeOn Method</p>
+### Seule swipeOn()
+Detecting a swipe (left, right, top or down) using swipeOn Method
 
-<h5>SwipeOn Syntax</h5>
+##### Syntax
 
 ```javascript
 element.swipeOn('Mouvement', callback);
@@ -301,24 +301,22 @@ div.swipeOn("left", function () {
        	console.log("user swipe on left!");
     });
 ```
-<h5>- emit()</h5>
-<p>The emit() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.</p>
+### Seule emit()
+The emit() method triggers the specified event and the default behavior of an event (like form submission) for the selected elements.
 
-<h5>Emit Syntax</h5>
+##### Emit Syntax
 
 ```javascript
 element.emit('idOfElement', event, eventToCopy);
 ```
 
-<h5>Javascript</h5>
-
-<h5>Exemple : Html Page</h5>
+###### Exemple : Html Page
 
 ```html
 <input type="file" id="uploader">
 <button id="upload">upload</button>
 ```
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 let button = $seule('#upload');
@@ -326,20 +324,20 @@ let button = $seule('#upload');
 //when user double click on button with id upload, is the same think if he click on input file. 
 button.emit('uploader', 'dblclick', 'click');
 ```
-<h5>- switch()</h5>
-<p>The switch() method toggles between two custom functions for the selected elements.</p>
+### Seule- switch()
+The switch() method toggles between two custom functions for the selected elements.
 
-<h5>Switch Syntax</h5>
+###### Switch Syntax
 
 ```javascript
 element.switch(event, callback1, callback2);
 ```
-<h5>Exemple: on html page</h5>
+###### Exemple: on html page</h5>
 
 ```html
 <button s-padding={20px} >Switch</button>
 ```
-<h5>Javascript</h5>
+###### Javascript
 
 ```javascript
 let button = $seule('button');
@@ -351,9 +349,9 @@ button.switch('click', function () {
     });
 ```
 
-<h5>- focus()</h5>
+### Seule focus()
 
-<p>The focus() Trigger the focus event for selected elements.</p>
+The focus() Trigger the focus event for selected elements.
 
 <h5>Focus Syntax</h5>
 
@@ -361,33 +359,33 @@ button.switch('click', function () {
 element.focus();
 ```
 
-<h5>- blur()</h5>
+### Seule blur()
 
-<p>The blur() Trigger the blur event for the selected elements.</p>
+The blur() Trigger the blur event for the selected elements.
 
-<h5>Blur Syntax</h5>
+###### Blur Syntax
 
 ```javascript
 element.blur();
 ```
-<h3>Seule Keybord Event Methods</h3>
+## Seule Keybord Event Methods
 
-<p>With hotkey Method in Seulejs you can now handling keyboard shortcuts easly in Javascript. </p>
+With hotkey Method in Seulejs you can now handling keyboard shortcuts easly in Javascript. 
 
-<h5>Hotkey Syntax</h5>
+###### Hotkey Syntax
 
 ```javascript
 element.hotkey('Keyboard Keys combination', callback);
 ```
-<h2>SUPPORTED KEYS</h2>
+## SUPPORTED KEYS
 <p>For modifier keys you can use  <code>shift</code>, <code>ctrl</code>, <code>alt</code> or <code>meta</code></p>
 <p>You can substitute  <code>option</code> for <code>alt</code> and <code>command</code> for <code>meta</code></p>
 <p>Other special keys are <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>return</code>, <code>capslock</code>, <code>esc</code>, <code>escape</code>, <code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, <code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>ins</code>, <code>del</code>, and <code>plus</code>.</p>
 <p>Any other key you should be able to reference by name like <code>a</code>, <code>/</code>, <code>$</code>, <code>*</code>, or <code>=</code>.</p>
 
-<h3>Exemple</h3>
+### Exemple
 
-<h5>Hotkey event with Single key</h5>
+###### Hotkey event with Single key
 
 ```javascript
 let input = $seule('input');
@@ -397,7 +395,7 @@ input.hotKey('.', function () {
     alert('keyboard shortcuts');
 });
 ```
-<h5>- Combination of keys</h5>
+######  Combination of keys</h5>
 
 ```javascript
 input.hotKey('ctrl+s', function () {
@@ -405,9 +403,9 @@ input.hotKey('ctrl+s', function () {
     alert('keyboard shortcuts');
 });
 ```
-<p>On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.</p>
+On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.
 
-<h5>- Sequence of keys like Konami Style (:</h5>
+###### Sequence of keys like Konami Style (:
 
 ```javascript
 input.hotKey('up up down down left right left right b a enter', function () {
@@ -415,7 +413,7 @@ input.hotKey('up up down down left right left right b a enter', function () {
     alert('keyboard shortcuts');
 });
 ```
-<p>You can also make a sequence that includes key combinations within it.</p>
+You can also make a sequence that includes key combinations within it.
 
 ```javascript
 input.hotKey('g o command+enter', function () {
@@ -423,7 +421,7 @@ input.hotKey('g o command+enter', function () {
     alert('keyboard shortcuts');
 });
 ```
-<h5>- Global</h5>
+###### Global
 
 ```javascript
 Seule.hotKeyGlobal('ctrl+a', function () {
@@ -431,18 +429,19 @@ Seule.hotKeyGlobal('ctrl+a', function () {
     alert('Global keyboard shortcuts');
 });
 ```
-<p>This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.</p>
+This extension of hotkey allows you to specify keyboard events that will work anywhere including inside textarea/input fields.
 
 # Seule Effects
-<p>
+
 When you’re struggling to maintain the attention of your users, cool JavaScript effects are just what the doctor ordered. Now you just need to pick the right animations suited to your niche and users.
-</p>
-<p>10 Easy Seule Methods to Spice Up Your Site with Animations. Then you have Seule.anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.</p>
 
-<h5>- show() & hide()</h5>
-<p>You can hide and show HTML elements with the hide() and show() methods:</p>
+10 Easy Seule Methods to Spice Up Your Site with Animations. Then you have Seule.anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects. Great for emphasis, home pages, sliders, and general just-add-water-awesomeness.
 
-<h5>Syntax</h5>
+### Seule show() & hide()
+
+You can hide and show HTML elements with the hide() and show() methods:
+
+###### Syntax
 
 ```javascript
 //show
@@ -451,7 +450,7 @@ element.show();
 element.hide();
 ```
 
-<h3>Exemple</h3>
+##### Exemple
 
 ```javascript
 let p = $seule('p'),
@@ -467,12 +466,13 @@ hide.click(function () {
 });
 ```
 
-<h5>- visible()</h5>
-<p>The seule visible method sets whether an element should be visible or not.</p>
+### Seule visible()
 
-<p>The seule visible method allows the author to show or hide an element. It is similar to the show() & hide() methode. However, the difference is that if you set element.hide(), it hides the entire element, while visible(false) means that the contents of the element will be invisible, but the element stays in its original position and size.</p>
+The seule visible method sets whether an element should be visible or not.
 
-<h5>Syntax</h5>
+The seule visible method allows the author to show or hide an element. It is similar to the show() & hide() methode. However, the difference is that if you set element.hide(), it hides the entire element, while visible(false) means that the contents of the element will be invisible, but the element stays in its original position and size.
+
+##### Syntax
 
 ```javascript
 //visible
@@ -480,23 +480,24 @@ element.visible();
 //hidden
 element.hide(false);
 ```
-<h5>- isVisible()</h5>
-<p>The seule isVisible method return whether an element is be visible or hidden. the return result will be true or false</p>
+### Seule isVisible()
 
-<h5>Syntax</h5>
+The seule isVisible method return whether an element is be visible or hidden. the return result will be true or false
+
+##### Syntax
 
 ```javascript
 //visible
 element.isVisible();
 ```
-<h3>Exemple</h3>
+### Exemple
 
-<h5>Html Page</h5>
+##### Html Page
 
 ```html
 <div  s-visibility={hidden} >Hello World</div>
 ```
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 Seule.htmlSetting();
@@ -507,15 +508,17 @@ if(div.isVisible() === false){
     div.visible();
 }
 ```
-<h5>- opacity()</h5>
-<p>The opacity() Method describes the transparency-level of an element, where 1 is not transperant at all, 0.5 is 50% see-through, and 0 is completely transparent.</p>
-<h5>Syntax</h5>
+### Seule opacity()
+
+The opacity() Method describes the transparency-level of an element, where 1 is not transperant at all, 0.5 is 50% see-through, and 0 is completely transparent.
+
+##### Syntax
 
 ```javascript
 //value can take from 0 to 1
 element.opacity(Value);
 ```
-<h3>Exemple</h3>
+##### Exemple
 
 ```javascript
 
@@ -525,9 +528,11 @@ div.opacity(0.5);
 ```
 
 
-<h5>- style() & getStyle()</h5>
-<p>The style() method sets one or more style properties for the selected elements. for returning the value of element css propertie you should use getStyle() Method</p>
-<h5>Syntax</h5>
+### Seule style() & getStyle()
+
+The style() method sets one or more style properties for the selected elements. for returning the value of element css propertie you should use getStyle() Method
+
+##### Syntax
 
 ```javascript
 //changing the css propertie for an element
@@ -536,16 +541,14 @@ element.style(cssProperty, value);
 //getting the value of css propertie for an element
 element.getStyle(cssProperty);
 ```
-<h3>Exemple</h3>
-
-<h5>Html Page</h5>
+##### Exemple
 
 ```html
 <div  s-visibility={hidden} >Hello World</div>
 <button>Show</button>
 ```
 
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 Seule.htmlSetting();
@@ -559,15 +562,16 @@ btn.click(function () {
     }
 });
 ```
-<h5>- class()</h5>
-<p>This Method is useful to add, remove and toggle CSS classes on an element.</p>
-<h5>Syntax</h5>
+### Seule class()
+
+This Method is useful to add, remove and toggle CSS classes on an element.
+
+##### Syntax
 
 ```javascript
 element.class(className, action);
 ```
-<h3>Exemple</h3>
-<h5>Javascript</h5>
+##### Exemple
 
 ```javascript
 let div = $seule('div'),
@@ -586,23 +590,22 @@ btn.click(function () {
     
 });
 ```
-<h5>- classList()</h5>
-<p>The classList Method returns an array that contain  the class name(s) of an element, as a DOMTokenList object.</p>
-<h5>Syntax</h5>
+### Seule classList()
+The classList Method returns an array that contain  the class name(s) of an element, as a DOMTokenList object.
+
+##### Syntax
 
 ```javascript
 element.classList();
 ```
-<h3>Exemple</h3>
-
-<h5>Html Page</h5>
+##### Exemple
 
 ```html
 <div class="style-scope ytd-app" >Hello World</div>
 <button>List Class</button>
 ```
 
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 Seule.htmlSetting();
@@ -615,23 +618,22 @@ btn.click(function () {
     console.log (element.classList());
 });
 ```
-<h5>- classListContains()</h5>
-<p>if you want to check if the classList of an element that contain  a class name, we using Seule classListContains() to return true if the class exist or false if it isn't.</p>
-<h5>Syntax</h5>
+### Seule classListContains()
+
+if you want to check if the classList of an element that contain  a class name, we using Seule classListContains() to return true if the class exist or false if it isn't.
+
+##### Syntax
 
 ```javascript
 element.classListContains(className);
 ```
-<h3>Exemple</h3>
-
-<h5>Html Page</h5>
+##### Exemple
 
 ```html
 <div class="style-scope ytd-app" >Hello World</div>
 <button>List Class</button>
 ```
-
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 Seule.htmlSetting();
@@ -646,11 +648,14 @@ btn.click(function () {
     console.log (element.classListContains('style-me'));
 });
 ```
-<h5>- anime()</h5>
-<p>like i sad Seule anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects, and has many effect thas supported</p>
+### Seule anime()
 
-<h2>SUPPORTED ANIMATIONS</h2>
-<p>Animatelo supports the following animations:</p>
+like i sad Seule anime Method. It's a bunch of cool, fun, and cross-browser animations for you to use in your projects, and has many effect thas supported
+
+## SUPPORTED ANIMATIONS
+
+Animatelo supports the following animations:
+
 <ul>
 <li><code>bounce</code></li>
 <li><code>flash</code></li>
