@@ -6,18 +6,18 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 <h5>You can create an index.html file and include Seule with:</h5>
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-0.1.8/seule.full.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/Seule-1.2/seule.min.js"></script>
 ```
 
 <h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
 
 ```html
-  <h1 s-text={Hello World}></h1>
+  <h1 s-text="{Hello World}"></h1>
 ```
 <h5>on your main js file call the Seule Object by using this code bellow:</h5>
 
 ```javascript
-Seule.htmlSetting();
+Seule().require(['htmlSetting']);
 ```
 
 <i>- Now your are ready to go.</i>
@@ -36,7 +36,7 @@ Seule.htmlSetting();
 for exemple if you wont to add a heading to your project you put:
 
 ```html
-<h1 s-text={Hello World}></h1>
+<h1 s-text="{Hello World}"></h1>
 ```
 the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : 
 
@@ -92,13 +92,13 @@ the new feature that you can now, adding a javascript event, by the way if you w
 <p>Now with the attribute method, you can define your own attribute in Seule js. like this:</p>
 
 ```javascript
-Seule.attribute('your-custom-attribute','CSS Properties');
+Seule().attribute('your-custom-attribute','CSS Properties');
 ```
 <h5>for exp:</h5>
 <p>in file App/js/main.js</p>
 
 ```javascript
-Seule.attribute('your-custom-attribute','background');
+Seule().attribute('your-custom-attribute','background');
 ```
 <p>then you can call the attribute in your html fils</p>
 
@@ -172,12 +172,12 @@ in Seule.js you can creat your own html method by using setHtmlMethode for exemp
 ##### on your main js file call the Seule Methode setHtmlMethode with this script bellow:
 
 ```javascript
-let p = $seule('p'),
-    btn = $seule('button'),
-    response = $seule('#response');
+let p = Seule('p'),
+    btn = Seule('button'),
+    response = Seule('#response');
 
 
-Seule.setHtmlMethode('s-methode', function (obj) {
+Seule().setHtmlMethode('s-methode', function (obj) {
 	// action goes here!!
        response.text('hello M. '+ obj.nom);
     });
@@ -199,27 +199,27 @@ Howe can i use this Seule Selectors? is too simple by using seule function + the
 
 ```javascript
 //Use Seul element selector to select elements based on the element name. You can select all <h1> elements on a page like this:
-let title = $seule('h1');
+let title = Seule('h1');
 
 //Or you can use The #id Selector, that uses the id attribute of an HTML tag to find the specific element.
-let title = $seule('#byId');
+let title = Seule('#byId');
 
 //Or The .class Selector To find elements with a specific class
-let title = $seule('.by-class');
+let title = Seule('.by-class');
 ```
 <h5>More Examples of Seule Selectors:</h5>
 <ul>
-	<li><b>$seule("p.intro")</b>  Selects all p elements with class="intro"</li>
-	<li><b>$seule("p:first")</b>  Selects the first p element</li>
-	<li><b>$seule("ul li:first")</b>  Selects the first li element of the first ul</li>
-	<li><b>$seule("ul li:first-child")</b>  Selects the first li element of every ul</li>
-	<li><b>$seule("[href]")</b>  Selects all elements with an href attribute.</li>
-	<li><b>$seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
-	<li><b>$seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
-	<li><b>$seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
-	<li><b>$seule("tr:even")</b>   Selects all even tr elements</li>
-	<li><b>$seule("tr:odd")</b>  Selects all odd tr elements</li>
-	<li><b>$seule("#id, .className, body")</b>  Selects many elements in single time</li>
+	<li><b>Seule("p.intro")</b>  Selects all p elements with class="intro"</li>
+	<li><b>Seule("p:first")</b>  Selects the first p element</li>
+	<li><b>Seule("ul li:first")</b>  Selects the first li element of the first ul</li>
+	<li><b>Seule("ul li:first-child")</b>  Selects the first li element of every ul</li>
+	<li><b>Seule("[href]")</b>  Selects all elements with an href attribute.</li>
+	<li><b>Seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
+	<li><b>Seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
+	<li><b>Seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
+	<li><b>Seule("tr:even")</b>   Selects all even tr elements</li>
+	<li><b>Seule("tr:odd")</b>  Selects all odd tr elements</li>
+	<li><b>Seule("#id, .className, body")</b>  Selects many elements in single time</li>
 </ul>
 
 # Seule Events Methods
@@ -240,13 +240,13 @@ let title = $seule('.by-class');
 <p>To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:</p>
 
 ```javascript
-let paragraphs = $seule('p');
+let paragraphs = Seule('p');
 paragraphs.on("click");
 ```
 <p>The next step is to define what should happen when the event fires. You must pass a function to the event:</p>
 
 ```javascript
-let paragraphs = $seule('p');
+let paragraphs = Seule('p');
 paragraphs.on("click", function () {
        	console.log("it's work !");
     });
@@ -256,7 +256,7 @@ paragraphs.on("click", function () {
 <p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
 	
 ```javascript
-let button = $seule('button');
+let button = Seule('button');
 
 button.click(function () {
 	alert('just a simple click');
@@ -277,7 +277,7 @@ button.dblclick(function () {
 <p>The function is executed when the user make a long presse on the HTML element.</p>
 
 ```javascript
-let button = $seule('button');
+let button = Seule('button');
 
 button.holdOn(function () {
 	console.log('this is a long press');
@@ -295,7 +295,7 @@ element.swipeOn('Mouvement', callback);
 <h5>Javascript</h5>
 
 ```javascript
-let div = $seule('.main');
+let div = Seule('.main');
 
 div.swipeOn("left", function () {
        	console.log("user swipe on left!");
@@ -319,7 +319,7 @@ element.emit('idOfElement', event, eventToCopy);
 ##### Javascript
 
 ```javascript
-let button = $seule('#upload');
+let button = Seule('#upload');
 	
 //when user double click on button with id upload, is the same think if he click on input file. 
 button.emit('uploader', 'dblclick', 'click');
@@ -340,12 +340,12 @@ element.switch(event, callback1, callback2);
 ###### Javascript
 
 ```javascript
-let button = $seule('button');
+let button = Seule('button');
 button.switch('click', function () {
-   Seule.style('background', '#222');
+   Seule().style('background', '#222');
 },
     function () {
-        Seule.style('background', '#fff');
+        Seule().style('background', '#fff');
     });
 ```
 
@@ -388,7 +388,9 @@ element.hotkey('Keyboard Keys combination', callback);
 ###### Hotkey event with Single key
 
 ```javascript
-let input = $seule('input');
+Seule().require(['hotKey']);
+
+let input = Seule('input');
 
 input.hotKey('.', function () {
     /* do something */
@@ -424,7 +426,7 @@ input.hotKey('g o command+enter', function () {
 ###### Global
 
 ```javascript
-Seule.hotKeyGlobal('ctrl+a', function () {
+Seule().hotKeyGlobal('ctrl+a', function () {
     /* do something */
     alert('Global keyboard shortcuts');
 });
@@ -453,9 +455,9 @@ element.hide();
 ##### Exemple
 
 ```javascript
-let p = $seule('p'),
-    show = $seule('#show'),
-    hide = $seule('#hide');
+let p = Seule('p'),
+    show = Seule('#show'),
+    hide = Seule('#hide');
 
 show.click(function () {
     p.show();    
@@ -500,9 +502,10 @@ element.isVisible();
 ##### Javascript
 
 ```javascript
-Seule.htmlSetting();
 
-let div = $seule('div');
+Seule().require(['htmlSetting']);
+
+let div = Seule('div');
 
 if(div.isVisible() === false){
     div.visible();
@@ -521,8 +524,7 @@ element.opacity(Value);
 ##### Exemple
 
 ```javascript
-
-let div = $seule('div');
+let div = Seule('div');
 
 div.opacity(0.5);
 ```
@@ -551,10 +553,10 @@ element.getStyle(cssProperty);
 ##### Javascript
 
 ```javascript
-Seule.htmlSetting();
+Seule().htmlSetting();
 
-let div = $seule('div'),
-    btn = $seule('button');
+let div = Seule('div'),
+    btn = Seule('button');
 
 btn.click(function () {
     if(div.getStyle('visibility') === 'hidden'){
@@ -574,20 +576,19 @@ element.class(className, action);
 ##### Exemple
 
 ```javascript
-let div = $seule('div'),
-    btn = $seule('button');
+let div = Seule('div'),
+    btn = Seule('button');
 
 btn.click(function () {
 
     //to add class style-scope to div 
-    $div.class('style-scope');
+    div.class('style-scope');
     
     //to remove class style-scope from div class List
-    $div.class('style-scope', 'remove');
+    div.class('style-scope', 'remove');
     
     //to toggle class style-scope for div
-    $div.class('style-scope', 'toggle');
-    
+    div.class('style-scope', 'toggle');
 });
 ```
 ### Seule classList()
@@ -608,10 +609,10 @@ element.classList();
 ##### Javascript
 
 ```javascript
-Seule.htmlSetting();
+Seule().require(['htmlSetting']);
 
-let div = $seule('div'),
-    btn = $seule('button');
+let div = Seule('div'),
+    btn = Seule('button');
 
 btn.click(function () {
     //shows an array on the console like ['style-scope', 'ytd-app']
@@ -636,10 +637,10 @@ element.classListContains(className);
 ##### Javascript
 
 ```javascript
-Seule.htmlSetting();
+Seule().require(['htmlSetting']);
 
-let div = $seule('div'),
-    btn = $seule('button');
+let div = Seule('div'),
+    btn = Seule('button');
 
 btn.click(function () {
     //the result will be true 
@@ -741,7 +742,7 @@ element.anime(animation , options);
 <h5>Javascript</h5>
 
 ```javascript
-Seule.htmlSetting();
+Seule().require(['htmlSetting', 'anime']);
 ```
 <h3>Basic Exemple by using anime() Method </h3>
 
@@ -758,8 +759,10 @@ Seule.htmlSetting();
 <h5>Javascript</h5>
 
 ```javascript
-let p = $seule('p'),
-    btn = $seule('button');
+Seule().require(['anime']);
+
+let p = Seule('p'),
+    btn = Seule('button');
 
 btn.click(function () {
     p.anime('flipInX');
@@ -796,7 +799,9 @@ It is possible to override the default behaviour for an animation, passing an Ob
 ##### Javascript
 
 ```javascript
-let h1 = $seule("h1"),
+Seule().require(['anime']);
+
+let h1 = Seule("h1"),
 options = {
   duration: 1500,
   delay: 1000,
@@ -830,7 +835,9 @@ Seule anime Methode returns an Array of Animation Objects, each one represents a
 ##### Javascript
 
 ```javascript
-let h1 = $seule("#headline"),
+Seule().require(['anime']);
+
+let h1 = Seule("#headline"),
     player = h1.anime('wobble');
 
 player[0].onfinish = function() {
@@ -848,23 +855,6 @@ The text() method sets or returns the text content of the selected elements.
 
 ### Syntax
 
-```javascript
-element.anime(animation , options);
-```
-### Exemple
-
-```javascript
-$seule("button").click(function(){
-  $seule("p").text("Hello world!");
-});
-```
-
-### Seule text() Method
-
-The text() method sets or returns the text content of the selected elements.
-
-### Syntax
-
 
 ```javascript
 element.text(value);
@@ -875,8 +865,8 @@ element.text();
 ### Exemple
 
 ```javascript
-$seule("button").click(function(){
-  $seule("p").text("Hello world!");
+Seule("button").click(function(){
+  Seule("p").text("Hello world!");
 });
 ```
 
@@ -895,8 +885,8 @@ element.val();
 ### Exemple
 
 ```javascript
-$seule("button").click(function(){
-  $seule("input").val("Hello world!");
+Seule("button").click(function(){
+  Seule("input").val("Hello world!");
 });
 ```
 
@@ -915,7 +905,7 @@ element.html();
 ### Exemple
 
 ```javascript
-$seule("button").click(function(){
-  $seule("div").html("<h1>Hello world!</h1>");
+Seule("button").click(function(){
+  Seule("div").html("<h1>Hello world!</h1>");
 });
 ```
