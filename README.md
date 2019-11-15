@@ -3,13 +3,14 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 
 
 # Getting Started
-<h5>You can create an index.html file and include Seule with:</h5>
+
+##### You can create an index.html file and include Seule with:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-1.2.1.min.js"></script>
 ```
 
-<h5>At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:</h5>
+##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
 
 ```html
   <h1 s-text="{Hello World}"></h1>
@@ -49,7 +50,7 @@ the new feature that you can now, adding a javascript event, by the way if you w
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd)
 
-<h3>Style Methods</h3>
+### Style Methods
 
 <ul>
 	<h6><b>HTML Text Formatting</b></h6>
@@ -89,29 +90,30 @@ the new feature that you can now, adding a javascript event, by the way if you w
 	
 </ul>
 
-<p>Now with the attribute method, you can define your own attribute in Seule js. like this:</p>
+Now with the attribute method, you can define your own attribute in Seule js. like this:
 
 ```javascript
 Seule().attribute('your-custom-attribute','CSS Properties');
 ```
-<h5>for exp:</h5>
-<p>in file App/js/main.js</p>
+##### for exp:
+in file App/js/main.js
 
 ```javascript
 Seule().attribute('your-custom-attribute','background');
 ```
-<p>then you can call the attribute in your html fils</p>
+then you can call the attribute in your html fils
 
 ```html
 <button your-custom-attribute="mouseover{#22863A}">hover Me</button>
 ```
-<p>if the mouse over on the button element, the result will be:</p>
+if the mouse over on the button element, the result will be:
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/7.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/QWWBmLG)
 
-<h3>HTML Attributes Methods</h3>
+## HTML Attributes Methods
+
 <ul>
 	<li><b>s-text:</b> for changing the color of text</li>
 	<li><b>s-title:</b>  Specifies extra information about an element (displayed as a tool tip)</li>
@@ -195,7 +197,7 @@ Howe can i use this Seule Selectors? is too simple by using seule function + the
 ```html
 <h1 id="byId" class="by-class"> Hello, I'm Seule Element.</h1>
 ```
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 //Use Seul element selector to select elements based on the element name. You can select all <h1> elements on a page like this:
@@ -207,7 +209,7 @@ let title = Seule('#byId');
 //Or The .class Selector To find elements with a specific class
 let title = Seule('.by-class');
 ```
-<h5>More Examples of Seule Selectors:</h5>
+##### More Examples of Seule Selectors:
 <ul>
 	<li><b>Seule("p.intro")</b>  Selects all p elements with class="intro"</li>
 	<li><b>Seule("p:first")</b>  Selects the first p element</li>
@@ -224,26 +226,27 @@ let title = Seule('.by-class');
 
 # Seule Events Methods
 
-<h3>What are Events?</h3>
+### What are Events?
 
-<p>An event represents the precise moment when something happens. Examples:</p>
+An event represents the precise moment when something happens. Examples:
 
 <ul>
 	<li>moving a mouse over an element</li>
 	<li>selecting a radio button</li>
 	<li>clicking on an element</li>
 </ul>
-<p>for mor details about Event reference<a href="https://developer.mozilla.org/en-US/docs/Web/Events" target="_blank"> click me</a></p>
 
-<h3>Seule Syntax For Event Methods</h3>
+for mor details visit  [Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
 
-<p>To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:</p>
+### Seule Syntax For Event Methods
+
+To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:
 
 ```javascript
 let paragraphs = Seule('p');
 paragraphs.on("click");
 ```
-<p>The next step is to define what should happen when the event fires. You must pass a function to the event:</p>
+The next step is to define what should happen when the event fires. You must pass a function to the event:
 
 ```javascript
 let paragraphs = Seule('p');
@@ -251,9 +254,11 @@ paragraphs.on("click", function () {
        	console.log("it's work !");
     });
 ```
-<h3>Seul Special Events Methods</h3>
+## Seul Special Events Methods
+
 ### Seule click()
-<p>The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box</p>
+
+The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box
 	
 ```javascript
 let button = Seule('button');
@@ -263,7 +268,8 @@ button.click(function () {
 })
 ```
 ### Seule dblclick()
-<p>The function is executed when the user double-clicks on the HTML element.</p>
+
+The function is executed when the user double-clicks on the HTML element.
 
 ```javascript
 let button = $seule('button');
@@ -292,7 +298,7 @@ Detecting a swipe (left, right, top or down) using swipeOn Method
 element.swipeOn('Mouvement', callback);
 ```
 
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 let div = Seule('.main');
@@ -353,7 +359,7 @@ button.switch('click', function () {
 
 The focus() Trigger the focus event for selected elements.
 
-<h5>Focus Syntax</h5>
+##### Focus Syntax
 
 ```javascript
 element.focus();
@@ -810,18 +816,19 @@ Animatelo supports the following animations:
 ```javascript
 element.anime(animation , options);
 ```
-<h3>Basic Exemple by using html Method s-anime </h3>
+### Basic Exemple by using html Method s-anime 
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/3.jpg)
 
-<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/MWWXPae"><button>Preview</button></a> </p>
-<h5>Html Page</h5>
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae")
+
+##### Html Page
 
 ```html
 <h1 s-anime=click{jello}>Hello World!</h1>
 ```
 
-<h5>Javascript</h5>
+##### Javascript
 
 ```javascript
 Seule().require(['htmlSetting', 'anime']);
@@ -830,8 +837,9 @@ Seule().require(['htmlSetting', 'anime']);
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/4.jpg)
 
-<p> <a href="https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL"><button>Preview</button></a> </p>
-<h5>Html Page</h5>
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL)
+
+##### Html Page
 
 ```html
 <p>I love JavaScript</p>
