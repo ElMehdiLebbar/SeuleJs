@@ -1012,7 +1012,31 @@ element.append(html, position);
 Seule("button").click(function(){
   //inserts <b>Appended text</b> at the end of p element 
   Seule("p").append("<b>Appended text</b>");
-  //inserts <b>Appended text</b> the beginning of p element 
+  //inserts <b>Appended text</b> at the beginning of p element 
   Seule("p").append("<b>Appended text</b>", 'top');
+});
+```
+### Seule insert() Method
+
+The insert() method inserts specified content before or after the selected elements. the position parameter can take two arguments, by default is after.
+
+<ul>
+<li><code>after</code> insert specified content after the selected elements.</li>
+<li><code>before</code> inserts specified content before the selected elements</li>
+</ul>
+
+### Syntax
+
+```javascript
+element.insert(html, position);
+```
+### Exemple
+
+```javascript
+Seule("button").click(function(){
+  //inserts <b>Appended text</b> after p element 
+  Seule("p").insert("<b>Appended text</b>");
+  //inserts <b>Appended text</b> befor p element 
+  Seule("p").insert("<b>Appended text</b>", 'before');
 });
 ```
