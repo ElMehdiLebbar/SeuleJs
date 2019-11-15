@@ -1138,7 +1138,7 @@ Seule(element).load(URL);
 ```html
 <div  s-load="{test.txt}"></div>
 ```
-###Javascript
+### Javascript
 
 ```javascript
 Seule('div').require(['htmlSetting']);
@@ -1149,7 +1149,7 @@ Seule('div').require(['htmlSetting']);
 ```html
 <div></div>
 ```
-###Javascript
+### Javascript
 
 ```javascript
 $("div").load("demo_test.txt");
