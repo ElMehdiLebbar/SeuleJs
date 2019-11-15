@@ -865,8 +865,12 @@ The text() method sets or returns the text content of the selected elements.
 
 ### Syntax
 
+
 ```javascript
-element.anime(animation , options);
+element.text(value);
+
+//to get the innerText of the selected element 
+element.text();
 ```
 ### Exemple
 
