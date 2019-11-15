@@ -594,7 +594,7 @@ btn.click(function () {
 
 ### Seule addClass()
 
-TThe addClass() method adds one or more class names to the selected elements.
+The addClass() method adds one or more class names to the selected elements.
 
 ##### Syntax
 
@@ -616,8 +616,61 @@ let div = Seule('div'),
     btn = Seule('button');
 
 btn.click(function () {
-    //shows an array on the console like ['style-scope', 'ytd-app']
+    //the result will be like this <div class="style-scope info another-class" > Hello World</div>
     div.addClass('info another-class');
+});
+```
+
+### Seule removeClass()
+
+The removeClass() method removes one or more class names from the selected elements.
+
+##### Syntax
+
+```javascript
+element.removeClass(classes);
+```
+##### Exemple
+
+```html
+<div class="another-class style-scope info" >Hello World</div>
+<button>remove class</button>
+```
+
+##### Javascript
+
+```javascript
+
+let div = Seule('div'),
+    btn = Seule('button');
+
+btn.click(function () {
+    //the result will be like this <div class="another-class" > Hello World</div>
+    div.removeClass('style-scope info');
+});
+```
+
+### Seule toggleClass()
+
+The toggleClass() method toggles between adding and removing one or more class names from the selected elements.
+
+##### Syntax
+
+```javascript
+element.toggleClass(classes);
+```
+##### Exemple
+
+```html
+<p>Hello World</p>
+<button>remove class</button>
+```
+
+##### Javascript
+
+```javascript
+Seule("button").click(function(){
+  Seule("p").toggleClass("main");
 });
 ```
 
