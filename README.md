@@ -1116,3 +1116,33 @@ Seule().getJson('demo_ajax_json.js').then(function (response) {
     console.log(response);
 });
 ```
+### Seule load() Method
+
+in Seule you can use the load Method with s-load in html or load() in js file:
+
+### Syntax 
+
+```javascript
+Seule(element).load(URL);
+```
+### Exemple: using s-load
+
+```html
+<div  s-load="{test.txt}"></div>
+```
+###Javascript
+
+```javascript
+Seule('div').require(['htmlSetting']);
+```
+
+### Exemple: using load() Method
+
+```html
+<div></div>
+```
+###Javascript
+
+```javascript
+$("div").load("demo_test.txt");
+```
