@@ -1079,7 +1079,7 @@ Seule().post('demo_test.php', {
 Seule().post('demo_json.php', {
     'id':1,
     'name': 'HKG'
-}, true).then(function (item) {
+}, 'true').then(function (item) {
     console.log(item);
 });
 ```
