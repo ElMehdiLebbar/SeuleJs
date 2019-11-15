@@ -591,6 +591,37 @@ btn.click(function () {
     div.class('style-scope', 'toggle');
 });
 ```
+
+### Seule addClass()
+
+TThe addClass() method adds one or more class names to the selected elements.
+
+##### Syntax
+
+```javascript
+element.addClass(classes);
+```
+##### Exemple
+
+```html
+<div class="style-scope" >Hello World</div>
+<button>add Class</button>
+```
+
+##### Javascript
+
+```javascript
+
+let div = Seule('div'),
+    btn = Seule('button');
+
+btn.click(function () {
+    //shows an array on the console like ['style-scope', 'ytd-app']
+    div.addClass('info another-class');
+});
+```
+
+
 ### Seule classList()
 The classList Method returns an array that contain  the class name(s) of an element, as a DOMTokenList object.
 
@@ -609,14 +640,13 @@ element.classList();
 ##### Javascript
 
 ```javascript
-Seule().require(['htmlSetting']);
 
 let div = Seule('div'),
     btn = Seule('button');
 
 btn.click(function () {
     //shows an array on the console like ['style-scope', 'ytd-app']
-    console.log (element.classList());
+    console.log (div.classList());
 });
 ```
 ### Seule classListContains()
@@ -637,16 +667,15 @@ element.classListContains(className);
 ##### Javascript
 
 ```javascript
-Seule().require(['htmlSetting']);
 
 let div = Seule('div'),
     btn = Seule('button');
 
 btn.click(function () {
     //the result will be true 
-    console.log (element.classListContains('style-scope'));
+    console.log (div.classListContains('style-scope'));
     //the result will be false 
-    console.log (element.classListContains('style-me'));
+    console.log (div.classListContains('style-me'));
 });
 ```
 ### Seule anime()
