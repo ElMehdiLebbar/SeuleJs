@@ -1046,12 +1046,13 @@ Seule("button").click(function(){
 All modern browsers have a built-in XMLHttpRequest object to request data from a server.
 
 in Seule Js there is four Methods to loads data from the server using a HTTP POST request:
+
 <ul>
 <li><code>post</code> method loads data from the server using a HTTP POST request.</li>
 <li><code>get</code> method loads data from the server using a HTTP GET request.</li>
 <li><code>getJson</code> method is used to get JSON data using an AJAX HTTP GET request.</li>
 <li><code>load</code> method loads data from a server and puts the returned data into the selected element.</li>
-<ul>
+</ul>
 
 ### Seule post() Method
 
@@ -1107,7 +1108,7 @@ Get JSON data using an AJAX request, and output the result:
 
 ```javascript
 Seule().getJson(Json);
-``
+```
 ### Exemple
 
 ```javascript
