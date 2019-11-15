@@ -979,7 +979,7 @@ The html() method sets or returns the content (innerHTML) of the selected elemen
 ### Syntax
 
 ```javascript
-element.html(value);
+element.html(html);
 
 //to get the value of the selected element 
 element.html();
@@ -989,5 +989,30 @@ element.html();
 ```javascript
 Seule("button").click(function(){
   Seule("div").html("<h1>Hello world!</h1>");
+});
+```
+
+### Seule html() Method
+
+The append() method inserts specified content at the end or the beginning of the selected elements. the position parameter can take two arguments, by default is bottom.
+
+<ul>
+<li><code>top</code> insert specified content at the beginning of the selected elements.</li>
+<li><code>bottom</code> inserts specified content at the end of the selected elements</li>
+</ul>
+
+### Syntax
+
+```javascript
+element.html(html, position);
+```
+### Exemple
+
+```javascript
+Seule("button").click(function(){
+  //inserts <b>Appended text</b> at the end of p element 
+  Seule("p").append("<b>Appended text</b>");
+  //inserts <b>Appended text</b> the beginning of p element 
+  Seule("p").append("<b>Appended text</b>", 'top');
 });
 ```
