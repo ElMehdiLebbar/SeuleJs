@@ -992,7 +992,7 @@ Seule("button").click(function(){
 });
 ```
 
-### Seule html() Method
+### Seule append() Method
 
 The append() method inserts specified content at the end or the beginning of the selected elements. the position parameter can take two arguments, by default is bottom.
 
@@ -1004,7 +1004,7 @@ The append() method inserts specified content at the end or the beginning of the
 ### Syntax
 
 ```javascript
-element.html(html, position);
+element.append(html, position);
 ```
 ### Exemple
 
