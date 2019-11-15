@@ -1040,3 +1040,78 @@ Seule("button").click(function(){
   Seule("p").insert("<b>Appended text</b>", 'before');
 });
 ```
+
+# Seule Http Request.
+
+All modern browsers have a built-in XMLHttpRequest object to request data from a server.
+
+in Seule Js there is four Methods to loads data from the server using a HTTP POST request:
+<ul>
+<li><code>post</code> method loads data from the server using a HTTP POST request.</li>
+<li><code>get</code> method loads data from the server using a HTTP GET request.</li>
+<li><code>getJson</code> method is used to get JSON data using an AJAX HTTP GET request.</li>
+<li><code>load</code> method loads data from a server and puts the returned data into the selected element.</li>
+<ul>
+
+### Seule post() Method
+
+Load data from the server using a HTTP POST request:
+
+### Syntax
+
+```javascript
+Seule().post(server, data, itsAnObject);
+```
+### Exemple
+
+```javascript
+Seule().post('demo_test.php', {
+    'id':1,
+    'name': 'HKG'
+}, false).then(function (response) {
+    console.log(response);
+});
+```
+### if response is json Object
+
+```javascript
+Seule().post('demo_json.php', {
+    'id':1,
+    'name': 'HKG'
+}, true).then(function (item) {
+    console.log(item);
+});
+```
+
+### Seule get() Method
+
+Send an HTTP GET request to a page and get a result back:
+
+### Syntax
+
+```javascript
+Seule().get(server);
+```
+### Exemple
+
+```javascript
+Seule().get('demo_test.php').then(function (response) {
+    console.log(response);
+});
+```
+### Seule getJson() Method
+
+Get JSON data using an AJAX request, and output the result:
+
+### Syntax
+
+```javascript
+Seule().getJson(Json);
+``
+### Exemple
+
+```javascript
+Seule().getJson('demo_ajax_json.js').then(function (response) {
+    console.log(response);
+});
+```
