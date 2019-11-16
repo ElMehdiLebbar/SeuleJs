@@ -23,7 +23,7 @@ Seule().require(['htmlSetting']);
 
 <i>- Now your are ready to go.</i>
 
-<h3>Hello World Project</h3>
+##### Hello World Project
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/1.jpg)
 
@@ -41,7 +41,7 @@ for exemple if you wont to add a heading to your project you put:
 ```
 the new feature that you can now, adding a javascript event, by the way if you wont to change text when clicking on the html element, you can simply add the word click to the html s-texte Method. exemple : 
 
-### Exemple
+##### Exemple
 
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
@@ -226,7 +226,7 @@ let title = Seule('.by-class');
 
 # Seule Events Methods
 
-### What are Events?
+## What are Events?
 
 An event represents the precise moment when something happens. Examples:
 
@@ -238,7 +238,7 @@ An event represents the precise moment when something happens. Examples:
 
 for mor details visit  [Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
 
-### Seule Syntax For Event Methods
+## Seule Syntax For Event Methods
 
 To assign an event to an element you me use the <b>on Method</b>. for exemple To assign  a click event to all paragraphs on a page, you can do this:
 
@@ -333,17 +333,17 @@ button.emit('uploader', 'dblclick', 'click');
 ### Seule- switch()
 The switch() method toggles between two custom functions for the selected elements.
 
-###### Switch Syntax
+##### Switch Syntax
 
 ```javascript
 element.switch(event, callback1, callback2);
 ```
-###### Exemple: on html page</h5>
+##### Exemple: on html page</h5>
 
 ```html
 <button s-padding={20px} >Switch</button>
 ```
-###### Javascript
+##### Javascript
 
 ```javascript
 let button = Seule('button');
@@ -369,7 +369,7 @@ element.focus();
 
 The blur() Trigger the blur event for the selected elements.
 
-###### Blur Syntax
+##### Blur Syntax
 
 ```javascript
 element.blur();
@@ -378,7 +378,7 @@ element.blur();
 
 With hotkey Method in Seulejs you can now handling keyboard shortcuts easly in Javascript. 
 
-###### Hotkey Syntax
+##### Hotkey Syntax
 
 ```javascript
 element.hotkey('Keyboard Keys combination', callback);
@@ -391,7 +391,7 @@ element.hotkey('Keyboard Keys combination', callback);
 
 ### Exemple
 
-###### Hotkey event with Single key
+##### Hotkey event with Single key
 
 ```javascript
 Seule().require(['hotKey']);
@@ -403,7 +403,7 @@ input.hotKey('.', function () {
     alert('keyboard shortcuts');
 });
 ```
-######  Combination of keys</h5>
+#####  Combination of keys</h5>
 
 ```javascript
 input.hotKey('ctrl+s', function () {
@@ -413,7 +413,7 @@ input.hotKey('ctrl+s', function () {
 ```
 On Mac this ends up mapping to command+s whereas on Windows and Linux it maps to ctrl+s.
 
-###### Sequence of keys like Konami Style (:
+##### Sequence of keys like Konami Style (:
 
 ```javascript
 input.hotKey('up up down down left right left right b a enter', function () {
@@ -429,7 +429,7 @@ input.hotKey('g o command+enter', function () {
     alert('keyboard shortcuts');
 });
 ```
-###### Global
+##### Global
 
 ```javascript
 Seule().hotKeyGlobal('ctrl+a', function () {
@@ -449,7 +449,7 @@ When you’re struggling to maintain the attention of your users, cool JavaScrip
 
 You can hide and show HTML elements with the hide() and show() methods:
 
-###### Syntax
+##### Syntax
 
 ```javascript
 //show
@@ -498,7 +498,7 @@ The seule isVisible method return whether an element is be visible or hidden. th
 //visible
 element.isVisible();
 ```
-### Exemple
+#### Exemple
 
 ##### Html Page
 
@@ -816,7 +816,7 @@ Animatelo supports the following animations:
 ```javascript
 element.anime(animation , options);
 ```
-### Basic Exemple by using html Method s-anime 
+##### Basic Exemple by using html Method s-anime 
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/3.jpg)
 
@@ -874,7 +874,7 @@ It is possible to override the default behaviour for an animation, passing an Ob
 
 <code>iterations</code> **Optional.** The number of times the animation should repeat. Defaults to 1, and can also take a value of Infinity to make it repeat for as long as the element exists.
 
-### Exemple by using anime() Method with options
+##### Exemple by using anime() Method with options
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/5.jpg)
 
@@ -910,7 +910,7 @@ Seule anime Methode returns an Array of Animation Objects, each one represents a
 
 [See the W3C specification for more details.](https://drafts.csswg.org/web-animations/)
 
-### Exemple by using anime() Method with animation player
+##### Exemple by using anime() Method with animation player
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/6.jpg)
 
@@ -943,7 +943,7 @@ With the HTML DOM, Seule js can access and change all the elements of an HTML do
 
 The text() method sets or returns the text content of the selected elements.
 
-### Syntax
+##### Syntax
 
 
 ```javascript
@@ -952,7 +952,7 @@ element.text(value);
 //to get the innerText of the selected element 
 element.text();
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule("button").click(function(){
@@ -964,7 +964,7 @@ Seule("button").click(function(){
 
 The val() method returns or sets the value attribute of the selected elements.
 
-### Syntax
+##### Syntax
 
 ```javascript
 element.val(value);
@@ -972,7 +972,7 @@ element.val(value);
 //to get the value of the selected element 
 element.val();
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule("button").click(function(){
@@ -984,7 +984,7 @@ Seule("button").click(function(){
 
 The html() method sets or returns the content (innerHTML) of the selected elements.
 
-### Syntax
+##### Syntax
 
 ```javascript
 element.html(html);
@@ -992,7 +992,7 @@ element.html(html);
 //to get the value of the selected element 
 element.html();
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule("button").click(function(){
@@ -1009,12 +1009,12 @@ The append() method inserts specified content at the end or the beginning of the
 <li><code>bottom</code> inserts specified content at the end of the selected elements</li>
 </ul>
 
-### Syntax
+##### Syntax
 
 ```javascript
 element.append(html, position);
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule("button").click(function(){
@@ -1033,12 +1033,12 @@ The insert() method inserts specified content before or after the selected eleme
 <li><code>before</code> inserts specified content before the selected elements</li>
 </ul>
 
-### Syntax
+##### Syntax
 
 ```javascript
 element.insert(html, position);
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule("button").click(function(){
@@ -1066,12 +1066,12 @@ in Seule Js there is four Methods to loads data from the server using a HTTP POS
 
 Load data from the server using a HTTP POST request:
 
-### Syntax
+##### Syntax
 
 ```javascript
 Seule().post(server, data, itsAnObject);
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule().post('demo_test.php', {
@@ -1081,7 +1081,7 @@ Seule().post('demo_test.php', {
     console.log(response);
 });
 ```
-### if response is json Object
+##### if response is json Object
 
 ```javascript
 Seule().post('demo_json.php', {
@@ -1096,12 +1096,12 @@ Seule().post('demo_json.php', {
 
 Send an HTTP GET request to a page and get a result back:
 
-### Syntax
+##### Syntax
 
 ```javascript
 Seule().get(server);
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule().get('demo_test.php').then(function (response) {
@@ -1112,12 +1112,12 @@ Seule().get('demo_test.php').then(function (response) {
 
 Get JSON data using an AJAX request, and output the result:
 
-### Syntax
+##### Syntax
 
 ```javascript
 Seule().getJson(Json);
 ```
-### Exemple
+##### Exemple
 
 ```javascript
 Seule().getJson('demo_ajax_json.js').then(function (response) {
@@ -1128,29 +1128,31 @@ Seule().getJson('demo_ajax_json.js').then(function (response) {
 
 in Seule you can use the load Method with s-load in html or load() in js file:
 
-### Syntax 
+##### Syntax 
 
 ```javascript
 Seule(element).load(URL);
 ```
-### Exemple: using s-load
+##### Exemple: using s-load
 
 ```html
 <div  s-load="{test.txt}"></div>
 ```
-### Javascript
+##### Javascript
 
 ```javascript
 Seule('div').require(['htmlSetting']);
 ```
 
-### Exemple: using load() Method
+##### Exemple: using load() Method
 
 ```html
 <div></div>
 ```
-### Javascript
+##### Javascript
 
 ```javascript
 $("div").load("demo_test.txt");
 ```
+
+
