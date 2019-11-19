@@ -7,7 +7,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 ##### You can create an index.html file and include Seule with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-1.2.2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule-1.2.4.min.js"></script>
 ```
 
 ##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
