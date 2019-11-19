@@ -1216,9 +1216,9 @@ The JSON syntax is derived from JavaScript object notation syntax, but the JSON 
 
 ```Javascript
 [
-  {"firstName":"John", "lastName":"Doe"},
-  {"firstName":"Anna", "lastName":"Smith"},
-  {"firstName":"Peter", "lastName":"Jones"}
+  {"firstName":"John", "lastName":"Doe", age 30},
+  {"firstName":"Anna", "lastName":"Smith", age 5},
+  {"firstName":"Peter", "lastName":"Jones", age 20}
 ]
 ```
 
