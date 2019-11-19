@@ -1154,6 +1154,13 @@ Seule('div').require(['htmlSetting']);
 ```javascript
 $("div").load("demo_test.txt");
 ```
+
+### Seule http Request Exemple
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/10.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/Jjjepdo)
+
 ## Custom HTML Elements with Seule template Method 
 
 Custom Elements allow web developers to define new types of HTML elements. The spec is one of several new API primitives landing under the Web Components umbrella, but it's quite possibly the most important. Web Components don't exist without the features unlocked by custom elements:
@@ -1185,9 +1192,9 @@ calling new elements
 <tag-name></tag-name>
 ```
 
-##### Exemple
+### Custom HTML Elements Exemple
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/10.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/11.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/mddvExK)
 
