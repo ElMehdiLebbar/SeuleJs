@@ -25,7 +25,7 @@ Seule().require(['htmlSetting']);
 
 ##### Hello World Project
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/1.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
@@ -46,7 +46,7 @@ the new feature that you can now, adding a javascript event, by the way if you w
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
 ```
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/2.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/2.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd)
 
@@ -108,7 +108,7 @@ then you can call the attribute in your html fils
 ```
 if the mouse over on the button element, the result will be:
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/7.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/7.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/QWWBmLG)
 
@@ -150,7 +150,7 @@ open a specific link with s-link html method, there are two ways.
 ```
 As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/8.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/8.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/xxxJJZa)
 
@@ -161,7 +161,7 @@ As you see, the first way must be accompanied with a javascript event, to open U
 ```
 ### Use your own HTML Methods
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/9.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/9.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
@@ -818,7 +818,7 @@ element.anime(animation , options);
 ```
 ##### Basic Exemple by using html Method s-anime 
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/3.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/3.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae")
 
@@ -835,7 +835,7 @@ Seule().require(['htmlSetting', 'anime']);
 ```
 <h3>Basic Exemple by using anime() Method </h3>
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/4.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/4.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL)
 
@@ -876,7 +876,7 @@ It is possible to override the default behaviour for an animation, passing an Ob
 
 ##### Exemple by using anime() Method with options
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/5.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/5.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/KKKBXQz)
 
@@ -912,7 +912,7 @@ Seule anime Methode returns an Array of Animation Objects, each one represents a
 
 ##### Exemple by using anime() Method with animation player
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/seule-0.1.4/6.jpg)
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/6.jpg)
 
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/jOOpaNy)
 
@@ -1154,5 +1154,41 @@ Seule('div').require(['htmlSetting']);
 ```javascript
 $("div").load("demo_test.txt");
 ```
+## Custom HTML Elements with Seule template Method 
+
+Custom Elements allow web developers to define new types of HTML elements. The spec is one of several new API primitives landing under the Web Components umbrella, but it's quite possibly the most important. Web Components don't exist without the features unlocked by custom elements:
+
+* Define new HTML/DOM elements
+* Create elements that extend from other elements
+* Logically bundle together custom functionality into a single tag
+* Extend the API of existing DOM elements
+
+Registering new elements
+
+##### Javascript 
+
+```javascript
+Seule().template({
+    tag : 'tag-name',
+    html: 'Components/your-html-code.html',
+    css: 'Components/your-style-sheet.css'
+}).then(function (done) {
+    //your Javascript
+});
+```
+
+calling new elements
+
+##### Html
+
+```html
+<tag-name></tag-name>
+```
+
+##### Exemple
+
+![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/10.jpg)
+
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/mddvExK)
 
 
