@@ -1199,7 +1199,7 @@ calling new elements
 [Preview](https://codepen.io/el-mehdi-lebbar/pen/mddvExK)
 
 
-# JavaScript JSON
+# SeuleJs JSON
 
 JSON is a format for storing and transporting data.
 JSON is often used when data is sent from a server to a web page.
@@ -1216,9 +1216,26 @@ The JSON syntax is derived from JavaScript object notation syntax, but the JSON 
 
 ```Javascript
 [
-  {"firstName":"John", "lastName":"Doe", "age":30},
-  {"firstName":"Anna", "lastName":"Smith", "age":5},
-  {"firstName":"Peter", "lastName":"Jones", "age":20}
+  {"firstName":"El Mehdi", "lastName":"Lebbar", "age":31},
+  {"firstName":"Asmae", "lastName":"Mansour", "age":29},
+  {"firstName":"Zineb", "lastName":"Lebbar", "age":5}
 ]
 ```
+### Seule select() Method
 
+select() method extract specific informations from the Json data, we can use with select() operators:
+
+<ul>
+<li><code>= or Like</code> Equal to</li>
+<li><code>!= or notLike</code> Not equal to</li>
+<li><code> > </code> Greater than.</li>
+<li><code> < </code> Less than.</li>
+<li><code> >= </code> Greater than or equal to.</li>
+<li><code> <= </code> Less than or equal to.</li>
+</ul>
+
+##### Syntax
+
+```javascript
+Seule().select('FROM', JsonObject, 'Where colName =', 'Value');
+```
