@@ -1024,9 +1024,9 @@ Seule("button").click(function(){
   Seule("p").append("<b>Appended text</b>", 'top');
 });
 ```
-### Seule insert() Method
+### Seule insertHtml() Method
 
-The insert() method inserts specified content before or after the selected elements. the position parameter can take two arguments, by default is after.
+The insertHtml() method inserts specified content before or after the selected elements. the position parameter can take two arguments, by default is after.
 
 <ul>
 <li><code>after</code> insert specified content after the selected elements.</li>
@@ -1036,7 +1036,7 @@ The insert() method inserts specified content before or after the selected eleme
 ##### Syntax
 
 ```javascript
-element.insert(html, position);
+element.insertHtml(html, position);
 ```
 ##### Exemple
 
