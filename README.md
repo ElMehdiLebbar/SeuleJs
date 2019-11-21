@@ -1239,3 +1239,84 @@ select() method extract specific informations from the Json data, we can use wit
 ```javascript
 Seule().select('FROM', JsonObject, 'Where colName =', 'Value');
 ```
+##### Exemple:
+
+```javascript
+let data = [
+    {"firstName":"El Mehdi", "lastName":"Lebbar", "age":31},
+    {"firstName":"Asmae", "lastName":"Mansour", "age":29},
+    {"firstName":"Zineb", "lastName":"Lebbar", "age":5}
+];
+
+let filteringData = Seule().select('FROM', data, 'Where age =', '31');
+
+console.log(filteringData);
+
+// that return object =  [{"firstName":"El Mehdi", "lastName":"Lebbar", "age":31}]
+```
+#### select() with BETWEEN command 
+
+The BETWEEN command is used to select values within a given range. The values can be numbers or dates.
+
+The BETWEEN command is inclusive: begin and end values are included. 
+
+##### Syntax
+
+```javascript
+Seule().select('FROM', JsonObject, 'Where colName Between begin And end');
+```
+
+##### The following script selects all products with a price BETWEEN 10 and 20:
+
+```javascript
+let data = [
+    {"ProductID":3, "ProductName":"Coke", "Price":10}
+    {"ProductID":1, "ProductName":"Chais", "Price":18},
+    {"ProductID":2, "ProductName":"Chang", "Price":45},
+    {"ProductID":3, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
+];
+
+let filteringData = Seule().select('FROM', data, 'Where Price Between 10 AND 20');
+
+console.log(filteringData);
+
+/*  that return object =  [
+    {"ProductID":3, "ProductName":"Coke", "Price":10}
+    {"ProductID":1, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
+] */
+```
+#### select() with STRICT BETWEEN command 
+
+The STRICT BETWEEN command has the same functionality as BETWEEN command, But the begin and end values are not included.
+
+##### Syntax
+
+```javascript
+Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end');
+```
+
+##### The following script selects all products with a price BETWEEN 10 and 20 but products with 10 and 20 are not included:
+
+```javascript
+let data = [
+    {"ProductID":3, "ProductName":"Coke", "Price":10}
+    {"ProductID":1, "ProductName":"Chais", "Price":18},
+    {"ProductID":2, "ProductName":"Chang", "Price":45},
+    {"ProductID":3, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
+];
+
+let filteringData = Seule().select('FROM', data, 'Where Price Strcit Between 10 AND 20');
+
+console.log(filteringData);
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chocolade", "Price":19}
+] */
+```
