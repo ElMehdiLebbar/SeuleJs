@@ -1,0 +1,13 @@
+{
+  "posts": [
+    {"id":1, "ProductName":"Coke", "Price":10},
+    {"id":2, "ProductName":"Chais", "Price":18},
+    {"id":3, "ProductName":"Chang", "Price":45},
+    {"id":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"id":5, "ProductName":"Chocolade", "Price":19},
+    {"id":6, "ProductName":"Orange Jus", "Price":20}
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
