@@ -1302,14 +1302,6 @@ Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end')
 ##### The following script selects all products with a price BETWEEN 10 and 20 but products with 10 and 20 are not included:
 
 ```javascript
-let data = [
-    {"ProductID":3, "ProductName":"Coke", "Price":10}
-    {"ProductID":1, "ProductName":"Chais", "Price":18},
-    {"ProductID":2, "ProductName":"Chang", "Price":45},
-    {"ProductID":3, "ProductName":"Aniseed Syrup", "Price":30},
-    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
-    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
-];
 
 let filteringData = Seule().select('FROM', data, 'Where Price Strcit Between 10 AND 20');
 
