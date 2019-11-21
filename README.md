@@ -1266,7 +1266,7 @@ The BETWEEN command is inclusive: begin and end values are included.
 Seule().select('FROM', JsonObject, 'Where colName Between begin And end');
 ```
 
-##### The following script selects all products with a price BETWEEN 10 and 20:
+The following script selects all products with a price BETWEEN 10 and 20:
 
 ```javascript
 let data = [
@@ -1299,7 +1299,7 @@ The STRICT BETWEEN command has the same functionality as BETWEEN command, But th
 Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end');
 ```
 
-##### The following script selects all products with a price BETWEEN 10 and 20 but products with 10 and 20 are not included:
+The following script selects all products with a price BETWEEN 10 and 20 but products with 10 and 20 are not included:
 
 ```javascript
 
@@ -1311,4 +1311,18 @@ console.log(filteringData);
     {"ProductID":1, "ProductName":"Chais", "Price":18},
     {"ProductID":3, "ProductName":"Chocolade", "Price":19}
 ] */
+```
+#### Select() with ORDER BY Keyword
+
+The ORDER BY keyword is used to sort the result-set in ascending or descending order.
+
+The ORDER BY keyword sorts the records in ascending order by default. To sort the records in descending order, use the reverse() Method at the end.
+
+##### Syntax
+
+```javascript
+Seule().select('FROM', JsonObject, 'Where colName =', 'Value', 'order by colName');
+
+//with Between or Strict Between
+Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end order by colName');
 ```
