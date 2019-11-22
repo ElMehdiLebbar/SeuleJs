@@ -820,7 +820,7 @@ element.anime(animation , options);
 
 ![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/3.jpg)
 
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae")
+[Preview](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae)
 
 ##### Html Page
 
@@ -1237,7 +1237,10 @@ select() method extract specific informations from the Json data, we can use wit
 ##### Syntax
 
 ```javascript
-Seule().select('FROM', JsonObject, 'Where colName =', 'Value');
+Seule().select('* FROM', JsonObject, 'Where colName =', 'Value');
+
+//For Selecting specific column
+Seule().select('colName FROM', JsonObject, 'Where colName =', 'Value');
 ```
 ##### Exemple:
 
@@ -1248,7 +1251,7 @@ let data = [
     {"firstName":"Zineb", "lastName":"Lebbar", "age":5}
 ];
 
-let filteringData = Seule().select('FROM', data, 'Where age =', '31');
+let filteringData = Seule().select('* FROM', data, 'Where age =', '31');
 
 console.log(filteringData);
 
@@ -1263,30 +1266,30 @@ The BETWEEN command is inclusive: begin and end values are included.
 ##### Syntax
 
 ```javascript
-Seule().select('FROM', JsonObject, 'Where colName Between begin And end');
+Seule().select('* FROM', JsonObject, 'Where colName Between begin And end');
 ```
 
 The following script selects all products with a price BETWEEN 10 and 20:
 
 ```javascript
 let data = [
-    {"ProductID":3, "ProductName":"Coke", "Price":10}
-    {"ProductID":1, "ProductName":"Chais", "Price":18},
-    {"ProductID":2, "ProductName":"Chang", "Price":45},
-    {"ProductID":3, "ProductName":"Aniseed Syrup", "Price":30},
-    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
-    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
+    {"ProductID":1, "ProductName":"Coke", "Price":10},
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chang", "Price":45},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20}
 ];
 
-let filteringData = Seule().select('FROM', data, 'Where Price Between 10 AND 20');
+let filteringData = Seule().select('* FROM', data, 'Where Price Between 10 AND 20');
 
 console.log(filteringData);
 
 /*  that return object =  [
-    {"ProductID":3, "ProductName":"Coke", "Price":10}
-    {"ProductID":1, "ProductName":"Chais", "Price":18},
-    {"ProductID":3, "ProductName":"Chocolade", "Price":19},
-    {"ProductID":3, "ProductName":"Orange Jus", "Price":20}
+    {"ProductID":1, "ProductName":"Coke", "Price":10},
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20}
 ] */
 ```
 #### select() with STRICT BETWEEN command 
@@ -1296,14 +1299,14 @@ The STRICT BETWEEN command has the same functionality as BETWEEN command, But th
 ##### Syntax
 
 ```javascript
-Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end');
+Seule().select('* FROM', JsonObject, 'Where colName Strict Between begin And end');
 ```
 
 The following script selects all products with a price BETWEEN 10 and 20 but products with 10 and 20 are not included:
 
 ```javascript
 
-let filteringData = Seule().select('FROM', data, 'Where Price Strcit Between 10 AND 20');
+let filteringData = Seule().select('* FROM', data, 'Where Price Strcit Between 10 AND 20');
 
 console.log(filteringData);
 
@@ -1321,8 +1324,67 @@ The ORDER BY keyword sorts the records in ascending order by default. To sort th
 ##### Syntax
 
 ```javascript
-Seule().select('FROM', JsonObject, 'Where colName =', 'Value', 'order by colName');
+Seule().select('* FROM', JsonObject, 'Where colName =', 'Value', 'order by colName');
 
 //with Between or Strict Between
-Seule().select('FROM', JsonObject, 'Where colName Strict Between begin And end order by colName');
+Seule().select('* FROM', JsonObject, 'Where colName Strict Between begin And end order by colName');
+```
+
+### Seule Not() Method
+
+Unfortunately at the moment we can not use Select() Method to select specific columns at time, but with Not() Method we can do the same thing but with logical reasoning, inverse and contrapositives.
+
+##### For Exemple, if you want to select ProductName and Price from Json we can write:  
+
+```javascript
+Seule().not(['ProductID'], 'FROM', data, 'Where Price Between 10 AND 20');
+
+/*  that return object =  [
+    {"ProductName":"Chais", "Price":18},
+    {"ProductName":"Chocolade", "Price":19}
+] */
+```
+##### Syntax 
+```javascript
+Seule().not(['colName', 'colName1', 'colName2'...], 'FROM', JsonObject, 'Where Condition');
+```
+
+### Seule in() Method
+
+in() method extract specific informations with specific values from the Json data, with select() we can use operators:
+
+<ul>
+<li><code>Like</code> Equal to</li>
+<li><code>Not Like</code> Not equal to</li>
+</ul>
+
+##### Syntax
+
+```javascript
+Seule().in(JsonObject, 'where firstName like', ['value1, value2...'], 'order by colName');
+
+//For Selecting specific column
+Seule().in(JsonObject, 'where colName not like', ['value1, value2...'], 'order by colName');
+```
+The following script selects all products with a price 10 or 20:
+
+```javascript
+Seule().in(data, 'where colName like', [10, 20]);
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Coke", "Price":10},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20}
+] */
+```
+If you use not like in like place, the script selects all products, only products with a price 10 or 20 are not included:
+
+```javascript
+Seule().in(data, 'where colName not like', [10, 20]);
+
+/*  that return object =  [
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chang", "Price":45},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19}
+] */
 ```
