@@ -1388,3 +1388,22 @@ Seule().in(data, 'where colName not like', [10, 20]);
     {"ProductID":5, "ProductName":"Chocolade", "Price":19}
 ] */
 ```
+### Seule Search() Method
+
+Search() Method in Seule js allow user to perform entire search in Json Object for a specified string.
+
+##### Syntax
+
+```javascript
+Seule().search('String', 'in', JsonObject);
+```
+The following script selects all products that contain 'cha' in all columns and rows:
+
+```javascript
+Seule().search('cha', 'in', data);
+
+/*  that return object =  [
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chang", "Price":45}
+] */
+```
