@@ -25,9 +25,9 @@ Seule().require(['htmlSetting']);
 
 ##### Hello World Project
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)
 
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 
 # html Methods
