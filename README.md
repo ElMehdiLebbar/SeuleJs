@@ -211,7 +211,7 @@ let title = Seule('.by-class');
 	<li><b>Seule("[href]")</b>  Selects all elements with an href attribute.</li>
 	<li><b>Seule("a[target='_blank']")</b>  Selects all a elements with a target attribute value equal to "_blank"</li>
 	<li><b>Seule("a[target!='_blank']")</b>  Selects all a elements with a target attribute value NOT equal to "_blank"</li>
-	<li><b>Seule(":button")</b>  Selects all button elements and <input> elements of type="button"</li>
+	<li><b>Seule(":button")</b>  Selects all button elements and input elements of type="button"</li>
 	<li><b>Seule("tr:even")</b>   Selects all even tr elements</li>
 	<li><b>Seule("tr:odd")</b>  Selects all odd tr elements</li>
 	<li><b>Seule("#id, .className, body")</b>  Selects many elements in single time</li>
@@ -251,7 +251,7 @@ paragraphs.on("click", function () {
 
 ### Seule click()
 
-The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a <button> element; show an alert box
+The function is executed when the user clicks on the HTML element. for exemple When a click event fires on a button element; show an alert box
 	
 ```javascript
 let button = Seule('button');
