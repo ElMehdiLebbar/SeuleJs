@@ -46,9 +46,8 @@ the new feature that you can now, adding a javascript event, by the way if you w
 ```html
 <h1 s-text="click{Hello World}">Hello HKG</h1>
 ```
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/2.jpg)
 
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/2.jpg)](https://codepen.io/el-mehdi-lebbar/pen/XWWYQxd)
 
 ### Style Methods
 
@@ -108,9 +107,7 @@ then you can call the attribute in your html fils
 ```
 if the mouse over on the button element, the result will be:
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/7.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/QWWBmLG)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/7.jpg)](https://codepen.io/el-mehdi-lebbar/pen/QWWBmLG)
 
 ## HTML Attributes Methods
 
@@ -150,9 +147,7 @@ open a specific link with s-link html method, there are two ways.
 ```
 As you see, the first way must be accompanied with a javascript event, to open URL in the same window directly, you may use s-link with-out event or by using s-href inside the -a- tag
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/8.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/xxxJJZa)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/8.jpg)](https://codepen.io/el-mehdi-lebbar/pen/xxxJJZa)
 
 ```html
 <button s-link={https://www.google.co.ma/} >click on me to open google</button>
@@ -161,9 +156,7 @@ As you see, the first way must be accompanied with a javascript event, to open U
 ```
 ### Use your own HTML Methods
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/9.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/9.jpg)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 in Seule.js you can creat your own html method by using setHtmlMethode for exemple:
 
@@ -818,9 +811,7 @@ element.anime(animation , options);
 ```
 ##### Basic Exemple by using html Method s-anime 
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/3.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/3.jpg)](https://codepen.io/el-mehdi-lebbar/pen/MWWXPae)
 
 ##### Html Page
 
@@ -835,9 +826,7 @@ Seule().require(['htmlSetting', 'anime']);
 ```
 <h3>Basic Exemple by using anime() Method </h3>
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/4.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/4.jpg)](https://codepen.io/el-mehdi-lebbar/pen/JjjZmNL)
 
 ##### Html Page
 
@@ -876,9 +865,7 @@ It is possible to override the default behaviour for an animation, passing an Ob
 
 ##### Exemple by using anime() Method with options
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/5.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/KKKBXQz)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/5.jpg)](https://codepen.io/el-mehdi-lebbar/pen/KKKBXQz)
 
 ##### Html Page
 
@@ -912,9 +899,7 @@ Seule anime Methode returns an Array of Animation Objects, each one represents a
 
 ##### Exemple by using anime() Method with animation player
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/6.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/jOOpaNy)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/6.jpg)](https://codepen.io/el-mehdi-lebbar/pen/jOOpaNy)
 
 ##### Html Page
 
@@ -1157,9 +1142,7 @@ $("div").load("demo_test.txt");
 
 ### Seule http Request Exemple
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/10.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/Jjjepdo)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/10.jpg)](https://codepen.io/el-mehdi-lebbar/pen/Jjjepdo)
 
 ## Custom HTML Elements with Seule template Method 
 
@@ -1194,9 +1177,7 @@ calling new elements
 
 ### Custom HTML Elements Exemple
 
-![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/11.jpg)
-
-[Preview](https://codepen.io/el-mehdi-lebbar/pen/mddvExK)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/11.jpg)](https://codepen.io/el-mehdi-lebbar/pen/mddvExK)
 
 
 # SeuleJs JSON
