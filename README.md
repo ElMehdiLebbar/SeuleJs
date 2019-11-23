@@ -1565,3 +1565,18 @@ The last() method returns the last element of the selected elements.
 ```javascript
 element.last();
 ```
+### Seule Find() Method
+
+The find() method returns descendant elements of the selected element.
+
+##### Syntax
+
+```javascript
+element.find(tag);
+```
+
+##### Exemple : Return all span elements that are descendants of ul:
+
+```javascript
+Seule("ul").find("span").css({"color": "red", "border": "2px solid red"});
+```
