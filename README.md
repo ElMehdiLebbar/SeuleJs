@@ -1533,6 +1533,8 @@ Seule().alter(data, 'RENAME COLUMN ProductID TO id');
 
 # Seule Traversing Methods
 
+### Seule Parent() Method
+
 The parent() method returns the direct parent element of the selected element.
 
 ##### Syntax
@@ -1544,4 +1546,22 @@ element.parent();
 
 ```javascript
 Seule("span").parent().css({"color": "red", "border": "2px solid red"});
+```
+### Seule first() Method
+
+The first() method returns the first element of the selected elements.
+
+##### Syntax
+
+```javascript
+element.first();
+```
+### Seule Last() Method
+
+The last() method returns the last element of the selected elements.
+
+##### Syntax
+
+```javascript
+element.last();
 ```
