@@ -1407,3 +1407,98 @@ Seule().search('cha', 'in', data);
     {"ProductID":3, "ProductName":"Chang", "Price":45}
 ] */
 ```
+### Seule Delete() Method
+
+The Delete() Methode is used to delete existing records in a Json Object.
+
+##### Syntax
+
+```javascript
+Seule().delete('From', JsonObject, 'Where colName =', 'Value');
+```
+The following script deletes the Product "Chais" from the "data" Json:
+
+```javascript
+Seule().delete('From', data, 'where ProductName like', 'Chais');
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Coke", "Price":10},
+    {"ProductID":3, "ProductName":"Chang", "Price":45},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20
+] */
+```
+
+### Seule Delete() Method
+
+The Update() Methode is used to modify the existing records in a Json Object.
+
+##### Syntax
+
+```javascript
+Seule().update(JsonObject, 'Set colName =', 'NewValue', 'Where anyColName =', 'Value');
+```
+The following script deletes the Product "Chais" from the "data" Json:
+
+```javascript
+Seule().update(data,'set ProductName =', 'Milk' , 'Where Price =', 10);
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Milk", "Price":10},
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chang", "Price":45},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20}
+] */
+```
+
+### Seule Alter() Method
+
+The Alter() Method is used to add new columns or delete even modify an existing columns in Json Object.
+
+#### ALTER - ADD Column
+
+To add a column in a table, use the following syntax:
+
+```javascript
+Seule().alter(JsonObject, 'Add', ['colName1', 'colName2'...]);
+```
+The following script adds a "Quantity" column to the "Products" Json Object:
+
+```javascript
+
+Seule().alter(data, 'Add', ['Quantity']);
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Milk", "Price":10, "Quantity": ""},
+    {"ProductID":2, "ProductName":"Chais", "Price":18, "Quantity": ""},
+    {"ProductID":3, "ProductName":"Chang", "Price":45, "Quantity": ""},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30, "Quantity": ""},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19, "Quantity": ""},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20, "Quantity": ""}
+] */
+```
+#### ALTER - DROP Column
+
+To delete a column in a table, use the following syntax
+
+```javascript
+Seule().alter(JsonObject, 'Drop', ['colName1', 'colName2'...]);
+```
+The following script deletes the "Price" column from the "Products" Json Object:
+
+```javascript
+
+Seule().alter(data, 'Drop', ['Price']);
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Milk", "Quantity": ""},
+    {"ProductID":2, "ProductName":"Chais", "Quantity": ""},
+    {"ProductID":3, "ProductName":"Chang", "Quantity": ""},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Quantity": ""},
+    {"ProductID":5, "ProductName":"Chocolade", "Quantity": ""},
+    {"ProductID":6, "ProductName":"Orange Jus", "Quantity": ""}
+] */
+```
