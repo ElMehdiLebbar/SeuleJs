@@ -1530,3 +1530,18 @@ Seule().alter(data, 'RENAME COLUMN ProductID TO id');
     {"id":6, "ProductName":"Orange Jus", "Quantity": ""}
 ] */
 ```
+
+# Seule Traversing Methods
+
+The parent() method returns the direct parent element of the selected element.
+
+##### Syntax
+
+```javascript
+element.parent();
+```
+##### Exemple : Return the direct parent element of span:
+
+```javascript
+Seule("span").parent().css({"color": "red", "border": "2px solid red"});
+```
