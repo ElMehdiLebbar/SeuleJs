@@ -1580,3 +1580,22 @@ element.find(tag);
 ```javascript
 Seule("ul").find("span").css({"color": "red", "border": "2px solid red"});
 ```
+
+### Seule Child() Method
+
+The children() method returns all direct children of the selected element.
+
+##### Syntax
+
+```javascript
+element.children();
+
+//to select specific children we can use index
+element.children(index);
+```
+
+##### Exemple : Return elements that are direct children of ul:
+
+```javascript
+Seule("ul").children().css({"color": "red", "border": "2px solid red"});
+```
