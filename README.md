@@ -1430,7 +1430,7 @@ Seule().delete('From', data, 'where ProductName like', 'Chais');
 ] */
 ```
 
-### Seule Delete() Method
+### Seule Update() Method
 
 The Update() Methode is used to modify the existing records in a Json Object.
 
@@ -1451,6 +1451,31 @@ Seule().update(data,'set ProductName =', 'Milk' , 'Where Price =', 10);
     {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
     {"ProductID":5, "ProductName":"Chocolade", "Price":19},
     {"ProductID":6, "ProductName":"Orange Jus", "Price":20}
+] */
+```
+### Seule Insert() Method
+
+The Update() Methode is used to insert new records in a Json Object.
+
+##### Syntax
+
+```javascript
+Seule().insert('InTo', JsonObject, 'VALUES', {});
+```
+The following Script inserts a new record in the "ProductName" Json Array:
+
+```javascript
+
+Seule().insert('InTo', data, 'Values', {"ProductID":7, "ProductName":"Coffee", "Price":8});
+
+/*  that return object =  [
+    {"ProductID":1, "ProductName":"Milk", "Price":10},
+    {"ProductID":2, "ProductName":"Chais", "Price":18},
+    {"ProductID":3, "ProductName":"Chang", "Price":45},
+    {"ProductID":4, "ProductName":"Aniseed Syrup", "Price":30},
+    {"ProductID":5, "ProductName":"Chocolade", "Price":19},
+    {"ProductID":6, "ProductName":"Orange Jus", "Price":20},
+    {"ProductID":7, "ProductName":"Coffee", "Price":8}
 ] */
 ```
 
@@ -1482,7 +1507,7 @@ Seule().alter(data, 'Add', ['Quantity']);
 ```
 #### ALTER - DROP Column
 
-To delete a column in a table, use the following syntax
+To delete one or more columns in a table, use the following syntax
 
 ```javascript
 Seule().alter(JsonObject, 'Drop', ['colName1', 'colName2'...]);
@@ -1500,5 +1525,27 @@ Seule().alter(data, 'Drop', ['Price']);
     {"ProductID":4, "ProductName":"Aniseed Syrup", "Quantity": ""},
     {"ProductID":5, "ProductName":"Chocolade", "Quantity": ""},
     {"ProductID":6, "ProductName":"Orange Jus", "Quantity": ""}
+] */
+```
+#### ALTER - RENAME Column
+
+To rename a column in a table, use the following syntax
+
+```javascript
+Seule().alter(JsonObject, 'RENAME COLUMN colName TO newColName');
+```
+The following script change the name of "ProductID" column to "id" column in the "Products" Json Object:
+
+```javascript
+
+Seule().alter(data, 'RENAME COLUMN ProductID TO id');
+
+/*  that return object =  [
+    {"id":1, "ProductName":"Milk", "Quantity": ""},
+    {"id":2, "ProductName":"Chais", "Quantity": ""},
+    {"id":3, "ProductName":"Chang", "Quantity": ""},
+    {"id":4, "ProductName":"Aniseed Syrup", "Quantity": ""},
+    {"id":5, "ProductName":"Chocolade", "Quantity": ""},
+    {"id":6, "ProductName":"Orange Jus", "Quantity": ""}
 ] */
 ```
