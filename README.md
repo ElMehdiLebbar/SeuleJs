@@ -306,7 +306,7 @@ The emit() method triggers the specified event and the default behavior of an ev
 ##### Emit Syntax
 
 ```javascript
-element.emit('idOfElement', event, eventToCopy);
+element.emit({target: element, event: event, emit : eventToCopy});
 ```
 
 ###### Exemple : Html Page
@@ -321,7 +321,7 @@ element.emit('idOfElement', event, eventToCopy);
 let button = Seule('#upload');
 	
 //when user double click on button with id upload, is the same think if he click on input file. 
-button.emit('uploader', 'dblclick', 'click');
+button.emit({target:'#uploader', event:'dblclick', emit:'click'});
 ```
 ### Seule- switch()
 The switch() method toggles between two custom functions for the selected elements.
@@ -1732,5 +1732,23 @@ data = Seule().getStorage('items');
 
 console.log(data[0].name); // Result --> El Mehdi
 
+```
+###  Storage storageDelete() Method
+
+The storageDelete() method removes the specified Storage Object item.
+
+##### Syntax
+
+```javascript
+Seule().storageDelete(storeName)
+```
+###  Storage storageClear() Method
+
+The storageClear() method removes all the Storage Object item for this domain.
+
+##### Syntax
+
+```javascript
+Seule().storageClear()
 ```
 
