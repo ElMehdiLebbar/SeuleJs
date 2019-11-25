@@ -528,7 +528,6 @@ let div = Seule('div');
 div.opacity(0.5);
 ```
 
-
 ### Seule style() & getStyle()
 
 The style() method sets one or more style properties for the selected elements. for returning the value of element css propertie you should use getStyle() Method
@@ -563,6 +562,21 @@ btn.click(function () {
     }
 });
 ```
+### Seule css()
+The css() method sets one or more style properties for the selected elements.
+
+##### Syntax
+
+```javascript
+element.css({cssProperty: "value", cssProperty2: "value",...});
+```
+
+The following example will set the background-color value for ALL matched elements:
+
+```javascript
+Seule("p").css({"background-color" : "yellow"});
+```
+
 ### Seule class()
 
 This Method is useful to add, remove and toggle CSS classes on an element.
