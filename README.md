@@ -1752,3 +1752,32 @@ The storageClear() method removes all the Storage Object item for this domain.
 Seule().storageClear()
 ```
 
+# Seule Cryptography
+
+Seule Cryptography is a method of protecting information and communications through the use of codes so that only those for whom the information is intended can read and process it.
+
+### Plain text encryption
+
+```javascript
+// Encrypt
+let encryptText = Seule().encrypt('secret key 123', 'my message');
+
+// Decrypt
+let originalText = Seule().decrypt('secret key 123', encryptText);
+
+console.log(originalText); // Result --> my message
+```
+### Object encryption
+
+```javascript
+
+let data = [{id: 1}, {id: 2}]
+
+// Encrypt
+let encryptObject = Seule().encrypt('secret key 123', data);
+
+// Decrypt
+let originalObject = Seule().decrypt('secret key 123', encryptText);
+
+console.log(originalObject); // Result --> [{id: 1}, {id: 2}]
+```
