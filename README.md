@@ -1781,3 +1781,63 @@ let originalObject = Seule().decrypt('secret key 123', encryptText);
 
 console.log(originalObject); // Result --> [{id: 1}, {id: 2}]
 ```
+# Seule Other Methods
+
+### Seule attr()
+
+The attr() method sets or returns attributes and values of the selected elements.
+
+When this method is used to return the attribute value, it returns the value of the FIRST matched element.
+
+When this method is used to set attribute values, it sets one or more attribute/value pairs for the set of matched elements.
+
+##### Syntax
+
+```javascript
+//Return the value of an attribute:
+element.attr(attribute)
+
+//Set the attribute and value:
+element.attr(attribute,value)
+```
+
+##### Example: Set the width attribute of an image:
+
+```javascript
+Seule("button").click(function(){
+  Seule("img").attr("width","500");
+});
+```
+
+### Seule widht() & height()
+
+* widht() Sets or returns the widht of an element
+* height() Sets or returns the height of an element
+
+##### Syntax
+
+```javascript
+//Return the width:
+element.width()
+
+//Set the width:
+element.width(value)
+```
+##### Example : Return the width or the height of a div element:
+
+```javascript
+Seule("button").click(function(){
+    alert(Seule("div").width());//return the widht
+    alert(Seule("div").height());//return the height
+}); 
+```
+
+### Seule orientation()
+
+The orientation Method return the current orientation of the screen.
+
+##### Syntax
+
+```javascript
+element.orientation() 
+```
