@@ -1613,3 +1613,77 @@ element.children(index);
 ```javascript
 Seule("ul").children().css({"color": "red", "border": "2px solid red"});
 ```
+# Scrolling with Seule Js
+
+### Seule onScroll()
+
+The onscroll event occurs when an element's scrollbar is being scrolled.
+
+##### Syntax
+
+```javascript
+element.onScroll(handler);
+```
+
+Execute a Function when a <div> element is being scrolled:
+
+```javascript
+Seule('div').onScroll(function () {
+   //Do Something
+});
+```
+
+### Seule scroll()
+
+Scrolls in the selected element or in specified position in the page.
+
+##### Syntax
+
+```javascript
+element.scroll();
+
+//to scroll in specified position
+element.scroll(Int);
+```
+The following script scolls to div with id equal 'here':
+
+```javascript
+Seule().require(['scroll.smooth']);
+
+Seule('#here').scroll();
+```
+### Seule scrollTop & scrollBottom
+
+ScrollTop Method is using to Scrolls to the top of the page and ScrollBottom to Scrolls to the bottom of the page.
+
+##### Syntax
+
+```javascript
+//Scrolls to the top
+Seule().scrollTop();
+
+//Scrolls to the bottom
+Seule().scrollBottom();
+```
+
+### Seule scrollPosition()
+
+This method returns the vertical or the horizontal position of the scrollbar for the FIRST matched element.
+
+##### Syntax
+
+```javascript
+//returns the vertical position
+element.scrollPosition();
+
+//returns the horizontal position
+element.scrollPosition("horizontally");
+```
+
+## Add the Seule Scroll markup to your HTML.
+
+No special markup needed—just standard anchor links. Give the anchor location an ID just like you normally would.
+
+```html
+<a data-scroll href="#bazinga">Anchor Link</a>
+```
