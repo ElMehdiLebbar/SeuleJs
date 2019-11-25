@@ -1841,3 +1841,33 @@ The orientation Method return the current orientation of the screen.
 ```javascript
 element.orientation() 
 ```
+
+## Seule Filter() 
+
+Filter() show only the elements that has a Specifics data markup in the selected elements
+
+##### Syntax
+
+```javascript
+element.filter('data-markup'); 
+```
+
+##### Exemple
+
+```html
+<ul>
+    <li data-soda>Coke</li>
+    <li>Chais</li>
+    <li>Chang</li>
+    <li data-soda>Pepsi</li>
+</ul>
+```
+The following script shows only Soda Drinks
+
+```javascript
+Seule('ul').filter('soda');
+/* Result -->
+    . Coke
+    . Pepsi
+*/
+```
