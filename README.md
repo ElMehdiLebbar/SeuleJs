@@ -1687,3 +1687,50 @@ No special markup needed—just standard anchor links. Give the anchor location 
 ```html
 <a data-scroll href="#bazinga">Anchor Link</a>
 ```
+
+# Seule Local Storage
+
+The local Storage allow to save key/value pairs in a web browser or nodewebkit applications.
+
+The local Storage object stores data with no expiration date. The data will not be deleted when the browser is closed, and will be available the next day, week, or year.
+
+The localStorage property is read-only.
+
+###  Seule Storage()
+
+Storage create a new local storage and save data across browser sessions.
+
+##### Syntax
+
+```javascript
+Seule().storage(storeName ,JsonObject)
+```
+
+###  Seule getStorage()
+
+The getItem() method returns value of the specified Storage Object item.
+
+##### Syntax
+
+```javascript
+Seule().storage(storeName ,JsonObject)
+```
+
+##### Exemple
+
+```javascript
+
+let data,
+    users = [
+    {name : "El Mehdi", password: "123456"},
+    {name : "Asmae", password: "555000"}
+];
+
+Seule().storage('users', users);
+
+data = Seule().getStorage('items');
+
+console.log(data[0].name); // Result --> El Mehdi
+
+```
+
