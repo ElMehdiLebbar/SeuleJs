@@ -257,11 +257,17 @@ paragraphs.on("click");
 The next step is to define what should happen when the event fires. You must pass a function to the event:
 
 ```javascript
-let paragraphs = Seule('p');
-paragraphs.on("click", function () {
-       	console.log("it's work !");
-    });
+Seule().require(['anime']);
+
+let S = Seule,
+p = S('p');
+
+p.on("click" ,function () {
+    S(this).anime('flipOutX');
+});
 ```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/KKKLrwX)
+
 ## Seul Special Events Methods
 
 ### Seule click()
@@ -275,28 +281,35 @@ button.click(function () {
 	alert('just a simple click');
 })
 ```
-### Seule dblclick()
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/ExxzONG)
+
+### Seule dblClick()
 
 The function is executed when the user double-clicks on the HTML element.
 
 ```javascript
-let button = $seule('button');
+let $ = Seule,
+button = $('button'),
+changeMyText = function(){
+  $(this).text('dblClicked !')
+};
 
-button.dblclick(function () {
-	alert('you win !');
-})
+button.dblClick(changeMyText);
 ```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/VwwOVpY)
 
 ### Seule holdOn()
 <p>The function is executed when the user make a long presse on the HTML element.</p>
 
 ```javascript
-let button = Seule('button');
-
-button.holdOn(function () {
-	console.log('this is a long press');
-})
+Seule('button').click(function () {
+    Seule('.spinner').removeClass('active');
+}).holdOn(function(){
+    Seule('.spinner').addClass('active');
+});
 ```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/poomQQO)
+
 ### Seule swipeOn()
 Detecting a swipe (left, right, top or down) using swipeOn Method
 
