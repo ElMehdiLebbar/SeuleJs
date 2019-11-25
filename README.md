@@ -351,6 +351,8 @@ let button = Seule('#upload');
 //when user double click on button with id upload, is the same think if he click on input file. 
 button.emit({target:'#uploader', event:'dblclick', emit:'click'});
 ```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/oNNRJXz)
+
 ### Seule- switch()
 The switch() method toggles between two custom functions for the selected elements.
 
