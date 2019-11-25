@@ -340,12 +340,13 @@ element.emit({target: element, event: event, emit : eventToCopy});
 ###### Exemple : Html Page
 
 ```html
-<input type="file" id="uploader">
-<button id="upload">upload</button>
+<input type="file" id="uploader" s-display={none}>
+<button id="upload">dblclick to upload</button>
 ```
 ##### Javascript
 
 ```javascript
+Seule().require(['htmlSetting']);
 let button = Seule('#upload');
 	
 //when user double click on button with id upload, is the same think if he click on input file. 
