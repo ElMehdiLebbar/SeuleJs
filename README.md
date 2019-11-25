@@ -202,6 +202,21 @@ let title = Seule('#byId');
 //Or The .class Selector To find elements with a specific class
 let title = Seule('.by-class');
 ```
+##### Examples
+When a user clicks on a button, all <p> elements will be hidden:
+
+```javascript
+let S = Seule,
+    btn = S('button'),
+    p = S('p'),
+    hideParagraph = function(){
+      p.hide();
+    }
+
+btn.click(hideParagraph);
+```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
+
 ##### More Examples of Seule Selectors:
 <ul>
 	<li><b>Seule("p.intro")</b>  Selects all p elements with class="intro"</li>
