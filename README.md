@@ -33,15 +33,21 @@ we can creat a Seule attribute by calling the setHtmlMethod()
 ### Example
 
 ```html
-  <div id='main'>
-      <button @background={#fff}>Hello world</button>
-  </div>
+ <div id="main">
+    <button @method="click{'nom' : 'Mehdi'}">Say Hello To Mehdi</button>
+    <p>Result: <span id="response">waiting...</span></p>
+</div>
 ```
 ```javascript
 let $ = new Seule('#main');
-$.initStyle('background'); 
+
+
+$.setHtmlMethod('method', function (obj) {
+    // action goes here!!
+    $.find('#response').text('hello M. '+ obj.nom);
+}); 
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
 
