@@ -22,11 +22,10 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 ```javascript
 let $ = new Seule('#main');
 ```
-
-<i>- Now your are ready to go.</i>
-
-##### Hello World Project
-
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+
+
+
+
 
 
