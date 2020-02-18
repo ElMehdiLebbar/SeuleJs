@@ -27,6 +27,6 @@ let $ = new Seule('#main');
 
 ##### Hello World Project
 
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 
