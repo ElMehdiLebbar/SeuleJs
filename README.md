@@ -25,13 +25,10 @@ let $ = new Seule('#main');
 
 # Seule's Attributes
 
-Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages. Seule gives you many ways to handel it. Let start with the HTML DOM Style object:
+Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
 
-## Style object
-The Style object represents an individual style statement and has many Properties for more informations you can visit this link [w3schools.com/...style.asp](https://www.w3schools.com/jsref/dom_obj_style.asp)
-
-### initStyle()
-we can call all Style object Properties with initStyle on specific element 
+### setHtmlMethod()
+we can creat a Seule attribute by calling the setHtmlMethod() 
 
 ### Example
 
