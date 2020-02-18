@@ -17,14 +17,34 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
       <button>Hello world</button>
   </div>
 ```
-<h5>on your main js file call the Seule Object by using this code bellow:</h5>
+##### on your main js file call the Seule Object by using this code bellow:
 
 ```javascript
 let $ = new Seule('#main');
 ```
+
+# Seule's Attributes
+
+Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages. Seule gives you many ways to handel it. Let start with the HTML DOM Style object:
+
+## Style object
+The Style object represents an individual style statement and has many Properties for more informations you can visit this link [w3schools.com/...style.asp](https://www.w3schools.com/jsref/dom_obj_style.asp)
+
+### initStyle()
+we can call all Style object Properties with initStyle on specific element 
+
+### Example
+
+```html
+  <div id='main'>
+      <button @background={#fff}>Hello world</button>
+  </div>
+```
+```javascript
+let $ = new Seule('#main');
+$.initStyle('background'); 
+```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
-
-
 
 
 
