@@ -13,18 +13,20 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 ##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
 
 ```html
-  <h1 s-text="{Hello World}"></h1>
+  <div id='main'>
+      <button>Hello world</button>
+  </div>
 ```
 <h5>on your main js file call the Seule Object by using this code bellow:</h5>
 
 ```javascript
-Seule().require(['htmlSetting']);
+let $ = new Seule('#main');
 ```
 
 <i>- Now your are ready to go.</i>
 
 ##### Hello World Project
 
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/1.jpg)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/try-button.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 
