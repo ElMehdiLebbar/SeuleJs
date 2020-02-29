@@ -17,13 +17,37 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
       <button>Hello world</button>
   </div>
 ```
-##### on your main js file call the Seule Object by using this code bellow:
+
+
+# Seule Selectors
+
+### Example
+
+Get all elements in the document with class="example":
 
 ```javascript
-let main = S('#main');
+let example = S('.example');
+```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+More "Try it Yourself" examples below.
+
+## Definition and Usage
+
+Seule Selectors method returns all elements in the document that matches a specified CSS selector(s), as a static Seule object.
+
+### Syntax
+
+```javascript
+S(CSS selectors);
 ```
 
-# Seule's Attributes
+Parameter --> CSS selectors
+Type --> String
+Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+
+# Seule Attributes
 
 Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
 
