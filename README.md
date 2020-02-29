@@ -34,14 +34,14 @@ we can creat a Seule attribute by calling the setHtmlMethod()
 
 ```html
 <div id="main">
-    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
+    <button @methodname="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
     <p>Hello M. <span id="response">waiting...</span></p>
 </div>
 ```
 ```javascript
 Seule.setHtmlMethod({
     selector : '#main',
-    attr : 'method',
+    attr : 'methodname',
     handler: function (obj, element) {
         this.element.find('#response').html(obj.name);
     }
