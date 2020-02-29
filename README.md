@@ -28,7 +28,7 @@ Get all elements in the document with class="example":
 ```javascript
 let example = S('.example');
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
 More "Try it Yourself" examples below.
 
