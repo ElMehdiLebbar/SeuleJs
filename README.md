@@ -20,7 +20,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 ##### on your main js file call the Seule Object by using this code bellow:
 
 ```javascript
-console.log(Seule)
+let main = S('#main');
 ```
 
 # Seule's Attributes
