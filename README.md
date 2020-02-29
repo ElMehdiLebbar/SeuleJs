@@ -43,7 +43,9 @@ S(CSS selectors);
 ```
 
 Parameter --> CSS selectors
+
 Type --> String
+
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
