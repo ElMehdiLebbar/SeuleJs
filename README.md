@@ -20,7 +20,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 ##### on your main js file call the Seule Object by using this code bellow:
 
 ```javascript
-let $ = new Seule('#main');
+console.log(Seule)
 ```
 
 # Seule's Attributes
@@ -33,19 +33,19 @@ we can creat a Seule attribute by calling the setHtmlMethod()
 ### Example
 
 ```html
- <div id="main">
-    <button @method="click{'nom' : 'Mehdi'}">Say Hello To Mehdi</button>
-    <p>Result: <span id="response">waiting...</span></p>
+<div id="main">
+    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
+    <p>Hello M. <span id="response">waiting...</span></p>
 </div>
 ```
 ```javascript
-let $ = new Seule('#main');
-
-
-$.setHtmlMethod('method', function (obj) {
-    // action goes here!!
-    $.find('#response').text('hello M. '+ obj.nom);
-}); 
+Seule.setHtmlMethod({
+    selector : '#main',
+    attr : 'method',
+    handler: function (obj, element) {
+        this.element.find('#response').html(obj.name);
+    }
+});
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
