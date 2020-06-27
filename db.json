@@ -1,11 +1,11 @@
 {
   "posts": [
-    {"id":1, "ProductName":"Coke", "Price":10},
-    {"id":2, "ProductName":"Chais", "Price":18},
-    {"id":3, "ProductName":"Chang", "Price":45},
-    {"id":4, "ProductName":"Aniseed Syrup", "Price":30},
-    {"id":5, "ProductName":"Chocolade", "Price":19},
-    {"id":6, "ProductName":"Orange Jus", "Price":20}
+    {"images":1, "title":"Coke", "links":10},
+    {"images":3, "title":"Chais", "links":18},
+    {"images":4, "title":"Chang", "links":45},
+    {"images":5, "title":"Aniseed Syrup", "links":30},
+    {"images":6, "title":"Chocolade", "links":19},
+    {"images":8, "title":"Orange Jus", "links":20}
   ],
   "profile": [
     {"user": "57851593254861", "password": "123", "link": ""}
