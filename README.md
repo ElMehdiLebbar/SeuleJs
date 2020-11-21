@@ -68,7 +68,7 @@ we can creat a Seule attribute by calling the setHtmlMethod()
 Seule.setHtmlMethod({
     selector : '#main',
     attr : 'methodname',
-    handler: function (obj, element) {
+    handler(obj, element) {
         this.element.find('#response').html(obj.name);
     }
 });
