@@ -49,11 +49,14 @@ Type --> String
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
-# Seule Attributes
+# Super Object --> Seule
+
+The Super Object << Seule >> is using many Predefined Methods 
+
+### setHtmlMethod()
 
 Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
 
-### setHtmlMethod()
 we can creat a Seule attribute by calling the setHtmlMethod() 
 
 ### Example
