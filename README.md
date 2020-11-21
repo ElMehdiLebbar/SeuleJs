@@ -85,7 +85,7 @@ Seule.setHtmlMethod({
 
 To send a request to a server, we use the http() and post() methods of the Seule super object
 
-### setHtmlMethod()
+### http()
 
 ### Example
 
