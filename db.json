@@ -1,12 +1,14 @@
-[
-  {
-    "id": 1,
-    "libelle": "Harry Potter",
-    "price": "70$"
-  },
-  {
-    "id": 2,
-    "libelle": "Learn Javascript in 5 Days",
-    "price": "50$"
-  }
-]
+{
+  "books":[
+    {
+      "id": 1,
+      "libelle": "Harry Potter",
+      "price": "70$"
+    },
+    {
+      "id": 2,
+      "libelle": "Learn Javascript in 5 Days",
+      "price": "50$"
+    }
+  ]
+}
