@@ -53,6 +53,8 @@ Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Referenc
 
 The Super Object << Seule >> is using many Predefined Methods 
 
+## Creat a Seule attribute
+
 ### setHtmlMethod()
 
 Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
@@ -77,6 +79,29 @@ Seule.setHtmlMethod({
 });
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+
+## Send a Request To a Server
+
+To send a request to a server, we use the http() and post() methods of the Seule super object
+
+### setHtmlMethod()
+
+### Example
+
+```html
+<div id="main">
+  <div id="result"></div>
+</div>
+```
+```javascript
+Seule.http({
+    url : 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
+    json : true
+});
+```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
+
 
 
 
