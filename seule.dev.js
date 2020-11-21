@@ -488,6 +488,12 @@ class Seule{
 
         let formData = new FormData();
 
+        options.param = {
+            method: options.method || 'get'
+        }
+
+        if (options.method === 'post') options.param.body = formData
+
         if(options.form){
             let newForm = document.querySelector(options.form);
             formData = new FormData(newForm);
@@ -514,10 +520,7 @@ class Seule{
 
         if(options.data) Object.keys(options.data).forEach((k)=>formData.append(k, options.data[k]));
 
-        let response = await fetch(options.url, {
-            method: options.method || 'get',
-            body: formData
-        })
+        let response = await fetch(options.url, options.param)
 
         if (response.ok) {
             if(options.blob) return await response.blob();
@@ -558,7 +561,6 @@ class Seule{
         }
        return await Seule.http(options)
     }
-
 
     static store(options){
         if(options.obj) window.localStorage.setItem(options.name, JSON.stringify(options.obj))
@@ -711,18 +713,18 @@ class Seule{
     }
 
     static orientation (){
-        if(screen.orientation.angle == '90') return 'Horizontally'
+        if(screen.orientation.angle === '90') return 'Horizontally'
         return 'Vertically'
     };
-    static screen (query, handler, callback){
-        let x = window.matchMedia(query),
+    static screen (options){
+        let x = window.matchMedia(options.query),
             resultMatch = myFunction(x); // Call listener function at run time
 
         x.addEventListener('change', myFunction); // Attach listener function on state changes
 
         function myFunction(x) {
-            if (x.matches)  if(typeof handler == "function") handler()
-            else if(typeof callback == "function") callback()
+            if (x.matches)  if(typeof options.handler == "function") options.handler()
+            else if(typeof options.callback == "function") options.callback()
             return x;
         }
         return resultMatch
