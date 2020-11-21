@@ -96,8 +96,11 @@ To send a request to a server, we use the http() and post() methods of the Seule
 ```
 ```javascript
 Seule.http({
-    url : 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
-    json : true
+    url: 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
+    json: true
+}).then(r =>{
+    let result = new Seule('#result')
+    result.html(r.posts[1].title)
 });
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
