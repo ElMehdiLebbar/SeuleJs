@@ -1,13 +1,12 @@
-{
-  "posts": [
-    {"images":1, "title":"Coke", "links":10},
-    {"images":3, "title":"Chais", "links":18},
-    {"images":4, "title":"Chang", "links":45},
-    {"images":5, "title":"Aniseed Syrup", "links":30},
-    {"images":6, "title":"Chocolade", "links":19},
-    {"images":8, "title":"Orange Jus", "links":20}
-  ],
-  "profile": [
-    {"user": "57851593254861", "password": "123", "link": ""}
-  ]
-}
+[
+  {
+    "id": 1,
+    "libelle": "Harry Potter",
+    "price": "70$"
+  },
+  {
+    "id": 2,
+    "libelle": "Learn Javascript in 5 Days",
+    "price": "50$"
+  }
+]
