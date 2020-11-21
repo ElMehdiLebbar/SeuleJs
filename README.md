@@ -26,7 +26,7 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
 Get all elements in the document with class="example":
 
 ```javascript
-let example = S('.example');
+let example = new Seule('.example');
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
@@ -39,7 +39,7 @@ Seule Selectors method returns all elements in the document that matches a speci
 ### Syntax
 
 ```javascript
-S(CSS selectors);
+let element = new Seule(CSS selectors);
 ```
 
 Parameter --> CSS selectors
