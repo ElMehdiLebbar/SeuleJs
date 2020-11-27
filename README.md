@@ -51,6 +51,30 @@ Type --> String
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
+# Seule Event Methods
+
+Seule is tailor-made to respond to events in an HTML page.
+
+### Syntax
+
+```javascript
+let element = new Seule(CSS selectors);
+element.on('eventName', handler())
+```
+
+### Example
+
+To assign a click event to all buttons on a App, you can do this:
+
+```javascript
+let example = new Seule('.example');
+example.on('click', function(){
+  // action goes here!!
+})
+```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+
+
 # Super Object --> Seule
 
 The Super Object << Seule >> is using many Predefined Methods 
