@@ -17,7 +17,9 @@ Seule is A complete fast, small, and feature-rich JavaScript library. It makes t
       <button>Hello world</button>
   </div>
 ```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
+Click on the "Try it Yourself" button to see how it works.
 
 # Seule Selectors
 
