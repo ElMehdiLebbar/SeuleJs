@@ -574,7 +574,7 @@ class Seule{
 
     static loop(options){
         if(typeof options.obj !== "object"){
-            Seule.http({
+            Seule.get({
                 url: options.obj,
                 json: true,
                 method: 'get',
@@ -673,7 +673,7 @@ class Seule{
 
     static load(options){
         let elements = document.querySelectorAll(options.selector);
-        Seule.http({
+        Seule.get({
             url: options.url
         }).then(function (data) {
             for (const element of elements) element.innerHTML = data;
@@ -951,4 +951,6 @@ class Seule{
 
 
     }
+
+
 }
