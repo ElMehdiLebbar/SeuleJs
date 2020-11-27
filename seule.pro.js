@@ -484,7 +484,7 @@ class Seule{
     };
 
 
-    static async http(options) {
+    static async get(options) {
 
         let formData = new FormData();
 
@@ -540,7 +540,7 @@ class Seule{
                obj : options.urls,
                handler(item){
                    options.url = item;
-                   Seule.http(options).then(function (done) {
+                   Seule.get(options).then(function (done) {
                         options.result.push(done);
                    });
                }
@@ -552,14 +552,14 @@ class Seule{
                 obj : options.datas,
                 handler(item){
                     options.data = item;
-                    Seule.http(options).then(function (done) {
+                    Seule.get(options).then(function (done) {
                         options.result.push(done);
                     });
                 }
             })
             return options.result;
         }
-       return await Seule.http(options)
+       return await Seule.get(options)
     }
 
     static store(options){
@@ -951,6 +951,4 @@ class Seule{
 
 
     }
-
-
 }
