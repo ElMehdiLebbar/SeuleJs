@@ -109,7 +109,7 @@ Seule.setHtmlMethod({
 
 ## Send a Request To a Server
 
-To send a request to a server, we use the http() and post() methods of the Seule super object
+To send a request to a server, we use the get() and post() methods of the Seule super object
 
 ### http()
 
@@ -121,7 +121,7 @@ To send a request to a server, we use the http() and post() methods of the Seule
 </div>
 ```
 ```javascript
-Seule.http({
+Seule.get({
     url: 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
     json: true
 }).then(r =>{
