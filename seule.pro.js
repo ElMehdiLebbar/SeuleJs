@@ -7,6 +7,7 @@ class Seule{
         if(this.tags.length) this.tags = this.element[0];
         this.selector = selector;
         this.check = true;
+        this.cont = true
     }
     find(selector){
         if (typeof selector === 'object') return new Seule(selector);
@@ -482,6 +483,50 @@ class Seule{
             this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
         });
     };
+    params(params){
+        let parameters = decodeURI(window.location.href).split("?"),
+            obj = {},
+            el = new Seule(this.tags),
+            content = el.html(),
+            newPara = []
+
+        parameters = parameters[1].split("&")
+        if(params) params = params.split('&')
+
+
+
+        for (let element of parameters){
+
+            if(params) for (let param of params){
+                let nParam = param.split('=')
+                let nElement = element.split('=')
+                if(nParam[0] === nElement[0]) element = param
+            }
+
+            newPara.push(String(element))
+        }
+
+        let ind = content.search("}}")
+
+        for(let element of newPara)
+            if(element.includes("=")) {
+                let item = element.split("=")
+                obj[item[0]] = item[1]
+                while (content.includes("{{"+item[0]+"}}")) content = content.replace("{{"+item[0]+"}}", "<seules class='str202109876"+item[0]+"'>"+item[1]+"</seules>")
+            }
+
+        el.html(content)
+
+        for (let element of newPara)
+            if(element.includes("=")){
+                let item = element.split("=")
+                let it = new Seule(".str202109876"+item[0])
+                it.text(item[1])
+            }
+
+        this.cont = false
+        return obj
+    }
 
 
     static async get(options) {
@@ -951,6 +996,5 @@ class Seule{
 
 
     }
-
 
 }
