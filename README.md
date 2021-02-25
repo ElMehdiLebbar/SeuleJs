@@ -75,37 +75,36 @@ example.on('click', function(){
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 
-# Super Object --> Seule
-
-The Super Object << Seule >> is using many Predefined Methods 
-
 ## Creat a Seule attribute
 
-### setHtmlMethod()
+### emit()
 
 Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
 
-we can creat a Seule attribute by calling the setHtmlMethod() 
+we can creat a Seule attribute by calling the emit() 
 
 ### Example
 
 ```html
 <div id="main">
-    <button @methodname="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
-    <p>Hello M. <span id="response">waiting...</span></p>
+    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
+    <p>Hello M.<span id="response">waiting...</span></p>
 </div>
 ```
 ```javascript
-Seule.setHtmlMethod({
-    selector : '#main',
-    attr : 'methodname',
-    handler(obj, element) {
-        this.element.find('#response').html(obj.name);
+let app = new Seule('#main')
+app.emit({
+    attr : 'method',
+    handler(obj) {
+      this.app.component('#response').html(obj.name)
     }
 });
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
+# Super Object --> Seule
+
+The Super Object << Seule >> is using many Predefined Methods 
 
 ## Send a Request To a Server
 
