@@ -1,3 +1,5 @@
+/* Copyright & all rights reserved to El Mehdi LABBAR*/
+
 class Seule{
     constructor(selector) {
         if (selector === 'window') this.element = [window];
@@ -9,7 +11,7 @@ class Seule{
         this.check = true;
         this.cont = true
     }
-    find(selector){
+    component(selector){
         if (typeof selector === 'object') return new Seule(selector);
         return new Seule(this.selector+ ' '+ selector);
     }
@@ -261,7 +263,7 @@ class Seule{
             }, true);
         });
     }
-    emit(options){
+    copy(options){
         let target = document.querySelector(options.target);
         return this.on(options.on, function() {
             let eventFired = new MouseEvent(options.event, {
@@ -483,7 +485,7 @@ class Seule{
             this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
         });
     };
-    params(params){
+    root(params){
         let parameters = decodeURI(window.location.href).split("?"),
             obj = {},
             el = new Seule(this.tags),
@@ -727,8 +729,8 @@ class Seule{
         return this
     }
 
-    static setHtmlMethod(options){
-        let element = document.querySelectorAll(options.selector+" *");
+    emit(options){
+        let element = document.querySelectorAll(this.selector+" *");
         Seule.loop({
             obj: element,
             handler(item){
@@ -744,7 +746,7 @@ class Seule{
                 }
             }
         });
-        options.element = new Seule(options.selector);
+        options.app = new Seule(this.selector);
         options.e = element;
         return this;
     }
@@ -994,13 +996,4 @@ class Seule{
 
         return result
 
-
     }
-
-
-
-
-
-
-
-}
