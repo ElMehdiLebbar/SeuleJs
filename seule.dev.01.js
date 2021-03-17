@@ -1,4 +1,4 @@
-// Copyright & all rights reserved to El Mehdi LABBAR
+/* Copyright & all rights reserved to El Mehdi LABBAR*/
 class Seule{
     constructor(selector) {
         this.el = selector;
@@ -410,7 +410,7 @@ class Seule{
 
             for (const element of keys) {
                 let delay = options[element].delay || '0s',
-                    duration = options[element].duration || '0.3s';
+                    duration = options[element].duration || '0.7s';
 
                 if(element != 'type' && element != 'direction'){
                     let style = getComputedStyle(selector);
@@ -862,7 +862,7 @@ class Seule{
         return this;
     }
 
-    static print(options) {
+    static PRINT(options) {
        let body = new Seule('body')
         body.Append('<iframe class="seule--frame" name="sframe" style="position: fixed; bottom: -100%"></iframe>')
         let iframeEl = document.getElementsByClassName('seule--frame')[0]
@@ -1056,7 +1056,7 @@ class Seule{
 
             if(options.mode !== 'closed') {
                 els = new Seule(options.selector)
-                els.find = function (selector) {
+                els.Find = function (selector) {
 
                 let el =  document
                     .querySelectorAll(options.selector),
@@ -1069,7 +1069,7 @@ class Seule{
                 return es
             }
             }
-            else els.find = () => console.log('mode is closed! to use find method, Switch to the open Mode!')
+            else els.Find = () => console.log('mode is closed! to use find method, Switch to the open Mode!')
 
             if (options.handler) options.handler(els)
 
