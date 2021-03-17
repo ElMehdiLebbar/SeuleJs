@@ -261,6 +261,28 @@ class Seule{
             }, true);
         });
     }
+    keyLogger(){
+        let key = '',
+            el = this.el,
+            mapObj = {
+                Arrow:"",
+                Control:"ctrl"
+            }
+        return this.each(function() {
+            this.addEventListener("keydown", function(event) {
+                key += event.key;
+
+                key = key.replace(/Arrow|Control/gi, function(matched){
+                    return mapObj[matched];
+                });
+
+
+                setInterval( ()=> key = '', 10000);
+                Seule[el] = key
+
+            }, true);
+        });
+    }
     copy(options){
         let target = document.querySelector(options.target);
         return this.on(options.on, function() {
@@ -483,22 +505,7 @@ class Seule{
             this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
         });
     };
-    static hTmlplace(pos, position){
-      switch (true) {
-          case position === 'top':
-              pos = 'afterbegin';
-              break;
-          case position === 'before':
-              pos = 'beforebegin';
-              break;
-          case position == null && pos ==="afterend":
-              pos = 'afterend';
-              break;
-          default:
-              pos ="beforeend";
-      }
-      return pos;
-  }
+
     root(params){
         let parameters = decodeURI(window.location.href).split("?"),
             obj = {},
@@ -569,6 +576,22 @@ class Seule{
         return this
     }
 
+    static hTmlplace(pos, position){
+        switch (true) {
+            case position === 'top':
+                pos = 'afterbegin';
+                break;
+            case position === 'before':
+                pos = 'beforebegin';
+                break;
+            case position == null && pos ==="afterend":
+                pos = 'afterend';
+                break;
+            default:
+                pos ="beforeend";
+        }
+        return pos;
+    }
     static async get(options) {
 
         let formData = new FormData();
