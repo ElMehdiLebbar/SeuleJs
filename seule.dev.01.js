@@ -27,13 +27,11 @@ class Seule{
     parent(){
         return new Seule(this.tags.parentElement)
     }
-
     each(callback){
         if(this.element.length == null) callback.call(this.element);
         else for (const element of this.element) callback.call(element);
         return this
     }
-
     on(event, handler){
         return this.each(function() {
             this.addEventListener(event,  ()=> handler(new Seule(this), this), false)
@@ -286,7 +284,6 @@ class Seule{
             check = true;
         })
     }
-
     scroll(content){
         let parent = new Seule(this.parent().selector)
 
@@ -301,7 +298,6 @@ class Seule{
         if(axe) return this.tags.pageXOffset || this.tags.scrollLeft;
         return this.tags.pageYOffset || this.tags.scrollTop
     }
-
     width (value) {
         if (value) return this.each(function() {
             this.style.width = value;
@@ -315,7 +311,6 @@ class Seule{
 
         return getComputedStyle(this.tags).height;
     };
-
     addClass (classes) {
         return this.each(function() {
             this.classList.add(classes);
@@ -339,9 +334,9 @@ class Seule{
             this.style[cssProperty] = value;
         });
     }
-    css(obj) {
+    css(options) {
         return this.each(function() {
-            this.setAttribute("style", Seule.objectToStyle(obj));
+            this.setAttribute("style", Seule.objectToStyle(options));
         })
     }
     getStyle(cssProperty){
@@ -381,10 +376,9 @@ class Seule{
             this.style["opacity"] = value;
         });
     }
-
-    anime(obj) {
-        if(obj) {
-            let keys = Object.keys(obj),
+    anime(options) {
+        if(options) {
+            let keys = Object.keys(options),
                 selector = this.tags,
                 arr = {},
                 newCss = {},
@@ -393,20 +387,20 @@ class Seule{
                 origin = {};
 
             for (const element of keys) {
-                let delay = obj[element].delay || '0s',
-                    duration = obj[element].duration || '0.3s';
+                let delay = options[element].delay || '0s',
+                    duration = options[element].duration || '0.3s';
 
                 if(element != 'type' && element != 'direction'){
                     let style = getComputedStyle(selector);
                     arr[element] = duration + ' ' + delay;
-                    newCss[element] = obj[element].value || 'inherit';
+                    newCss[element] = options[element].value || 'inherit';
                     if(ancient === origin) ancient[element] = style[element] || 'inherit';
                     max[element] = parseFloat(delay.replace(/s/g, "")) + parseFloat(duration.replace(/s/g, ""));
                 }
             }
 
             newCss.transition  = Seule.objectToStyle(arr).replace(/:/g, " ").replace(/;/g, ", ");
-            newCss['transition-timing-function'] = obj.type || 'ease';
+            newCss['transition-timing-function'] = options.type || 'ease';
 
             ancient.transition = newCss.transition;
             ancient['transition-timing-function'] = newCss['transition-timing-function'];
@@ -420,17 +414,17 @@ class Seule{
                 let element = this,
                     times = 1,
                     boucle,
-                    delay = obj.timeOut || 100,
+                    delay = options.timeOut || 100,
                     interval = (parseInt(max + delay)*2) + 100;
 
-                if(obj.direction || obj.loop){
+                if(options.direction || options.loop){
                     action(max + delay);
                     boucle = setInterval(function () {
-                        if(obj.time) action(max + delay, obj.time);
+                        if(options.time) action(max + delay, options.time);
                         else action(max + delay);
                     }, interval);
 
-                    if(obj.direction) clearInterval(boucle);
+                    if(options.direction) clearInterval(boucle);
                 }
                 else element.setAttribute("style", Seule.objectToStyle(newCss));
 
@@ -449,7 +443,6 @@ class Seule{
             this.style.transition = 'all ease 0.7s';
         })
     }
-
     text(str) {
         if (typeof str === 'undefined') return this.tags["innerText"];
         return this.each(function() {
@@ -480,7 +473,6 @@ class Seule{
             this.innerHTML = html;
         });
     }
-    /*
     append (html, position) {
         return this.each(function() {
             this.insertAdjacentHTML(Seule.hTmlplace("beforeend", position), html);
@@ -490,8 +482,8 @@ class Seule{
         return this.each(function() {
             this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
         });
-    };*/
-    /*static hTmlplace(pos, position){
+    };
+    static hTmlplace(pos, position){
       switch (true) {
           case position === 'top':
               pos = 'afterbegin';
@@ -506,8 +498,7 @@ class Seule{
               pos ="beforeend";
       }
       return pos;
-  }*/
-
+  }
     root(params){
         let parameters = decodeURI(window.location.href).split("?"),
             obj = {},
@@ -552,7 +543,6 @@ class Seule{
         this.cont = false
         return obj
     }
-
     component(name, options){
         Seule.PDO({
             mode: options.mode,
@@ -578,8 +568,7 @@ class Seule{
         });
         return this
     }
-
-
+    
     static async get(options) {
 
         let formData = new FormData();
@@ -657,33 +646,30 @@ class Seule{
         }
        return await Seule.get(options)
     }
-
     static store(options){
-        if(options.obj) window.localStorage.setItem(options.name, JSON.stringify(options.obj))
+        if(options.data) window.localStorage.setItem(options.name, JSON.stringify(options.data))
         else{
-            if(options.Execute === 'get') return JSON.parse(window.localStorage.getItem(name))
-            if(options.Execute === 'delete') window.localStorage.removeItem(name);
+            if(options.Execute === 'get') return JSON.parse(window.localStorage.getItem(options.name))
+            if(options.Execute === 'delete') window.localStorage.removeItem(options.name);
             if(options.Execute === 'delete All') window.localStorage.clear();
         }
         return this
     }
-
     static loop(options){
-        if(typeof options.obj !== "object"){
+        if(typeof options.data !== "object"){
             Seule.get({
-                url: options.obj,
+                url: options.data,
                 json: true,
                 method: 'get',
             }).then(function (done) {
-                options.obj = done;
-                [].forEach.call(options.obj, options.handler);
+                options.data = done;
+                [].forEach.call(options.data, options.handler);
             })
         }
-        else [].forEach.call(options.obj, options.handler);
+        else [].forEach.call(options.data, options.handler);
         return options
     }
-
-
+    
     static objectToUrlQuery(obj){
         let s = Object.keys(obj)
             .map((key)=> key + "=" + obj[key])
@@ -703,7 +689,7 @@ class Seule{
         }, delay);
         return audio;
     };
-    static audioPauseIn (audioElement, timeOut){
+    static audioPause (audioElement, timeOut){
         setTimeout(function(){
             audioElement.pause();
             audioElement.currentTime = 0;
@@ -877,7 +863,7 @@ class Seule{
 
     static PDO(options){
 
-        let obj = [...options.obj],
+        let obj = [...options.data],
             child = [],
             nest = [],
             result = {},
@@ -954,7 +940,7 @@ class Seule{
         switch (options.Execute) {
             case 'update':
                 let items = Object.keys(options.item) || {};
-                result.res.forEach( (f) => options.obj.findIndex((e) => {
+                result.res.forEach( (f) => options.data.findIndex((e) => {
                         if(e === f) for (const element of items){
                             if(options.nest) for (const i of result.child) i[element] = options.item[element]
                             else e[element] = options.item[element]
@@ -967,19 +953,19 @@ class Seule{
                     result.res.forEach((f) => f[options.child].findIndex((e) => {
                            for (const element of result.child) if(e === element) f[options.child].splice(f[options.child].findIndex((e)=> e === element), 1)
                     }))
-                    result.res = options.obj
+                    result.res = options.data
                     break
                 }
-                result.res.forEach((f) => options.obj.splice(options.obj.findIndex((e)=> e === f), 1))
+                result.res.forEach((f) => options.data.splice(options.data.findIndex((e)=> e === f), 1))
                 break
             case 'insert':
                 if(options.child) for(const element of result.res){
                     if(typeof element[options.child] !== 'object') element[options.child] = []
                     options.item.parent = element.index
-                    options.obj[element.index][options.child].push(options.item)
+                    options.data[element.index][options.child].push(options.item)
                     nest.push(options.item)
                 }
-                else options.obj.push(options.item)
+                else options.data.push(options.item)
                 break
             case 'alter':
                 if(options.nest) map(result.child)
@@ -1004,7 +990,7 @@ class Seule{
         }
 
         if(options.Execute !== 'select') {
-            result.res = options.obj
+            result.res = options.data
             result.child = nest
         }
         if(options.Execute === 'order by' || options.Execute === 'sum' || options.Execute === 'group by' || options.Execute === 'remove duplicates'){
