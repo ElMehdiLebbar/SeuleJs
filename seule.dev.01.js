@@ -1,4 +1,4 @@
-/* Copyright & all rights reserved to El Mehdi LABBAR*/
+// Copyright & all rights reserved to El Mehdi LABBAR
 class Seule{
     constructor(selector) {
         this.el = selector;
@@ -11,11 +11,11 @@ class Seule{
         this.check = true;
         this.cont = true
     }
-    find(selector){
+    Find(selector){
         if (typeof selector === 'object') return new Seule(selector);
         return new Seule(this.el+ ' '+ selector);
     }
-    children(index){
+    Children(index){
         let children = this.tags.children;
         if(index){
             if(index.toString().toLowerCase() === 'last') return new Seule(children[children.length-1]);
@@ -24,37 +24,37 @@ class Seule{
         }
         return new Seule(children)
     }
-    parent(){
+    Parent(){
         return new Seule(this.tags.parentElement)
     }
-    each(callback){
+    Each(callback){
         if(this.element.length == null) callback.call(this.element);
         else for (const element of this.element) callback.call(element);
         return this
     }
-    on(event, handler){
-        return this.each(function() {
+    On(event, handler){
+        return this.Each(function() {
             this.addEventListener(event,  ()=> handler(new Seule(this), this), false)
         });
     }
-    click(handler){
-        return this.on('click',  (el) => handler(el))
+    Click(handler){
+        return this.On('click',  (el) => handler(el))
     }
-    focus(handler){
+    Focus(handler){
         if(handler) {
-           return this.on('focus',  (el) => handler(el))
+           return this.On('focus',  (el) => handler(el))
         }
         this.tags.focus();
         return this.tags
     }
-    blur(handler){
+    Blur(handler){
         if(handler) {
-            return this.on('blur',  (el) => handler(el))
+            return this.On('blur',  (el) => handler(el))
         }
         this.tags.blur();
         return this.tags
     }
-    hold(handler){
+    Hold(handler){
 
         let timer = null,
             isTouch = (('ontouchstart' in window) || (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)),
@@ -169,12 +169,12 @@ class Seule{
         document.addEventListener('scroll', clearLongPressTimer, true);
         document.addEventListener(mouseDown, mouseDownHandler, true);
 
-        this.on("long-press",  (el)=> handler(el))
+        this.On("long-press",  (el)=> handler(el))
 
         return this;
 
     }
-    swipe(on, handler){
+    Swipe(on, handler){
         let el = this.element,
             xDown,
             yDown;
@@ -233,7 +233,7 @@ class Seule{
         }
         return this;
     }
-    hotKey(query, handler){
+    HotKey(query, handler){
         let key = '',
             start,
             mapObj = {
@@ -241,7 +241,7 @@ class Seule{
                 Control:"ctrl"
             },
             querys = query.replace(/\s/g, '');
-        return this.each(function() {
+        return this.Each(function() {
             this.addEventListener("keydown", function(event) {
                 key += event.key;
 
@@ -261,14 +261,14 @@ class Seule{
             }, true);
         });
     }
-    keyLogger(){
+    KeyLogger(){
         let key = '',
             el = this.el,
             mapObj = {
                 Arrow:"",
                 Control:"ctrl"
             }
-        return this.each(function() {
+        return this.Each(function() {
             this.addEventListener("keydown", function(event) {
                 key += event.key;
 
@@ -283,9 +283,9 @@ class Seule{
             }, true);
         });
     }
-    copy(options){
+    Copy(options){
         let target = document.querySelector(options.target);
-        return this.on(options.on, function() {
+        return this.On(options.on, function() {
             let eventFired = new MouseEvent(options.event, {
                 view: window,
                 bubbles: true,
@@ -294,9 +294,9 @@ class Seule{
             target.dispatchEvent(eventFired);
         });
     }
-    toggle(options){
+    Toggle(options){
         let check = true;
-        return this.on(options.event, function(el) {
+        return this.On(options.event, function(el) {
             if (check === true) {
                 options.handler(el);
                 check = false;
@@ -306,8 +306,8 @@ class Seule{
             check = true;
         })
     }
-    scroll(content){
-        let parent = new Seule(this.parent().selector)
+    Scroll(content){
+        let parent = new Seule(this.Parent().selector)
 
         if(content) parent = new Seule(content)
 
@@ -316,89 +316,89 @@ class Seule{
 
         return this.tags
     }
-    scrollPosition(axe){
+    ScrollPosition(axe){
         if(axe) return this.tags.pageXOffset || this.tags.scrollLeft;
         return this.tags.pageYOffset || this.tags.scrollTop
     }
-    width (value) {
-        if (value) return this.each(function() {
+    Width (value) {
+        if (value) return this.Each(function() {
             this.style.width = value;
         });
         return getComputedStyle(this.tags).width;
     };
-    height (value) {
-        if (value) return this.each(function() {
+    Height (value) {
+        if (value) return this.Each(function() {
             this.style.height = value;
         });
 
         return getComputedStyle(this.tags).height;
     };
-    addClass (classes) {
-        return this.each(function() {
+    AddClass (classes) {
+        return this.Each(function() {
             this.classList.add(classes);
         });
     }
-    removeClass(className){
-        return this.each(function() {
+    RemoveClass(className){
+        return this.Each(function() {
             this.classList.remove(className);
         });
     }
-    toggleClass(className){
-        return this.each(function() {
+    ToggleClass(className){
+        return this.Each(function() {
             this.classList.toggle(className);
         });
     }
-    hasClass(className) {
+    HasClass(className) {
         if (this.tags.className.match('(?:^|\\s)'+className+'(?!\\S)')) return true
     }
-    style(cssProperty, value) {
-        return this.each(function() {
+    Style(cssProperty, value) {
+        return this.Each(function() {
             this.style[cssProperty] = value;
         });
     }
-    css(options) {
-        return this.each(function() {
+    Css(options) {
+        return this.Each(function() {
             this.setAttribute("style", Seule.objectToStyle(options));
         })
     }
-    getStyle(cssProperty){
+    GetStyle(cssProperty){
         let style = getComputedStyle(this.tags);
         return style[cssProperty];
     }
-    classList(){
+    ClassList(){
         let result = [];
         for (const element of this.tags.classList) result.push(element);
         return result;
     }
-    classListContains(className){
+    ClassListContains(className){
         return this[0].classList.contains(className);
     }
-    show(){
-        return this.each(function() {
+    Show(){
+        return this.Each(function() {
             if(this.getAttribute("style").includes('display: none')) this.style.display = "";
             else this.style.display = "inherit";
         });
     }
-    hide(){
-        return this.each(function() {
+    Hide(){
+        return this.Each(function() {
             this.style.display = "none";
         });
     }
-    visible(isTrue) {
-        return this.each(function() {
+    Visible(isTrue) {
+        return this.Each(function() {
             if (isTrue) this.style.visibility = "hidden";
             else this.style.visibility = "visible";
         });
     }
-    isVisible() {
+    IsVisible() {
         return this.tags.style.visibility !== "hidden";
     }
-    opacity(value) {
-        return this.each(function() {
+    Opacity(value) {
+        return this.Each(function() {
             this.style["opacity"] = value;
         });
     }
-    anime(options) {
+    Anime(options) {
         if(options) {
             let keys = Object.keys(options),
                 selector = this.tags,
@@ -432,7 +432,7 @@ class Seule{
             let array = Object.values(max);
             max = Math.max(...array)*1000;
 
-            return this.each(function() {
+            return this.Each(function() {
                 let element = this,
                     times = 1,
                     boucle,
@@ -461,56 +461,56 @@ class Seule{
                 }
             })
         }
-        return this.each(function() {
+        return this.Each(function() {
             this.style.transition = 'all ease 0.7s';
         })
     }
-    text(str) {
+    Text(str) {
         if (typeof str === 'undefined') return this.tags["innerText"];
-        return this.each(function() {
+        return this.Each(function() {
             this["innerText"] = str;
         });
 
     }
-    val(value){
+    Val(value){
         if(typeof value === 'undefined') return this.tags.value;
-        return this.each(function() {
+        return this.Each(function() {
             this.value = value;
         });
     }
-    attr(attribute, value){
-        if (value) return this.each(function() {
+    Attr(attribute, value){
+        if (value) return this.Each(function() {
             this.setAttribute(attribute, value);
         });
         return this.tags.getAttribute(attribute);
     }
-    attrRemove(attribute){
-        return this.each(function() {
+    AttrRemove(attribute){
+        return this.Each(function() {
             this.removeAttribute(attribute);
         });
     }
-    html(html){
+    Html(html){
         if (typeof html === 'undefined') return this.tags.innerHTML;
-        return this.each(function() {
+        return this.Each(function() {
             this.innerHTML = html;
         });
     }
-    append (html, position) {
-        return this.each(function() {
-            this.insertAdjacentHTML(Seule.hTmlplace("beforeend", position), html);
+    Append (html, position) {
+        return this.Each(function() {
+            this.insertAdjacentHTML(Seule.HTMLPLACE("beforeend", position), html);
         });
     };
-    insertHtml(html, position) {
-        return this.each(function() {
-            this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
+    InsertHtml(html, position) {
+        return this.Each(function() {
+            this.insertAdjacentHTML(Seule.HTMLPLACE("afterend", position), html);
         });
     };
 
-    root(params){
+    Root(params){
         let parameters = decodeURI(window.location.href).split("?"),
             obj = {},
             el = new Seule(this.tags),
-            content = el.html(),
+            content = el.Html(),
             newPara = []
 
         parameters = parameters[1].split("&")
@@ -538,7 +538,7 @@ class Seule{
                 while (content.includes("{{"+item[0]+"}}")) content = content.replace("{{"+item[0]+"}}", "<seules class='str202109876"+item[0]+"'>"+item[1]+"</seules>")
             }
 
-        el.html(content)
+        el.Html(content)
 
         for (let element of newPara)
             if(element.includes("=")){
@@ -550,7 +550,7 @@ class Seule{
         this.cont = false
         return obj
     }
-    component(name, options){
+    Component(name, options){
         Seule.PDO({
             mode: options.mode,
             style: options.style || '',
@@ -575,8 +575,29 @@ class Seule{
         });
         return this
     }
+    Emit(options){
+        let element = document.querySelectorAll(this.el+" *");
+        Seule.LOOP({
+            data: element,
+            handler(item){
+                if(item.getAttribute('@'+ options.attr)){
+                    let val = item.getAttribute('@'+ options.attr),
+                        option = val.split("{"),
+                        obj = '{'+option[1].slice(0, -1)+'}'
 
-    static hTmlplace(pos, position){
+                    obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
+                    obj = JSON.parse(obj);
+                    if(option[0]) item.addEventListener(option[0], ()=> options.handler(obj, new Seule(item), item), false)
+                    else options.handler(obj, new Seule(item), item);
+                }
+            }
+        });
+        options.app = new Seule(this.selector);
+        options.e = element;
+        return this;
+    }
+
+    static HTMLPLACE(pos, position){
         switch (true) {
             case position === 'top':
                 pos = 'afterbegin';
@@ -592,7 +613,7 @@ class Seule{
         }
         return pos;
     }
-    static async get(options) {
+    static async GET(options) {
 
         let formData = new FormData();
 
@@ -610,7 +631,7 @@ class Seule{
 
         if(options.file){
             if(typeof options.file === "object"){
-                Seule.loop({
+                Seule.LOOP({
                     data : options.file,
                     handler: function (item) {
                         let file;
@@ -637,18 +658,18 @@ class Seule{
         }
         else return ("HTTP-Error: " + response.status);
     }
-    static async post(options){
+    static async POST(options){
         options.urls = options.url || '';
         options.datas = options.data || '';
         options.result = [];
         options.method = 'post'
 
        if (typeof options.url === "object"){
-           Seule.loop({
+           Seule.LOOP({
                data : options.urls,
                handler(item){
                    options.url = item;
-                   Seule.get(options).then(function (done) {
+                   Seule.GET(options).then(function (done) {
                         options.result.push(done);
                    });
                }
@@ -656,20 +677,20 @@ class Seule{
            return options.result;
        }
        if (typeof options.data === "object"){
-            Seule.loop({
+            Seule.LOOP({
                 data: options.datas,
                 handler(item){
                     options.data = item;
-                    Seule.get(options).then(function (done) {
+                    Seule.GET(options).then(function (done) {
                         options.result.push(done);
                     });
                 }
             })
             return options.result;
         }
-       return await Seule.get(options)
+       return await Seule.GET(options)
     }
-    static store(options){
+    static STORE(options){
         if(options.data) window.localStorage.setItem(options.name, JSON.stringify(options.data))
         else{
             if(options.Execute === 'get') return JSON.parse(window.localStorage.getItem(options.name))
@@ -678,9 +699,9 @@ class Seule{
         }
         return this
     }
-    static loop(options){
+    static LOOP(options){
         if(typeof options.data !== "object"){
-            Seule.get({
+            Seule.GET({
                 url: options.data,
                 json: true,
                 method: 'get',
@@ -703,7 +724,7 @@ class Seule{
         return Seule.objectToUrlQuery(obj).replace(/&/g, ";").replace(/=/g, ":");
     }
 
-    static audioPlay (src, delay){
+    static AUDIOPLAY (src, delay){
         let audio = new Audio(src);
         this.delay = delay;
         setTimeout(function () {
@@ -712,7 +733,7 @@ class Seule{
         }, delay);
         return audio;
     };
-    static audioPause (audioElement, timeOut){
+    static AUDIOPAUSE (audioElement, timeOut){
         setTimeout(function(){
             audioElement.pause();
             audioElement.currentTime = 0;
@@ -721,7 +742,7 @@ class Seule{
         return this;
     };
 
-    static increaseDate(options) {
+    static DATEINCREASE(options) {
         let tomorrow = new Date(options.date),
             newDate = new Date(tomorrow.setMonth(tomorrow.getMonth()+parseInt(options.step))),
             dateMonth = newDate.getMonth()+1;
@@ -741,7 +762,7 @@ class Seule{
             return newDate.getFullYear() + '-'+ ('0' + dateMonth).slice(-2) + '-' +('0' + newDate.getDate()).slice(-2);
         }
     }
-    static ifDateBetween(options){
+    static DATEBETWEEN(options){
 
         let d1 = options.from.split(options.character || "/"),
             d2 = options.to.split(options.character || "/"),
@@ -759,9 +780,9 @@ class Seule{
         return false
     }
 
-    static load(options){
+    static LOAD(options){
         let elements = document.querySelectorAll(options.selector);
-        Seule.get({
+        Seule.GET({
             url: options.url
         }).then(function (data) {
             for (const element of elements) element.innerHTML = data;
@@ -770,41 +791,21 @@ class Seule{
         return this
     }
 
-    emit(options){
-        let element = document.querySelectorAll(this.selector+" *");
-        Seule.loop({
-            data: element,
-            handler(item){
-                if(item.getAttribute('@'+ options.attr)){
-                    let val = item.getAttribute('@'+ options.attr),
-                        option = val.split("{"),
-                        obj = '{'+option[1].slice(0, -1)+'}'
 
-                    obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-                    obj = JSON.parse(obj);
-                    if(option[0]) item.addEventListener(option[0], ()=> options.handler(obj, new Seule(item), item), false)
-                    else options.handler(obj, new Seule(item), item);
-                }
-            }
-        });
-        options.app = new Seule(this.selector);
-        options.e = element;
-        return this;
-    }
-    static scrollTop (){
+    static SCROLLTOP (){
         window.scrollTo({ top: 0, behavior: 'smooth' });
         return this;
     }
-    static scrollBottom(){
+    static SCROLLBOTTOM(){
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         return this;
     }
 
-    static orientation (){
+    static ORIENTATION (){
         if(screen.orientation.angle === '90') return 'Horizontally'
         return 'Vertically'
     };
-    static screen (options){
+    static SCREEN (options){
         let x = window.matchMedia(options.query),
             resultMatch = myFunction(x); // Call listener function at run time
 
@@ -818,7 +819,7 @@ class Seule{
         return resultMatch
     };
 
-    static sceneHandler(options) {
+    static SCENEHANDLER(options) {
         window.addEventListener('scroll', function() {
             elementFromTop(options);
         }, false);
@@ -837,9 +838,9 @@ class Seule{
         }
         return this
     }
-    static scene(options){
+    static SCENE(options){
         let i = 0;
-        Seule.sceneHandler({
+        Seule.SCENEHANDLER({
             selector : options.selector || 'body',
             distance : options.distance || 0,
             unit : options.unit || 'percent',
@@ -863,7 +864,7 @@ class Seule{
 
     static print(options) {
        let body = new Seule('body')
-        body.append('<iframe class="seule--frame" name="sframe" style="position: fixed; bottom: -100%"></iframe>')
+        body.Append('<iframe class="seule--frame" name="sframe" style="position: fixed; bottom: -100%"></iframe>')
         let iframeEl = document.getElementsByClassName('seule--frame')[0]
 
         let frameDoc = iframeEl.contentWindow ? iframeEl.contentWindow : iframeEl.contentDocument.document ? iframeEl.contentDocument.document : iframeEl.contentDocument;
@@ -924,7 +925,7 @@ class Seule{
             group = (obj)=>{
                 let data = []
                 options.group =  [...new Set(obj.reduce((r, a) => r.concat(a[options.columns]), []))];
-                Seule.loop({
+                Seule.LOOP({
                     data : options.group,
                     handler(el, index){
                         let e = '{"'+options.columns+'":"'+el+'"}'
