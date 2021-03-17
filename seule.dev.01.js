@@ -1,7 +1,7 @@
 /* Copyright & all rights reserved to El Mehdi LABBAR*/
-
 class Seule{
     constructor(selector) {
+        this.el = selector;
         if (selector === 'window') this.element = [window];
         else if (typeof selector === 'object') this.element = selector;
         else this.element = document.querySelectorAll(selector);
@@ -11,9 +11,9 @@ class Seule{
         this.check = true;
         this.cont = true
     }
-    component(selector){
+    find(selector){
         if (typeof selector === 'object') return new Seule(selector);
-        return new Seule(this.selector+ ' '+ selector);
+        return new Seule(this.el+ ' '+ selector);
     }
     children(index){
         let children = this.tags.children;
@@ -383,65 +383,70 @@ class Seule{
     }
 
     anime(obj) {
-        let keys = Object.keys(obj),
-            selector = this.tags,
-            arr = {},
-            newCss = {},
-            max = {},
-            ancient = {},
-            origin = {};
+        if(obj) {
+            let keys = Object.keys(obj),
+                selector = this.tags,
+                arr = {},
+                newCss = {},
+                max = {},
+                ancient = {},
+                origin = {};
 
-        for (const element of keys) {
-            let delay = obj[element].delay || '0s',
-                duration = obj[element].duration || '0.3s';
+            for (const element of keys) {
+                let delay = obj[element].delay || '0s',
+                    duration = obj[element].duration || '0.3s';
 
-            if(element != 'type' && element != 'direction'){
-                let style = getComputedStyle(selector);
-                arr[element] = duration + ' ' + delay;
-                newCss[element] = obj[element].value || 'inherit';
-                if(ancient === origin) ancient[element] = style[element] || 'inherit';
-                max[element] = parseFloat(delay.replace(/s/g, "")) + parseFloat(duration.replace(/s/g, ""));
-            }
-        }
-
-        newCss.transition  = Seule.objectToStyle(arr).replace(/:/g, " ").replace(/;/g, ", ");
-        newCss['transition-timing-function'] = obj.type || 'ease';
-
-        ancient.transition = newCss.transition;
-        ancient['transition-timing-function'] = newCss['transition-timing-function'];
-
-        if(ancient === origin) origin = ancient;
-
-        let array = Object.values(max);
-        max = Math.max(...array)*1000;
-
-        return this.each(function() {
-            let element = this,
-                times = 1,
-                boucle,
-                delay = obj.timeOut || 100,
-                interval = (parseInt(max + delay)*2) + 100;
-
-            if(obj.direction || obj.loop){
-                action(max + delay);
-                boucle = setInterval(function () {
-                    if(obj.time) action(max + delay, obj.time);
-                    else action(max + delay);
-                }, interval);
-
-                if(obj.direction) clearInterval(boucle);
-            }
-            else element.setAttribute("style", Seule.objectToStyle(newCss));
-
-            function action(delay, time) {
-                element.setAttribute("style", Seule.objectToStyle(newCss));
-                setTimeout( ()=> element.setAttribute("style", Seule.objectToStyle(ancient)), parseInt(delay))
-
-                if(time){
-                    times++
-                    if(time <= times) clearInterval(boucle);
+                if(element != 'type' && element != 'direction'){
+                    let style = getComputedStyle(selector);
+                    arr[element] = duration + ' ' + delay;
+                    newCss[element] = obj[element].value || 'inherit';
+                    if(ancient === origin) ancient[element] = style[element] || 'inherit';
+                    max[element] = parseFloat(delay.replace(/s/g, "")) + parseFloat(duration.replace(/s/g, ""));
                 }
             }
+
+            newCss.transition  = Seule.objectToStyle(arr).replace(/:/g, " ").replace(/;/g, ", ");
+            newCss['transition-timing-function'] = obj.type || 'ease';
+
+            ancient.transition = newCss.transition;
+            ancient['transition-timing-function'] = newCss['transition-timing-function'];
+
+            if(ancient === origin) origin = ancient;
+
+            let array = Object.values(max);
+            max = Math.max(...array)*1000;
+
+            return this.each(function() {
+                let element = this,
+                    times = 1,
+                    boucle,
+                    delay = obj.timeOut || 100,
+                    interval = (parseInt(max + delay)*2) + 100;
+
+                if(obj.direction || obj.loop){
+                    action(max + delay);
+                    boucle = setInterval(function () {
+                        if(obj.time) action(max + delay, obj.time);
+                        else action(max + delay);
+                    }, interval);
+
+                    if(obj.direction) clearInterval(boucle);
+                }
+                else element.setAttribute("style", Seule.objectToStyle(newCss));
+
+                function action(delay, time) {
+                    element.setAttribute("style", Seule.objectToStyle(newCss));
+                    setTimeout( ()=> element.setAttribute("style", Seule.objectToStyle(ancient)), parseInt(delay))
+
+                    if(time){
+                        times++
+                        if(time <= times) clearInterval(boucle);
+                    }
+                }
+            })
+        }
+        return this.each(function() {
+            this.style.transition = 'all ease 0.7s';
         })
     }
 
@@ -470,11 +475,12 @@ class Seule{
         });
     }
     html(html){
-        if (typeof html=== 'undefined') return this.tags.innerHTML;
+        if (typeof html === 'undefined') return this.tags.innerHTML;
         return this.each(function() {
             this.innerHTML = html;
         });
     }
+    /*
     append (html, position) {
         return this.each(function() {
             this.insertAdjacentHTML(Seule.hTmlplace("beforeend", position), html);
@@ -484,7 +490,24 @@ class Seule{
         return this.each(function() {
             this.insertAdjacentHTML(Seule.hTmlplace("afterend", position), html);
         });
-    };
+    };*/
+    /*static hTmlplace(pos, position){
+      switch (true) {
+          case position === 'top':
+              pos = 'afterbegin';
+              break;
+          case position === 'before':
+              pos = 'beforebegin';
+              break;
+          case position == null && pos ==="afterend":
+              pos = 'afterend';
+              break;
+          default:
+              pos ="beforeend";
+      }
+      return pos;
+  }*/
+
     root(params){
         let parameters = decodeURI(window.location.href).split("?"),
             obj = {},
@@ -528,6 +551,32 @@ class Seule{
 
         this.cont = false
         return obj
+    }
+
+    component(name, options){
+        Seule.PDO({
+            mode: options.mode,
+            style: options.style || '',
+            Execute: false,
+            obj: options.data || [{}],
+            child: options.child || false,
+            columns: options.columns || false,
+            nest: options.nest || false,
+            item: options.item || false,
+            action: options.action || false,
+            selector:name,
+            query(item){
+                if(options.query) return options.query(item)
+                return item
+            },
+            fetch(item){
+                return options.template(item) || ''
+            },
+            handler(el, data){
+                if(options.handler) options.handler(el, data)
+            }
+        });
+        return this
     }
 
 
@@ -634,23 +683,6 @@ class Seule{
         return options
     }
 
-
-    static hTmlplace(pos, position){
-        switch (true) {
-            case position === 'top':
-                pos = 'afterbegin';
-                break;
-            case position === 'before':
-                pos = 'beforebegin';
-                break;
-            case position == null && pos ==="afterend":
-                pos = 'afterend';
-                break;
-            default:
-                pos ="beforeend";
-        }
-        return pos;
-    }
 
     static objectToUrlQuery(obj){
         let s = Object.keys(obj)
@@ -979,30 +1011,62 @@ class Seule{
             delete result.child
             delete result.res
         }
-        if (options.handler) options.handler(new Seule(options.selector), result)
 
         if(options.fetch){
-            let element = new Seule(options.selector),
-                obj = result.res,
-                html = '';
+            let obj = result.res,
+                html = '',
+                els = {};
 
             if(!result.res) obj = result
             if(options.nest) obj = result.child
 
             for (const item of obj) html += options.fetch(item)
 
-            element.html(html)
+            class Example extends HTMLElement {
+                constructor() {
+                    super();
+                    const shadow = this.attachShadow({ mode: options.mode || 'open' });
+                    shadow.innerHTML = html
+
+                    if(options.style.length === 1){
+                        let linkElement = document.createElement('link')
+                        linkElement.setAttribute('rel', 'stylesheet')
+                        linkElement.setAttribute('href', options.style[0])
+                        shadow.appendChild(linkElement)
+                    }
+                    else{
+                        let style = document.createElement('style')
+                        style.textContent = options.style
+                        shadow.appendChild(style)
+                    }
+
+                }
+            }
+            customElements.define(options.selector, Example);
+
+            if(options.mode !== 'closed') {
+                els = new Seule(options.selector)
+                els.find = function (selector) {
+
+                let el =  document
+                    .querySelectorAll(options.selector),
+                    es=[]
+
+                for(let e of el)
+                   es.push(new Seule(e.shadowRoot.querySelectorAll(selector))) ;
+
+                if(es.length === 1) es = es[0]
+                return es
+            }
+            }
+            else els.find = () => console.log('mode is closed! to use find method, Switch to the open Mode!')
+
+            if (options.handler) options.handler(els)
+
         }
 
         return result
 
-
     }
-
-
-
-
-
-
 
 }
