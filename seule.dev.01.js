@@ -548,7 +548,7 @@ class Seule{
             mode: options.mode,
             style: options.style || '',
             Execute: false,
-            obj: options.data || [{}],
+            data: options.data || [{}],
             child: options.child || false,
             columns: options.columns || false,
             nest: options.nest || false,
@@ -568,7 +568,7 @@ class Seule{
         });
         return this
     }
-    
+
     static async get(options) {
 
         let formData = new FormData();
@@ -588,7 +588,7 @@ class Seule{
         if(options.file){
             if(typeof options.file === "object"){
                 Seule.loop({
-                    obj : options.file,
+                    data : options.file,
                     handler: function (item) {
                         let file;
                         if(typeof item === 'object') file = item;
@@ -622,7 +622,7 @@ class Seule{
 
        if (typeof options.url === "object"){
            Seule.loop({
-               obj : options.urls,
+               data : options.urls,
                handler(item){
                    options.url = item;
                    Seule.get(options).then(function (done) {
@@ -634,7 +634,7 @@ class Seule{
        }
        if (typeof options.data === "object"){
             Seule.loop({
-                obj : options.datas,
+                data: options.datas,
                 handler(item){
                     options.data = item;
                     Seule.get(options).then(function (done) {
@@ -669,7 +669,7 @@ class Seule{
         else [].forEach.call(options.data, options.handler);
         return options
     }
-    
+
     static objectToUrlQuery(obj){
         let s = Object.keys(obj)
             .map((key)=> key + "=" + obj[key])
@@ -750,7 +750,7 @@ class Seule{
     emit(options){
         let element = document.querySelectorAll(this.selector+" *");
         Seule.loop({
-            obj: element,
+            data: element,
             handler(item){
                 if(item.getAttribute('@'+ options.attr)){
                     let val = item.getAttribute('@'+ options.attr),
@@ -902,7 +902,7 @@ class Seule{
                 let data = []
                 options.group =  [...new Set(obj.reduce((r, a) => r.concat(a[options.columns]), []))];
                 Seule.loop({
-                    obj : options.group,
+                    data : options.group,
                     handler(el, index){
                         let e = '{"'+options.columns+'":"'+el+'"}'
                         data.push(JSON.parse(e))
