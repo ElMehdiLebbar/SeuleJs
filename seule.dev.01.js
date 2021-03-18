@@ -11,6 +11,7 @@ class Seule{
         this.check = true;
         this.cont = true
     }
+
     Find(selector){
         if (typeof selector === 'object') return new Seule(selector);
         return new Seule(this.el+ ' '+ selector);
@@ -27,6 +28,7 @@ class Seule{
     Parent(){
         return new Seule(this.tags.parentElement)
     }
+
     Each(callback){
         if(this.element.length == null) callback.call(this.element);
         else for (const element of this.element) callback.call(element);
@@ -283,20 +285,20 @@ class Seule{
             }, true);
         });
     }
-    Copy(options){
-        let target = document.querySelector(options.target);
+    Copy(target, options){
+        let tar = document.querySelector(target);
         return this.On(options.on, function() {
             let eventFired = new MouseEvent(options.event, {
                 view: window,
                 bubbles: true,
                 cancelable: true
             });
-            target.dispatchEvent(eventFired);
+            tar.dispatchEvent(eventFired);
         });
     }
-    Toggle(options){
+    Toggle(event, options){
         let check = true;
-        return this.On(options.event, function(el) {
+        return this.On(event, function(el) {
             if (check === true) {
                 options.handler(el);
                 check = false;
@@ -320,19 +322,22 @@ class Seule{
         if(axe) return this.tags.pageXOffset || this.tags.scrollLeft;
         return this.tags.pageYOffset || this.tags.scrollTop
     }
-    Width (value) {
-        if (value) return this.Each(function() {
-            this.style.width = value;
-        });
-        return getComputedStyle(this.tags).width;
-    };
-    Height (value) {
-        if (value) return this.Each(function() {
-            this.style.height = value;
-        });
 
-        return getComputedStyle(this.tags).height;
-    };
+    Delay(handler, timeOut){
+        return this.Each(function() {
+            setTimeout(handler, timeOut || 1000)
+        });
+    }
+    Loop(handler, timeOut){
+        return this.Each(function() {
+            let int = setInterval( ()=> {
+                let b = ()=> clearInterval(int)
+                handler(b)
+            }, timeOut || 1000)
+        });
+    }
+
+
     AddClass (classes) {
         return this.Each(function() {
             this.classList.add(classes);
@@ -408,11 +413,38 @@ class Seule{
                 ancient = {},
                 origin = {};
 
-            for (const element of keys) {
-                let delay = options[element].delay || '0s',
-                    duration = options[element].duration || '0.7s';
+            let old = this.tags.innerText,
+                    nw = options.text
 
-                if(element != 'type' && element != 'direction'){
+
+
+
+            for (const element of keys) {
+
+                if(element === 'text') {
+                    let del = 0,
+                        value = '';
+                    if(options.text.delay) del = parseFloat(options.text.delay.replace(/s/g, ""))*1000
+                    if(options.text.value) value = nw = options.text.value
+                    else  value = options.text
+                    setTimeout(function () {
+                        selector.innerText = value
+                    }, del)
+                }
+
+                let forbidden = 'duration property direction loop time delay text';
+
+                if(typeof options[element] !== 'object' && !forbidden.includes(element)) {
+                   options[element] = {
+                       value: options[element]
+                   }
+                }
+
+
+                let delay = options[element].delay || '0s',
+                    duration = options[element].duration || options.duration || '0.7s';
+
+                if(!forbidden.includes(element)){
                     let style = getComputedStyle(selector);
                     arr[element] = duration + ' ' + delay;
                     newCss[element] = options[element].value || 'inherit';
@@ -424,13 +456,23 @@ class Seule{
             newCss.transition  = Seule.objectToStyle(arr).replace(/:/g, " ").replace(/;/g, ", ");
             newCss['transition-timing-function'] = options.type || 'ease';
 
+            if(options.property) newCss['transition-property'] = options.property;
+
+            if(options.duration) newCss['transition-duration'] = options.duration;
+            if(options.delay) newCss['transition-delay'] = options.delay;
+
+
             ancient.transition = newCss.transition;
             ancient['transition-timing-function'] = newCss['transition-timing-function'];
+            if(options.property) ancient['transition-property'] = newCss['transition-property'];
+            if(options.duration) ancient['transition-duration'] = newCss['transition-duration'];
+            if(options.delay) ancient['transition-delay'] = newCss['transition-delay'];
 
             if(ancient === origin) origin = ancient;
 
             let array = Object.values(max);
             max = Math.max(...array)*1000;
+
 
             return this.Each(function() {
                 let element = this,
@@ -451,20 +493,42 @@ class Seule{
                 else element.setAttribute("style", Seule.objectToStyle(newCss));
 
                 function action(delay, time) {
+
                     element.setAttribute("style", Seule.objectToStyle(newCss));
-                    setTimeout( ()=> element.setAttribute("style", Seule.objectToStyle(ancient)), parseInt(delay))
+                     if(options.text) selector.innerText = nw;
+                    setTimeout( ()=>
+                        {
+                            element.setAttribute("style", Seule.objectToStyle(ancient))
+                            if(options.text) selector.innerText = old
+                        }, parseInt(delay))
 
                     if(time){
                         times++
                         if(time <= times) clearInterval(boucle);
                     }
                 }
+
             })
+
         }
         return this.Each(function() {
             this.style.transition = 'all ease 0.7s';
         })
     }
+
+    Width (value) {
+        if (value) return this.Each(function() {
+            this.style.width = value;
+        });
+        return getComputedStyle(this.tags).width;
+    };
+    Height (value) {
+        if (value) return this.Each(function() {
+            this.style.height = value;
+        });
+
+        return getComputedStyle(this.tags).height;
+    };
     Text(str) {
         if (typeof str === 'undefined') return this.tags["innerText"];
         return this.Each(function() {
@@ -552,9 +616,10 @@ class Seule{
     }
     Component(name, options){
         Seule.PDO({
+            component: true,
             mode: options.mode,
             style: options.style || '',
-            Execute: false,
+            execute: options.execute || false,
             data: options.data || [{}],
             child: options.child || false,
             columns: options.columns || false,
@@ -566,53 +631,42 @@ class Seule{
                 if(options.query) return options.query(item)
                 return item
             },
-            fetch(item){
+            template(item){
                 return options.template(item) || ''
             },
-            handler(el, data){
-                if(options.handler) options.handler(el, data)
+            handler(el, data, init){
+                if(options.handler) options.handler(el, data, init)
             }
         });
         return this
     }
-    Emit(options){
+    Emit(attr, handler){
         let element = document.querySelectorAll(this.el+" *");
         Seule.LOOP({
             data: element,
             handler(item){
-                if(item.getAttribute('@'+ options.attr)){
-                    let val = item.getAttribute('@'+ options.attr),
-                        option = val.split("{"),
-                        obj = '{'+option[1].slice(0, -1)+'}'
+                if(item.getAttribute('@'+ attr)){
+                    let val = item.getAttribute('@'+ attr),
+                        option = '',
+                        obj = val;
 
-                    obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-                    obj = JSON.parse(obj);
-                    if(option[0]) item.addEventListener(option[0], ()=> options.handler(obj, new Seule(item), item), false)
-                    else options.handler(obj, new Seule(item), item);
+                    if(val.includes('{')){
+                        option = val.split("{")
+                        obj = '{'+option[1].slice(0, -1)+'}'
+                        obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
+                        obj = JSON.parse(obj);
+                    }
+
+                    if(option[0]) item.addEventListener(option[0], ()=> handler(obj, new Seule(item), item), false)
+                    else handler(obj, new Seule(item), item);
                 }
             }
         });
-        options.app = new Seule(this.selector);
-        options.e = element;
         return this;
     }
 
-    static HTMLPLACE(pos, position){
-        switch (true) {
-            case position === 'top':
-                pos = 'afterbegin';
-                break;
-            case position === 'before':
-                pos = 'beforebegin';
-                break;
-            case position == null && pos ==="afterend":
-                pos = 'afterend';
-                break;
-            default:
-                pos ="beforeend";
-        }
-        return pos;
-    }
+
+
     static async GET(options) {
 
         let formData = new FormData();
@@ -690,15 +744,27 @@ class Seule{
         }
        return await Seule.GET(options)
     }
-    static STORE(options){
-        if(options.data) window.localStorage.setItem(options.name, JSON.stringify(options.data))
+    static LOAD(options){
+        let elements = document.querySelectorAll(options.selector);
+        Seule.GET({
+            url: options.url
+        }).then(function (data) {
+            for (const element of elements) element.innerHTML = data;
+            options.handler(new Seule(options.selector), elements);
+        });
+        return this
+    }
+
+    static STORE(name, options){
+        if(options.data) window.localStorage.setItem(name, JSON.stringify(options.data))
         else{
-            if(options.Execute === 'get') return JSON.parse(window.localStorage.getItem(options.name))
-            if(options.Execute === 'delete') window.localStorage.removeItem(options.name);
-            if(options.Execute === 'delete All') window.localStorage.clear();
+            if(options.execute === 'get') return JSON.parse(window.localStorage.getItem(name))
+            if(options.execute === 'delete') window.localStorage.removeItem(name);
+            if(options.execute === 'delete All') window.localStorage.clear();
         }
         return this
     }
+
     static LOOP(options){
         if(typeof options.data !== "object"){
             Seule.GET({
@@ -714,6 +780,22 @@ class Seule{
         return options
     }
 
+    static HTMLPLACE(pos, position){
+        switch (true) {
+            case position === 'top':
+                pos = 'afterbegin';
+                break;
+            case position === 'before':
+                pos = 'beforebegin';
+                break;
+            case position == null && pos ==="afterend":
+                pos = 'afterend';
+                break;
+            default:
+                pos ="beforeend";
+        }
+        return pos;
+    }
     static objectToUrlQuery(obj){
         let s = Object.keys(obj)
             .map((key)=> key + "=" + obj[key])
@@ -780,16 +862,6 @@ class Seule{
         return false
     }
 
-    static LOAD(options){
-        let elements = document.querySelectorAll(options.selector);
-        Seule.GET({
-            url: options.url
-        }).then(function (data) {
-            for (const element of elements) element.innerHTML = data;
-            options.handler(new Seule(options.selector), elements);
-        });
-        return this
-    }
 
 
     static SCROLLTOP (){
@@ -805,8 +877,8 @@ class Seule{
         if(screen.orientation.angle === '90') return 'Horizontally'
         return 'Vertically'
     };
-    static SCREEN (options){
-        let x = window.matchMedia(options.query),
+    static SCREEN (query, options){
+        let x = window.matchMedia(query),
             resultMatch = myFunction(x); // Call listener function at run time
 
         x.addEventListener('change', myFunction); // Attach listener function on state changes
@@ -818,7 +890,6 @@ class Seule{
         }
         return resultMatch
     };
-
     static SCENEHANDLER(options) {
         window.addEventListener('scroll', function() {
             elementFromTop(options);
@@ -887,21 +958,23 @@ class Seule{
 
     static PDO(options){
 
+        if(!options.query) options.query = (item)=> item
+
         let obj = [...options.data],
             child = [],
             nest = [],
             result = {},
             select = ()=> {
                 let filter = obj.filter((el, index) => {
-                    if(options.Execute !== 'remove duplicates' && !options.columns) el.index = index
-                    if((options.child && options.Execute !== 'insert') || (options.Execute === 'insert' && options.nest)) return el[options.child].some((e, i) => options.query(e, i));
+                    if(options.execute !== 'remove duplicates' && !options.columns) el.index = index
+                    if((options.child && options.execute !== 'insert') || (options.execute === 'insert' && options.nest)) return el[options.child].some((e, i) => options.query(e, i));
                     return options.query(el, index)
                 });
 
                 if(options.child) {
                     for (const el of obj){
                         for (const e of el[options.child]){
-                            if(options.Execute !== 'remove duplicates') e.parent = el.index
+                            if(options.execute !== 'remove duplicates') e.parent = el.index
                             child.push(e)
                         }
                     }
@@ -961,7 +1034,7 @@ class Seule{
         result.res = select()
         result.child = child
 
-        switch (options.Execute) {
+        switch (options.execute) {
             case 'update':
                 let items = Object.keys(options.item) || {};
                 result.res.forEach( (f) => options.data.findIndex((e) => {
@@ -1013,65 +1086,93 @@ class Seule{
                 break
         }
 
-        if(options.Execute !== 'select') {
+        if(options.execute !== 'select') {
             result.res = options.data
             result.child = nest
         }
-        if(options.Execute === 'order by' || options.Execute === 'sum' || options.Execute === 'group by' || options.Execute === 'remove duplicates'){
+        if(options.execute === 'order by' || options.execute === 'sum' || options.execute === 'group by' || options.execute === 'remove duplicates'){
             delete result.child
             delete result.res
         }
 
-        if(options.fetch){
+        if(options.template){
+
             let obj = result.res,
+                som = [],
                 html = '',
                 els = {};
 
             if(!result.res) obj = result
             if(options.nest) obj = result.child
 
-            for (const item of obj) html += options.fetch(item)
+            if(options.execute === 'sum') {
+                som.push(obj)
+                obj = som
+            }
 
-            class Example extends HTMLElement {
-                constructor() {
-                    super();
-                    const shadow = this.attachShadow({ mode: options.mode || 'open' });
-                    shadow.innerHTML = html
 
-                    if(options.style.length === 1){
-                        let linkElement = document.createElement('link')
-                        linkElement.setAttribute('rel', 'stylesheet')
-                        linkElement.setAttribute('href', options.style[0])
-                        shadow.appendChild(linkElement)
+            for (const item of obj) html += options.template(item)
+
+
+            if(options.component){
+                class Example extends HTMLElement {
+                    constructor() {
+                        super();
+                        const shadow = this.attachShadow({ mode: options.mode || 'open' });
+                        shadow.innerHTML = html
+
+                        if(options.style.length === 1){
+                            let linkElement = document.createElement('link')
+                            linkElement.setAttribute('rel', 'stylesheet')
+                            linkElement.setAttribute('href', options.style[0])
+                            shadow.appendChild(linkElement)
+                        }
+                        else{
+                            let style = document.createElement('style')
+                            style.textContent = options.style
+                            shadow.appendChild(style)
+                        }
+
+                        let sha = ()=> {
+                            html='';
+                            for (const item of obj) html += (options.template(item))
+                            shadow.innerHTML = html
+                        }
+
+                        if (options.handler) options.handler(els, obj, sha)
                     }
-                    else{
-                        let style = document.createElement('style')
-                        style.textContent = options.style
-                        shadow.appendChild(style)
-                    }
-
                 }
+                customElements.define(options.selector, Example);
+
+                if(options.mode !== 'closed') {
+                    els = new Seule(options.selector)
+                    els.Find = function (selector) {
+
+                        let el =  document
+                                .querySelectorAll(options.selector),
+                            es=[]
+
+                        for(let e of el)
+                            es.push(new Seule(e.shadowRoot.querySelectorAll(selector))) ;
+
+                        if(es.length === 1) es = es[0]
+                        return es
+                    }
+                }
+                else els.Find = () => console.log('mode is closed! to use find method, Switch to the open Mode!')
             }
-            customElements.define(options.selector, Example);
+            else{
+                let element = new Seule(options.selector)
+                element.Html(html)
 
-            if(options.mode !== 'closed') {
-                els = new Seule(options.selector)
-                els.Find = function (selector) {
+                let sha = ()=> {
+                    html='';
+                    for (const item of obj) html += (options.template(item))
+                    element.Html(html)
+                }
+                if (options.handler) options.handler(new Seule(options.selector), obj, sha)
 
-                let el =  document
-                    .querySelectorAll(options.selector),
-                    es=[]
-
-                for(let e of el)
-                   es.push(new Seule(e.shadowRoot.querySelectorAll(selector))) ;
-
-                if(es.length === 1) es = es[0]
-                return es
             }
-            }
-            else els.Find = () => console.log('mode is closed! to use find method, Switch to the open Mode!')
-
-            if (options.handler) options.handler(els)
 
         }
 
