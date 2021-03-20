@@ -118,12 +118,12 @@ To send a request to a server, we use the get() and post() methods of the Seule 
 </div>
 ```
 ```javascript
-Seule.Get({
+Seule.GET({
     url: 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
     json: true
 }).then(r =>{
     let result = new Seule('#result')
-    result.html(r.posts[1].title)
+    result.Html(r.posts[1].title)
 });
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
