@@ -59,7 +59,7 @@ Seule is tailor-made to respond to events in an HTML page.
 
 ```javascript
 let element = new Seule(CSS selectors);
-element.on('eventName', handler())
+element.On('eventName', handler())
 ```
 
 ### Example
@@ -68,7 +68,7 @@ To assign a click event to all buttons on a App, you can do this:
 
 ```javascript
 let example = new Seule('.example');
-example.on('click', function(){
+example.On('click', function(){
   // action goes here!!
 })
 ```
@@ -93,12 +93,10 @@ we can creat a Seule attribute by calling the emit()
 ```
 ```javascript
 let app = new Seule('#main')
-app.emit({
-    attr : 'method',
-    handler(obj) {
-      this.app.component('#response').html(obj.name)
-    }
-});
+app.Emit('method',(obj, el) =>
+      app
+         .Find('#response')
+         .Text(obj.name));
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
@@ -120,7 +118,7 @@ To send a request to a server, we use the get() and post() methods of the Seule 
 </div>
 ```
 ```javascript
-Seule.get({
+Seule.Get({
     url: 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db',
     json: true
 }).then(r =>{
