@@ -816,26 +816,61 @@ class Seule {
         if (item.getAttribute("@" + attr)) {
           let val = item.getAttribute("@" + attr),
             option = "",
-            obj = val;
+            el = new Seule(item),
+            obj = val,
+            allowd =
+              "text val addClass removeClass toggleClass show hide visible opacity width height",
+            special = "css anime",
+            capitalStr = attr.replace(/^\w/, (c) => c.toUpperCase());
 
           if (val.includes("{")) {
             option = val.split("{");
             obj = "{" + option[1].slice(0, -1) + "}";
             obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-            obj = JSON.parse(obj);
+            if (allowd.includes(attr)) obj = option[1].slice(0, -1);
+            else obj = JSON.parse(obj);
           }
 
           if (option[0])
             item.addEventListener(
               option[0],
-              () => handler(obj, new Seule(item), item),
+              () => {
+                if (allowd.includes(attr) || special.includes(attr))
+                  el[capitalStr](obj);
+                else handler(obj, el, item);
+              },
               false
             );
-          else handler(obj, new Seule(item), item);
+          else {
+            if (allowd.includes(attr) || special.includes(attr))
+              el[capitalStr](obj);
+            else handler(obj, el, item);
+          }
         }
       }
     });
     return this;
+  }
+
+  HtmlMethod() {
+    let el = new Seule(this.children.el[1]),
+      allowd = [
+        "anime",
+        "text",
+        "val",
+        "css",
+        "addClass",
+        "removeClass",
+        "toggleClass",
+        "show",
+        "hide",
+        "visible",
+        "opacity",
+        "width",
+        "height"
+      ];
+
+    for (let ev of allowd) el.Emit(ev);
   }
 
   static async GET(options) {
