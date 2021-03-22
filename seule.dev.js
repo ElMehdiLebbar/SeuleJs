@@ -778,7 +778,16 @@ class Seule {
   }
 
   Component(name, options) {
+    let el = this.Find(name);
+
+    if (!options.data.length) {
+      options.obj = [];
+      options.obj.push(options.data);
+      options.data = options.obj;
+    }
+
     Seule.PDO({
+      element: el,
       component: true,
       mode: options.mode,
       style: options.style || "",
@@ -813,47 +822,14 @@ class Seule {
       data: element,
 
       handler(item) {
-        if (item.getAttribute("@" + attr)) {
-          let val = item.getAttribute("@" + attr),
-            option = "",
-            el = new Seule(item),
-            obj = val,
-            allowd =
-              "text val addClass removeClass toggleClass show hide visible opacity width height",
-            special = "css anime",
-            capitalStr = attr.replace(/^\w/, (c) => c.toUpperCase());
-
-          if (val.includes("{")) {
-            option = val.split("{");
-            obj = "{" + option[1].slice(0, -1) + "}";
-            obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-            if (allowd.includes(attr)) obj = option[1].slice(0, -1);
-            else obj = JSON.parse(obj);
-          }
-
-          if (option[0])
-            item.addEventListener(
-              option[0],
-              () => {
-                if (allowd.includes(attr) || special.includes(attr))
-                  el[capitalStr](obj);
-                else handler(obj, el, item);
-              },
-              false
-            );
-          else {
-            if (allowd.includes(attr) || special.includes(attr))
-              el[capitalStr](obj);
-            else handler(obj, el, item);
-          }
-        }
+        Seule.HANDLER(item, attr, handler);
       }
     });
     return this;
   }
 
-  HtmlMethod() {
-    let el = new Seule(this.children.el[1]),
+  HtmlMethod(elements) {
+    let el = elements || new Seule(this.children.el[1]),
       allowd = [
         "anime",
         "text",
@@ -1233,6 +1209,43 @@ class Seule {
     }, 500);
   }
 
+  static HANDLER(item, attr, handler) {
+    if (item.getAttribute("@" + attr)) {
+      let val = item.getAttribute("@" + attr),
+        option = "",
+        el = new Seule(item),
+        obj = val,
+        allowd =
+          "text val addClass removeClass toggleClass show hide visible opacity width height",
+        special = "css anime",
+        capitalStr = attr.replace(/^\w/, (c) => c.toUpperCase());
+
+      if (val.includes("{")) {
+        option = val.split("{");
+        obj = "{" + option[1].slice(0, -1) + "}";
+        obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
+        if (allowd.includes(attr)) obj = option[1].slice(0, -1);
+        else obj = JSON.parse(obj);
+      }
+
+      if (option[0])
+        item.addEventListener(
+          option[0],
+          () => {
+            if (allowd.includes(attr) || special.includes(attr))
+              el[capitalStr](obj);
+            else handler(obj, el, item);
+          },
+          false
+        );
+      else {
+        if (allowd.includes(attr) || special.includes(attr))
+          el[capitalStr](obj);
+        else handler(obj, el, item);
+      }
+    }
+  }
+
   static PDO(options) {
     if (!options.query) options.query = (item) => item;
 
@@ -1450,60 +1463,88 @@ class Seule {
         obj = som;
       }
 
-      for (const item of obj) html += options.template(item);
-
       if (options.component) {
-        class Example extends HTMLElement {
-          constructor() {
-            super();
-            const shadow = this.attachShadow({
-              mode: options.mode || "open"
-            });
-            shadow.innerHTML = html;
+        let sha = (shadow) => {
+          shadow.innerHTML = "";
+
+          for (const item of obj) {
+            let element = document.createElement("s-bind");
+            element.innerHTML = options.template(item);
+            let attrs = element.querySelectorAll("*"),
+              obj,
+              allowd =
+                "text val addClass removeClass toggleClass show hide visible opacity width height";
+
+            for (let e of attrs)
+              for (let a of e.getAttributeNames()) {
+                let val = e.getAttribute(a),
+                  el = new Seule(e),
+                  capitalStr = a
+                    .replace("@", "")
+                    .replace(/^\w/, (c) => c.toUpperCase());
+
+                if (val.includes("{")) {
+                  val = val.split("{");
+                  obj = "{" + val[1].slice(0, -1) + "}";
+                  obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
+                  if (allowd.includes(capitalStr.toLowerCase()))
+                    obj = val[1].slice(0, -1);
+                  else obj = JSON.parse(obj);
+                  if (val[0])
+                    e.addEventListener(
+                      val[0],
+                      () => {
+                        el[capitalStr](obj);
+                      },
+                      false
+                    );
+                  else el[capitalStr](obj);
+                } else el[capitalStr](val);
+              }
+
+            shadow.appendChild(element);
 
             if (options.style.length === 1) {
               let linkElement = document.createElement("link");
               linkElement.setAttribute("rel", "stylesheet");
-              linkElement.setAttribute("href", options.style[0]);
+              linkElement.setAttribute("href", options.style[0] + ".css");
               shadow.appendChild(linkElement);
             } else {
               let style = document.createElement("style");
               style.textContent = options.style;
               shadow.appendChild(style);
             }
+          }
+        };
 
-            let sha = () => {
-              html = "";
+        class Example extends HTMLElement {
+          constructor() {
+            super();
+            const shadow = this.attachShadow({
+              mode: options.mode || "open"
+            });
+            sha(shadow);
 
-              for (const item of obj) html += options.template(item);
-
-              shadow.innerHTML = html;
+            let init = () => {
+              sha(shadow);
             };
 
-            if (options.handler) options.handler(els, obj, sha);
+            if (options.mode !== "closed") {
+              els = options.element;
+
+              els.Select = (selector) =>
+                new Seule(shadow.querySelectorAll(selector));
+            } else
+              els.Select = () =>
+                console.log(
+                  "mode is closed! to use find method, Switch to the open Mode!"
+                );
+
+            if (options.handler) options.handler(els, obj, init);
           }
         }
 
         customElements.define(options.selector, Example);
-
-        if (options.mode !== "closed") {
-          els = new Seule(options.selector);
-
-          els.Find = function (selector) {
-            let el = document.querySelectorAll(options.selector),
-              es = [];
-
-            for (let e of el)
-              es.push(new Seule(e.shadowRoot.querySelectorAll(selector)));
-
-            if (es.length === 1) es = es[0];
-            return es;
-          };
-        } else
-          els.Find = () =>
-            console.log(
-              "mode is closed! to use find method, Switch to the open Mode!"
-            );
       } else {
         let element = new Seule(options.selector);
         element.Html(html);
