@@ -495,6 +495,25 @@ class Seule {
     return !!this.tags.className.match("(?:^|\\s)" + className + "(?!\\S)");
   }
 
+  Classes(action, className) {
+    if (action === "add") this.AddClass(className);
+    if (action === "remove") this.RemoveClass(className);
+    if (action === "toggle") this.ToggleClass(className);
+    return this;
+  }
+
+  ClassList() {
+    let result = [];
+
+    for (const element of this.tags.classList) result.push(element);
+
+    return result;
+  }
+
+  ClassListContains(className) {
+    return this.tags.classList.contains(className);
+  }
+
   Style(cssProperty, value) {
     return this.Each(function () {
       this.style[cssProperty] = value;
@@ -509,18 +528,6 @@ class Seule {
 
   GetStyle(cssProperty) {
     return getComputedStyle(this.tags)[cssProperty];
-  }
-
-  ClassList() {
-    let result = [];
-
-    for (const element of this.tags.classList) result.push(element);
-
-    return result;
-  }
-
-  ClassListContains(className) {
-    return this.tags.classList.contains(className);
   }
 
   Show() {
@@ -779,13 +786,12 @@ class Seule {
 
   Component(name, options) {
     let el = this.Find(name);
-
-    if (!options.data.length) {
-      options.obj = [];
-      options.obj.push(options.data);
-      options.data = options.obj;
-    }
-
+    if (options.data)
+      if (!options.data.length) {
+        options.obj = [];
+        options.obj.push(options.data);
+        options.data = options.obj;
+      }
     Seule.PDO({
       element: el,
       component: true,
@@ -817,36 +823,19 @@ class Seule {
   }
 
   Emit(attr, handler) {
-    let element = this.tags.querySelectorAll("*");
-    Seule.LOOP({
-      data: element,
-
-      handler(item) {
-        Seule.HANDLER(item, attr, handler);
-      }
-    });
+    let element;
+    if (this.root) element = this.children.el[1];
+    else element = this.tags;
+    Seule.SELECTALL(element, attr, handler);
     return this;
   }
 
-  HtmlMethod(elements) {
-    let el = elements || new Seule(this.children.el[1]),
-      allowd = [
-        "anime",
-        "text",
-        "val",
-        "css",
-        "addClass",
-        "removeClass",
-        "toggleClass",
-        "show",
-        "hide",
-        "visible",
-        "opacity",
-        "width",
-        "height"
-      ];
-
-    for (let ev of allowd) el.Emit(ev);
+  HtmlMethod() {
+    let element;
+    if (this.root) element = this.children.el[1];
+    else element = this.tags;
+    Seule.SELECTALL(element);
+    return this;
   }
 
   static async GET(options) {
@@ -1209,43 +1198,6 @@ class Seule {
     }, 500);
   }
 
-  static HANDLER(item, attr, handler) {
-    if (item.getAttribute("@" + attr)) {
-      let val = item.getAttribute("@" + attr),
-        option = "",
-        el = new Seule(item),
-        obj = val,
-        allowd =
-          "text val addClass removeClass toggleClass show hide visible opacity width height",
-        special = "css anime",
-        capitalStr = attr.replace(/^\w/, (c) => c.toUpperCase());
-
-      if (val.includes("{")) {
-        option = val.split("{");
-        obj = "{" + option[1].slice(0, -1) + "}";
-        obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-        if (allowd.includes(attr)) obj = option[1].slice(0, -1);
-        else obj = JSON.parse(obj);
-      }
-
-      if (option[0])
-        item.addEventListener(
-          option[0],
-          () => {
-            if (allowd.includes(attr) || special.includes(attr))
-              el[capitalStr](obj);
-            else handler(obj, el, item);
-          },
-          false
-        );
-      else {
-        if (allowd.includes(attr) || special.includes(attr))
-          el[capitalStr](obj);
-        else handler(obj, el, item);
-      }
-    }
-  }
-
   static PDO(options) {
     if (!options.query) options.query = (item) => item;
 
@@ -1464,44 +1416,13 @@ class Seule {
       }
 
       if (options.component) {
-        let sha = (shadow) => {
+        let sha = (shadow, attr, handler) => {
           shadow.innerHTML = "";
 
           for (const item of obj) {
             let element = document.createElement("s-bind");
             element.innerHTML = options.template(item);
-            let attrs = element.querySelectorAll("*"),
-              obj,
-              allowd =
-                "text val addClass removeClass toggleClass show hide visible opacity width height";
-
-            for (let e of attrs)
-              for (let a of e.getAttributeNames()) {
-                let val = e.getAttribute(a),
-                  el = new Seule(e),
-                  capitalStr = a
-                    .replace("@", "")
-                    .replace(/^\w/, (c) => c.toUpperCase());
-
-                if (val.includes("{")) {
-                  val = val.split("{");
-                  obj = "{" + val[1].slice(0, -1) + "}";
-                  obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
-                  if (allowd.includes(capitalStr.toLowerCase()))
-                    obj = val[1].slice(0, -1);
-                  else obj = JSON.parse(obj);
-                  if (val[0])
-                    e.addEventListener(
-                      val[0],
-                      () => {
-                        el[capitalStr](obj);
-                      },
-                      false
-                    );
-                  else el[capitalStr](obj);
-                } else el[capitalStr](val);
-              }
-
+            Seule.SELECTALL(element, attr, handler);
             shadow.appendChild(element);
 
             if (options.style.length === 1) {
@@ -1525,8 +1446,8 @@ class Seule {
             });
             sha(shadow);
 
-            let init = () => {
-              sha(shadow);
+            let init = (attr, handler) => {
+              sha(shadow, attr, handler);
             };
 
             if (options.mode !== "closed") {
@@ -1563,5 +1484,77 @@ class Seule {
     }
 
     return result;
+  }
+
+  static SELECTALL(element, attr, handler) {
+    let attrs = element.querySelectorAll("*"),
+      i = 0,
+      elements = {},
+      action = {},
+      obj,
+      extra =
+        "text val show hide visible opacity width height attr style classes anime css",
+      allowd = "text val show hide visible opacity width height",
+      special = "Attr Style Classes";
+
+    for (let e of attrs) {
+      elements = {};
+
+      let el = new Seule(e),
+        ex = (da, str) => {
+          if (!extra.includes(str.toLowerCase())) {
+            if (attr && handler) {
+              handler(da, el);
+            }
+          } else {
+            if (special.includes(str)) {
+              let keys = Object.keys(da);
+              el[str](keys[0], da[keys[0]]);
+            } else el[str](da);
+          }
+        };
+
+      if (e.getAttributeNames().includes("@find")) {
+        el = element.querySelectorAll(e.getAttribute("@find"));
+        el = new Seule(el);
+      }
+
+      for (let a of e.getAttributeNames()) {
+        if (a.includes("@")) {
+          let val = e.getAttribute(a),
+            capitalStr = a
+              .replace("@", "")
+              .replace(/\w/, (c) => c.toUpperCase());
+
+          if (val.includes("{")) {
+            val = val.split("{");
+            obj = "{" + val[1].slice(0, -1) + "}";
+            obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
+            if (allowd.includes(capitalStr.toLowerCase()))
+              obj = val[1].slice(0, -1);
+            else obj = JSON.parse(obj);
+
+            if (val[0]) {
+              action[i] = ["; " + capitalStr + "$" + JSON.stringify(obj)];
+              elements[val[0]] += action[i];
+              i++;
+            } else if (a !== "@find") ex(obj, capitalStr);
+          } else if (capitalStr !== "Find") ex(val, capitalStr);
+        }
+      }
+
+      let keys = Object.keys(elements);
+
+      for (let key of keys) {
+        let actions = elements[key].replace("undefined;", "").split(";");
+        e.addEventListener(key, function () {
+          for (let act of actions) {
+            let a = act.split("$");
+            if (a[0].trimStart() !== "Find")
+              ex(JSON.parse(a[1]), a[0].trimStart());
+          }
+        });
+      }
+    }
   }
 }
