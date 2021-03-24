@@ -792,13 +792,12 @@ class Seule {
         options.obj.push(options.data);
         options.data = options.obj;
       }
-    Seule.PDO({
+    Seule.PDO(options.data || [{}], {
       element: el,
       component: true,
       mode: options.mode,
       style: options.style || "",
       execute: options.execute || false,
-      data: options.data || [{}],
       child: options.child || false,
       columns: options.columns || false,
       nest: options.nest || false,
@@ -1170,7 +1169,8 @@ class Seule {
   }
 
   static PRINT(options) {
-    let body = new Seule("body");
+    let title = options.title || "",
+      body = new Seule("body");
     body.Append(
       '<iframe class="seule--frame" name="sframe" style="position: fixed; bottom: -100%"></iframe>'
     );
@@ -1182,14 +1182,17 @@ class Seule {
       : iframeEl.contentDocument;
     frameDoc.document.open(); //Create a new HTML document.
 
-    frameDoc.document.write("<html><head><title>DIV Contents</title>");
+    frameDoc.document.write("<html><head><title>" + title + "</title>");
     frameDoc.document.write("</head><body>"); //Append the external CSS file.
 
-    frameDoc.document.write(
-      '<link href="' + options.css + '" rel="stylesheet" type="text/css" />'
-    ); //Append the DIV contents.
+    if (options.style)
+      frameDoc.document.write(
+        '<link href="' +
+          options.style +
+          '.css" rel="stylesheet" type="text/css" />'
+      ); //Append the DIV contents.
 
-    frameDoc.document.write(options.html);
+    frameDoc.document.write(options.template);
     frameDoc.document.write("</body></html>");
     frameDoc.document.close();
     setTimeout(function () {
@@ -1198,89 +1201,98 @@ class Seule {
     }, 500);
   }
 
-  static PDO(options) {
-    if (!options.query) options.query = (item) => item;
+  static PDO(data, options) {
+    if (options) {
+      if (!options.query) options.query = (item) => item;
+    }
 
-    let obj = [...options.data],
+    let obj = [...data],
       child = [],
       nest = [],
       result = {},
       select = () => {
-        let filter = obj.filter((el, index) => {
-          if (options.execute !== "remove duplicates" && !options.columns)
-            el.index = index;
-          if (
-            (options.child && options.execute !== "insert") ||
-            (options.execute === "insert" && options.nest)
-          )
-            return el[options.child].some((e, i) => options.query(e, i));
-          return options.query(el, index);
-        });
+        if (options) {
+          let filter = obj.filter((el, index) => {
+            if (options.execute !== "remove duplicates" && !options.columns)
+              el.index = index;
+            if (
+              (options.child && options.execute !== "insert") ||
+              (options.execute === "insert" && options.nest)
+            )
+              return el[options.child].some((e, i) => options.query(e, i));
+            return options.query(el, index);
+          });
 
-        if (options.child) {
-          for (const el of obj) {
-            for (const e of el[options.child]) {
-              if (options.execute !== "remove duplicates") e.parent = el.index;
-              child.push(e);
+          if (options.child) {
+            for (const el of obj) {
+              for (const e of el[options.child]) {
+                if (options.execute !== "remove duplicates")
+                  e.parent = el.index;
+                child.push(e);
+              }
             }
+
+            nest = child;
+            child = child.filter((el, index) => options.query(el, index));
           }
 
-          nest = child;
-          child = child.filter((el, index) => options.query(el, index));
+          return filter;
+        }
+      };
+
+    (result.alter = (action, column, obj) => {
+      obj = obj || data;
+      obj.map(function (o) {
+        let c = o;
+
+        if (typeof column === "object" && action.toLowerCase() === "replace") {
+          c[column[1]] = c[column[0]];
+          delete c[column[0]];
         }
 
-        return filter;
-      },
-      map = (obj) => {
-        obj.map(function (o) {
-          let c = o;
-
-          if (
-            typeof options.columns === "object" &&
-            options.action.toLowerCase() === "replace"
-          ) {
-            c[options.columns[1]] = c[options.columns[0]];
-            delete c[options.columns[0]];
-          }
-
-          if (options.action.toLowerCase() === "drop")
-            for (const element of options.columns) delete c[element];
-          if (options.action.toLowerCase() === "add")
-            for (const element of options.columns)
-              if (!c.hasOwnProperty(element)) c[element] = "";
-          return c;
-        });
-      },
-      group = (obj) => {
-        let data = [];
-        options.group = [
-          ...new Set(obj.reduce((r, a) => r.concat(a[options.columns]), []))
-        ];
+        if (action.toLowerCase() === "drop")
+          for (const element of column) delete c[element];
+        if (action.toLowerCase() === "add")
+          for (const element of column)
+            if (!c.hasOwnProperty(element)) c[element] = "";
+        return c;
+      });
+      return result;
+    }),
+      (result.group = (column, obj) => {
+        obj = obj || data;
+        let da = [];
+        let group = [...new Set(obj.reduce((r, a) => r.concat(a[column]), []))];
         Seule.LOOP({
-          data: options.group,
+          data: group,
 
           handler(el, index) {
-            let e = '{"' + options.columns + '":"' + el + '"}';
-            data.push(JSON.parse(e));
+            let e = '{"' + column + '":"' + el + '"}';
+            da.push(JSON.parse(e));
           }
         });
-        return data;
-      },
-      removeDpl = (obj) => {
-        if (options.columns) {
+        result.res = da;
+        return result;
+      }),
+      (result.removeDpl = (column, obj) => {
+        obj = obj || data;
+
+        for (let ob of obj) delete ob.index;
+
+        if (column) {
           let lookup = new Set();
           return obj.filter(
-            (data) =>
-              !lookup.has(data[options.columns]) &&
-              lookup.add(data[options.columns])
+            (data) => !lookup.has(data[column]) && lookup.add(data[column])
           );
         }
 
         let uniqueSet = new Set(obj.map(JSON.stringify));
-        return Array.from(uniqueSet).map(JSON.parse);
-      },
-      sum = (obj) => {
-        return obj.reduce(
+        result.res = Array.from(uniqueSet).map(JSON.parse);
+        return result;
+      }),
+      (result.sum = (obj) => {
+        obj = obj || data;
+        result.res = obj.reduce(
           (sums, obj) =>
             Object.keys(obj).reduce((s, k) => {
               s[k] = (s[k] || 0) + +obj[k];
@@ -1288,198 +1300,209 @@ class Seule {
             }, sums),
           {}
         );
-      },
-      sort = (obj) => {
+        return result;
+      }),
+      (result.sort = (column, obj) => {
         let sortBy = () => (a, b) => {
-          if (a[options.columns] > b[options.columns]) return 1;
-          else if (a[options.columns] < b[options.columns]) return -1;
+          if (a[column] > b[column]) return 1;
+          else if (a[column] < b[column]) return -1;
           return 0;
         };
 
-        return obj.sort(sortBy(options.columns));
-      };
-
+        obj = obj || data;
+        result.res = obj.sort(sortBy(column));
+        return result;
+      });
     result.res = select();
     result.child = child;
 
-    switch (options.execute) {
-      case "update":
-        let items = Object.keys(options.item) || {};
-        result.res.forEach((f) =>
-          options.data.findIndex((e) => {
-            if (e === f)
-              for (const element of items) {
-                if (options.nest)
-                  for (const i of result.child)
-                    i[element] = options.item[element];
-                else e[element] = options.item[element];
-              }
-          })
-        );
-        break;
-
-      case "delete":
-        result.child.forEach((f) =>
-          nest.splice(
-            nest.findIndex((e) => e === f),
-            1
-          )
-        );
-
-        if (options.nest) {
+    if (options) {
+      switch (options.execute) {
+        case "update":
+          let items = Object.keys(options.item) || {};
           result.res.forEach((f) =>
-            f[options.child].findIndex((e) => {
-              for (const element of result.child)
-                if (e === element)
-                  f[options.child].splice(
-                    f[options.child].findIndex((e) => e === element),
-                    1
-                  );
+            data.findIndex((e) => {
+              if (e === f)
+                for (const element of items) {
+                  if (options.nest)
+                    for (const i of result.child)
+                      i[element] = options.item[element];
+                  else e[element] = options.item[element];
+                }
             })
           );
-          result.res = options.data;
           break;
-        }
 
-        result.res.forEach((f) =>
-          options.data.splice(
-            options.data.findIndex((e) => e === f),
-            1
-          )
-        );
-        break;
+        case "delete":
+          result.child.forEach((f) =>
+            nest.splice(
+              nest.findIndex((e) => e === f),
+              1
+            )
+          );
 
-      case "insert":
-        if (options.child)
-          for (const element of result.res) {
-            if (typeof element[options.child] !== "object")
-              element[options.child] = [];
-            options.item.parent = element.index;
-            options.data[element.index][options.child].push(options.item);
-            nest.push(options.item);
+          if (options.nest) {
+            result.res.forEach((f) =>
+              f[options.child].findIndex((e) => {
+                for (const element of result.child)
+                  if (e === element)
+                    f[options.child].splice(
+                      f[options.child].findIndex((e) => e === element),
+                      1
+                    );
+              })
+            );
+            result.res = data;
+            break;
           }
-        else options.data.push(options.item);
-        break;
 
-      case "alter":
-        if (options.nest) map(result.child);
-        else map(result.res);
-        break;
+          result.res.forEach((f) =>
+            data.splice(
+              data.findIndex((e) => e === f),
+              1
+            )
+          );
+          break;
 
-      case "group by":
-        if (options.nest) result = group(result.child);
-        else result = group(result.res);
-        break;
+        case "insert":
+          if (options.child)
+            for (const element of result.res) {
+              if (typeof element[options.child] !== "object")
+                element[options.child] = [];
+              options.item.parent = element.index;
+              data[element.index][options.child].push(options.item);
+              nest.push(options.item);
+            }
+          else data.push(options.item);
+          break;
 
-      case "sum":
-        if (options.nest) result = sum(result.child);
-        else result = sum(result.res);
-        break;
+        case "alter":
+          if (options.nest)
+            result.alter(options.action, options.columns, result.child);
+          else result.alter(options.action, options.columns, result.res);
+          break;
 
-      case "remove duplicates":
-        if (options.nest) result = removeDpl(result.child);
-        else result = removeDpl(result.res);
-        break;
+        case "group by":
+          if (options.nest)
+            result = result.group(options.columns, result.child);
+          else result = result.group(options.columns, result.res);
+          break;
 
-      case "order by":
-        if (options.nest) result = sort(result.child);
-        else result = sort(result.res);
-        break;
-    }
+        case "sum":
+          if (options.nest) result = result.sum(result.child);
+          else result = result.sum(result.res);
+          break;
 
-    if (options.execute !== "select") {
-      result.res = options.data;
-      result.child = nest;
-    }
+        case "remove duplicates":
+          if (options.nest)
+            result = result.removeDpl(options.columns || false, result.child);
+          else result = result.removeDpl(options.columns || false, result.res);
+          break;
 
-    if (
-      options.execute === "order by" ||
-      options.execute === "sum" ||
-      options.execute === "group by" ||
-      options.execute === "remove duplicates"
-    ) {
-      delete result.child;
-      delete result.res;
-    }
-
-    if (options.template) {
-      let obj = result.res,
-        som = [],
-        html = "",
-        els = {};
-      if (!result.res) obj = result;
-      if (options.nest) obj = result.child;
-
-      if (options.execute === "sum") {
-        som.push(obj);
-        obj = som;
+        case "order by":
+          if (options.nest)
+            result = result.sort(options.columns || false, result.child);
+          else result = result.sort(options.columns || false, result.res);
+          break;
       }
 
-      if (options.component) {
-        let sha = (shadow, attr, handler) => {
-          shadow.innerHTML = "";
+      if (options.execute !== "select") {
+        result.res = data;
+        result.child = nest;
+      }
 
-          for (const item of obj) {
-            let element = document.createElement("s-bind");
-            element.innerHTML = options.template(item);
-            Seule.SELECTALL(element, attr, handler);
-            shadow.appendChild(element);
+      if (
+        options.execute === "order by" ||
+        options.execute === "sum" ||
+        options.execute === "group by" ||
+        options.execute === "remove duplicates"
+      ) {
+        delete result.child;
+        delete result.res;
+      }
 
-            if (options.style.length === 1) {
-              let linkElement = document.createElement("link");
-              linkElement.setAttribute("rel", "stylesheet");
-              linkElement.setAttribute("href", options.style[0] + ".css");
-              shadow.appendChild(linkElement);
-            } else {
-              let style = document.createElement("style");
-              style.textContent = options.style;
-              shadow.appendChild(style);
-            }
-          }
-        };
+      if (options.template) {
+        let obj = result.res,
+          som = [],
+          html = "",
+          els = {};
+        if (!result.res) obj = result;
+        if (options.nest) obj = result.child;
 
-        class Example extends HTMLElement {
-          constructor() {
-            super();
-            const shadow = this.attachShadow({
-              mode: options.mode || "open"
-            });
-            sha(shadow);
-
-            let init = (attr, handler) => {
-              sha(shadow, attr, handler);
-            };
-
-            if (options.mode !== "closed") {
-              els = options.element;
-
-              els.Select = (selector) =>
-                new Seule(shadow.querySelectorAll(selector));
-            } else
-              els.Select = () =>
-                console.log(
-                  "mode is closed! to use find method, Switch to the open Mode!"
-                );
-
-            if (options.handler) options.handler(els, obj, init);
-          }
+        if (options.execute === "sum") {
+          som.push(obj);
+          obj = som;
         }
 
-        customElements.define(options.selector, Example);
-      } else {
-        let element = new Seule(options.selector);
-        element.Html(html);
+        if (options.component) {
+          let sha = (done, shadow, attr, handler) => {
+            done = done || obj;
+            shadow.innerHTML = "";
 
-        let sha = () => {
-          html = "";
+            for (const item of obj) {
+              let element = document.createElement("s-bind");
+              element.innerHTML = options.template(item);
+              Seule.SELECTALL(element, attr, handler);
+              shadow.appendChild(element);
 
-          for (const item of obj) html += options.template(item);
+              if (options.style.length === 1) {
+                let linkElement = document.createElement("link");
+                linkElement.setAttribute("rel", "stylesheet");
+                linkElement.setAttribute("href", options.style[0] + ".css");
+                shadow.appendChild(linkElement);
+              } else {
+                let style = document.createElement("style");
+                style.textContent = options.style;
+                shadow.appendChild(style);
+              }
+            }
+          };
 
-          element.Html(html);
-        };
+          class Example extends HTMLElement {
+            constructor() {
+              super();
+              const shadow = this.attachShadow({
+                mode: options.mode || "open"
+              });
+              sha(shadow);
 
-        if (options.handler)
-          options.handler(new Seule(options.selector), obj, sha);
+              let init = (done, attr, handler) => {
+                done = done || obj;
+                sha(done, shadow, attr, handler);
+              };
+
+              if (options.mode !== "closed") {
+                els = options.element;
+
+                els.Select = (selector) =>
+                  new Seule(shadow.querySelectorAll(selector));
+              } else
+                els.Select = () =>
+                  console.log(
+                    "mode is closed! to use find method, Switch to the open Mode!"
+                  );
+
+              if (options.handler) options.handler(els, obj, init);
+            }
+          }
+
+          customElements.define(options.selector, Example);
+        } else {
+          let element = new Seule(options.selector);
+
+          let sha = (data) => {
+            data = data || obj;
+            html = "";
+
+            for (const item of data) html += options.template(item);
+
+            element.Html(html);
+          };
+
+          sha(obj);
+          if (options.handler)
+            options.handler(new Seule(options.selector), obj, sha);
+        }
       }
     }
 
