@@ -107,7 +107,7 @@ To assign a click event to hide Html method, you can do this:
 ```javascript
 <button @hide="click{}">Hide-Me</button>
 ```
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
 
 
 
