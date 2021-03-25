@@ -4,13 +4,13 @@
 
 # :o: Getting Started
 
-##### You can create an index.html file and include Seule with:
+You can create an index.html file and include Seule with:
 
 ```html
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
 
-##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
+At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
 
 ```html
 <div id='app'>
