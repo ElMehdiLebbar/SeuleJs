@@ -59,28 +59,6 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 ```
 
 
-
-
-## :leftwards_arrow_with_hook: Creat your own HtmlMethods
-
-### emit()
-
-Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
-
-we can creat a Seule attribute by calling the emit() 
-
-### Example
-
-```javascript
-let app = new Seule('#main')
-app.Emit('method',(obj, el) =>
-      app
-         .Find('#response')
-         .Text(obj.name));
-```
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
-
-
 ## :leftwards_arrow_with_hook: Seule Selectors
 
 ### Example
@@ -133,34 +111,6 @@ example.On('click', function(){
 })
 ```
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
-
-
-# Super Object --> Seule
-
-The Super Object << Seule >> is using many Predefined Methods 
-
-## Send a Request To a Server
-
-To send a request to a server, we use the get() and post() methods of the Seule super object
-
-### http()
-
-### Example
-
-```javascript
-let app = new Seule('#app'),
-    S = (selector)=> app.Find(selector)
-    uri = 'https://my-json-server.typicode.com/ElMehdiLebbar/SeuleJs/db'
-
-Seule
-  .GET(uri,{json: true})
-  .then(r =>{
-       S('button').Click(()=> S('#response')
-                   .Html(r.posts[1].title))
-});
-```
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
-
 
 
 
