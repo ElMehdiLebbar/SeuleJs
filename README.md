@@ -14,8 +14,7 @@
 
 ```html
 <div id='app'>
-  <button @find="p" @text="click{You Are Ready to Start a Seule Apps}">Hello world</button>
-  <p>Seule is A complete fast, small, and feature-rich JavaScript library</p>
+    > ...
 </div>
 ```
 
@@ -26,12 +25,12 @@ app.HtmlMethod()
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-Click on the "Try it Yourself" button to see how it works.
+Click on the "Try it Yourself":arrow_heading_up: button to see how it works.
 
 
-# Seule HtmlMethods
+# :one: Seule HtmlMethods
 
-### to use html Methodes you have to call HtmlMethod() :
+to use HTML Methodes you have to call **HtmlMethod()** :
 
 #### Syntax:
 
@@ -39,13 +38,13 @@ Click on the "Try it Yourself" button to see how it works.
 <element @method="event{'property' : 'value'}"></element>
 ```
 
-for exemple if you wont to add some text to heading in your project:
+:small_blue_diamond: for exemple if you wont to add some text to heading in your project:
 
 ```html
 <h1 @text="hello Seule"></h1>
 ```
 
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
 
 ## List of html Methodes
 
@@ -70,12 +69,6 @@ we can creat a Seule attribute by calling the emit()
 
 ### Example
 
-```html
-<div id="main">
-    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
-    <p>Hello M.<span id="response">waiting...</span></p>
-</div>
-```
 ```javascript
 let app = new Seule('#main')
 app.Emit('method',(obj, el) =>
@@ -83,7 +76,7 @@ app.Emit('method',(obj, el) =>
          .Find('#response')
          .Text(obj.name));
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
 # Seule Selectors
@@ -95,7 +88,7 @@ Get all elements in the document with class="example":
 ```javascript
 let example = new Seule('.example');
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
 More "Try it Yourself" examples below.
 
@@ -137,7 +130,7 @@ example.On('click', function(){
   // action goes here!!
 })
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 
 # Super Object --> Seule
@@ -152,14 +145,6 @@ To send a request to a server, we use the get() and post() methods of the Seule 
 
 ### Example
 
-```html
-<div id="app">
-  <button>Get Data From Server</button>
-  <div id="response">
-    waiting for response...
-  </div>
-</div>
-```
 ```javascript
 let app = new Seule('#app'),
     S = (selector)=> app.Find(selector)
@@ -172,7 +157,7 @@ Seule
                    .Html(r.posts[1].title))
 });
 ```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/KKMjoyG)
 
 
 
