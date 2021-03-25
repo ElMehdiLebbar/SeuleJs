@@ -66,7 +66,7 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 Get all elements in the document with class="example":
 
 ```javascript
-let example = new Seule('.example');
+<button @find=".example">Hide All</button>
 ```
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
@@ -86,7 +86,7 @@ Parameter --> CSS selectors
 
 Type --> String
 
-Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://www.w3schools.com/cssref/css_selectors.asp)
 
 
 ## :leftwards_arrow_with_hook: Seule Event Methods
