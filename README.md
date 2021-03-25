@@ -13,10 +13,16 @@ Seule is A complete fast, small, and feature-rich JavaScript Framework. It makes
 ##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
 
 ```html
-  <div id='main'>
-      <button>Hello world</button>
-  </div>
+<div id='app'>
+  <button @find="p" @text="click{You Are Ready to Start a Seule Apps}">Hello world</button>
+  <p>Seule is A complete fast, small, and feature-rich JavaScript library</p>
+</div>
 ```
+
+```javascript
+let example = new Seule('.example');
+```
+
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 Click on the "Try it Yourself" button to see how it works.
