@@ -48,23 +48,24 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 
 ## :leftwards_arrow_with_hook: List of html Methodes
 
-> ### Style Methodes
->
->:star: **@style:**  set the style properties of an existing element
->
->  #### Syntax: 
+> Style Methodes
+
+:star: **@style:**  set the style properties of an existing element
+
+#### Syntax: 
 
 ```javascript
 <element @style="event{'cssproperty' : 'value'}"></element>
 ```
-> #### Example: 
+#### Example: 
 Add a red color to an < h1 > element:
 
 ```javascript
 <button @find="h1" @style="click{'color' : 'red'}"></button>
 ```
 
-> ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+
 
 
 ## :leftwards_arrow_with_hook: Seule Selectors
