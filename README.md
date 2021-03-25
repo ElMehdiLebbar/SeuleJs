@@ -1,5 +1,5 @@
 # :trident: Introduction :octocat:
-:beginner: Seule is A complete fast :bicyclist:, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+:beginner: Seule is A complete fast :bicyclist:, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers :globe_with_meridians:.
 
 
 # :o: Getting Started
@@ -48,13 +48,15 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 
 ## List of html Methodes
 
->Style Methodes
-
-* **@style**  set the style properties of an existing element
-* * Syntax: <element @style="event{'cssproperty' : 'value'}"></element>
-
+> ### Style Methodes
 >
+>:star: **@style:**  set the style properties of an existing element
+>
+>  #### Syntax: 
 
+```javascript
+    <element @style="event{'cssproperty' : 'value'}"></element>
+```
 
 
 
