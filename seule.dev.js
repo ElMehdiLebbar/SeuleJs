@@ -2,16 +2,15 @@
 /* Copyright & all rights reserved to El Mehdi LABBAR*/
 
 class Seule {
-  constructor(selector, root, style) {
+  constructor(selector, root, style, external) {
     this.el = selector;
+    this.external = external;
     if (selector === "window") this.element = [window];
     else if (typeof selector === "object") this.element = selector;
     else this.element = document.querySelectorAll(selector);
     this.tags = this.element;
     if (this.tags.length) this.tags = this.element[0];
     this.selector = selector;
-    this.check = true;
-    this.cont = true;
     this.root = root;
     if (typeof root === "object") this.parrent = root;
     this.children = false;
@@ -103,28 +102,24 @@ class Seule {
   }
 
   Click(handler) {
-    return this.On("click", (el) => handler(el));
+    this.On("click", (el) => handler(el));
+    return this;
   }
 
   Focus(handler) {
-    if (handler) {
-      return this.On("focus", (el) => handler(el));
-    }
-
-    this.tags.focus();
-    return this.tags;
+    if (handler) this.On("focus", (el) => handler(el));
+    else this.tags.focus();
+    return this;
   }
 
   Blur(handler) {
-    if (handler) {
-      return this.On("blur", (el) => handler(el));
-    }
-
-    this.tags.blur();
-    return this.tags;
+    if (handler) this.On("blur", (el) => handler(el));
+    else this.tags.blur();
+    return this;
   }
 
-  Hold(handler) {
+  Hold(handler, time) {
+    time = time || "1s";
     return this.Each(function () {
       let mouseIsDown = false,
         isTouch =
@@ -139,7 +134,7 @@ class Seule {
           if (mouseIsDown) {
             handler(new Seule(e));
           }
-        }, time || 1000);
+        }, parseFloat(time.replace(/s/g, "")) * 1000);
       });
       this.addEventListener(mouseUp, function () {
         mouseIsDown = false;
@@ -238,31 +233,10 @@ class Seule {
     });
   }
 
-  KeyLogger() {
-    let key = "",
-      el = this.el,
-      mapObj = {
-        Arrow: "",
-        Control: "ctrl"
-      };
-    return this.Each(function () {
-      this.addEventListener(
-        "keydown",
-        function (event) {
-          key += event.key;
-          key = key.replace(/Arrow|Control/gi, function (matched) {
-            return mapObj[matched];
-          });
-          setInterval(() => (key = ""), 10000);
-          Seule[el] = key;
-        },
-        true
-      );
-    });
-  }
-
   Copy(target, options) {
-    let tar = this.parrent.querySelector(target);
+    let tar;
+    if (this.root) tar = this.root.querySelector(target);
+    else tar = this.tags.closest("body").querySelector(target);
     return this.On(options.on, function () {
       let eventFired = new MouseEvent(options.event, {
         view: window,
@@ -275,7 +249,7 @@ class Seule {
 
   Toggle(event, options) {
     let check = true;
-    return this.On(event, function (el) {
+    this.On(event, function (el) {
       if (check === true) {
         options.handler(el);
         check = false;
@@ -285,18 +259,19 @@ class Seule {
       options.callback(el);
       check = true;
     });
+    return this;
   }
 
   Scroll(content) {
     let parent = new Seule(this.Parent().selector);
     if (content) parent = new Seule(content);
-    if (parent.getStyle("position").toLowerCase() === "fixed")
+    if (parent.GetStyle("position").toLowerCase() === "fixed")
       parent.element[0].scrollTop = this.tags.offsetTop - 10;
     else
       window.scrollTo({
         top: this.tags.offsetTop
       });
-    return this.tags;
+    return this;
   }
 
   ScrollPosition(axe) {
@@ -305,17 +280,9 @@ class Seule {
   }
 
   Delay(handler, timeOut) {
-    return this.Each(function () {
-      setTimeout(handler, timeOut || 1000);
-    });
-  }
-
-  Loop(handler, timeOut) {
-    return this.Each(function () {
-      let int = setInterval(() => {
-        let b = () => clearInterval(int);
-
-        handler(b);
+    return this.Each(function (e) {
+      setTimeout(() => {
+        handler(new Seule(this));
       }, timeOut || 1000);
     });
   }
@@ -362,19 +329,17 @@ class Seule {
   }
 
   Style(cssProperty, value) {
-    return this.Each(function () {
-      this.style[cssProperty] = value;
-    });
+    if (value)
+      return this.Each(function () {
+        this.style[cssProperty] = value;
+      });
+    return getComputedStyle(this.tags)[cssProperty];
   }
 
   Css(options) {
     return this.Each(function () {
       this.setAttribute("style", Seule.objectToStyle(options));
     });
-  }
-
-  GetStyle(cssProperty) {
-    return getComputedStyle(this.tags)[cssProperty];
   }
 
   Show() {
@@ -584,8 +549,9 @@ class Seule {
   Root(params) {
     let parameters = decodeURI(window.location.href).split("?"),
       obj = {},
-      el = new Seule(this.tags),
-      content = el.Html(),
+      el = this;
+    if (this.root && this.external) el = new Seule(this.children.element[1]);
+    let content = el.Html(),
       newPara = [];
     parameters = parameters[1].split("&");
     if (params) params = params.split("&");
@@ -599,8 +565,6 @@ class Seule {
         }
       newPara.push(String(element));
     }
-
-    let ind = content.search("}}");
 
     for (let element of newPara)
       if (element.includes("=")) {
@@ -624,10 +588,9 @@ class Seule {
       if (element.includes("=")) {
         let item = element.split("=");
         let it = new Seule(".str202109876" + item[0]);
-        it.text(item[1]);
+        it.Text(item[1]);
       }
 
-    this.cont = false;
     return obj;
   }
 
@@ -672,7 +635,7 @@ class Seule {
     let element;
     if (this.root) element = this.children.el[1];
     else element = this.tags;
-    Seule.SELECTALL(element, attr, handler);
+    Seule.GETATTR(element, attr, handler);
     return this;
   }
 
@@ -680,19 +643,20 @@ class Seule {
     let element;
     if (this.root) element = this.children.el[1];
     else element = this.tags;
-    Seule.SELECTALL(element);
+    Seule.GETATTR(element);
     return this;
   }
 
-  static async GET(options) {
-    let formData = new FormData();
+  static async GET(url, options) {
+    let parent = document,
+      formData = new FormData();
+    if (options.parent) parent = options.parent.children.element[1];
     options.param = {
       method: options.method || "get"
     };
-    if (options.method === "post") options.param.body = formData;
 
     if (options.form) {
-      let newForm = document.querySelector(options.form);
+      let newForm = parent.querySelector(options.form);
       formData = new FormData(newForm);
 
       newForm.onsubmit = async (e) => e.preventDefault();
@@ -705,12 +669,12 @@ class Seule {
           handler: function (item) {
             let file;
             if (typeof item === "object") file = item;
-            else file = document.querySelector(item);
+            else file = parent.querySelector(item);
             formData.append(file.name, file.files[0]);
           }
         });
       } else {
-        options.file = document.querySelector(options.file);
+        options.file = parent.querySelector(options.file);
         formData.append(options.file.name, options.file.files[0]);
       }
     }
@@ -719,7 +683,8 @@ class Seule {
       Object.keys(options.data).forEach((k) =>
         formData.append(k, options.data[k])
       );
-    let response = await fetch(options.url, options.param);
+    if (options.method === "post") options.param.body = formData;
+    let response = await fetch(url, options.param);
 
     if (response.ok) {
       if (options.blob) return await response.blob();
@@ -734,35 +699,30 @@ class Seule {
     options.result = [];
     options.method = "post";
 
-    if (typeof options.url === "object") {
+    options.exec = (ex) => {
       Seule.LOOP({
-        data: options.urls,
+        data: options[ex + "s"],
 
         handler(item) {
-          options.url = item;
-          Seule.GET(options).then(function (done) {
+          options[ex] = item;
+          Seule.GET(options.url, options).then(function (done) {
             options.result.push(done);
           });
         }
       });
+    };
+
+    if (typeof options.url === "object") {
+      options.exec("url");
       return options.result;
     }
 
     if (typeof options.data === "object") {
-      Seule.LOOP({
-        data: options.datas,
-
-        handler(item) {
-          options.data = item;
-          Seule.GET(options).then(function (done) {
-            options.result.push(done);
-          });
-        }
-      });
+      options.exec("data");
       return options.result;
     }
 
-    return await Seule.GET(options);
+    return await Seule.GET(options.url, options);
   }
 
   static STORE(name, options) {
@@ -779,8 +739,7 @@ class Seule {
 
   static LOOP(options) {
     if (typeof options.data !== "object") {
-      Seule.GET({
-        url: options.data,
+      Seule.GET(options.data, {
         json: true,
         method: "get"
       }).then(function (done) {
@@ -1289,7 +1248,7 @@ class Seule {
             for (const item of obj) {
               let element = document.createElement("s-bind");
               element.innerHTML = options.template(item);
-              Seule.SELECTALL(element, attr, handler);
+              Seule.GETATTR(element, attr, handler);
               shadow.appendChild(element);
 
               if (options.style.length === 1) {
@@ -1356,7 +1315,7 @@ class Seule {
     return result;
   }
 
-  static SELECTALL(element, attr, handler) {
+  static GETATTR(element, attr, handler) {
     let attrs = element.querySelectorAll("*"),
       i = 0,
       elements = {},
@@ -1426,5 +1385,7 @@ class Seule {
         });
       }
     }
+
+    return this;
   }
 }
