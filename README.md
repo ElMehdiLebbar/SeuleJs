@@ -55,7 +55,7 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 >  #### Syntax: 
 
 ```javascript
-    <element @style="event{'cssproperty' : 'value'}"></element>
+<element @style="event{'cssproperty' : 'value'}"></element>
 ```
 
 
