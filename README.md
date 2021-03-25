@@ -92,23 +92,20 @@ Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Referenc
 ## :leftwards_arrow_with_hook: Seule Event Methods
 
 Seule is tailor-made to respond to events in an HTML page.
+All HTML METHODS can have an event
 
 ### Syntax
 
 ```javascript
-let element = new Seule(CSS selectors);
-element.On('eventName', handler())
+<element @method(event{})>
 ```
 
 ### Example
 
-To assign a click event to all buttons on a App, you can do this:
+To assign a click event to hide Html method, you can do this:
 
 ```javascript
-let example = new Seule('.example');
-example.On('click', function(){
-  // action goes here!!
-})
+<button @hide="click{}">Hide-Me</button>
 ```
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
