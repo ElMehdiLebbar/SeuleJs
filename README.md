@@ -1,4 +1,4 @@
-# Introduction
+#  Introduction :octocat:
 Seule is A complete fast, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
 
