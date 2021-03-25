@@ -46,7 +46,7 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
 
-## List of html Methodes
+## :leftwards_arrow_with_hook: List of html Methodes
 
 > ### Style Methodes
 >
@@ -61,7 +61,7 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 
 
 
-## Creat your own HtmlMethods
+## :leftwards_arrow_with_hook: Creat your own HtmlMethods
 
 ### emit()
 
@@ -81,7 +81,7 @@ app.Emit('method',(obj, el) =>
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
-# Seule Selectors
+## :leftwards_arrow_with_hook: Seule Selectors
 
 ### Example
 
@@ -94,7 +94,7 @@ let example = new Seule('.example');
 
 More "Try it Yourself" examples below.
 
-## Definition and Usage
+### Definition and Usage
 
 Seule Selectors method returns all elements in the document that matches a specified CSS selector(s), as a static Seule object.
 
@@ -111,7 +111,7 @@ Type --> String
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 
-# Seule Event Methods
+## :leftwards_arrow_with_hook: Seule Event Methods
 
 Seule is tailor-made to respond to events in an HTML page.
 
