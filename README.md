@@ -79,7 +79,7 @@ Seule Selectors method returns all elements in the document that matches a speci
 ### Syntax
 
 ```javascript
-let element = new Seule(CSS selectors);
+<element @find(CSS selectors)>
 ```
 
 Parameter --> CSS selectors
