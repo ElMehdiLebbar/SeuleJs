@@ -1,8 +1,8 @@
-#  Introduction :octocat:
-Seule is A complete fast, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
+# :trident: Introduction :octocat:
+:beginner: Seule is A complete fast :bicyclist:, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers.
 
 
-# Getting Started
+# :o: Getting Started
 
 ##### You can create an index.html file and include Seule with:
 
@@ -24,7 +24,7 @@ let app = new Seule('#app');
 app.HtmlMethod()
 ```
 
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 Click on the "Try it Yourself" button to see how it works.
 
