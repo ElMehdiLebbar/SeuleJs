@@ -28,6 +28,64 @@ app.HtmlMethod()
 
 Click on the "Try it Yourself" button to see how it works.
 
+
+# Seule HtmlMethods
+
+### to use html Methodes you have to call HtmlMethod() :
+
+#### Syntax:
+
+```html
+<element @method="event{'property' : 'value'}"></element>
+```
+
+for exemple if you wont to add some text to heading in your project:
+
+```html
+<h1 @text="hello Seule"></h1>
+```
+
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
+
+## List of html Methodes
+
+>Style Methodes
+
+* **@style**  set the style properties of an existing element
+* * Syntax: <element @style="event{'cssproperty' : 'value'}"></element>
+
+>
+
+
+
+
+
+## Creat your own HtmlMethods
+
+### emit()
+
+Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
+
+we can creat a Seule attribute by calling the emit() 
+
+### Example
+
+```html
+<div id="main">
+    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
+    <p>Hello M.<span id="response">waiting...</span></p>
+</div>
+```
+```javascript
+let app = new Seule('#main')
+app.Emit('method',(obj, el) =>
+      app
+         .Find('#response')
+         .Text(obj.name));
+```
+[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+
 # Seule Selectors
 
 ### Example
@@ -81,31 +139,6 @@ example.On('click', function(){
 ```
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-
-## Creat a Seule attribute
-
-### emit()
-
-Now with seule you can manipulate the dom by calling Seule attributes directly on your html pages.
-
-we can creat a Seule attribute by calling the emit() 
-
-### Example
-
-```html
-<div id="main">
-    <button @method="click{'name' : 'Mehdi'}">Say Hello To Mehdi</button>
-    <p>Hello M.<span id="response">waiting...</span></p>
-</div>
-```
-```javascript
-let app = new Seule('#main')
-app.Emit('method',(obj, el) =>
-      app
-         .Find('#response')
-         .Text(obj.name));
-```
-[![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
 
 # Super Object --> Seule
 
