@@ -117,4 +117,21 @@ Add a red color to an < h1 > element:
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
 
+:star: **@css:**  The css HTML method sets one or more style properties for the selected elements.
+
+#### Syntax: 
+
+```javascript
+<element @css="event{'cssproperty' : 'value', 'cssproperty2', 'value'...}"></element>
+```
+#### Example: 
+The following example will set a background-color and color for ALL matched elements
+
+```javascript
+<button @find="body" @css="click{'color' : '#222', 'background-color': 'white'}"></button>
+```
+
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+
+
 
