@@ -28,7 +28,7 @@ app.HtmlMethod()
 Click on the "Try it Yourself":arrow_heading_up: button to see how it works.
 
 
-# :one: Seule HtmlMethods
+# :one: Html Methods
 
 to use HTML Methodes you have to call **HtmlMethod()** :
 
