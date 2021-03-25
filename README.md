@@ -25,7 +25,7 @@ app.HtmlMethod()
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-Click on the "Try it Yourself":arrow_heading_up: button to see how it works.
+Click on the "Try it Yourself" :arrow_heading_up: button to see how it works.
 
 
 # :one: Html Methods
@@ -45,28 +45,6 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 ```
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
-
-## :leftwards_arrow_with_hook: List of html Methodes
-
-> Style Methodes
-
-:star: **@style:**  set the style properties of an existing element
-
-#### Syntax: 
-
-```javascript
-<element @style="event{'cssproperty' : 'value'}"></element>
-```
-#### Example: 
-Add a red color to an < h1 > element:
-
-```javascript
-<button @find="h1" @style="click{'color' : 'red'}"></button>
-```
-
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
-
-
 
 ## :leftwards_arrow_with_hook: Seule Selectors
 
@@ -118,6 +96,25 @@ To assign a click event to hide Html method, you can do this:
 ```
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
 
+## :leftwards_arrow_with_hook: List of html Methodes
+
+> Style Methodes
+
+:star: **@style:**  set the style properties of an existing element
+
+#### Syntax: 
+
+```javascript
+<element @style="event{'cssproperty' : 'value'}"></element>
+```
+#### Example: 
+Add a red color to an < h1 > element:
+
+```javascript
+<button @find="h1" @style="click{'color' : 'red'}"></button>
+```
+
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
 
 
