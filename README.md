@@ -57,6 +57,14 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 ```javascript
 <element @style="event{'cssproperty' : 'value'}"></element>
 ```
+> #### Example: 
+Add a red color to an <h1> element:
+
+```javascript
+<button @find="h1" @style="click{'color' : 'red'}"></button>
+```
+
+> ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
 
 ## :leftwards_arrow_with_hook: Seule Selectors
