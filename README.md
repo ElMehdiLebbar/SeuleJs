@@ -111,7 +111,7 @@ To assign a click event to hide Html method, you can do this:
 Add a red color to an < h1 > element:
 
 ```javascript
-<button @find="h1" @style="click{'color' : 'red'}"></button>
+<button @find="h1" @style="click{'color' : 'red'}">Try it</button>
 ```
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
@@ -128,10 +128,10 @@ Add a red color to an < h1 > element:
 The following example will set a background-color and color for ALL matched elements
 
 ```javascript
-<button @find="body" @css="click{'color' : '#222', 'background-color': 'white'}"></button>
+<button @find="p" @css="click{'color' : '#222', 'background-color': 'white'}">Click me</button>
 ```
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
 
 
 
