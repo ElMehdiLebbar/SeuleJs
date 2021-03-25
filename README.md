@@ -7,7 +7,7 @@ Seule is A complete fast, small, and feature-rich JavaScript Framework. It makes
 ##### You can create an index.html file and include Seule with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.pro.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
 
 ##### At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
