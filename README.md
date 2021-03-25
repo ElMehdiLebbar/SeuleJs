@@ -134,4 +134,20 @@ The following example will set a background-color and color for ALL matched elem
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
 
 
+:star: **@classes:**  The classes HTML Property has three Methods.
+1. Add    || Adds class name to an element.
+1. Remove || Removes class name from an element.
+1. Toggle || Toggles between a class name for an element.
+
+
+#### Syntax: 
+
+```javascript
+<element @classes="event{'method': 'className'}"></element>
+```
+#### Example: 
+See the Example by clicking on the button below 
+
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
+
 
