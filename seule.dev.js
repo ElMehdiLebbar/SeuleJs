@@ -125,179 +125,26 @@ class Seule {
   }
 
   Hold(handler) {
-    let timer = null,
-      isTouch =
-        "ontouchstart" in window ||
-        navigator.MaxTouchPoints > 0 ||
-        navigator.msMaxTouchPoints > 0,
-      mouseDown = isTouch ? "touchstart" : "mousedown",
-      mouseUp = isTouch ? "touchend" : "mouseup",
-      mouseMove = isTouch ? "touchmove" : "mousemove",
-      startX = 0,
-      startY = 0,
-      maxDiffX = 10,
-      maxDiffY = 10;
-
-    if (typeof window.CustomEvent !== "function") {
-      window.CustomEvent = function (event, params) {
-        params = params || {
-          bubbles: false,
-          cancelable: false,
-          detail: undefined
-        };
-        let evt = document.createEvent("CustomEvent");
-        evt.initCustomEvent(
-          event,
-          params.bubbles,
-          params.cancelable,
-          params.detail
-        );
-        return evt;
-      };
-
-      window.CustomEvent.prototype = window.Event.prototype;
-    }
-
-    window.requestAnimFrame = (function () {
-      return (
-        window.requestAnimationFrame ||
-        window.webkitRequestAnimationFrame ||
-        window.mozRequestAnimationFrame ||
-        window.oRequestAnimationFrame ||
-        window.msRequestAnimationFrame ||
-        function (callback) {
-          window.setTimeout(callback, 1000 / 60);
-        }
-      );
-    })();
-
-    function requestTimeout(fn, delay) {
-      if (
-        !window.requestAnimationFrame &&
-        !window.webkitRequestAnimationFrame &&
-        !(
-          window.mozRequestAnimationFrame &&
-          window.mozCancelRequestAnimationFrame
-        ) && // Firefox 5 ships without cancel support
-        !window.oRequestAnimationFrame &&
-        !window.msRequestAnimationFrame
-      )
-        return window.setTimeout(fn, delay);
-
-      let start = new Date().getTime(),
-        handle = {},
-        loop = function () {
-          let current = new Date().getTime(),
-            delta = current - start;
-
-          if (delta >= delay) {
-            fn.call();
-          } else {
-            handle.value = requestAnimFrame(loop);
+    return this.Each(function () {
+      let mouseIsDown = false,
+        isTouch =
+          "ontouchstart" in window ||
+          navigator.MaxTouchPoints > 0 ||
+          navigator.msMaxTouchPoints > 0,
+        mouseDown = isTouch ? "touchstart" : "mousedown",
+        mouseUp = isTouch ? "touchend" : "mouseup";
+      this.addEventListener(mouseDown, function (e) {
+        mouseIsDown = true;
+        setTimeout(function () {
+          if (mouseIsDown) {
+            handler(new Seule(e));
           }
-        };
-
-      handle.value = requestAnimFrame(loop);
-      return handle;
-    }
-
-    function clearRequestTimeout(handle) {
-      if (handle) {
-        window.cancelAnimationFrame
-          ? window.cancelAnimationFrame(handle.value)
-          : window.webkitCancelAnimationFrame
-          ? window.webkitCancelAnimationFrame(handle.value)
-          : window.webkitCancelRequestAnimationFrame
-          ? window.webkitCancelRequestAnimationFrame(handle.value)
-          : /* Support for legacy API */
-          window.mozCancelRequestAnimationFrame
-          ? window.mozCancelRequestAnimationFrame(handle.value)
-          : window.oCancelRequestAnimationFrame
-          ? window.oCancelRequestAnimationFrame(handle.value)
-          : window.msCancelRequestAnimationFrame
-          ? window.msCancelRequestAnimationFrame(handle.value)
-          : clearTimeout(handle);
-      }
-    }
-
-    function fireLongPressEvent(originalEvent) {
-      clearLongPressTimer();
-      let clientX = isTouch
-          ? originalEvent.touches[0].clientX
-          : originalEvent.clientX,
-        clientY = isTouch
-          ? originalEvent.touches[0].clientY
-          : originalEvent.clientY,
-        suppressClickEvent = this.dispatchEvent(
-          new CustomEvent("long-press", {
-            bubbles: true,
-            cancelable: true,
-            detail: {
-              clientX: clientX,
-              clientY: clientY
-            }
-          })
-        );
-
-      if (suppressClickEvent) {
-        // temporarily intercept and clear the next click
-        document.addEventListener(
-          mouseUp,
-          function clearMouseUp(e) {
-            document.removeEventListener(mouseUp, clearMouseUp, true);
-            cancelEvent(e);
-          },
-          true
-        );
-      }
-    }
-
-    function startLongPressTimer(e) {
-      clearLongPressTimer(e);
-      let el = e.target,
-        longPressDelayInMs = parseInt(
-          el.getAttribute("data-long-press-delay") || "1500",
-          10
-        );
-      timer = requestTimeout(
-        fireLongPressEvent.bind(el, e),
-        longPressDelayInMs
-      );
-    }
-
-    function clearLongPressTimer(e) {
-      clearRequestTimeout(timer);
-      timer = null;
-    }
-
-    function cancelEvent(e) {
-      e.stopImmediatePropagation();
-      e.preventDefault();
-      e.stopPropagation();
-    }
-
-    function mouseDownHandler(e) {
-      startX = e.clientX;
-      startY = e.clientY;
-      startLongPressTimer(e);
-    }
-
-    function mouseMoveHandler(e) {
-      let diffX = Math.abs(startX - e.clientX),
-        diffY = Math.abs(startY - e.clientY);
-
-      if (diffX >= maxDiffX || diffY >= maxDiffY) {
-        clearLongPressTimer(e);
-      }
-    }
-
-    document.addEventListener(mouseUp, clearLongPressTimer, true);
-    document.addEventListener(mouseMove, mouseMoveHandler, true);
-    document.addEventListener("wheel", clearLongPressTimer, true);
-    document.addEventListener("scroll", clearLongPressTimer, true);
-    document.addEventListener(mouseDown, mouseDownHandler, true);
-    this.On("long-press", (el) => handler(el));
-    return this;
+        }, time || 1000);
+      });
+      this.addEventListener(mouseUp, function () {
+        mouseIsDown = false;
+      });
+    });
   }
 
   Swipe(on, handler) {
