@@ -119,7 +119,7 @@ class Seule {
     return this;
   }
 
-  Hold(handler) {
+  Hold(handler, time) {
     return this.Each(function() {
       
     let mouseIsDown = false,
