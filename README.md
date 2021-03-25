@@ -20,7 +20,8 @@ Seule is A complete fast, small, and feature-rich JavaScript Framework. It makes
 ```
 
 ```javascript
-let example = new Seule('.example');
+let app = new Seule('#app');
+app.HtmlMethod()
 ```
 
 [![alt text](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/img/t.png)](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
