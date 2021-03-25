@@ -103,25 +103,20 @@ class Seule {
   }
 
   Click(handler) {
-    return this.On("click", (el) => handler(el));
+     this.On("click", (el) => handler(el));
+     return this
   }
 
   Focus(handler) {
-    if (handler) {
-      return this.On("focus", (el) => handler(el));
-    }
-
-    this.tags.focus();
-    return this.tags;
+    if (handler) this.On("focus", (el) => handler(el));
+    else this.tags.focus();
+    return this;
   }
 
   Blur(handler) {
-    if (handler) {
-      return this.On("blur", (el) => handler(el));
-    }
-
-    this.tags.blur();
-    return this.tags;
+    if (handler) this.On("blur", (el) => handler(el));
+    else this.tags.blur();
+    return this;
   }
 
   Hold(handler) {
@@ -266,7 +261,7 @@ this.addEventListener(mouseUp, function() {
 
   Copy(target, options) {
     let tar = this.parrent.querySelector(target);
-    return this.On(options.on, function () {
+    this.On(options.on, function () {
       let eventFired = new MouseEvent(options.event, {
         view: window,
         bubbles: true,
@@ -274,11 +269,12 @@ this.addEventListener(mouseUp, function() {
       });
       tar.dispatchEvent(eventFired);
     });
+    return this 
   }
 
   Toggle(event, options) {
     let check = true;
-    return this.On(event, function (el) {
+    this.On(event, function (el) {
       if (check === true) {
         options.handler(el);
         check = false;
@@ -288,6 +284,7 @@ this.addEventListener(mouseUp, function() {
       options.callback(el);
       check = true;
     });
+    return this 
   }
 
   Scroll(content) {
@@ -299,7 +296,7 @@ this.addEventListener(mouseUp, function() {
       window.scrollTo({
         top: this.tags.offsetTop
       });
-    return this.tags;
+    return this;
   }
 
   ScrollPosition(axe) {
