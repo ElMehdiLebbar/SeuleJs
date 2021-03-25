@@ -310,10 +310,9 @@ class Seule {
   }
 
   Classes(action, className) {
-    if (action === "add") this.AddClass(className);
-    if (action === "remove") this.RemoveClass(className);
-    if (action === "toggle") this.ToggleClass(className);
-    return this;
+    return this.Each(function() {
+      this.classList[action](className);
+    });
   }
 
   ClassList() {
