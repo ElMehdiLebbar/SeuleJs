@@ -35,7 +35,7 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 #### Syntax:
 
 ```html
-<element @method="event{'property' : 'value'}"></element>
+<element @method="event($'property' : 'value'$)"></element>
 ```
 
 :small_blue_diamond: for exemple if you wont to add some text to heading in your project:
@@ -84,7 +84,7 @@ All HTML METHODS can have an event
 ### Syntax
 
 ```javascript
-<element @method(event{})>
+<element @method(event($$))>
 ```
 
 ### Example
@@ -92,7 +92,7 @@ All HTML METHODS can have an event
 To assign a click event to hide Html method, you can do this:
 
 ```javascript
-<button @hide="click{}">Hide-Me</button>
+<button @hide="click($$)">Hide-Me</button>
 ```
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
 
@@ -105,13 +105,13 @@ To assign a click event to hide Html method, you can do this:
 #### Syntax: 
 
 ```javascript
-<element @style="event{'cssproperty' : 'value'}"></element>
+<element @style="event($'cssproperty' : 'value'$)"></element>
 ```
 #### Example: 
 Add a red color to an < h1 > element:
 
 ```javascript
-<button @find="h1" @style="click{'color' : 'red'}">Try it</button>
+<button @find="h1" @style="click($'color' : 'red'$)">Try it</button>
 ```
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
@@ -122,13 +122,13 @@ Add a red color to an < h1 > element:
 #### Syntax: 
 
 ```javascript
-<element @css="event{'cssproperty' : 'value', 'cssproperty2', 'value'...}"></element>
+<element @css="event($'cssproperty' : 'value', 'cssproperty2', 'value'...$)"></element>
 ```
 #### Example: 
 The following example will set a background-color and color for ALL matched elements
 
 ```javascript
-<button @find="p" @css="click{'color' : '#222', 'background-color': 'white'}">Click me</button>
+<button @find="p" @css="click($'color' : '#222', 'background-color': 'white'$)">Click me</button>
 ```
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
@@ -143,7 +143,7 @@ The following example will set a background-color and color for ALL matched elem
 #### Syntax: 
 
 ```javascript
-<element @classes="event{'method': 'className'}"></element>
+<element @classes="event($'method': 'className'$)"></element>
 ```
 #### Example: 
 See the Example by clicking on the button below 
