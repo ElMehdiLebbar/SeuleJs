@@ -148,6 +148,6 @@ The following example will set a background-color and color for ALL matched elem
 #### Example: 
 See the Example by clicking on the button below 
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
 
 
