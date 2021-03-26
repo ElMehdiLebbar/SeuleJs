@@ -100,7 +100,7 @@ To assign a click event to hide Html method, you can do this:
 
 > Style Methodes
 
-:star: **@style:**  set the style properties of an existing element
+⭐ **@style:**  set the style properties of an existing element
 
 #### Syntax: 
 
@@ -117,7 +117,7 @@ Add a red color to an < h1 > element:
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
 
-:star: **@css:**  The css HTML method sets one or more style properties for the selected elements.
+⭐ **@css:**  The css HTML method sets one or more style properties for the selected elements.
 
 #### Syntax: 
 
@@ -134,7 +134,7 @@ The following example will set a background-color and color for ALL matched elem
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
 
 
-:star: **@classes:**  The classes HTML Property has three Methods.
+⭐ **@classes:**  The classes HTML Property has three Methods.
 1. Add    || Adds class name to an element.
 1. Remove || Removes class name from an element.
 1. Toggle || Toggles between a class name for an element.
