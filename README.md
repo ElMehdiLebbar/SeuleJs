@@ -7,7 +7,7 @@
 You can create an index.html file and include Seule with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.dist.js"></script>
 ```
 
 🔹 At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
@@ -163,6 +163,53 @@ Add a red color to an < h1 > element:
 🔹 See the Example by clicking on the button below 👇
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
+
+⭐ **@visible:**  The visible HtmlProperty sets whether an element should be visible.
+
+
+#### 〽️ Syntax: 
+
+```html
+<element @visible></element>
+```
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPamgO)
+
+
+
+⭐ **@show & @hide:**  With Seule HTML METHODS, you can hide and show HTML elements with the @hide and @show methods:
+
+* Show HtmlMethod shows the hidden, selected elements.
+* Hide HtmlMethod hides the selected elements.
+
+
+#### 〽️ Syntax: 
+
+```html
+<element @show></element>
+<element @hide></element>
+```
+
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/XWpdMbW)
+
+
+⭐ **@opacity:**  The opacity HtmlProperty sets the opacity level of an element.
+
+#### 〽️ Syntax: 
+
+```html
+<element @opacity="event($value$)"></element>
+```
+
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/NWdNpje)
 
 
 
