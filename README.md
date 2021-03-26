@@ -1,8 +1,8 @@
-# :trident: Introduction :octocat:
-:beginner: Seule is A complete fast :bicyclist:, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers :globe_with_meridians:.
+# 🔱 Introduction :octocat:
+🔰 Seule is A complete fast 🚴‍♂, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers 🧙‍♂.
 
 
-# :o: Getting Started
+# 👑 Getting Started
 
 You can create an index.html file and include Seule with:
 
@@ -25,7 +25,7 @@ app.HtmlMethod()
 
 ### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-Click on the "Try it Yourself" :arrow_heading_up: button to see how it works.
+Click on the "Try it Yourself" 👆 button to see how it works.
 
 
 # :one: Html Methods
