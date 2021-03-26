@@ -89,7 +89,7 @@ All HTML METHODS can have an event
 
 ### Example
 
-To assign a click event to hide Html method, you can do this:
+🔹 To assign a click event to hide Html method, you can do this:
 
 ```javascript
 <button @hide="click($$)">Hide-Me</button>
@@ -125,7 +125,7 @@ Add a red color to an < h1 > element:
 <element @css="event($'cssproperty' : 'value', 'cssproperty2', 'value'...$)"></element>
 ```
 #### Example: 
-The following example will set a background-color and color for ALL matched elements
+🔹 The following example will set a background-color and color for ALL matched elements
 
 ```javascript
 <button @find="p" @css="click($'color' : '#222', 'background-color': 'white'$)">Click me</button>
@@ -146,7 +146,7 @@ The following example will set a background-color and color for ALL matched elem
 <element @classes="event($'method': 'className'$)"></element>
 ```
 #### Example: 
-See the Example by clicking on the button below 👇
+🔹 See the Example by clicking on the button below 👇
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
 
@@ -160,7 +160,7 @@ See the Example by clicking on the button below 👇
 <element @anime="event($'cssProperty': 'value', 'cssProperty': 'value',...some others features$)"></element>
 ```
 #### Example: 
-See the Example by clicking on the button below 👇
+🔹 See the Example by clicking on the button below 👇
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
 
