@@ -10,7 +10,7 @@ You can create an index.html file and include Seule with:
 <script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.min.js"></script>
 ```
 
-At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
+🔹 At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
 
 ```html
 <div id='app'>
@@ -23,12 +23,12 @@ let app = new Seule('#app');
 app.HtmlMethod()
 ```
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
 Click on the "Try it Yourself" 👆 button to see how it works.
 
 
-# :one: Html Methods
+# 1️⃣ Html Methods
 
 to use HTML Methodes you have to call **HtmlMethod()** :
 
@@ -38,24 +38,24 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 <element @method="event($'property' : 'value'$)"></element>
 ```
 
-:small_blue_diamond: for exemple if you wont to add some text to heading in your project:
+🔹 for exemple if you wont to add some text to heading in your project:
 
 ```html
 <h1 @text="hello Seule"></h1>
 ```
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
 
-## :leftwards_arrow_with_hook: Seule Selectors
+## ↩️ Seule Selectors
 
 ### Example
 
-Get all elements in the document with class="example":
+🔹 Get all elements in the document with class="example":
 
 ```javascript
 <button @find=".example">Hide All</button>
 ```
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
 More "Try it Yourself" examples below.
 
@@ -76,7 +76,7 @@ Type --> String
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://www.w3schools.com/cssref/css_selectors.asp)
 
 
-## :leftwards_arrow_with_hook: Seule Event Methods
+## ↩️ Seule Event Methods
 
 Seule is tailor-made to respond to events in an HTML page.
 All HTML METHODS can have an event
@@ -94,9 +94,9 @@ To assign a click event to hide Html method, you can do this:
 ```javascript
 <button @hide="click($$)">Hide-Me</button>
 ```
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
 
-## :leftwards_arrow_with_hook: List of html Methodes
+## ↩️ List of html Methodes
 
 > Style Methodes
 
@@ -114,7 +114,7 @@ Add a red color to an < h1 > element:
 <button @find="h1" @style="click($'color' : 'red'$)">Try it</button>
 ```
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
 
 ⭐ **@css:**  The css HTML method sets one or more style properties for the selected elements.
@@ -131,7 +131,7 @@ The following example will set a background-color and color for ALL matched elem
 <button @find="p" @css="click($'color' : '#222', 'background-color': 'white'$)">Click me</button>
 ```
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
 
 
 ⭐ **@classes:**  The classes HTML Property has three Methods.
@@ -148,6 +148,21 @@ The following example will set a background-color and color for ALL matched elem
 #### Example: 
 See the Example by clicking on the button below 
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
+
+
+⭐ **@anime:**  Anime HtmlProperty make it possible to animate transitions from one CSS style configuration to another.
+
+
+#### Syntax: 
+
+```javascript
+<element @anime="event($'cssProperty': 'value', 'cssProperty': 'value',...some others features$)"></element>
+```
+#### Example: 
+See the Example by clicking on the button below 
+
+### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
+
 
 
