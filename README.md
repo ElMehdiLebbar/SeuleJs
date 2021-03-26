@@ -212,4 +212,21 @@ Add a red color to an < h1 > element:
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/NWdNpje)
 
 
+⭐ **@width & @height:**  With Seule HTML METHODS, you can change the HTML elements width and height:
+
+* Width HtmlMethod sets the width of the selected elements.
+* Height HtmlMethod sets the height of the selected elements.
+
+
+#### 〽️ Syntax: 
+
+```html
+<element @width="CssValue"></element>
+<element @height="CssValue"></element>
+```
+
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
 
