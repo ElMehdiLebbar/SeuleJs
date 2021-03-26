@@ -32,7 +32,7 @@ Click on the "Try it Yourself" 👆 button to see how it works.
 
 to use HTML Methodes you have to call **HtmlMethod()** :
 
-#### Syntax:
+#### ✨ Syntax:
 
 ```html
 <element @method="event($'property' : 'value'$)"></element>
@@ -63,7 +63,7 @@ More "Try it Yourself" examples below.
 
 Seule Selectors method returns all elements in the document that matches a specified CSS selector(s), as a static Seule object.
 
-### Syntax
+### ✨ Syntax
 
 ```javascript
 <element @find(CSS selectors)>
@@ -81,7 +81,7 @@ Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Referenc
 Seule is tailor-made to respond to events in an HTML page.
 All HTML METHODS can have an event
 
-### Syntax
+### ✨ Syntax
 
 ```javascript
 <element @method(event($$))>
@@ -102,7 +102,7 @@ To assign a click event to hide Html method, you can do this:
 
 ⭐ **@style:**  set the style properties of an existing element
 
-#### Syntax: 
+#### ✨ Syntax: 
 
 ```javascript
 <element @style="event($'cssproperty' : 'value'$)"></element>
@@ -119,7 +119,7 @@ Add a red color to an < h1 > element:
 
 ⭐ **@css:**  The css HTML method sets one or more style properties for the selected elements.
 
-#### Syntax: 
+#### ✨ Syntax: 
 
 ```javascript
 <element @css="event($'cssproperty' : 'value', 'cssproperty2', 'value'...$)"></element>
@@ -140,13 +140,13 @@ The following example will set a background-color and color for ALL matched elem
 1. Toggle || Toggles between a class name for an element.
 
 
-#### Syntax: 
+#### ✨ Syntax: 
 
 ```javascript
 <element @classes="event($'method': 'className'$)"></element>
 ```
 #### Example: 
-See the Example by clicking on the button below 
+See the Example by clicking on the button below 👇
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
 
@@ -154,15 +154,15 @@ See the Example by clicking on the button below
 ⭐ **@anime:**  Anime HtmlProperty make it possible to animate transitions from one CSS style configuration to another.
 
 
-#### Syntax: 
+#### ✨ Syntax: 
 
 ```javascript
 <element @anime="event($'cssProperty': 'value', 'cssProperty': 'value',...some others features$)"></element>
 ```
 #### Example: 
-See the Example by clicking on the button below 
+See the Example by clicking on the button below 👇
 
-### [:arrow_forward: Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
 
 
 
