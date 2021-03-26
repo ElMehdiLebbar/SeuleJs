@@ -389,8 +389,6 @@ class Seule {
         max = {},
         ancient = {},
         origin = {};
-      let old = "",
-        nw = options.text;
 
       for (const element of keys) {
         let forbidden = "duration property direction loop time delay text";
@@ -424,8 +422,12 @@ class Seule {
         .replace(/;/g, ", ");
       newCss["transition-timing-function"] = options.type || "ease";
       if (options.property) newCss["transition-property"] = options.property;
-      if (options.duration) newCss["transition-duration"] = options.duration;
-      if (options.delay) newCss["transition-delay"] = options.delay;
+
+      if (!options.loop && !options.direction) {
+        if (options.duration) newCss["transition-duration"] = options.duration;
+        if (options.delay) newCss["transition-delay"] = options.delay;
+      }
+
       ancient.transition = newCss.transition;
       ancient["transition-timing-function"] =
         newCss["transition-timing-function"];
@@ -439,25 +441,14 @@ class Seule {
       let array = Object.values(max);
       max = Math.max(...array) * 1000;
       return this.Each(function () {
-        old = this.innerText;
-
-        if (options.text) {
-          let del = 0,
-            value = "";
-          if (options.text.delay)
-            del = parseFloat(options.text.delay.replace(/s/g, "")) * 1000;
-          if (options.text.value) value = nw = options.text.value;
-          else value = options.text;
-          setTimeout(function () {
-            this.innerText = value;
-          }, del);
-        }
-
         let element = this,
           times = 1,
           boucle,
-          delay = options.timeOut || 100,
-          interval = parseInt(max + delay) * 2 + 100;
+          delay = 100;
+        if (options.loop || options.direction)
+          if (options.delay)
+            delay = parseFloat(options.delay.replace(/s/g, "")) * 1000;
+        let interval = parseInt(max + delay) * 2 + 100;
 
         if (options.direction || options.loop) {
           action(max + delay);
@@ -468,15 +459,12 @@ class Seule {
           if (options.direction) clearInterval(boucle);
         } else {
           element.setAttribute("style", Seule.objectToStyle(newCss));
-          if (options.text) element.innerText = nw;
         }
 
         function action(delay, time) {
           element.setAttribute("style", Seule.objectToStyle(newCss));
-          if (options.text) element.innerText = nw;
           setTimeout(() => {
             element.setAttribute("style", Seule.objectToStyle(ancient));
-            if (options.text) element.innerText = old;
           }, parseInt(delay));
 
           if (time) {
@@ -1364,9 +1352,9 @@ class Seule {
               .replace("@", "")
               .replace(/\w/, (c) => c.toUpperCase());
 
-          if (val.includes("{")) {
-            val = val.split("{");
-            obj = "{" + val[1].slice(0, -1) + "}";
+          if (val.includes("($")) {
+            val = val.split("($");
+            obj = "{" + val[1].slice(0, -2) + "}";
             obj = obj.replace(/[~']/g, '"').replace(/[~`]/g, '"');
             if (allowd.includes(capitalStr.toLowerCase()))
               obj = val[1].slice(0, -1);
