@@ -250,7 +250,7 @@ Seule contains powerful methods for changing and manipulating HTML elements and 
 #### Example: 
 🔹 See the Example by clicking on the button below 👇
 
-### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/XWpdMbW)
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/BapzjNJ)
 
 
 
