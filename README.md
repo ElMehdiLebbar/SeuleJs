@@ -234,17 +234,17 @@ Add a red color to an < h1 > element:
 
 Seule contains powerful methods for changing and manipulating HTML elements and attributes.
 
-⭐ **@text & @value:**  Two simple Html methods, but useful:
+⭐ **@text & @val:**  Two simple Html methods, but useful:
 
 * Text HtmlMethod Sets the text content of selected elements.
-* Value HtmlMethod Sets or returns the value of form fields
+* Val HtmlMethod Sets the value of form fields
 
 
 #### 〽️ Syntax: 
 
 ```html
 <element @text="content"></element>
-<input @value="content"/>
+<input @val="value"/>
 ```
 
 #### Example: 
