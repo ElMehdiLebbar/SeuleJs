@@ -1,6 +1,7 @@
 # 🔱 Introduction :octocat:
 🔰 Seule is A complete fast 🚴‍♂, small, and feature-rich JavaScript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers 🧙‍♂.
 
+<br>
 
 # 👑 Getting Started
 
@@ -27,6 +28,7 @@ app.HtmlMethod()
 
 Click on the "Try it Yourself" 👆 button to see how it works.
 
+<br>
 
 # 1️⃣ Html Methods
 
@@ -45,6 +47,8 @@ to use HTML Methodes you have to call **HtmlMethod()** :
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
+
+<br>
 
 ## ↩️ Seule Selectors
 
@@ -75,6 +79,7 @@ Type --> String
 
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://www.w3schools.com/cssref/css_selectors.asp)
 
+<br>
 
 ## ↩️ Seule Event Methods
 
@@ -96,6 +101,8 @@ All HTML METHODS can have an event
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
 
+<br>
+
 ## ↩️ List of html Methodes
 
 > Style Methodes
@@ -116,6 +123,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
+<br>
 
 ⭐ **@css:**  The css HTML method sets one or more style properties for the selected elements.
 
@@ -133,6 +141,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
 
+<br>
 
 ⭐ **@classes:**  The classes HTML Property has three Methods.
 1. Add    || Adds class name to an element.
@@ -150,6 +159,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdNbOK)
 
+<br>
 
 ⭐ **@anime:**  Anime HtmlProperty make it possible to animate transitions from one CSS style configuration to another.
 
@@ -164,6 +174,8 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/vYgGXaR)
 
+<br>
+
 ⭐ **@visible:**  The visible HtmlProperty sets whether an element should be visible.
 
 
@@ -177,7 +189,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPamgO)
 
-
+<br>
 
 ⭐ **@show & @hide:**  With Seule HTML METHODS, you can hide and show HTML elements with the @hide and @show methods:
 
@@ -197,6 +209,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/XWpdMbW)
 
+<br>
 
 ⭐ **@opacity:**  The opacity HtmlProperty sets the opacity level of an element.
 
@@ -211,6 +224,7 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/NWdNpje)
 
+<br>
 
 ⭐ **@width & @height:**  With Seule HTML METHODS, you can change the HTML elements width and height:
 
@@ -230,9 +244,13 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
 
+<br>
+
 > Set Content and Attributes
 
 Seule contains powerful methods for changing and manipulating HTML elements and attributes.
+
+<br>
 
 ⭐ **@text & @val:**  Two simple Html methods, but useful:
 
