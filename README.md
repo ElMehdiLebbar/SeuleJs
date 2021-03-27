@@ -230,3 +230,27 @@ Add a red color to an < h1 > element:
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
 
+> Set Content and Attributes
+
+Seule contains powerful methods for changing and manipulating HTML elements and attributes.
+
+⭐ **@text & @value:**  Two simple Html methods, but useful:
+
+* Text HtmlMethod Sets the text content of selected elements.
+* Value HtmlMethod Sets or returns the value of form fields
+
+
+#### 〽️ Syntax: 
+
+```html
+<element @text="content"></element>
+<input @value="content"/>
+```
+
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/XWpdMbW)
+
+
+
