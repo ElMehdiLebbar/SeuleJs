@@ -250,7 +250,7 @@ class Seule {
           bubbles: true,
           cancelable: true
         });
-        tar.dispatchEvent(eventFired);
+        for(let t of tar) t.dispatchEvent(eventFired);
       });
     }
 
