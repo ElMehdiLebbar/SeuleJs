@@ -109,7 +109,9 @@ All HTML METHODS can have an event
 
 > Style Methodes
 
-### ⭐ **@style:**  set the style properties of an existing element
+### ⭐ **@style:** 
+
+set the style properties of an existing element
 
 #### 〽️ Syntax: 
 
@@ -127,7 +129,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-### ⭐ **@css:**  The css HTML method sets one or more style properties for the selected elements.
+### ⭐ **@css:**  
+
+The css HTML method sets one or more style properties for the selected elements.
 
 #### 〽️ Syntax: 
 
@@ -145,7 +149,10 @@ Add a red color to an < h1 > element:
 
 <br>
 
-### ⭐ **@classes:**  The classes HTML Property has three Methods.
+### ⭐ **@classes:**  
+
+The classes HTML Property has three Methods.
+
 1. Add    || Adds class name to an element.
 1. Remove || Removes class name from an element.
 1. Toggle || Toggles between a class name for an element.
@@ -163,7 +170,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-### ⭐ **@anime:**  Anime HtmlProperty make it possible to animate transitions from one CSS style configuration to another.
+### ⭐ **@anime:**  
+
+Anime HtmlProperty make it possible to animate transitions from one CSS style configuration to another.
 
 
 #### 〽️ Syntax: 
@@ -178,7 +187,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-### ⭐ **@visible:**  The visible HtmlProperty sets whether an element should be visible.
+### ⭐ **@visible:**  
+
+The visible HtmlProperty sets whether an element should be visible.
 
 
 #### 〽️ Syntax: 
@@ -193,7 +204,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-#### ⭐ **@show & @hide:**  With Seule HTML METHODS, you can hide and show HTML elements with the @hide and @show methods:
+#### ⭐ **@show & @hide:**  
+
+With Seule HTML METHODS, you can hide and show HTML elements with the @hide and @show methods:
 
 * Show HtmlMethod shows the hidden, selected elements.
 * Hide HtmlMethod hides the selected elements.
@@ -213,7 +226,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-⭐ **@opacity:**  The opacity HtmlProperty sets the opacity level of an element.
+⭐ **@opacity:**  
+
+The opacity HtmlProperty sets the opacity level of an element.
 
 #### 〽️ Syntax: 
 
@@ -228,7 +243,9 @@ Add a red color to an < h1 > element:
 
 <br>
 
-### ⭐ **@width & @height:**  With Seule HTML METHODS, you can change the HTML elements width and height:
+### ⭐ **@width & @height:**  
+
+With Seule HTML METHODS, you can change the HTML elements width and height:
 
 * Width HtmlMethod sets the width of the selected elements.
 * Height HtmlMethod sets the height of the selected elements.
@@ -254,7 +271,9 @@ Seule contains powerful methods for changing and manipulating HTML elements and 
 
 <br>
 
-### ⭐ **@text & @val:**  Two simple Html methods, but useful:
+### ⭐ **@text & @val:**  
+
+Two simple Html methods, but useful:
 
 * Text HtmlMethod Sets the text content of selected elements.
 * Val HtmlMethod Sets the value of form fields
