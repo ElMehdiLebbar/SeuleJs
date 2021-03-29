@@ -309,5 +309,23 @@ Src HtmlMethod used to set/change attribute values
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPjmVq)
 
+<br>
+
+### ⭐ **@copy:**  
+
+With Copy HtmlMethod, Can Copy Events From Other Html Elements
+
+
+#### 〽️ Syntax: 
+
+```html
+<element @copy="($'CssSelector':'event : event2 : ...'">
+```
+
+#### Example: 
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/full/bGgegrq)
+
 
 
