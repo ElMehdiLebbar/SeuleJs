@@ -34,7 +34,7 @@ Click on the "Try it Yourself" 👆 button to see how it works.
 
 # 1️⃣ Html Methods
 
-to use HTML Methodes you have to call **HtmlMethod()** :
+to use HTML Methods you have to call **HtmlMethod()** :
 
 #### 〽️ Syntax:
 
@@ -105,9 +105,9 @@ All HTML METHODS can have an event
 
 <br>
 
-## ↩️ List of html Methodes
+## ↩️ List of html Methods
 
-> Style Methodes
+> Style Methods
 
 ### ⭐ **@style:** 
 
