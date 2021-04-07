@@ -692,15 +692,12 @@ class Seule {
 
     if (options.file) {
       if (typeof options.file === "object") {
-        Seule.LOOP({
-          data: options.file,
-          handler: function (item) {
-            let file;
-            if (typeof item === "object") file = item;
-            else file = parent.querySelector(item);
-            formData.append(file.name, file.files[0]);
-          }
-        });
+        for (const item of options.file) {
+          let file;
+          if (typeof item === "object") file = item;
+          else file = parent.querySelector(item);
+          formData.append(file.name, file.files[0]);
+        }
       } else {
         options.file = parent.querySelector(options.file);
         formData.append(options.file.name, options.file.files[0]);
@@ -1025,7 +1022,7 @@ class Seule {
         }
       };
 
-    (result.alter = (action, column, obj) => {
+    result.alter = (action, column, obj) => {
       obj = obj || data;
       obj.map(function (o) {
         let c = o;
@@ -1043,61 +1040,64 @@ class Seule {
         return c;
       });
       return result;
-    }),
-      (result.group = (column, obj) => {
-        obj = obj || data;
-        let da = [];
-        let group = [...new Set(obj.reduce((r, a) => r.concat(a[column]), []))];
-        Seule.LOOP({
-          data: group,
+    };
 
-          handler(el, index) {
-            let e = '{"' + column + '":"' + el + '"}';
-            da.push(JSON.parse(e));
-          }
-        });
-        result.res = da;
-        return result;
-      }),
-      (result.removeDpl = (column, obj) => {
-        obj = obj || data;
+    result.group = (column, obj) => {
+      obj = obj || data;
+      let da = [];
+      let group = [...new Set(obj.reduce((r, a) => r.concat(a[column]), []))];
 
-        for (let ob of obj) delete ob.index;
+      for (const g of group) {
+        let e = '{"' + column + '":"' + g + '"}';
+        da.push(JSON.parse(e));
+      }
 
-        if (column) {
-          let lookup = new Set();
-          return obj.filter(
-            (data) => !lookup.has(data[column]) && lookup.add(data[column])
-          );
-        }
+      result.res = da;
+      return result;
+    };
 
-        let uniqueSet = new Set(obj.map(JSON.stringify));
-        result.res = Array.from(uniqueSet).map(JSON.parse);
-        return result;
-      }),
-      (result.sum = (obj) => {
-        obj = obj || data;
-        result.res = obj.reduce(
-          (sums, obj) =>
-            Object.keys(obj).reduce((s, k) => {
-              s[k] = (s[k] || 0) + +obj[k];
-              return s;
-            }, sums),
-          {}
+    result.removeDpl = (column, obj) => {
+      obj = obj || data;
+
+      for (let ob of obj) delete ob.index;
+
+      if (column) {
+        let lookup = new Set();
+        return obj.filter(
+          (data) => !lookup.has(data[column]) && lookup.add(data[column])
         );
-        return result;
-      }),
-      (result.sort = (column, obj) => {
-        let sortBy = () => (a, b) => {
-          if (a[column] > b[column]) return 1;
-          else if (a[column] < b[column]) return -1;
-          return 0;
-        };
+      }
 
-        obj = obj || data;
-        result.res = obj.sort(sortBy(column));
-        return result;
-      });
+      let uniqueSet = new Set(obj.map(JSON.stringify));
+      result.res = Array.from(uniqueSet).map(JSON.parse);
+      return result;
+    };
+
+    result.sum = (obj) => {
+      obj = obj || data;
+      result.res = obj.reduce(
+        (sums, obj) =>
+          Object.keys(obj).reduce((s, k) => {
+            s[k] = (s[k] || 0) + +obj[k];
+            return s;
+          }, sums),
+        {}
+      );
+      return result;
+    };
+
+    result.sort = (column, obj) => {
+      let sortBy = () => (a, b) => {
+        if (a[column] > b[column]) return 1;
+        else if (a[column] < b[column]) return -1;
+        return 0;
+      };
+
+      obj = obj || data;
+      result.res = obj.sort(sortBy(column));
+      return result;
+    };
+
     result.res = select();
     result.child = child;
 
