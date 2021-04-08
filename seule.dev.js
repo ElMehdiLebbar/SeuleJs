@@ -50,9 +50,9 @@ class Seule {
     old = this.child.innerHTML;
     this.old = old;
     this.ren();
-    if (app.root) this.Root();
-    if (app.handler) app.handler(this, (s) => this.Find(s));
-    if (app.htmlMethods) this.HtmlMethods();
+    app.root && this.Root();
+    app.handler && app.handler(this, (s) => this.Find(s));
+    app.htmlMethods && this.HtmlMethods();
   }
 
   Find(selector) {
@@ -102,17 +102,13 @@ class Seule {
               navigator.msMaxTouchPoints > 0,
             mouseDown = isTouch ? "touchstart" : "mousedown",
             mouseUp = isTouch ? "touchend" : "mouseup";
-          this.addEventListener(mouseDown, function (e) {
+          this.addEventListener(mouseDown, (e) => {
             mouseIsDown = true;
             setTimeout(function () {
-              if (mouseIsDown) {
-                handler(new el(e), e);
-              }
+              mouseIsDown && handler(new el(e), e);
             }, parseFloat(time.replace(/s/g, "")) * 1000);
           });
-          this.addEventListener(mouseUp, function () {
-            mouseIsDown = false;
-          });
+          this.addEventListener(mouseUp, () => (mouseIsDown = false));
         });
       }
 
@@ -144,17 +140,13 @@ class Seule {
         }
 
         function handleTouchMove(evt) {
-          if (!xDown || !yDown) {
-            return;
-          }
-
+          if (!xDown || !yDown) return;
           let xUp = evt.touches[0].clientX,
             yUp = evt.touches[0].clientY,
             xDiff = xDown - xUp,
             yDiff = yDown - yUp;
 
           if (Math.abs(xDiff) > Math.abs(yDiff)) {
-            /*most significant*/
             if (xDiff > 0) {
               if (on === "left") handler(new el(this), this);
               else return false;
@@ -171,7 +163,6 @@ class Seule {
               else return false;
             }
           }
-          /* reset values */
 
           xDown = null;
           yDown = null;
@@ -231,7 +222,7 @@ class Seule {
       Toggle(event, options) {
         let check = true;
         this.On(event, function (el) {
-          if (check === true) {
+          if (check) {
             options.handler(el);
             check = false;
             return;
@@ -399,16 +390,15 @@ class Seule {
                 if (options.time) action(max + delay, options.time);
                 else action(max + delay);
               }, interval);
-              if (options.direction) clearInterval(boucle);
-            } else {
-              element.setAttribute("style", el.objectToStyle(newCss));
-            }
+              options.direction && clearInterval(boucle);
+            } else element.setAttribute("style", el.objectToStyle(newCss));
 
             function action(delay, time) {
               element.setAttribute("style", el.objectToStyle(newCss));
-              setTimeout(() => {
-                element.setAttribute("style", el.objectToStyle(ancient));
-              }, parseInt(delay));
+              setTimeout(
+                () => element.setAttribute("style", el.objectToStyle(ancient)),
+                parseInt(delay)
+              );
 
               if (time) {
                 times++;
@@ -701,7 +691,7 @@ class Seule {
       }
     }
 
-    if (options.data)
+    options.data &&
       Object.keys(options.data).forEach((k) =>
         formData.append(k, options.data[k])
       );
@@ -879,27 +869,23 @@ class Seule {
 
   static Screen(query, options) {
     let x = window.matchMedia(query),
+      myFunction = (x) => {
+        if (x.matches) options.handler && options.handler();
+        else options.callback && options.callback();
+        return x;
+      },
       resultMatch = myFunction(x); // Call listener function at run time
 
     x.addEventListener("change", myFunction); // Attach listener function on state changes
-
-    function myFunction(x) {
-      if (x.matches) {
-        if (options.handler) options.handler();
-      } else {
-        if (options.callback) options.callback();
-      }
-
-      return x;
-    }
 
     return resultMatch;
   }
 
   static Print(options) {
     let title = options.title || "",
-      body = new Seule("body");
-    body.Append(
+      body = document.querySelector("body");
+    body.insertAdjacentHTML(
+      "beforeend",
       '<iframe class="seule--frame" name="sframe" style="position: fixed; bottom: -100%"></iframe>'
     );
     let iframeEl = document.getElementsByClassName("seule--frame")[0];
@@ -908,18 +894,15 @@ class Seule {
       : iframeEl.contentDocument.document
       ? iframeEl.contentDocument.document
       : iframeEl.contentDocument;
-    frameDoc.document.open(); //Create a new HTML document.
-
+    frameDoc.document.open();
     frameDoc.document.write("<html><head><title>" + title + "</title>");
-    frameDoc.document.write("</head><body>"); //Append the external CSS file.
-
-    if (options.style)
+    frameDoc.document.write("</head><body>");
+    options.style &&
       frameDoc.document.write(
         '<link href="' +
           options.style +
           '.css" rel="stylesheet" type="text/css" />'
-      ); //Append the DIV contents.
-
+      );
     frameDoc.document.write(options.template);
     frameDoc.document.write("</body></html>");
     frameDoc.document.close();
@@ -1224,7 +1207,7 @@ class Seule {
                     "mode is closed! to use Select method, Switch to the open Mode!"
                   );
 
-              if (options.handler) options.handler(els, obj, init);
+              options.handler && options.handler(els, obj, init);
             }
           }
 
@@ -1270,7 +1253,7 @@ class Seule {
       },
 
       handler(el, data, init) {
-        if (options.handler) options.handler(el, data, init);
+        options.handler && options.handler(el, data, init);
       }
     });
     return this;
