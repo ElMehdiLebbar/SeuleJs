@@ -50,12 +50,14 @@ class Seule {
     old = this.child.innerHTML;
     this.old = old;
     this.ren();
+    if (app.root) this.Root();
     if (app.handler) app.handler(this, (s) => this.Find(s));
     if (app.htmlMethods) this.HtmlMethods();
   }
 
   Find(selector) {
-    let parent = this.child;
+    let parent = this.child,
+      sup = this;
 
     class el {
       constructor(select) {
@@ -486,7 +488,7 @@ class Seule {
         return this.el[0].pageYOffset || this.el[0].scrollTop;
       }
 
-      Scroll(axe) {
+      Scroll() {
         const scrollToItemId = (containerId, srollToId) => {
           const scrollContainer = containerId;
           const item = srollToId;
@@ -538,10 +540,10 @@ class Seule {
 
         if (getComputedStyle(this.el[0].parentElement).position === "fixed")
           scrollToItemId(this.el[0].parentNode, this.el[0]);
-        else
-          window.scrollTo({
-            top: this.el[0].offsetTop
-          });
+        else {
+          const c = document.documentElement || document.body;
+          scrollToItemId(c, this.el[0]);
+        }
         return this;
       }
 
@@ -666,11 +668,6 @@ class Seule {
       this.data[e[0]] = String(e[1]);
     }
 
-    this.Update();
-    return this;
-  }
-
-  Update() {
     this.ren(this.old);
     return this;
   }
@@ -943,8 +940,15 @@ class Seule {
     );
 
     function elementFromTop(options) {
-      let elem = parent.querySelector(options.selector),
-        unit = options.unit || "percent",
+      let elem;
+
+      try {
+        elem = parent.querySelector(options.selector);
+      } catch (e) {
+        elem = options.selector;
+      }
+
+      let unit = options.unit || "percent",
         distanceFromTop = options.distance,
         winY = window.innerHeight || document.documentElement.clientHeight,
         distTop = elem.getBoundingClientRect().top,
