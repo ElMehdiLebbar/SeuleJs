@@ -40,7 +40,10 @@ class Seule {
 
       for (let item of keys) {
         while (content.includes("{{" + item + "}}"))
-          content = content.replace("{{" + item + "}}", this.data[item]);
+          content = content.replace(
+            "{{" + item + "}}",
+            this.data[item].replace(/<[^>]*>/g, "")
+          );
       }
 
       this.child.innerHTML = content;
