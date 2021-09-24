@@ -21,7 +21,7 @@ class Seule {
                 constructor() {
                     super();
                     const shadow = this.attachShadow({
-                        mode: "closed"
+                        mode: app.mode || "closed"
                     });
                     let linkElement = document.createElement("link");
                     linkElement.setAttribute("rel", "stylesheet");
