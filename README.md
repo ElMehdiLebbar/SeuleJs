@@ -17,13 +17,17 @@ You can create an index.html file and include Seule with:
 
 ```html
 <div id='app'>
-    > ...
+    {{message}}
 </div>
 ```
 
 ```javascript
-let app = new Seule('#app');
-app.HtmlMethod()
+const app = new Seule({
+            el: '#app',
+            data: {
+                message : 'hello Seule'
+            }
+        })
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
