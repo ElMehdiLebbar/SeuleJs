@@ -32,7 +32,7 @@ const app = new Seule({
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-We have already created our very first Vue app! Click on the "Try it Yourself" 👆 button to see how it works.
+We have already created our very first Seule app! Click on the "Try it Yourself" 👆 button to see how it works.
 
 <br>
 
