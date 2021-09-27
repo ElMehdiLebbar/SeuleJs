@@ -36,7 +36,7 @@ We have already created our very first Vue app! Click on the "Try it Yourself" �
 
 <br>
 
-# 1️⃣ Bind element attributes 
+## ↩️ Bind element attributes 
 
 In addition to text interpolation, we can also bind **element attributes** like this:
 
@@ -75,8 +75,25 @@ Magic Happens inside this method by calling three parameters: $app, $scoop, $roo
 
 🔹 for exemple:
 
+```html
+<div id='app'>
+    <p>{{message}}</p>
+    <button>click-me</button>
+</div>
+```
+
 ```javascript
-<button @find=".example">Hide All</button>
+const app = new Seule({
+            el: '#app',
+            data: {
+                message : 'Click the button bellow'
+            },
+            handler($app, $scoop, $root){
+                $scoop('button')
+                    .Click(()=> $scoop('p')
+                        .Text("Hello Seule").set())
+            }
+        })
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
