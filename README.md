@@ -32,24 +32,36 @@ const app = new Seule({
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
 
-Click on the "Try it Yourself" 👆 button to see how it works.
+We have already created our very first Vue app! Click on the "Try it Yourself" 👆 button to see how it works.
 
 <br>
 
-# 1️⃣ Html Methods
+# 1️⃣ Bind element attributes 
 
-to use HTML Methods you have to call **HtmlMethod()** :
+In addition to text interpolation, we can also bind **element attributes** like this:
 
 #### 〽️ Syntax:
 
 ```html
-<element @method="event($'property' : 'value'$)"></element>
+<element attribute="{{variable}}"></element>
 ```
 
-🔹 for exemple if you wont to add some text to heading in your project:
+🔹 for exemple:
 
 ```html
-<h1 @text="hello Seule"></h1>
+<div id='app'>
+    <p title="{{message}}"> Hover your mouse over me <br> for a few seconds </p>
+</div>
+```
+
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    data: {
+    message : 'You  visited this page on ' + new Date().toLocaleString()
+  }
+})
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/MWJKjrK)
