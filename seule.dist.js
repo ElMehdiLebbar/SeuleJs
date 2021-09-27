@@ -3,686 +3,690 @@
 class Seule {
 
     constructor(app) {
-        this.el = document.querySelectorAll(app.el);
-        this.style = app.style;
         this.child = false;
         this.data = app.data || {};
-        let old;
 
-        this.shadow = () => {
-            let el = this.el[0],
-                seule = {},
-                e = app.el
-                    .replace("#", "")
-                    .replace(".", ""),
-                child = "";
+        let old = "",
+            init =()=> this.Init(),
+            Shadow = () => {
+                let el = document.querySelector(app.el),
+                    seule = {},
+                    e = app.el
+                        .replace("#", "")
+                        .replace(".", ""),
+                    child = "";
 
-            class Root extends HTMLElement {
-                constructor() {
-                    super();
-                    const shadow = this.attachShadow({
-                        mode: app.mode || "closed"
-                    });
-                    let linkElement = document.createElement("link");
-                    linkElement.setAttribute("rel", "stylesheet");
-                    if (app.style) linkElement.setAttribute("href", app.style + ".css");
-                    shadow.appendChild(linkElement);
-                    let cl = el.cloneNode(true);
-                    el.innerHTML = "";
-                    shadow.appendChild(cl);
-                    child = shadow.children[1];
-                    shadow.children[1].removeAttribute("id")
-                }
-            }
-
-            customElements.define("seule-" + e, Root);
-            seule = document.createElement("seule-" + e);
-            el.appendChild(seule);
-            this.child = child;
-        };
-
-        let Find = (selector) => {
-            let parent = this.child,
-                root = this;
-
-            class el {
-                constructor(select) {
-                    try {
-                        if(select === 'body') this.el = document.querySelectorAll('body');
-                        else this.el = parent.querySelectorAll(select);
-                    } catch (e) {
-                        if (select.length) this.el = select;
-                        else this.el = [select];
+                class Root extends HTMLElement {
+                    constructor() {
+                        super();
+                        const shadow = this.attachShadow({
+                            mode: app.mode || "closed"
+                        });
+                        let linkElement = document.createElement("link");
+                        linkElement.setAttribute("rel", "stylesheet");
+                        if (app.style) linkElement.setAttribute("href", app.style + ".css");
+                        shadow.appendChild(linkElement);
+                        let cl = el.cloneNode(true);
+                        el.innerHTML = "";
+                        shadow.appendChild(cl);
+                        child = shadow.children[1];
+                        shadow.children[1].removeAttribute("id")
                     }
                 }
 
-                $(){
-                    return root
-                }
+                customElements.define("seule-" + e, Root);
+                seule = document.createElement("seule-" + e);
+                el.appendChild(seule);
+                this.child = child;
+                old = child.innerHTML;
+            },
+            Find = (selector) => {
+                let parent = this.child,
+                    root = this;
 
-                Parent(){
-                    return new el(this.el[0].parentElement)
-                }
+                class el {
+                    constructor(select) {
+                        try {
+                            if(select === 'body') this.el = document.querySelectorAll('body');
+                            else this.el = parent.querySelectorAll(select);
+                        } catch (e) {
+                            if (select.length) this.el = select;
+                            else this.el = [select];
+                        }
+                    }
 
-                Select(selector){
-                    return new el(this.el[0].querySelectorAll(selector))
-                }
+                    $(){
+                        return root
+                    }
 
-                Element(index){
-                    return new el(this.el[index])
-                }
+                    Parent(){
+                        return new el(this.el[0].parentElement)
+                    }
 
-                Dom(index){
-                    if(index || index === 0) return this.el[index];
-                    return this.el;
-                }
+                    Select(selector){
+                        return new el(this.el[0].querySelectorAll(selector))
+                    }
 
-                Each(callback) {
-                    for (const element of this.el) callback.call(element);
-                    return this;
-                }
+                    Element(index){
+                        return new el(this.el[index])
+                    }
 
-                On(event, handler) {
-                    if (event === "hold") this.Hold(handler);
-                    else
+                    Dom(index){
+                        if(index || index === 0) return this.el[index];
+                        return this.el;
+                    }
+
+                    Each(callback) {
+                        for (const element of this.el) callback.call(element);
+                        return this;
+                    }
+
+                    On(event, handler, initial) {
+                        if (event === "hold") this.Hold(handler);
+                        else
+                            return this.Each(function () {
+                                this.addEventListener(
+                                    event,
+                                    () => {
+                                        handler(new el(this), this);
+                                        initial && init()
+                                    },
+                                    false
+                                );
+                            });
+                    }
+
+                    Click(handler, initial) {
+                        this.On("click", (el) => handler(el), initial);
+                        return this;
+                    }
+
+                    Hold(handler, time) {
+                        time = time || "1.5s";
+                        return this.Each(function () {
+                            let mouseIsDown = false,
+                                isTouch =
+                                    "ontouchstart" in window ||
+                                    navigator.MaxTouchPoints > 0 ||
+                                    navigator.msMaxTouchPoints > 0,
+                                mouseDown = isTouch ? "touchstart" : "mousedown",
+                                mouseUp = isTouch ? "touchend" : "mouseup";
+                            this.addEventListener(mouseDown, e=> {
+                                mouseIsDown = true;
+                                setTimeout(function () {
+                                    mouseIsDown && handler(new el(e), e);
+                                }, parseFloat(time.replace(/s/g, "")) * 1000);
+                            });
+                            this.addEventListener(mouseUp,  ()=> mouseIsDown = false);
+                        });
+                    }
+
+                    Focus(handler) {
+                        if (handler) this.On("focus", (el) => handler(el));
+                        else this.el[0].focus();
+                        return this;
+                    }
+
+                    Blur(handler) {
+                        if (handler) this.On("blur", (el) => handler(el));
+                        else this.el[0].blur();
+                        return this;
+                    }
+
+                    Swipe(on, handler) {
+                        let elem = this.el,
+                            xDown,
+                            yDown;
+
+                        for (let e of elem) {
+                            e.addEventListener("touchstart", handleTouchStart, false);
+                            e.addEventListener("touchmove", handleTouchMove, false);
+                        }
+
+                        function handleTouchStart(evt) {
+                            xDown = evt.touches[0].clientX;
+                            yDown = evt.touches[0].clientY;
+                        }
+
+                        function handleTouchMove(evt) {
+                            if (!xDown || !yDown) return;
+
+                            let xUp = evt.touches[0].clientX,
+                                yUp = evt.touches[0].clientY,
+                                xDiff = xDown - xUp,
+                                yDiff = yDown - yUp;
+
+                            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                                if (xDiff > 0) {
+                                    if (on === "left") handler(new el(this), this);
+                                    else return false;
+                                } else if (xDiff < 0) {
+                                    if (on === "right") handler(new el(this), this);
+                                    else return false;
+                                }
+                            } else {
+                                if (yDiff > 0) {
+                                    if (on === "top") handler(new el(this), this);
+                                    else return false;
+                                } else if (yDiff < 0) {
+                                    if (on === "bottom") handler(new el(this), this);
+                                    else return false;
+                                }
+                            }
+
+
+                            xDown = null;
+                            yDown = null;
+                        }
+
+                        return this;
+                    }
+
+                    HotKey(query, handler) {
+                        let key = "",
+                            start,
+                            mapObj = {
+                                Arrow: "",
+                                Control: "ctrl"
+                            },
+                            querys = query.replace(/\s/g, "");
                         return this.Each(function () {
                             this.addEventListener(
-                                event,
-                                () => handler(new el(this), this),
-                                false
+                                "keydown",
+                                function (event) {
+                                    key += event.key;
+                                    key = key.replace(/Arrow|Control/gi, function (matched) {
+                                        return mapObj[matched];
+                                    });
+                                    start = key.toLowerCase().indexOf(querys.toLowerCase());
+
+                                    if (start > -1) {
+                                        handler(new el(this), this);
+                                        key = "";
+                                    }
+
+                                    setInterval(() => (key = ""), 5000);
+                                },
+                                true
                             );
                         });
-                }
-
-                Click(handler) {
-                    this.On("click", (el) => handler(el));
-                    return this;
-                }
-
-                Hold(handler, time) {
-                    time = time || "1.5s";
-                    return this.Each(function () {
-                        let mouseIsDown = false,
-                            isTouch =
-                                "ontouchstart" in window ||
-                                navigator.MaxTouchPoints > 0 ||
-                                navigator.msMaxTouchPoints > 0,
-                            mouseDown = isTouch ? "touchstart" : "mousedown",
-                            mouseUp = isTouch ? "touchend" : "mouseup";
-                        this.addEventListener(mouseDown, e=> {
-                            mouseIsDown = true;
-                            setTimeout(function () {
-                                mouseIsDown && handler(new el(e), e);
-                            }, parseFloat(time.replace(/s/g, "")) * 1000);
-                        });
-                        this.addEventListener(mouseUp,  ()=> mouseIsDown = false);
-                    });
-                }
-
-                Focus(handler) {
-                    if (handler) this.On("focus", (el) => handler(el));
-                    else this.el[0].focus();
-                    return this;
-                }
-
-                Blur(handler) {
-                    if (handler) this.On("blur", (el) => handler(el));
-                    else this.el[0].blur();
-                    return this;
-                }
-
-                Swipe(on, handler) {
-                    let elem = this.el,
-                        xDown,
-                        yDown;
-
-                    for (let e of elem) {
-                        e.addEventListener("touchstart", handleTouchStart, false);
-                        e.addEventListener("touchmove", handleTouchMove, false);
                     }
 
-                    function handleTouchStart(evt) {
-                        xDown = evt.touches[0].clientX;
-                        yDown = evt.touches[0].clientY;
-                    }
+                    Copy(target, options) {
+                        let tar,
+                            ons = options.split(":");
 
-                    function handleTouchMove(evt) {
-                        if (!xDown || !yDown) return;
+                        if(typeof target === 'string') tar = parent.querySelector(target);
+                        else tar = target;
 
-                        let xUp = evt.touches[0].clientX,
-                            yUp = evt.touches[0].clientY,
-                            xDiff = xDown - xUp,
-                            yDiff = yDown - yUp;
-
-                        if (Math.abs(xDiff) > Math.abs(yDiff)) {
-                            if (xDiff > 0) {
-                                if (on === "left") handler(new el(this), this);
-                                else return false;
-                            } else if (xDiff < 0) {
-                                if (on === "right") handler(new el(this), this);
-                                else return false;
-                            }
-                        } else {
-                            if (yDiff > 0) {
-                                if (on === "top") handler(new el(this), this);
-                                else return false;
-                            } else if (yDiff < 0) {
-                                if (on === "bottom") handler(new el(this), this);
-                                else return false;
-                            }
-                        }
-
-
-                        xDown = null;
-                        yDown = null;
-                    }
-
-                    return this;
-                }
-
-                HotKey(query, handler) {
-                    let key = "",
-                        start,
-                        mapObj = {
-                            Arrow: "",
-                            Control: "ctrl"
-                        },
-                        querys = query.replace(/\s/g, "");
-                    return this.Each(function () {
-                        this.addEventListener(
-                            "keydown",
-                            function (event) {
-                                key += event.key;
-                                key = key.replace(/Arrow|Control/gi, function (matched) {
-                                    return mapObj[matched];
+                        for (let on of ons) {
+                            this.On(on.trimStart().trimEnd(), function () {
+                                let eventFired = new MouseEvent(on.trimStart().trimEnd(), {
+                                    view: window,
+                                    bubbles: true,
+                                    cancelable: true
                                 });
-                                start = key.toLowerCase().indexOf(querys.toLowerCase());
-
-                                if (start > -1) {
-                                    handler(new el(this), this);
-                                    key = "";
-                                }
-
-                                setInterval(() => (key = ""), 5000);
-                            },
-                            true
-                        );
-                    });
-                }
-
-                Copy(target, options) {
-                    let tar,
-                        ons = options.split(":");
-
-                    if(typeof target === 'string') tar = parent.querySelector(target);
-                    else tar = target;
-
-                    for (let on of ons) {
-                        this.On(on.trimStart().trimEnd(), function () {
-                            let eventFired = new MouseEvent(on.trimStart().trimEnd(), {
-                                view: window,
-                                bubbles: true,
-                                cancelable: true
+                                tar.dispatchEvent(eventFired);
                             });
-                            tar.dispatchEvent(eventFired);
-                        });
+                        }
+
+                        return this;
                     }
 
-                    return this;
-                }
-
-                Toggle(event, options) {
-                    let check = true;
-                    this.On(event, function (el) {
-                        if (check) {
-                            options.handler(el);
-                            check = false;
-                            return;
-                        }
-                        options.callback(el);
-                        check = true;
-                    });
-                    return this;
-                }
-
-                Visible() {
-                    let options = {};
-
-                    options.showing = () => {
-                        for (let el of this.el) el.style.visibility = "visible";
-
-                        return this;
-                    };
-
-                    options.hidden = () => {
-                        for (let el of this.el) el.style.visibility = "hidden";
-
-                        return this;
-                    };
-
-                    options.status = () => this.el[0].style.visibility !== "hidden";
-
-                    return options;
-                }
-
-                Show() {
-                    return this.Each(function () {
-                        let front = this.getAttribute("style");
-
-                        if(front)
-                            {
-                                if(front.replace(/\s/g, "").includes("display:none"))
-                                this.style.display = "";
+                    Toggle(event, options) {
+                        let check = true;
+                        this.On(event, function (el) {
+                            if (check) {
+                                options.handler(el);
+                                check = false;
+                                return;
                             }
-                        if (getComputedStyle(this).display === "none")this.style.display = "initial";
-
-                    });
-                }
-                Hide() {
-                    return this.Each(function () {
-                        this.style.display = "none";
-                    });
-                }
-
-                Opacity(value) {
-                    if (value)
-                        return this.Each(function () {
-                            this.style.opacity = value;
+                            options.callback(el);
+                            check = true;
                         });
-                    return this.el[0].style.opacity;
-                }
+                        return this;
+                    }
 
-                Classes(className) {
-                    let result = {},
-                        handler = (action) => {
-                            for (const e of this.el) e.classList[action](className);
-                        },
-                        list = ["add", "remove", "toggle"];
+                    Visible() {
+                        let options = {};
 
-                    result.list = [];
+                        options.showing = () => {
+                            for (let el of this.el) el.style.visibility = "visible";
 
-                    for (const element of this.el[0].classList) result.list.push(element);
-
-                    result.contains = () => this.el[0].classList.contains(className);
-
-                    for (let a of list)
-                        result[a] = () => {
-                            handler(a);
                             return this;
                         };
 
-                    return result;
-                }
-                Css(declarations) {
-                    let actions = {};
-                    actions.set = (val)=>{
-                        if (typeof declarations === "object") {
-                            let keys = Object.keys(declarations),
-                                arr = {},
-                                newCss = {},
-                                max = {},
-                                ancient = {},
-                                origin = {};
+                        options.hidden = () => {
+                            for (let el of this.el) el.style.visibility = "hidden";
 
-                            for (const element of keys) {
-                                let forbidden = "duration property direction loop time delay text effect";
+                            return this;
+                        };
 
-                                if (
-                                    typeof declarations[element] !== "object" &&
-                                    !forbidden.includes(element)
-                                ) {
-                                    declarations[element] = {
-                                        value: declarations[element]
-                                    };
+                        options.status = () => this.el[0].style.visibility !== "hidden";
+
+                        return options;
+                    }
+
+                    Show() {
+                        return this.Each(function () {
+                            let front = this.getAttribute("style");
+
+                            if(front)
+                                {
+                                    if(front.replace(/\s/g, "").includes("display:none"))
+                                    this.style.display = "";
+                                }
+                            if (getComputedStyle(this).display === "none")this.style.display = "initial";
+
+                        });
+                    }
+                    Hide() {
+                        return this.Each(function () {
+                            this.style.display = "none";
+                        });
+                    }
+
+                    Opacity(value) {
+                        if (value)
+                            return this.Each(function () {
+                                this.style.opacity = value;
+                            });
+                        return this.el[0].style.opacity;
+                    }
+
+                    Classes(className) {
+                        let result = {},
+                            handler = (action) => {
+                                for (const e of this.el) e.classList[action](className);
+                            },
+                            list = ["add", "remove", "toggle"];
+
+                        result.list = [];
+
+                        for (const element of this.el[0].classList) result.list.push(element);
+
+                        result.contains = () => this.el[0].classList.contains(className);
+
+                        for (let a of list)
+                            result[a] = () => {
+                                handler(a);
+                                return this;
+                            };
+
+                        return result;
+                    }
+                    Css(declarations) {
+                        let actions = {};
+                        actions.set = (val)=>{
+                            if (typeof declarations === "object") {
+                                let keys = Object.keys(declarations),
+                                    arr = {},
+                                    newCss = {},
+                                    max = {},
+                                    ancient = {},
+                                    origin = {};
+
+                                for (const element of keys) {
+                                    let forbidden = "duration property direction loop time delay text effect";
+
+                                    if (
+                                        typeof declarations[element] !== "object" &&
+                                        !forbidden.includes(element)
+                                    ) {
+                                        declarations[element] = {
+                                            value: declarations[element]
+                                        };
+                                    }
+
+                                    let delay = declarations[element].delay,
+                                        duration = declarations[element].duration || declarations.duration || 0;
+
+                                   if(!declarations[element].delay) delay = 0;
+
+                                    if (!forbidden.includes(element)) {
+                                        let style = getComputedStyle(this.el[0]);
+                                        arr[element] = duration + "ms " + delay + "ms" ;
+                                        newCss[element] = declarations[element].value || 0;
+                                        if (ancient === origin)
+                                            ancient[element] = style[element] || 0;
+                                        max[element] =
+                                            parseFloat(delay) +
+                                            parseFloat(duration);
+                                    }
+
                                 }
 
-                                let delay = declarations[element].delay,
-                                    duration = declarations[element].duration || declarations.duration || 0;
 
-                               if(!declarations[element].delay) delay = 0;
+                                newCss.transition = el
+                                    .objectToStyle(arr)
+                                    .replace(/:/g, " ")
+                                    .replace(/;/g, ", ");
+                                newCss["transition-timing-function"] = declarations.effect || "ease";
+                                if (declarations.particularly)
+                                    newCss["transition-property"] = declarations.particularly.value;
 
-                                if (!forbidden.includes(element)) {
-                                    let style = getComputedStyle(this.el[0]);
-                                    arr[element] = duration + "ms " + delay + "ms" ;
-                                    newCss[element] = declarations[element].value || 0;
-                                    if (ancient === origin)
-                                        ancient[element] = style[element] || 0;
-                                    max[element] =
-                                        parseFloat(delay) +
-                                        parseFloat(duration);
+                                if (!declarations.loop && !declarations.direction) {
+                                    if (declarations.duration)
+                                        newCss["transition-duration"] = declarations.duration+"ms";
+                                    if (declarations.delay) newCss["transition-delay"] = declarations.delay+"ms";
                                 }
 
-                            }
-
-
-                            newCss.transition = el
-                                .objectToStyle(arr)
-                                .replace(/:/g, " ")
-                                .replace(/;/g, ", ");
-                            newCss["transition-timing-function"] = declarations.effect || "ease";
-                            if (declarations.particularly)
-                                newCss["transition-property"] = declarations.particularly.value;
-
-                            if (!declarations.loop && !declarations.direction) {
+                                ancient.transition = newCss.transition;
+                                ancient["transition-timing-function"] =
+                                    newCss["transition-timing-function"];
+                                if (declarations.property)
+                                    ancient["transition-property"] = newCss["transition-property"];
                                 if (declarations.duration)
-                                    newCss["transition-duration"] = declarations.duration+"ms";
-                                if (declarations.delay) newCss["transition-delay"] = declarations.delay+"ms";
-                            }
+                                    ancient["transition-duration"] = newCss["transition-duration"];
+                                if (declarations.delay)
+                                    ancient["transition-delay"] = newCss["transition-delay"];
+                                if (ancient === origin) {
+                                    origin = ancient;
+                                }
+                                let array = Object.values(max);
+                                max = Math.max(...array);
 
-                            ancient.transition = newCss.transition;
-                            ancient["transition-timing-function"] =
-                                newCss["transition-timing-function"];
-                            if (declarations.property)
-                                ancient["transition-property"] = newCss["transition-property"];
-                            if (declarations.duration)
-                                ancient["transition-duration"] = newCss["transition-duration"];
-                            if (declarations.delay)
-                                ancient["transition-delay"] = newCss["transition-delay"];
-                            if (ancient === origin) {
-                                origin = ancient;
+                                return this.Each(function () {
+                                    let element = this,
+                                        times = 1,
+                                        boucle,
+                                        delay = 100;
+                                    if (declarations.loop || declarations.direction)
+                                        if (declarations.delay) delay = declarations.delay;
+
+                                    let interval = parseInt(max + delay) * 2 + 100;
+
+
+                                    if (declarations.direction || declarations.loop) {
+                                        action(max + delay);
+
+                                        boucle = setInterval(function () {
+                                            if (declarations.time) action(max + delay, declarations.time);
+                                            else action(max + delay);
+                                        }, interval);
+                                        declarations.direction && clearInterval(boucle);
+                                    }
+                                    else element.setAttribute("style", el.objectToStyle(newCss));
+
+
+                                    function action(delay, time) {
+                                        element.setAttribute("style", el.objectToStyle(newCss));
+                                        setTimeout(
+                                            () => element.setAttribute("style", el.objectToStyle(ancient)),
+                                            parseInt(delay));
+
+                                        if (time) {
+                                            times++;
+                                            if (time <= times) clearInterval(boucle);
+                                        }
+                                    }
+                                });
                             }
-                            let array = Object.values(max);
-                            max = Math.max(...array);
 
                             return this.Each(function () {
-                                let element = this,
-                                    times = 1,
-                                    boucle,
-                                    delay = 100;
-                                if (declarations.loop || declarations.direction)
-                                    if (declarations.delay) delay = declarations.delay;
-
-                                let interval = parseInt(max + delay) * 2 + 100;
-
-
-                                if (declarations.direction || declarations.loop) {
-                                    action(max + delay);
-
-                                    boucle = setInterval(function () {
-                                        if (declarations.time) action(max + delay, declarations.time);
-                                        else action(max + delay);
-                                    }, interval);
-                                    declarations.direction && clearInterval(boucle);
-                                }
-                                else element.setAttribute("style", el.objectToStyle(newCss));
-
-
-                                function action(delay, time) {
-                                    element.setAttribute("style", el.objectToStyle(newCss));
-                                    setTimeout(
-                                        () => element.setAttribute("style", el.objectToStyle(ancient)),
-                                        parseInt(delay));
-
-                                    if (time) {
-                                        times++;
-                                        if (time <= times) clearInterval(boucle);
-                                    }
-                                }
+                                this.style[declarations] = val;
                             });
-                        }
-
-                        return this.Each(function () {
-                            this.style[declarations] = val;
-                        });
-                    };
-                    actions.get = ()=> getComputedStyle(this.el[0])[declarations];
-                    return actions;
-                }
-                Style(options){
-                    return  this.Each(function () {
-                        this.animate(options,  {
-                            duration: 0,
-                            fill: 'forwards'
-                        })
-                    });
-                }
-                Anime(options){
-                    let an = {};
-
-                    this.Each(function () {
-                        an.animation = this.animate(options.keyframes, {
-                            delay: options.delay || 0,
-                            duration: options.duration || 700,
-                            fill: options.fill || 'forwards',
-                            easing : options.effect || 'ease-in-out',
-                            times: options.iterations || 1
-                        })
-                    });
-
-                    an.start = () => {
-                        an.animation.play();
-                        return this;
-                    };
-
-                    an.freeze = () => {
-                        an.animation.pause();
-                        return this;
-                    };
-
-                    an.stop = ()=>{
-                        an.animation.finish();
-                        return this;
-                    };
-
-                    an.cancel= ()=>{
-                        an.animation.cancel();
-                        return this;
-                    };
-
-                    an.animation.addEventListener('finish', ()=> options.onfinish && options.onfinish(this, an));
-
-                    an.animation.addEventListener('cancel', ()=> options.oncancel && options.oncancel(this, an));
-
-                    return an
-                }
-
-                Width(value) {
-                    if (value)
-                        return this.Each(function () {
-                            this.style.width = value;
-                        });
-                    return getComputedStyle(this.el[0]).width;
-                }
-
-                Height(value) {
-                    if (value)
-                        return this.Each(function () {
-                            this.style.height = value;
-                        });
-                    return getComputedStyle(this.el[0]).height;
-                }
-
-                Attr(attribute) {
-                    let options = {};
-
-                    options.set = (value) => {
-                        for (const el of this.el) el.setAttribute(attribute, value);
-
-                        return this;
-                    };
-
-                    options.remove = () => {
-                        for (const el of this.el) el.removeAttribute(attribute);
-                        return this;
-                    };
-
-                    options.get = () => this.el[0].getAttribute(attribute);
-
-                    options.has = () => this.el[0].hasAttribute(attribute);
-
-                    return options;
-                }
-
-                Text(str) {
-                    return el.CONTENT("Text", str, this);
-                }
-
-                Html(html) {
-                    return el.CONTENT("HTML", html, this);
-                }
-
-                Insert() {
-                    let op = {};
-
-                    op.after = (el)=>{
-                        el.parentNode.insertBefore(this.el[0], el.nextSibling);
-                        return this
-                    };
-
-                    op.before = (el)=> {
-                        el.parentNode.insertBefore(this.el[0], el);
-                        return this
-                    };
-
-                    return op
-
-                }
-
-                Val(value) {
-                    let options = {};
-
-                    options.set = () => {
-                        for (const e of this.el) e.value = value;
-
-                        return this;
-                    };
-
-                    options.get = () => this.el[0].value;
-
-                    return options;
-                }
-
-                ScrollPosition(axe) {
-                    if (axe) return this.el[0].pageXOffset || this.el[0].scrollLeft;
-                    return this.el[0].pageYOffset || this.el[0].scrollTop;
-                }
-
-                Scroll() {
-                    const scrollToItemId = (containerId, srollToId) => {
-                        const scrollContainer = containerId;
-                        const item = srollToId;
-                        const from = scrollContainer.scrollTop;
-                        let by = item.offsetTop - scrollContainer.scrollTop;
-
-                        if (from < item.offsetTop) {
-                            if (
-                                item.offsetTop >
-                                scrollContainer.scrollHeight - scrollContainer.clientHeight
-                            ) {
-                                by =
-                                    scrollContainer.scrollHeight -
-                                    scrollContainer.clientHeight -
-                                    scrollContainer.scrollTop;
-                            }
-                        }
-
-                        let currentIteration = 0;
-                        const animIterations = Math.round(60 * 0.5);
-
-                        (function scroll() {
-                            scrollContainer.scrollTop = easeOutCubic(
-                                currentIteration,
-                                from,
-                                by,
-                                animIterations
-                            );
-                            currentIteration++;
-
-                            if (currentIteration < animIterations) {
-                                requestAnimationFrame(scroll);
-                            }
-                        })();
-                    };
-
-                    const easeOutCubic = (
-                        currentIteration,
-                        startValue,
-                        changeInValue,
-                        totalIterations
-                    ) => {
-                        return (
-                            changeInValue *
-                            (Math.pow(currentIteration / totalIterations - 1, 3) + 1) +
-                            startValue
-                        );
-                    };
-
-                    if (getComputedStyle(this.el[0].parentElement).position === "fixed")
-                        scrollToItemId(this.el[0].parentNode, this.el[0]);
-                    else {
-                        const c = document.documentElement || document.body;
-                        scrollToItemId(c, this.el[0]);
+                        };
+                        actions.get = ()=> getComputedStyle(this.el[0])[declarations];
+                        return actions;
                     }
-                    return this;
-                }
+                    Style(options){
+                        return  this.Each(function () {
+                            this.animate(options,  {
+                                duration: 0,
+                                fill: 'forwards'
+                            })
+                        });
+                    }
+                    Anime(options){
+                        let an = {};
 
-                Load(handler, timeOut= 0) {
-                    return this.Each(function (e) {
-                        setTimeout(() => {
-                            handler(new el(this));
-                        }, timeOut);
-                    });
-                }
+                        this.Each(function () {
+                            an.animation = this.animate(options.keyframes, {
+                                delay: options.delay || 0,
+                                duration: options.duration || 700,
+                                fill: options.fill || 'forwards',
+                                easing : options.effect || 'ease-in-out',
+                                times: options.iterations || 1
+                            })
+                        });
 
-                Loop(handler, timeOut= 1000) {
-                    return this.Each(function (e) {
-                        let
-                            loop = {
-                                stop : (handler)=> stop(handler),
-                                counter: 0,
-                                el: new el(this)
-                            },
-                            repeat = setInterval(() => {
-                                handler(loop);
-                                loop.counter++;
-                            }, timeOut);
+                        an.start = () => {
+                            an.animation.play();
+                            return this;
+                        };
 
-                        function stop(handler){
-                            clearInterval(repeat);
-                            handler && handler(loop.el)
+                        an.freeze = () => {
+                            an.animation.pause();
+                            return this;
+                        };
+
+                        an.stop = ()=>{
+                            an.animation.finish();
+                            return this;
+                        };
+
+                        an.cancel= ()=>{
+                            an.animation.cancel();
+                            return this;
+                        };
+
+                        an.animation.addEventListener('finish', ()=> options.onfinish && options.onfinish(this, an));
+
+                        an.animation.addEventListener('cancel', ()=> options.oncancel && options.oncancel(this, an));
+
+                        return an
+                    }
+
+                    Width(value) {
+                        if (value)
+                            return this.Each(function () {
+                                this.style.width = value;
+                            });
+                        return getComputedStyle(this.el[0]).width;
+                    }
+
+                    Height(value) {
+                        if (value)
+                            return this.Each(function () {
+                                this.style.height = value;
+                            });
+                        return getComputedStyle(this.el[0]).height;
+                    }
+
+                    Attr(attribute) {
+                        let options = {};
+
+                        options.set = (value) => {
+                            for (const el of this.el) el.setAttribute(attribute, value);
+
+                            return this;
+                        };
+
+                        options.remove = () => {
+                            for (const el of this.el) el.removeAttribute(attribute);
+                            return this;
+                        };
+
+                        options.get = () => this.el[0].getAttribute(attribute);
+
+                        options.has = () => this.el[0].hasAttribute(attribute);
+
+                        return options;
+                    }
+
+                    Text(str) {
+                        return el.CONTENT("Text", str, this);
+                    }
+
+                    Html(html) {
+                        return el.CONTENT("HTML", html, this);
+                    }
+
+                    Insert() {
+                        let op = {};
+
+                        op.after = (el)=>{
+                            el.parentNode.insertBefore(this.el[0], el.nextSibling);
+                            return this
+                        };
+
+                        op.before = (el)=> {
+                            el.parentNode.insertBefore(this.el[0], el);
+                            return this
+                        };
+
+                        return op
+
+                    }
+
+                    Val(value) {
+                        let options = {};
+
+                        options.set = () => {
+                            for (const e of this.el) e.value = value;
+
+                            return this;
+                        };
+
+                        options.get = () => this.el[0].value;
+
+                        return options;
+                    }
+
+                    ScrollPosition(axe) {
+                        if (axe) return this.el[0].pageXOffset || this.el[0].scrollLeft;
+                        return this.el[0].pageYOffset || this.el[0].scrollTop;
+                    }
+
+                    Scroll() {
+                        const scrollToItemId = (containerId, srollToId) => {
+                            const scrollContainer = containerId;
+                            const item = srollToId;
+                            const from = scrollContainer.scrollTop;
+                            let by = item.offsetTop - scrollContainer.scrollTop;
+
+                            if (from < item.offsetTop) {
+                                if (
+                                    item.offsetTop >
+                                    scrollContainer.scrollHeight - scrollContainer.clientHeight
+                                ) {
+                                    by =
+                                        scrollContainer.scrollHeight -
+                                        scrollContainer.clientHeight -
+                                        scrollContainer.scrollTop;
+                                }
+                            }
+
+                            let currentIteration = 0;
+                            const animIterations = Math.round(60 * 0.5);
+
+                            (function scroll() {
+                                scrollContainer.scrollTop = easeOutCubic(
+                                    currentIteration,
+                                    from,
+                                    by,
+                                    animIterations
+                                );
+                                currentIteration++;
+
+                                if (currentIteration < animIterations) {
+                                    requestAnimationFrame(scroll);
+                                }
+                            })();
+                        };
+
+                        const easeOutCubic = (
+                            currentIteration,
+                            startValue,
+                            changeInValue,
+                            totalIterations
+                        ) => {
+                            return (
+                                changeInValue *
+                                (Math.pow(currentIteration / totalIterations - 1, 3) + 1) +
+                                startValue
+                            );
+                        };
+
+                        if (getComputedStyle(this.el[0].parentElement).position === "fixed")
+                            scrollToItemId(this.el[0].parentNode, this.el[0]);
+                        else {
+                            const c = document.documentElement || document.body;
+                            scrollToItemId(c, this.el[0]);
                         }
-                    });
+                        return this;
+                    }
+
+                    Load(handler, timeOut= 0) {
+                        return this.Each(function (e) {
+                            setTimeout(() => {
+                                handler(new el(this));
+                            }, timeOut);
+                        });
+                    }
+
+                    Loop(handler, timeOut= 1000) {
+                        return this.Each(function (e) {
+                            let
+                                loop = {
+                                    stop : (handler)=> stop(handler),
+                                    counter: 0,
+                                    el: new el(this)
+                                },
+                                repeat = setInterval(() => {
+                                    handler(loop);
+                                    loop.counter++;
+                                }, timeOut);
+
+                            function stop(handler){
+                                clearInterval(repeat);
+                                handler && handler(loop.el)
+                            }
+                        });
+                    }
+
+                    static CONTENT(fun, content, element) {
+                        let options = {};
+
+                        options.get = () => element.el[0]["inner" + fun];
+
+                        options.set = () => {
+                            for (let el of element.el) el["inner" + fun] = content;
+                            return element;
+                        };
+
+                        options.clear = ()=>{
+                            for (let el of element.el) el["inner" + fun] = '';
+                            return element;
+                        };
+
+                        options.append = (position) => {
+                            let pos = position || "beforeend";
+                            for (let el of element.el) el["insertAdjacent" + fun](pos, content);
+                            return element;
+                        };
+
+                        return options;
+                    }
+
+                    static objectToStyle(cssProperties) {
+                        let s = Object.keys(cssProperties)
+                            .map((key) => key + ": " + cssProperties[key])
+                            .join(";");
+                        return ("'" + s + "'").slice(1).slice(0, -1);
+                    }
+
                 }
 
-                static CONTENT(fun, content, element) {
-                    let options = {};
-
-                    options.get = () => element.el[0]["inner" + fun];
-
-                    options.set = () => {
-                        for (let el of element.el) el["inner" + fun] = content;
-                        return element;
-                    };
-
-                    options.clear = ()=>{
-                        for (let el of element.el) el["inner" + fun] = '';
-                        return element;
-                    };
-
-                    options.append = (position) => {
-                        let pos = position || "beforeend";
-                        for (let el of element.el) el["insertAdjacent" + fun](pos, content);
-                        return element;
-                    };
-
-                    return options;
-                }
-
-                static objectToStyle(cssProperties) {
-                    let s = Object.keys(cssProperties)
-                        .map((key) => key + ": " + cssProperties[key])
-                        .join(";");
-                    return ("'" + s + "'").slice(1).slice(0, -1);
-                }
-
-            }
-
-            return new el(selector);
+                return new el(selector);
         };
 
-        this.ren = (con) => {
+
+        this.Render = (old) => {
+
             let keys = Object.keys(this.data),
-                content = con || this.child.innerHTML;
+                content = old || this.child.innerHTML;
 
             for (let item of keys) {
                 while (content.includes("{{" + item + "}}"))
@@ -690,14 +694,10 @@ class Seule {
             }
 
             this.child.innerHTML = content;
+
         };
 
-        this.shadow();
-        old = this.child.innerHTML;
-        this.old = old;
-        this.ren();
-        app.root && this.Root();
-
+        Shadow();
 
         this.Component = (name, options)=> {
             let el = Find(name),
@@ -712,7 +712,7 @@ class Seule {
 
             if(typeof options.style === "string")
                 if(options.style.toLowerCase() === "parent")
-                    options.style = [this.style];
+                    options.style = [app.style];
 
             Seule.PDO(options.data || [{}],  {
                 find: (s) => find(s),
@@ -742,7 +742,17 @@ class Seule {
             return this;
         };
 
+
+        app.root && this.Root();
+
+        this.Render();
+
         app.handler && app.handler(this, (s) => Find(s), (s)=> Find(document.querySelectorAll(s)));
+
+        this.Init = ()=>{
+            this.Render(old);
+            app.handler && app.handler(this, (s) => Find(s), (s)=> Find(document.querySelectorAll(s)));
+        };
 
     }
 
@@ -753,14 +763,9 @@ class Seule {
                 this.data[element[0]] = String(element[1]);
             }
 
-            this.ren(this.old);
+            this.Render();
 
         return this;
-    }
-
-    Init(){
-        this.ren(this.old);
-        return this
     }
 
     async Get(url, options) {
@@ -772,7 +777,7 @@ class Seule {
         };
 
         if (options.form) {
-            let newForm = parent.querySelector(options.form);
+            let newForm = parent.querySelector(options.form) || document.querySelector(options.form);
             formData = new FormData(newForm);
 
             newForm.onsubmit = async (e) => e.preventDefault();
