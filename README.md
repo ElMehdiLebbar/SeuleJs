@@ -90,8 +90,7 @@ const app = new Seule({
             },
             handler($app, $scoop, $root){
                 $scoop('button')
-                    .Click(()=> $app.data.message = "It's Awesome Baby",
-            true)
+                    .Click(()=> $app.data.message = "It's Awesome Baby", true)
             }
         })
 ```
