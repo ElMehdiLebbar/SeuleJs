@@ -90,7 +90,8 @@ const app = new Seule({
             },
             handler($app, $scoop, $root){
                 $scoop('button')
-                    .Click(()=> $app.data.message = $app.data.message.split('').reverse().join(''), true)
+                    .Click(()=> $app.data.message =
+                           $app.data.message.split('').reverse().join(''), true)
             }
         })
 ```
