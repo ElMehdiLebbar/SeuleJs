@@ -260,3 +260,22 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
 
+
+### 🔰 Swipe()
+
+Detecting a swipe (left, right, top or down) When a swipe event fires on an element.
+
+#### 〽️ Syntax
+
+```javascript
+$scoop(CSS selectors).Swipe(on, handler())
+```
+
+#### Events
+
+- left
+- right
+- top
+- bottom
+
+
