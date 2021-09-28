@@ -125,14 +125,14 @@ class Seule {
                         });
                     }
 
-                    Focus(handler) {
-                        if (handler) this.On("focus", (el) => handler(el));
+                    Focus(handler, initial) {
+                        if (handler) this.On("focus", (el) => handler(el), initial);
                         else this.el[0].focus();
                         return this;
                     }
 
-                    Blur(handler) {
-                        if (handler) this.On("blur", (el) => handler(el));
+                    Blur(handler, initial) {
+                        if (handler) this.On("blur", (el) => handler(el), initial);
                         else this.el[0].blur();
                         return this;
                     }
@@ -161,18 +161,18 @@ class Seule {
 
                             if (Math.abs(xDiff) > Math.abs(yDiff)) {
                                 if (xDiff > 0) {
-                                    if (on === "left") handler(new el(this), this);
+                                    if (on === "left") handler(new el(this));
                                     else return false;
                                 } else if (xDiff < 0) {
-                                    if (on === "right") handler(new el(this), this);
+                                    if (on === "right") handler(new el(this));
                                     else return false;
                                 }
                             } else {
                                 if (yDiff > 0) {
-                                    if (on === "top") handler(new el(this), this);
+                                    if (on === "top") handler(new el(this));
                                     else return false;
                                 } else if (yDiff < 0) {
-                                    if (on === "bottom") handler(new el(this), this);
+                                    if (on === "bottom") handler(new el(this));
                                     else return false;
                                 }
                             }
@@ -234,7 +234,7 @@ class Seule {
                         return this;
                     }
 
-                    Toggle(event, options) {
+                    Toggle(event, options, initial) {
                         let check = true;
                         this.On(event, function (el) {
                             if (check) {
@@ -245,7 +245,7 @@ class Seule {
 
                             options.callback(el);
                             check = true;
-                        });
+                        }, initial);
                         return this;
                     }
 
