@@ -100,6 +100,8 @@ const app = new Seule({
 
 More "Try it Yourself" examples below.
 
+<br>
+
 ## ↩️ Seule selectors
 
 For more security, Seule using Shadow DOM. The problem is that you can't access to DOM element(s) unless you use Seule selectors inside handler() by invoking $scoop parameter.
@@ -152,6 +154,8 @@ const app = new Seule({
 ```    
     
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
+
+<br>
 
 
 ## ↩️ Seule Events
