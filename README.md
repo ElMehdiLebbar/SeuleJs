@@ -212,3 +212,15 @@ $scoop(CSS selectors).on(event, handler())
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPjmVq)
 
 
+## ↩️ Seule Special Events
+
+🔰 Click()
+
+The function is executed when the user clicks on the HTML element. 
+
+🔹 For example When a click event fires on an element show an alert box.
+
+```javascript
+$scoop("button")
+    .Click(() => alert('just a simple click'))
+```
