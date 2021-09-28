@@ -203,8 +203,8 @@ $scoop(CSS selectors).on(event, handler())
             
                 $scoop('button')
                     .On("click", ()=> $scoop('img')
-                            .Attr('src')
-                            .set('http://bit.ly/3fjVxGC'))
+                        .Attr('src')
+                        .set('http://bit.ly/3fjVxGC'))
                             
             }
         })
