@@ -126,7 +126,7 @@ Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Referenc
 $scoop("p")
 ```
 
-When a user clicks on a button, all <p> elements will be hidden:
+When a user clicks on a button, all &lt;p&gt; elements will be hidden:
     
 ```html
 <div id='app'>
