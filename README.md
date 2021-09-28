@@ -99,3 +99,56 @@ const app = new Seule({
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
 
 More "Try it Yourself" examples below.
+
+## ↩️ Seule selectors
+
+For more security, Seule using Shadow DOM. The problem is that you can't access to DOM element(s) unless you use Seule selectors inside handler() by invoking $scoop parameter.
+
+$scoop Selectors method returns all elements in the Seule app that matches a specified CSS selector(s), as a static Seule Object.
+
+### 〽️ Syntax
+
+```javascript
+$scoop(CSS selectors)
+```
+
+Parameter --> CSS selectors
+
+Type --> String
+
+Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://www.w3schools.com/cssref/css_selectors.asp)
+
+### Example
+
+🔹 You can select all <p> elements on app like this:
+
+```javascript
+$scoop("p")
+```
+
+When a user clicks on a button, all <p> elements will be hidden:
+    
+```html
+<div id='app'>
+    <p>{{message}} 1</p>
+    <p>{{message}} 2</p>
+    <p>{{message}} 3</p>
+    <button title="{{title}}">Hide paragraphs</button>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data: {
+                message: "This is paragraph",
+                title: "Click me to hide paragraphs"
+            },
+            handler($app, $scoop){
+                $scoop('button')
+                    .Click(()=> $scoop('p').Hide())
+            }
+        })
+```    
+    
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
