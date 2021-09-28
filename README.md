@@ -211,6 +211,7 @@ $scoop(CSS selectors).on(event, handler())
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPjmVq)
 
+<br>
 
 ## ↩️ Seule Special Events
 
@@ -224,3 +225,38 @@ The function is executed when the user clicks on the HTML element.
 $scoop("button")
     .Click(()=> alert('just a simple click'))
 ```
+
+
+🔰 Hold()
+
+The function is executed when the user make a long presse on the HTML element.
+
+### 〽️ Syntax
+
+```javascript
+$scoop(CSS selectors).Hold(handler(), time)
+```
+
+the time by default is 1500 => 1.5s
+
+### Example
+
+🔹 Show an alert box When user make a long presse on button for 3s.
+
+```html
+<div id='app'>
+    <button>Hold Me for 3s</button>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            handler($app, $scoop){
+                $scoop('button')
+                    .Hold(()=> alert('Good Job!™ 🤩'), 3000)
+            }
+        })
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
+
