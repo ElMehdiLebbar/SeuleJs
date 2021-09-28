@@ -184,7 +184,7 @@ class Seule {
                         return this;
                     }
 
-                    HotKey(query, handler) {
+                    HotKey(query, handler, prevent) {
                         let key = "",
                             start,
                             mapObj = {
@@ -195,7 +195,8 @@ class Seule {
                         return this.Each(function () {
                             this.addEventListener(
                                 "keydown",
-                                function (event) {
+                                    function (event) {
+                                    prevent && event.preventDefault();
                                     key += event.key;
                                     key = key.replace(/Arrow|Control/gi, function (matched) {
                                         return mapObj[matched];
@@ -203,11 +204,10 @@ class Seule {
                                     start = key.toLowerCase().indexOf(querys.toLowerCase());
 
                                     if (start > -1) {
-                                        handler(new el(this), this);
-                                        key = "";
+                                        handler(new el(this));
+                                        this.focus();
+                                        key = " "
                                     }
-
-                                    setInterval(() => (key = ""), 5000);
                                 },
                                 true
                             );
