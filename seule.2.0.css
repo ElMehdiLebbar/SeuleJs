@@ -31,7 +31,10 @@ button{
   cursor: pointer;
 }
 
-img{margin: 20px}
+img{
+    display: block;
+    margin: 20px auto;
+}
 
 section{
     height: 300px;
