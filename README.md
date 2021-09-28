@@ -133,7 +133,7 @@ When a user clicks on a button, all <p> elements will be hidden:
     <p>{{message}} 1</p>
     <p>{{message}} 2</p>
     <p>{{message}} 3</p>
-    <button title="{{title}}">Hide paragraphs</button>
+    <button title="{{title}}">Hide All!</button>
 </div>
 ```
 
