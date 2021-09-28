@@ -86,12 +86,11 @@ Magic Happens inside this method by calling three parameters: $app, $scoop, $roo
 const app = new Seule({
             el: '#app',
             data: {
-                message : 'Click the button bellow'
+                message: "Hello my Friend"
             },
             handler($app, $scoop, $root){
                 $scoop('button')
-                    .Click(()=> $scoop('p')
-                        .Text("Hello Seule").set())
+                    .Click(()=> $app.data.message = "It's Awesome Baby", true)
             }
         })
 ```
