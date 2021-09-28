@@ -46,7 +46,7 @@ In addition to text interpolation, we can also bind **element attributes** like 
 <element attribute="{{variable}}"></element>
 ```
 
-🔹 for exemple:
+#### 🔹 for exemple:
 
 ```html
 <div id='app'>
@@ -73,7 +73,7 @@ const app = new Seule({
 
 Magic Happens here by invoking Methods inside the handler(), using three parameters: $app, $scoop, $root and let users interact with your app
 
-🔹 for exemple:
+#### 🔹 for exemple:
 
 ```html
 <div id='app'>
@@ -108,7 +108,7 @@ For more security, Seule using Shadow DOM. The problem is that you can't access 
 
 $scoop Selectors method returns all elements in the Seule app that matches a specified CSS selector(s), as a static Seule Object.
 
-### 〽️ Syntax
+#### 〽️ Syntax
 
 ```javascript
 $scoop(CSS selectors)
@@ -120,7 +120,7 @@ Type --> String
 
 Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Reference](https://www.w3schools.com/cssref/css_selectors.asp)
 
-### Example
+#### Example
 
 🔹 You can select all &lt;p&gt elements on app like this:
 
@@ -170,7 +170,7 @@ An event represents the precise moment when something happens. Examples:
 
 for mor details about [!Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
 
-### 〽️ Syntax
+#### 〽️ Syntax
 
 using the **on** Method to assign an event to an element. 
 
@@ -178,7 +178,7 @@ using the **on** Method to assign an event to an element.
 $scoop(CSS selectors).on(event, handler())
 ```
 
-### Example
+#### Example
 
 🔹 for exemple To assign a click event to all button on a app, you can do this:
 
@@ -215,7 +215,7 @@ $scoop(CSS selectors).on(event, handler())
 
 ## ↩️ Seule Special Events
 
-🔰 Click()
+### 🔰 Click()
 
 The function is executed when the user clicks on the HTML element. 
 
@@ -227,11 +227,11 @@ $scoop("button")
 ```
 
 
-🔰 Hold()
+### 🔰 Hold()
 
 The function is executed when the user make a long presse on the HTML element.
 
-### 〽️ Syntax
+#### 〽️ Syntax
 
 ```javascript
 $scoop(CSS selectors).Hold(handler(), time)
@@ -239,7 +239,7 @@ $scoop(CSS selectors).Hold(handler(), time)
 
 the time by default is 1500 => 1.5s
 
-### Example
+#### Example
 
 🔹 Show an alert box When user make a long presse on button for 3s.
 
