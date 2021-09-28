@@ -68,10 +68,10 @@ const app = new Seule({
 
 <br>
 
-## ↩️ Handler Method
+## ↩️ Handling User Input
 
 
-Magic Happens inside this method by calling three parameters: $app, $scoop, $root
+Magic Happens here by invoking Methods inside the handler(), using three parameters: $app, $scoop, $root and let users interact with your app
 
 🔹 for exemple:
 
@@ -90,7 +90,7 @@ const app = new Seule({
             },
             handler($app, $scoop, $root){
                 $scoop('button')
-                    .Click(()=> $app.data.message = "It's Awesome Baby", true)
+                    .Click(()=> $app.data.message = $app.data.message.split('').reverse().join(''), true)
             }
         })
 ```
