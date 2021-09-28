@@ -9,3 +9,26 @@ html {
     overflow-x: hidden;
     text-align: center;
 }
+
+p {
+  font-size: 32px;
+  font-weight: 100;
+  color: white;
+}
+
+p span{
+  font-size: 96px;
+  color: yellow;
+}
+
+button{
+  margin : auto;
+  padding : 20px 40px;
+  font-size: 24px;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  color:#fff;
+  cursor: pointer;
+}
+
+img{margin: 20px}
