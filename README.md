@@ -120,7 +120,7 @@ Tip: For a list of all CSS Selectors, look at w3schools [!CSS Selectors Referenc
 
 ### Example
 
-🔹 You can select all <p> elements on app like this:
+🔹 You can select all &lt;p&gt elements on app like this:
 
 ```javascript
 $scoop("p")
@@ -152,3 +152,59 @@ const app = new Seule({
 ```    
     
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
+
+
+## ↩️ Seule Events
+
+> What are Events?
+
+An event represents the precise moment when something happens. Examples:
+
+- moving a mouse over an element
+- selecting a radio button
+- clicking on an element
+
+for mor details about [!Event reference](https://developer.mozilla.org/en-US/docs/Web/Events)
+
+### 〽️ Syntax
+
+using the **on** Method to assign an event to an element. 
+
+```javascript
+$scoop(CSS selectors).on(event, handler())
+```
+
+### Example
+
+🔹 for exemple To assign a click event to all button on a app, you can do this:
+
+```html
+<div id='app'>
+
+    <img src="http://bit.ly/3flCDzm" width="150">
+
+    <button>Change the picture</button>
+
+    <p>{{message}}</p>
+</div>
+```
+
+```javascript
+ const app = new Seule({
+            el: '#app',
+            data: {
+                message: "Click the button to see what happens!"
+            },
+            handler($app, $scoop){
+            
+                $scoop('button')
+                    .On("click", ()=> $scoop('img')
+                            .Attr('src')
+                            .set('http://bit.ly/3fjVxGC'))
+                            
+            }
+        })
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPjmVq)
+
+
