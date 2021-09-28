@@ -222,5 +222,5 @@ The function is executed when the user clicks on the HTML element.
 
 ```javascript
 $scoop("button")
-    .Click(() => alert('just a simple click'))
+    .Click(()=> alert('just a simple click'))
 ```
