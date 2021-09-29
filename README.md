@@ -422,11 +422,9 @@ Other special keys are <code>backspace</code>, <code>tab</code>, <code>enter</co
 
 Any other key you should be able to reference by name like <code>a</code>, <code>/</code>, <code>$</code>, <code>*</code>, or <code>=</code>.
 
-#### Example
+#### Examples
 
-🔹 Attach a function to the blur event. The blur event occurs when the <input> field loses focus:
-
-Hotkey event with Single key
+🔹 Hotkey event with Single key:
 
 ```javascript
 $scoop('input').Hotkey('m', handler()=> 
