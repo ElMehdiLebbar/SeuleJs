@@ -43,7 +43,7 @@ In addition to text interpolation, we can also bind **element attributes** like 
 #### 〽️ Syntax:
 
 ```html
-<element attribute="{{variable}}"></element>
+<element attribute="{{[variable: <String>]}}"></element>
 ```
 
 #### 🔹 for exemple:
@@ -111,7 +111,7 @@ $scoop Selectors method returns all elements in the Seule app that matches a spe
 #### 〽️ Syntax
 
 ```javascript
-$scoop(CSS selectors)
+$scoop([CSS selectors])
 ```
 
 Parameter --> CSS selectors
@@ -172,10 +172,10 @@ for mor details about [!Event reference](https://developer.mozilla.org/en-US/doc
 
 #### 〽️ Syntax
 
-using the **on** Method to assign an event to an element. 
+using the **On** Method to assign an event to an element. 
 
 ```javascript
-$scoop(CSS selectors).On(event, handler())
+$scoop([CSS selectors]).On([event:<String>], [handler:<Function>])
 ```
 
 #### Example
@@ -234,7 +234,7 @@ The function is executed when the user make a long presse on the HTML element.
 #### 〽️ Syntax
 
 ```javascript
-$scoop(CSS selectors).Hold(handler(), time)
+$scoop([CSS selectors]).Hold([handler:<Function>], [time:<Integer>])
 ```
 
 the time by default is 1500 => 1.5s
@@ -268,7 +268,7 @@ Detecting a swipe (left, right, top or down) When a swipe event fires on an elem
 #### 〽️ Syntax
 
 ```javascript
-$scoop(CSS selectors).Swipe(on, handler())
+$scoop([CSS selectors]).Swipe([event:<String>], [handler:<Function>])
 ```
 
 #### Events
@@ -317,13 +317,13 @@ The focus() method triggers the focus event, or attaches a function to run when 
 Trigger the focus event for selected elements:
 
 ```javascript
-$scoop(CSS selectors).Focus()
+$scoop([CSS selectors]).Focus()
 ```
 
 Attach a function to the focus event:
 
 ```javascript
-$scoop(CSS selectors).Focus(handler())
+$scoop([CSS selectors]).Focus([handler:<Function>])
 ```
 #### Example
 
@@ -365,13 +365,13 @@ The blur() method triggers the blur event, or attaches a function to run when a 
 Trigger the blur event for the selected elements:
 
 ```javascript
-$scoop(CSS selectors).Blur()
+$scoop([CSS selectors]).Blur()
 ```
 
 Attach a function to the focus event:
 
 ```javascript
-$scoop(CSS selectors).Blur(handler())
+$scoop([CSS selectors]).Blur([handler:<Function>])
 ```
 #### Example
 
