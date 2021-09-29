@@ -455,3 +455,6 @@ $scoop(window).HotKey('ctrl+r',
 $scoop(window).HotKey('ctrl+r',
     ()=> alert('Global keyboard shortcuts'), true);    
 ```
+
+
+### Just One More Example [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/JjJxejL)
