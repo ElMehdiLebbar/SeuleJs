@@ -47,8 +47,12 @@ class Seule {
                 let parent = this.child,
                     root = this;
 
-                class el {
-                    constructor(select) {
+                class el
+
+                {
+                    constructor(select ) {
+                        if(!select) return root;
+
                         try {
                             if (select === "body")
                                 this.el = document.querySelectorAll("body");
@@ -60,11 +64,15 @@ class Seule {
                     }
 
                     $() {
-                        return root;
+                        return new el(parent);
                     }
 
                     Parent() {
                         return new el(this.el[0].parentElement);
+                    }
+
+                    Children(){
+                        return new el(this.el[0].children);
                     }
 
                     Select(selector) {
@@ -82,7 +90,6 @@ class Seule {
 
                     Each(callback) {
                         for (const element of this.el) callback.call(element);
-
                         return this;
                     }
 
@@ -90,7 +97,7 @@ class Seule {
                         if (event === "hold") this.Hold(handler);
                         else
                             return this.Each(function () {
-                                this.addEventListener(
+                                handler && this.addEventListener(
                                     event,
                                     () => {
                                         handler(new el(this), this);
@@ -101,8 +108,16 @@ class Seule {
                             });
                     }
 
+                    Fire(event){
+                        return this.Each(function () {
+                            event && this[event]()
+                        });
+                    }
+
                     Click(handler, initial) {
-                        this.On("click", (el) => handler(el), initial);
+                        handler
+                            ? this.On("click", (el) => handler(el), initial)
+                            : this.Fire("click");
                         return this;
                     }
 
@@ -126,14 +141,17 @@ class Seule {
                     }
 
                     Focus(handler, initial) {
-                        if (handler) this.On("focus", (el) => handler(el), initial);
-                        else this.el[0].focus();
+                        handler
+                            ? this.On("focus", (el) => handler(el), initial)
+                            : this.Fire("focus");
+
                         return this;
                     }
 
                     Blur(handler, initial) {
-                        if (handler) this.On("blur", (el) => handler(el), initial);
-                        else this.el[0].blur();
+                        handler
+                            ? this.On("blur", (el) => handler(el), initial)
+                            : this.Fire("blur");
                         return this;
                     }
 
@@ -195,7 +213,7 @@ class Seule {
                                     start = key.toLowerCase().indexOf(querys.toLowerCase());
 
                                     if (start > -1) {
-                                        handler(new el(this));
+                                        handler && handler(new el(this));
                                         this.focus();
                                         key = " "
                                     }
@@ -208,8 +226,10 @@ class Seule {
                     Copy(target, options) {
                         let tar,
                             ons = options.split(":");
-                        if (typeof target === "string") tar = parent.querySelector(target);
-                        else tar = target;
+
+                        (typeof target === "string")
+                            ? tar = parent.querySelector(target)
+                            : tar = target;
 
                         for (let on of ons) {
                             this.On(on.trimStart().trimEnd(), function () {
