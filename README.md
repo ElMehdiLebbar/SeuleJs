@@ -306,3 +306,51 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/powGwmL)
 
+### 🔰 Focus()
+
+The focus event occurs when an element gets focus (when selected by a mouse click or by "tab-navigating" to it).
+
+The focus() method triggers the focus event, or attaches a function to run when a focus event occurs.
+
+#### 〽️ Syntax
+
+Trigger the focus event for selected elements:
+
+```javascript
+$scoop(CSS selectors).Focus()
+```
+
+Attach a function to the focus event:
+
+```javascript
+$scoop(CSS selectors).Focus(handler())
+```
+#### Example
+
+🔹 Attach a function to the focus event. The focus event occurs when the <input> field gets focus:
+
+```html
+<div id='app'>
+    <input placeholder="Focus on me!" type="text">
+    <p>{{message}}</p>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data: {
+                message: "Click in the input field to see what happens!"
+            },
+            handler($app, $scoop){
+                $scoop('input')
+                    .Focus(e => {
+                        e
+                            .Css("border-bottom-color").set("#8755F2")
+                            .Val("Great work keep it up!").set()
+                    })
+            }
+        })
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/dyRaVpV)
+
