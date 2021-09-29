@@ -354,3 +354,51 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/dyRaVpV)
 
+### 🔰 Blur()
+
+The blur event occurs when an element loses focus.
+
+The blur() method triggers the blur event, or attaches a function to run when a blur event occurs.
+
+#### 〽️ Syntax
+
+Trigger the blur event for the selected elements:
+
+```javascript
+$scoop(CSS selectors).Blur()
+```
+
+Attach a function to the focus event:
+
+```javascript
+$scoop(CSS selectors).Blur(handler())
+```
+#### Example
+
+🔹 Attach a function to the blur event. The blur event occurs when the <input> field loses focus:
+
+```html
+<div id='app'>
+    <input placeholder="Write something!" type="text">
+    <p>{{message}}</p>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data: {
+                message: "Click outside the field to lose focus (blur)."
+            },
+            handler($app, $scoop){
+                $scoop('input')
+                    .Blur(e => {
+                      $scoop('p')
+                        .Text("This input field has lost its focus!")
+                        .set()
+                    })
+            }
+        })
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/JjJxONm)
+
