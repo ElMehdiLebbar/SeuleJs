@@ -409,7 +409,7 @@ With HotKey Method in Seule you can now handling keyboard shortcuts easly.
 #### 〽️ Syntax
 
 ```javascript
-$scoop(CSS selectors).Hotkey('Keyboard Keys combination', handler());
+$scoop([CSS selectors]).Hotkey([keys:<String>], [handler:<Function>], [prevent:<Boolean>]);
 ```
 
 ### SUPPORTED KEYS:
@@ -429,4 +429,29 @@ Any other key you should be able to reference by name like <code>a</code>, <code
 ```javascript
 $scoop('input').HotKey('m',
     ()=> alert('M button is pressed on the Keyboard!'));
+```
+
+🔹 Combination of keys:
+
+```javascript
+$scoop('input').HotKey('ctrl s',
+    ()=> alert('You pressed ctrl+s!'));
+```
+
+🔹 Sequence of keys like Konami Style (:
+
+```javascript
+$scoop('input').HotKey('Left Right Left Right A C',
+    ()=> alert('Now you can play with Orochi Iori'));
+```
+
+🔹 Or you can specify keyboard events that will work anywhere including inside textarea/input fields like:
+
+```javascript
+$scoop(window).HotKey('ctrl+r',
+    ()=> alert('Global keyboard shortcuts'));
+    
+// if you want prevent the default refresh event under WINDOWS system    
+$scoop(window).HotKey('ctrl+r',
+    ()=> alert('Global keyboard shortcuts'), true);    
 ```
