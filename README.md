@@ -278,4 +278,31 @@ $scoop(CSS selectors).Swipe(on, handler())
 - top
 - bottom
 
+#### Example
+
+🔹 Change the background When user swipe left 🤚 on screen
+
+```html
+<div id='app'>
+    <img src="https://bit.ly/3m7nlzN" width="150" alt="Logo" title="{{tooltip}}">
+    <p>{{message}}</p>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data: {
+                message: "Swipe left to see what happens!",
+                tooltip : "See this demo on Mobile"
+            },
+            handler($app, $scoop){
+                $scoop(window)
+                    .Swipe("left", ()=> $scoop('body')
+                            .Css('background')
+                            .set('#666'))
+            }
+        })
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/powGwmL)
 
