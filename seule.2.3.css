@@ -1,0 +1,52 @@
+body {
+    font: 200% "Roboto", Verdana, sans-serif;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    height: 100vh;
+    color:#fff;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+p {
+  font-size: 32px;
+  font-weight: 100;
+  color: white;
+}
+
+p span{
+  font-size: 96px;
+  color: yellow;
+}
+
+button{
+  margin : auto;
+  padding : 20px 40px;
+  font-size: 24px;
+  background: rgba(0,0,0,0.1);
+  border: none;
+  color:#fff;
+  cursor: pointer;
+}
+
+img{
+    display: block;
+    margin: 20px auto;
+}
+
+section{
+    height: 300px;
+    max-width:500px;
+    margin: 40px auto;
+    background: rgba(0,0,0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px
+}
+
+h1{
+    font-size: 18px;
+}
