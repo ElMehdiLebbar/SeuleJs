@@ -428,5 +428,5 @@ Any other key you should be able to reference by name like <code>a</code>, <code
 
 ```javascript
 $scoop('input').HotKey('m',
-    ()=> alert('A button is pressed on the Keyboard!'));
+    ()=> alert('M button is pressed on the Keyboard!'));
 ```
