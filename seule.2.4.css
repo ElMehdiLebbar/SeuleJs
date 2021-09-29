@@ -5,6 +5,7 @@ body {
     justify-content: center;
     align-items:center;
     height: 100vh;
+    margin: 0;
     color:#fff;
     overflow-x: hidden;
     text-align: center;
@@ -55,4 +56,6 @@ input{
     background: rgba(0,0,0, 0.1);
     border: transparent thin solid;
     outline: none;
+    padding: 10px 20px;
+    color: white;
 }
