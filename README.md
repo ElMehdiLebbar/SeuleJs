@@ -392,11 +392,9 @@ const app = new Seule({
             },
             handler($app, $scoop){
                 $scoop('input')
-                    .Blur(e => {
-                      $scoop('p')
+                    .Blur(()=> $scoop('p')
                         .Text("This input field has lost its focus!")
-                        .set()
-                    })
+                        .set())
             }
         })
 ```
