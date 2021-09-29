@@ -427,6 +427,6 @@ Any other key you should be able to reference by name like <code>a</code>, <code
 🔹 Hotkey event with Single key:
 
 ```javascript
-$scoop('input').Hotkey('m', handler()=> 
-    alert('A button is pressed on the Keyboard !'));
+$scoop('input').HotKey('m',
+    ()=> alert('A button is pressed on the Keyboard!'));
 ```
