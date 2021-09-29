@@ -102,7 +102,7 @@ More "Try it Yourself" examples below.
 
 <br>
 
-## ↩️ Seule selectors
+## ↩️ Selectors
 
 For more security, Seule using Shadow DOM. The problem is that you can't access to DOM element(s) unless you use Seule selectors inside handler() by invoking $scoop parameter.
 
@@ -158,7 +158,7 @@ const app = new Seule({
 <br>
 
 
-## ↩️ Seule Events
+## ↩️ Events
 
 > What are Events?
 
@@ -213,7 +213,7 @@ $scoop(CSS selectors).On(event, handler())
 
 <br>
 
-## ↩️ Seule Special Events
+## ↩️ Special Events
 
 ### 🔰 Click()
 
@@ -400,3 +400,35 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/JjJxONm)
 
+<br>
+
+## ↩️ Handling keyboard Events
+
+With HotKey Method in Seule you can now handling keyboard shortcuts easly. 
+
+#### 〽️ Syntax
+
+```javascript
+$scoop(CSS selectors).Hotkey('Keyboard Keys combination', handler());
+```
+
+### SUPPORTED KEYS:
+
+For modifier keys you can use  <code>shift</code>, <code>ctrl</code>, <code>alt</code> or <code>meta</code>
+
+You can substitute  <code>option</code> for <code>alt</code> and <code>command</code> for <code>meta</code>
+
+Other special keys are <code>backspace</code>, <code>tab</code>, <code>enter</code>, <code>return</code>, <code>capslock</code>, <code>esc</code>, <code>escape</code>, <code>space</code>, <code>pageup</code>, <code>pagedown</code>, <code>end</code>, <code>home</code>, <code>left</code>, <code>up</code>, <code>right</code>, <code>down</code>, <code>ins</code>, <code>del</code>, and <code>plus</code>
+
+Any other key you should be able to reference by name like <code>a</code>, <code>/</code>, <code>$</code>, <code>*</code>, or <code>=</code>.
+
+#### Example
+
+🔹 Attach a function to the blur event. The blur event occurs when the <input> field loses focus:
+
+Hotkey event with Single key
+
+```javascript
+$scoop('input').Hotkey('m', handler()=> 
+    alert('A button is pressed on the Keyboard !'));
+```
