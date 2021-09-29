@@ -175,7 +175,7 @@ for mor details about [!Event reference](https://developer.mozilla.org/en-US/doc
 using the **on** Method to assign an event to an element. 
 
 ```javascript
-$scoop(CSS selectors).on(event, handler())
+$scoop(CSS selectors).On(event, handler())
 ```
 
 #### Example
