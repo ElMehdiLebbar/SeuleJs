@@ -180,7 +180,7 @@ $scoop([CSS selectors]).On([event:<String>], [handler:<Function>])
 
 #### Example
 
-🔹 for exemple To assign a click event to all button on a app, you can do this:
+🔹 for exemple To assign a click event to all button on a Seule app, you can do this:
 
 ```html
 <div id='app'>
