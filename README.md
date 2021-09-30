@@ -160,7 +160,7 @@ const app = new Seule({
 
 ## ↩️ Events
 
-> What are Events?
+> What is an Event?
 
 An event represents the precise moment when something happens. Examples:
 
