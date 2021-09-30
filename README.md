@@ -498,3 +498,5 @@ const app = new Seule({
         });
 ```
 
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdyMzw)
+
