@@ -404,6 +404,8 @@ const app = new Seule({
 
 ## ↩️ Handling keyboard Events
 
+### 🔰 HotKey()
+
 With HotKey Method in Seule you can now handling keyboard shortcuts easly. 
 
 #### 〽️ Syntax
@@ -460,3 +462,39 @@ $scoop(window).HotKey('ctrl+r',
 ### Just One More Example 
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/JjJxejL)
+
+<br>
+
+## ↩️ More with Events
+
+There are so many things helpful in Seule like : 
+
+### 🔰 Fire()
+
+Do you want to simulate event with a single statement? Then you may use Fire Method rot that:
+
+#### 〽️ Syntax
+
+```javascript
+$scoop([CSS selectors]).Fire([event:<String>]);
+```
+#### Examples
+
+Simulate a mouse-click when moving the mouse pointer over a button:
+
+```html
+<div id='app'>
+    <button onclick="alert('Clicked !')">Hover Me !</button>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            handler($app, $scoop){
+                $scoop('button')
+                  .On('mouseover', e=> e.Fire("click"))
+            }
+        });
+```
+
