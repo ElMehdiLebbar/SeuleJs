@@ -206,16 +206,25 @@ class Seule {
                                 "keydown",
                                     function (event) {
                                     prevent && event.preventDefault();
+
+
+
                                     key += event.key;
+
                                     key = key.replace(/Arrow|Control/gi, function (matched) {
                                         return mapObj[matched];
                                     });
+
+                                    key = key.replace(/ /g,"space");
+
+
+
                                     start = key.toLowerCase().indexOf(querys.toLowerCase());
 
                                     if (start > -1) {
                                         handler && handler(new el(this));
                                         this.focus();
-                                        key = " "
+                                        key = "";
                                     }
                                 },
                                 true
