@@ -1,0 +1,24 @@
+body {
+    font: 150% "Roboto", Verdana, sans-serif;
+    background-color: #333;
+    display: flex;
+    justify-content: start;
+    align-items:center;
+    height: 100vh;
+    margin: 0;
+    color:#fff;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+div{
+    position: fixed;
+    bottom: -38px;
+    height: 50%;
+    left: 0;
+    right: 0;
+    background: #444;
+}
+
+
+
