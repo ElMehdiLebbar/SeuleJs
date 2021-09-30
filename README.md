@@ -471,7 +471,7 @@ There are so many things helpful in Seule like :
 
 ### 🔰 Fire()
 
-Do you want to simulate event with a single statement? Then you may use Fire Method rot that:
+Do you want to simulate event with a single statement? Then you may use Fire Method for that:
 
 #### 〽️ Syntax
 
