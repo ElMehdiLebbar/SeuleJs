@@ -500,3 +500,52 @@ const app = new Seule({
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdyMzw)
 
+### 🔰 Copy()
+
+The Copy() method triggers the specified event(s) and the default behavior of an event (like form submission) for the selected elements.
+
+
+#### 〽️ Syntax
+
+```javascript
+$scoop([CSS selectors]).Copy([target:<String> | <Object>], [events:<String>]);
+```
+
+#### Examples
+
+Simulate onmouseout and onmouseover events the mouse pointer (out of/onto) a button:
+
+```html
+<div id="app">
+    <p>{{initMessage}}</p>
+    <button id="original">Original</button>
+    <button id="copy">Copy</button>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data:{
+                message : "Woah! That's awesome",
+                initMessage : "moving the mouse pointer (out of/onto) a button to see what happens!"
+            },
+            handler($app, $scoop){
+                $scoop('#original')
+                    .On("mouseover", e=> {
+                        e.Css("background").set("rgba(0,0,0,1)");
+                        $scoop("p").Text(this.data.message).set()
+                    })
+                    .On("mouseout", e=> {
+                        e.Css("background").set("rgba(0,0,0,0.1)");
+                        $scoop("p").Text(this.data.initMessage).set()
+                    });
+
+                $scoop('#copy').Copy("#original", "mouseover : mouseleave")
+            }
+        });
+```
+
+🔹 See the Example by clicking on the button below 👇
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/bGgegrq)
