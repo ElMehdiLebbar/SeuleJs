@@ -567,7 +567,7 @@ $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 ```html
  <div id="app">
    <p>{{message}}</p>
-   <section class="square">-_-</section>
+   <section class="square">^_^</section>
 </div>
 ```
 
@@ -596,7 +596,7 @@ const app = new Seule({
                                     background : "#2f2f2f",
                                     duration: 300
                               }).set()
-                              .Text('-_-').set()
+                              .Text('^_^').set()
                         }
                     })
             }
