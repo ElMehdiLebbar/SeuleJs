@@ -565,10 +565,9 @@ $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 🔹 Toggle between adding border-radius and changing the background of a div:
 
 ```html
-<div id="app">
-    <p>{{initMessage}}</p>
-    <button id="original">Original</button>
-    <button id="copy">Copy</button>
+ <div id="app">
+   <p>{{message}}</p>
+   <section class="square">-_-</section>
 </div>
 ```
 
