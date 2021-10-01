@@ -541,7 +541,7 @@ const app = new Seule({
                         $scoop("p").Text(this.data.initMessage).set()
                     });
 
-                $scoop('#copy').Copy("#original", "mouseover : mouseleave")
+                $scoop('#copy').Copy("#original", "mouseover : mouseout")
             }
         });
 ```
