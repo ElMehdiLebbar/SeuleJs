@@ -559,3 +559,47 @@ The Toggle() method toggles between two custom functions for the selected elemen
 ```javascript
 $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 ```
+
+#### Examples
+
+🔹 Toggle between adding border-radius and changing the background of a div:
+
+```html
+<div id="app">
+    <p>{{initMessage}}</p>
+    <button id="original">Original</button>
+    <button id="copy">Copy</button>
+</div>
+```
+
+```javascript
+const app = new Seule({
+            el: '#app',
+            data:{
+                message : "Click on the square 👇🏻 to see what happens!",
+            },
+            handler($app, $scoop){
+                $scoop(".square").Toggle("click",
+                    {
+                        handler(e) {
+                           e.Css({
+                               "border-radius" : "50%",
+                               background : "#aaa",
+                               color : "#333",
+                               duration: 300
+                           }).set()
+                        },
+                        callback(e){
+                            e.Css({
+                                "border-radius" : 0,
+                                background : "#2f2f2f",
+                                color : "#eee",
+                                duration: 300
+                            }).set()
+                        }
+                    })
+            }
+        });
+```
+
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
