@@ -584,19 +584,19 @@ const app = new Seule({
                         handler(e) {
                            e
                              .Css({
-                               "border-radius" : "50%",
-                               background : "red",
-                               duration: 300
-                           }).set()
+                                   "border-radius" : "50%",
+                                   background : "red",
+                                   duration: 300
+                              }).set()
                              .Text('*_*').set()
                         },
                         callback(e){
                             e
                               .Css({
-                                "border-radius" : 0,
-                                background : "#2f2f2f",
-                                duration: 300
-                            }).set()
+                                    "border-radius" : 0,
+                                    background : "#2f2f2f",
+                                    duration: 300
+                              }).set()
                               .Text('-_-').set()
                         }
                     })
