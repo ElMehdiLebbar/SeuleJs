@@ -65,4 +65,5 @@ input{
     height: 100px;
     background: rgba(0,0,0, 0.2);
     padding: 0;
+    cursor: pointer;
 }
