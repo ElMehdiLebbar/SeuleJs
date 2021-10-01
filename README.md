@@ -566,8 +566,8 @@ $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 
 ```html
  <div id="app">
-   <p>{{message}}</p>
-   <section class="square">^_^</section>
+   <p>Click on the square 👇🏻 to see what happens!</p>
+   <section class="square">{{grimace}}</section>
 </div>
 ```
 
@@ -575,7 +575,7 @@ $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 const app = new Seule({
             el: '#app',
             data:{
-                message : "Click on the square 👇🏻 to see what happens!",
+                grimace : "^_^",
             },
             handler($app, $scoop){
                 $scoop(".square").Toggle("click",
@@ -586,7 +586,7 @@ const app = new Seule({
                                    "border-radius" : "50%",
                                    background : "red",
                                    duration: 300
-                              }).set()
+                               }).set()
                              .Text('*_*').set()
                         },
                         callback(e){
@@ -595,8 +595,8 @@ const app = new Seule({
                                     "border-radius" : 0,
                                     background : "#2f2f2f",
                                     duration: 300
-                              }).set()
-                              .Text('^_^').set()
+                                }).set()
+                              .Text($app.data.grimace).set()
                         }
                     })
             }
