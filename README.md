@@ -549,3 +549,13 @@ const app = new Seule({
 🔹 See the Example by clicking on the button below 👇
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/bGgegrq)
+
+### 🔰 Toggle()
+
+The Toggle() method toggles between two custom functions for the selected element(s).
+
+#### 〽️ Syntax
+
+```javascript
+$scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
+```
