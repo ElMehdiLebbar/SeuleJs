@@ -582,20 +582,22 @@ const app = new Seule({
                 $scoop(".square").Toggle("click",
                     {
                         handler(e) {
-                           e.Css({
+                           e
+                             .Css({
                                "border-radius" : "50%",
-                               background : "#aaa",
-                               color : "#333",
+                               background : "red",
                                duration: 300
                            }).set()
+                             .Text('*_*').set()
                         },
                         callback(e){
-                            e.Css({
+                            e
+                              .Css({
                                 "border-radius" : 0,
                                 background : "#2f2f2f",
-                                color : "#eee",
                                 duration: 300
                             }).set()
+                              .Text('-_-').set()
                         }
                     })
             }
