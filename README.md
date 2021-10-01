@@ -104,7 +104,7 @@ More "Try it Yourself" examples below.
 
 ## ↩️ Selectors
 
-For more security, Seule using Shadow DOM. The problem is that you can't access to DOM element(s) unless you use Seule selectors inside handler() by invoking $scoop parameter.
+For more security, Seule uses Shadow DOM. The problem in that, is you can't get access to the DOM element(s) directly unless you use Css selectors inside the handler() by invoking the $scoop parameter.
 
 $scoop Selectors method returns all elements in the Seule app that matches a specified CSS selector(s), as a static Seule Object.
 
