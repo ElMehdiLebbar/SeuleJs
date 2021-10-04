@@ -612,6 +612,7 @@ const app = new Seule({
 Seule provides a variety of methods that allow us to traverse the App. Traversal methods in Seule help us to select elements in a Seule app randomly as well as in sequential method !
 
 * Select () : Returns all child elements that matches a specified CSS selector(s)
+* Each () : Specifies a function to run for each matched element.
 * Element () : Returns an element with a specific index number of the selected elements.
 * Parent () : Returns the direct parent element of the selected element.
 * Child () >>>
