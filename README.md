@@ -604,3 +604,19 @@ const app = new Seule({
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
+
+<br>
+
+## ↩️ Traversing Methods
+
+Seule provides a variety of methods that allow us to traverse the App. Traversal methods in Seule help us to select elements in a Seule app randomly as well as in sequential method !
+
+* Select () : Returns all child elements that matches a specified CSS selector(s)
+* Element () : Returns an element with a specific index number of the selected elements.
+* Parent () : Returns the direct parent element of the selected element.
+* Child () >>>
+    * .first()  : Returns the first child element of the selected element.
+    * .last()   : Returns the last child element of the selected element.
+    * .number() : Returns a child element with a specific index number of the selected elements.
+    * .all()    : Returns all direct children of the selected element.
+* $() : Returns the root element of the selected element.
