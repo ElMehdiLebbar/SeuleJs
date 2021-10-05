@@ -662,7 +662,7 @@ $scoop([CSS selectors]).Each([handler:<Function>]);
 
 #### Example
 
-🔹 Alert the text of each <li> element:
+🔹 Alert the text of each &lt;li&gt; element:
 
 ```html
 <div id="app">
@@ -697,4 +697,38 @@ const app = new Seule({
 });
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
+    
+<br>
+    
+## ↩️ Element in Seule App Manipulation
+    
+Seule provides various methods to add, edit or delete element(s) in the Seule App. 
+
+
+### 🔰 Create()
+
+Create() method creates the HTML element specified by tagName.
+    
+#### 〽️ Syntax
+
+```javascript
+$scoop().Create([tagName:<String>]);
+```
+
+#### Example
+
+🔹 Create a &lt;button&gt; element:
+
+```html
+<div id="app"></div>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    handler($app, $scope){
+       const btn = $scope().Create('button')
+    }
+});
+```
 
