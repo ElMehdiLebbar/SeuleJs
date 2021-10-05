@@ -23,11 +23,11 @@ You can create an index.html file and include Seule with:
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message : 'hello Seule'
-            }
-        })
+    el: '#app',
+    data: {
+        message : 'hello Seule'
+    }
+})
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/pooKBaX)
@@ -84,16 +84,16 @@ Magic Happens here by invoking Methods inside the handler(), using three paramet
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message: "Hello my Friend"
-            },
-            handler($app, $scoop, $root){
-                $scoop('button')
-                    .Click(()=> $app.data.message =
-                           $app.data.message.split('').reverse().join(''), true)
-            }
-        })
+    el: '#app',
+    data: {
+        message: "Hello my Friend"
+    },
+    handler($app, $scoop, $root){
+        $scoop('button')
+            .Click(()=> $app.data.message =
+                   $app.data.message.split('').reverse().join(''), true)
+    }
+})
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/WNNYada)
@@ -141,16 +141,16 @@ When a user clicks on a button, all &lt;p&gt; elements will be hidden:
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message: "This is paragraph",
-                title: "Click me to hide paragraphs"
-            },
-            handler($app, $scoop){
-                $scoop('button')
-                    .Click(()=> $scoop('p').Hide())
-            }
-        })
+    el: '#app',
+    data: {
+        message: "This is paragraph",
+        title: "Click me to hide paragraphs"
+    },
+    handler($app, $scoop){
+        $scoop('button')
+            .Click(()=> $scoop('p').Hide())
+    }
+})
 ```    
     
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/yLgeoGO)
@@ -195,19 +195,19 @@ $scoop([CSS selectors]).On([event:<String>], [handler:<Function>])
 
 ```javascript
  const app = new Seule({
-            el: '#app',
-            data: {
-                message: "Click the button to see what happens!"
-            },
-            handler($app, $scoop){
-            
-                $scoop('button')
-                    .On("click", ()=> $scoop('img')
-                        .Attr('src')
-                        .set('http://bit.ly/3fjVxGC'))
-                            
-            }
-        })
+    el: '#app',
+    data: {
+        message: "Click the button to see what happens!"
+    },
+    handler($app, $scoop){
+
+        $scoop('button')
+            .On("click", ()=> $scoop('img')
+                .Attr('src')
+                .set('http://bit.ly/3fjVxGC'))
+
+    }
+})
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPjmVq)
 
@@ -251,12 +251,12 @@ the time by default is 1500 => 1.5s
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            handler($app, $scoop){
-                $scoop('button')
-                    .Hold(()=> alert('Good Job!™ 🤩'), 3000)
-            }
-        })
+    el: '#app',
+    handler($app, $scoop){
+        $scoop('button')
+            .Hold(()=> alert('Good Job!™ 🤩'), 3000)
+    }
+})
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/poRyPNb)
 
@@ -291,18 +291,18 @@ $scoop([CSS selectors]).Swipe([event:<String>], [handler:<Function>])
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message: "Swipe left to see what happens!",
-                tooltip : "See this demo on Mobile"
-            },
-            handler($app, $scoop){
-                $scoop(window)
-                    .Swipe("left", ()=> $scoop('body')
-                            .Css('background')
-                            .set('#666'))
-            }
-        })
+    el: '#app',
+    data: {
+        message: "Swipe left to see what happens!",
+        tooltip : "See this demo on Mobile"
+    },
+    handler($app, $scoop){
+        $scoop(window)
+            .Swipe("left", ()=> $scoop('body')
+                    .Css('background')
+                    .set('#666'))
+    }
+})
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/powGwmL)
 
@@ -338,19 +338,19 @@ $scoop([CSS selectors]).Focus([handler:<Function>])
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message: "Click in the input field to see what happens!"
-            },
-            handler($app, $scoop){
-                $scoop('input')
-                    .Focus(e => {
-                        e
-                            .Css("border-bottom-color").set("#8755F2")
-                            .Val("Great work keep it up!").set()
-                    })
-            }
-        })
+    el: '#app',
+    data: {
+        message: "Click in the input field to see what happens!"
+    },
+    handler($app, $scoop){
+        $scoop('input')
+            .Focus(e => {
+                e
+                    .Css("border-bottom-color").set("#8755F2")
+                    .Val("Great work keep it up!").set()
+            })
+    }
+})
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/dyRaVpV)
 
@@ -386,17 +386,17 @@ $scoop([CSS selectors]).Blur([handler:<Function>])
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data: {
-                message: "Click outside the field to lose focus (blur)."
-            },
-            handler($app, $scoop){
-                $scoop('input')
-                    .Blur(()=> $scoop('p')
-                        .Text("This input field has lost its focus!")
-                        .set())
-            }
-        })
+    el: '#app',
+    data: {
+        message: "Click outside the field to lose focus (blur)."
+    },
+    handler($app, $scoop){
+        $scoop('input')
+            .Blur(()=> $scoop('p')
+                .Text("This input field has lost its focus!")
+                .set())
+    }
+})
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/JjJxONm)
 
@@ -490,12 +490,12 @@ Simulate a mouse-click when moving the mouse pointer over a button:
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            handler($app, $scoop){
-                $scoop('button')
-                  .On('mouseover', e=> e.Fire("click"))
-            }
-        });
+    el: '#app',
+    handler($app, $scoop){
+        $scoop('button')
+          .On('mouseover', e=> e.Fire("click"))
+    }
+});
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/QWdyMzw)
@@ -525,25 +525,25 @@ Simulate onmouseout and onmouseover events the mouse pointer (out of/onto) a but
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data:{
-                message : "Woah! That's awesome",
-                initMessage : "moving the mouse pointer (out of/onto) a button to see what happens!"
-            },
-            handler($app, $scoop){
-                $scoop('#original')
-                    .On("mouseover", e=> {
-                        e.Css("background").set("rgba(0,0,0,1)");
-                        $scoop("p").Text(this.data.message).set()
-                    })
-                    .On("mouseout", e=> {
-                        e.Css("background").set("rgba(0,0,0,0.1)");
-                        $scoop("p").Text(this.data.initMessage).set()
-                    });
+    el: '#app',
+    data:{
+        message : "Woah! That's awesome",
+        initMessage : "moving the mouse pointer (out of/onto) a button to see what happens!"
+    },
+    handler($app, $scoop){
+        $scoop('#original')
+            .On("mouseover", e=> {
+                e.Css("background").set("rgba(0,0,0,1)");
+                $scoop("p").Text(this.data.message).set()
+            })
+            .On("mouseout", e=> {
+                e.Css("background").set("rgba(0,0,0,0.1)");
+                $scoop("p").Text(this.data.initMessage).set()
+            });
 
-                $scoop('#copy').Copy("#original", "mouseover : mouseout")
-            }
-        });
+        $scoop('#copy').Copy("#original", "mouseover : mouseout")
+    }
+});
 ```
 
 🔹 See the Example by clicking on the button below 👇
@@ -573,34 +573,34 @@ $scoop([CSS selectors]).Toggle([event:<String>], [methods:<Object>]);
 
 ```javascript
 const app = new Seule({
-            el: '#app',
-            data:{
-                grimace : "^_^",
-            },
-            handler($app, $scoop){
-                $scoop(".square").Toggle("click",
-                    {
-                        handler(e) {
-                           e
-                             .Css({
-                                   "border-radius" : "50%",
-                                   background : "red",
-                                   duration: 300
-                               }).set()
-                             .Text('*_*').set()
-                        },
-                        callback(e){
-                            e
-                              .Css({
-                                    "border-radius" : 0,
-                                    background : "#2f2f2f",
-                                    duration: 300
-                                }).set()
-                              .Text($app.data.grimace).set()
-                        }
-                    })
-            }
-        });
+    el: '#app',
+    data:{
+        grimace : "^_^",
+    },
+    handler($app, $scoop){
+        $scoop(".square").Toggle("click",
+            {
+                handler(e) {
+                   e
+                     .Css({
+                           "border-radius" : "50%",
+                           background : "red",
+                           duration: 300
+                       }).set()
+                     .Text('*_*').set()
+                },
+                callback(e){
+                    e
+                      .Css({
+                            "border-radius" : 0,
+                            background : "#2f2f2f",
+                            duration: 300
+                        }).set()
+                      .Text($app.data.grimace).set()
+                }
+            })
+    }
+});
 ```
 
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/Exxppmd)
@@ -621,3 +621,32 @@ Seule provides a variety of methods that allow us to traverse the App. Traversal
     * .number() : Returns a child element with a specific index number of the selected elements.
     * .all()    : Returns all direct children of the selected element.
 * $() : Returns the root element of the selected element.
+
+#### Example
+
+🔹 for exemple, we have a group of paragraphs inside a &lt;div&gt and we want to change the background color of the second descendant &lt;p&gt:
+
+```html
+<section id="app">
+    <div class="group">
+        <p>My name is ElML</p>
+        <p class="intro">I live in EL Jadida.</p>
+        <p class="intro">I love EL Jadida.</p>
+        <p>Dad is my best friend...</p>
+    </div>
+</section>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    handler($app, $scope){
+      $scope('.group')
+        .Select('.intro')
+        .Element(1)
+        .Css('background').set('#424cf7')
+    }
+});
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
+
