@@ -642,8 +642,8 @@ const app = new Seule({
     el: '#app',
     handler($app, $scope){
       $scope('.group')
-        .Select('.intro')
-        .Element(1)
+        .Select('.intro') // returns all descendants &lt;p&gt; with class name equal "intro"
+        .Element(1) // returns the second element of the selected element.
         .Css('background').set('#424cf7')
     }
 });
