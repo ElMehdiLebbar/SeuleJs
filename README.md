@@ -700,7 +700,7 @@ const app = new Seule({
     
 <br>
     
-## ↩️ Element in Seule App Manipulation
+## ↩️ Seule Element(s) Manipulation
     
 Seule provides various methods to add, edit or delete element(s) in the Seule App. 
 
@@ -732,3 +732,48 @@ const app = new Seule({
 });
 ```
 
+🔹 Create a &lt;button&gt; with text:
+
+```html
+<div id="app"></div>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    handler($app, $scope){
+       const btn = $scope().Create('button');
+       btn.Text($app.data.text).set();
+    }
+});
+```
+
+### 🔰 Append()
+
+The Append() method appends a Seule Element as the last child of a Element.
+
+#### 〽️ Syntax
+
+```javascript
+$scoop().Append([element:<String> | <Object>]);
+```
+
+#### Example
+
+🔹 Create and append a &lt;button&gt; element in The Root Element:
+
+```html
+<div id="app"></div>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    handler($app, $scope){
+       const btn = $scope().Create('button');
+       btn.Text($app.data.text).set();
+       $scope().Append(btn)
+    }
+});
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPamgO)
