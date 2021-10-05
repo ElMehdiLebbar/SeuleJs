@@ -778,7 +778,8 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPamgO)
 
-### 🔰 Move() >>>
+### 🔰 Move()
+
     * .before()  : method inserts or moves a element as a child, right before an existing child, which you specify.
     * .after()   : method inserts or moves a element as a child, right after an existing child, which you specify.
     
