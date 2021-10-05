@@ -650,3 +650,51 @@ const app = new Seule({
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/abpdLNY)
 
+### 🔰 Each()
+
+The Each() method specifies a function to run for each matched element.
+
+#### 〽️ Syntax
+
+```javascript
+$scoop([CSS selectors]).Each([handler:<Function>]);
+```
+
+#### Example
+
+🔹 Alert the text of each <li> element:
+
+```html
+<div id="app">
+    <p>Click the button to see what happens!</p>
+    <ul style="text-align: left">
+        <li>Coffee</li>
+        <li>Milk</li>
+        <li>Soda</li>
+    </ul>
+
+    <button title="{{title}}">Click-Me</button>
+
+  
+</div>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    data: {
+        title: "Add the value of each list item"
+    },
+    handler($app, $scope){
+        $scope('button')
+            .Click(()=> $scope('li')
+                .Each(e => {
+                    const item = e.Text().get() + " ";
+                    $scope('.result')
+                        .Text(item).append()
+                }))
+    }
+});
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/OJWMOzx)
+
