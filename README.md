@@ -790,8 +790,9 @@ $scoop([CSS selectors]).Move().method([element:<String> | <Object>]);
 
 #### Example
 
-🔹 Insert a new <li> element before the Second child element of an <ul> element:
+🔹 Insert a new &lt;li&gt; element before the Second child element of an &lt;ul&gt; element:
 
+    
 ```html
 <div id="app">
     <button title="Add Water Please!">Click-Me</button>
