@@ -624,7 +624,7 @@ Seule provides a variety of methods that allow us to traverse the App. Traversal
 
 #### Example
 
-🔹 for exemple, we have a group of paragraphs inside a &lt;div&gt and we want to change the background color of the second descendant &lt;p&gt:
+🔹 for exemple, we have a group of paragraphs inside a &lt;div&gt; and we want to change the background color of the second descendant &lt;p&gt;:
 
 ```html
 <section id="app">
