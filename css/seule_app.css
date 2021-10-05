@@ -31,6 +31,12 @@ button{
     border: none;
     color:#fff;
     cursor: pointer;
+    transition: all 0.7s ease;
+}
+
+button:hover{
+    background: rgba(255,255,255,0.1);
+    color: #333333;
 }
 
 img{
