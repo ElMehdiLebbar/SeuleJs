@@ -86,8 +86,8 @@ class Seule {
 
                     Child(){
                         let obj = {};
-                        obj.first = ()=> new el(this.el[0].firstChild);
-                        obj.last = ()=> new el(this.el[0].lastChild);
+                        obj.first = ()=> new el(this.el[0].children[0]);
+                        obj.last = ()=> new el(this.el[0].children[this.el[0].children.length-1]);
                         obj.number = index=> new el(this.el[0].children[index]);
                         obj.all = ()=> new el(this.el[0].children);
                         return obj;
@@ -142,7 +142,7 @@ class Seule {
                     }
 
                     Each(callback) {
-                        for (const element of this.el) callback.call(element, new el(this));
+                        for (const element of this.el) callback.call(element, new el(element));
                         return this;
                     }
 
