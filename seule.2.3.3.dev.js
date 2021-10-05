@@ -43,36 +43,24 @@ class Seule {
                 this.child = child;
                 old = child.innerHTML;
             },
-            Find = (selector) => {
-                let parent = this.child,
-                    root = this;
+            Find = (selector, dom) => {
+                let parent = this.child;
 
                 class el
-
                 {
-                    constructor(select ) {
-                        if(!select) return root;
-
+                    constructor(select) {
+                        if(!select) return new el(parent);
                         try {
-                            if (select === "body")
-                                this.el = document.querySelectorAll("body");
-                            else this.el = parent.querySelectorAll(select);
+                            dom ? this.el = document.querySelectorAll(select) :
+                            this.el = parent.querySelectorAll(select);
                         } catch (e) {
-                            if (select.length) this.el = select;
-                            else this.el = [select];
+                            select.length ? this.el = select :
+                            this.el = [select];
                         }
                     }
 
                     $() {
                         return new el(parent);
-                    }
-
-                    Parent() {
-                        return new el(this.el[0].parentElement);
-                    }
-
-                    Children(){
-                        return new el(this.el[0].children);
                     }
 
                     Select(selector) {
@@ -88,9 +76,101 @@ class Seule {
                         return this.el;
                     }
 
-                    Each(callback) {
-                        for (const element of this.el) callback.call(element);
+                    Parent(element) {
+                        if(!element) return new el(this.el[0].parentElement);
+
+                        const es = new el(element.el ? element.Dom(0): parent.querySelector(element));
+
+                        es.Append(this)
+                    }
+
+                    Child(){
+                        let obj = {};
+                        obj.first = ()=> new el(this.el[0].firstChild);
+                        obj.last = ()=> new el(this.el[0].lastChild);
+                        obj.number = index=> new el(this.el[0].children[index]);
+                        obj.all = ()=> new el(this.el[0].children);
+                        return obj;
+                    }
+
+                    Move() {
+                        let op = {};
+
+                        op.after = (element) => {
+                            const es = new el(element.el ? element.Dom(): element);
+                            es.Parent().Dom(0).insertBefore(this.el[0], es.Dom(0).nextSibling);
+                            return this;
+                        };
+
+                        op.before = (element) => {
+                            const es = new el(element.el ? element.Dom(): element);
+                            es.Parent().Dom(0).insertBefore(this.el[0], es.Dom(0));
+                            return this;
+                        };
+
+                        return op;
+                    }
+
+                    Append(element){
+                        const es = new el(element.el ? element.Dom(): element);
+
+                        return this.Each(function () {
+                            for(const e of es.Dom())
+                                this.appendChild(e);
+                        })
+                    }
+
+                    Remove(){
+                        return this.Each(function () {
+                            this.parentNode.removeChild(this);
+                        })
+                    }
+
+                    Replace(element){
+                        const es = new el(element.el ? element.Dom(): element);
+
+                        for (const e of es.Dom()){
+                            let el = this.el[0].cloneNode(true);
+                            e.parentNode.replaceChild(el, e);
+                        }
+
                         return this;
+                    }
+
+                    Create(tagName){
+                        return new el(document.createElement(tagName));
+                    }
+
+                    Each(callback) {
+                        for (const element of this.el) callback.call(element, new el(this));
+                        return this;
+                    }
+
+                    Load(handler, timeOut = 0) {
+                        return this.Each(function (e) {
+                            setTimeout(() => {
+                                handler(new el(this));
+                            }, timeOut);
+                        });
+                    }
+
+                    Loop(handler, timeOut = 1000) {
+                        return this.Each(function (e) {
+                            let loop = {
+                                    stop: (handler) => stop(handler),
+                                    counter: 0,
+                                    el: new el(this)
+                                },
+                                repeat = setInterval(() => {
+                                    handler(loop);
+                                    loop.counter++;
+                                }, timeOut);
+
+                            function stop(handler) {
+                                clearInterval(repeat);
+                                handler && handler(loop.el);
+                            }
+                        });
                     }
 
                     On(event, handler, initial) {
@@ -106,12 +186,6 @@ class Seule {
                                     false
                                 );
                             });
-                    }
-
-                    Fire(event){
-                        return this.Each(function () {
-                            event && this[event]()
-                        });
                     }
 
                     Click(handler, initial) {
@@ -232,9 +306,15 @@ class Seule {
                         });
                     }
 
-                    Copy(target, options) {
+                    Fire(event){
+                        return this.Each(function () {
+                            event && this[event]()
+                        });
+                    }
+
+                    Copy(target, events) {
                         let tar,
-                            ons = options.split(":");
+                            ons = events.split(":");
 
                         (typeof target === "string")
                             ? tar = parent.querySelector(target)
@@ -254,16 +334,15 @@ class Seule {
                         return this;
                     }
 
-                    Toggle(event, options, initial) {
+                    Toggle(event, methods, initial) {
                         let check = true;
                         this.On(event, function (el) {
                             if (check) {
-                                options.handler(el);
+                                methods.handler && methods.handler(el);
                                 check = false;
                                 return;
                             }
-
-                            options.callback(el);
+                            methods.callback && methods.callback(el);
                             check = true;
                         }, initial);
                         return this;
@@ -564,22 +643,6 @@ class Seule {
                         return el.CONTENT("HTML", html, this);
                     }
 
-                    Insert() {
-                        let op = {};
-
-                        op.after = (el) => {
-                            el.parentNode.insertBefore(this.el[0], el.nextSibling);
-                            return this;
-                        };
-
-                        op.before = (el) => {
-                            el.parentNode.insertBefore(this.el[0], el);
-                            return this;
-                        };
-
-                        return op;
-                    }
-
                     Val(value) {
                         let options = {};
 
@@ -656,33 +719,6 @@ class Seule {
                             scrollToItemId(c, this.el[0]);
                         }
                         return this;
-                    }
-
-                    Load(handler, timeOut = 0) {
-                        return this.Each(function (e) {
-                            setTimeout(() => {
-                                handler(new el(this));
-                            }, timeOut);
-                        });
-                    }
-
-                    Loop(handler, timeOut = 1000) {
-                        return this.Each(function (e) {
-                            let loop = {
-                                    stop: (handler) => stop(handler),
-                                    counter: 0,
-                                    el: new el(this)
-                                },
-                                repeat = setInterval(() => {
-                                    handler(loop);
-                                    loop.counter++;
-                                }, timeOut);
-
-                            function stop(handler) {
-                                clearInterval(repeat);
-                                handler && handler(loop.el);
-                            }
-                        });
                     }
 
                     static CONTENT(fun, content, element) {
@@ -791,7 +827,7 @@ class Seule {
         app.handler(
             this,
             (s) => Find(s),
-            (s) => Find(document.querySelectorAll(s))
+            (s) => Find(s, true)
         );
 
         this.Init = () => {
