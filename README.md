@@ -755,7 +755,7 @@ The Append() method appends a Seule Element as the last child of a Element.
 #### 〽️ Syntax
 
 ```javascript
-$scoop().Append([element:<String> | <Object>]);
+$scoop([CSS selectors]).Append([element:<String> | <Object>]);
 ```
 
 #### Example
@@ -777,3 +777,44 @@ const app = new Seule({
 });
 ```
 ### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/VwPamgO)
+
+### 🔰 Move() >>>
+    * .before()  : method inserts or moves a element as a child, right before an existing child, which you specify.
+    * .after()   : method inserts or moves a element as a child, right after an existing child, which you specify.
+    
+#### 〽️ Syntax
+
+```javascript
+$scoop([CSS selectors]).Move().method([element:<String> | <Object>]);
+```    
+
+#### Example
+
+🔹 Insert a new <li> element before the Second child element of an <ul> element:
+
+```html
+<div id="app">
+    <button title="Add Water Please!">Click-Me</button>
+    <ul>
+        <li>Tea</li>
+        <li>Coffee</li>
+    </ul>
+</div>
+```
+
+```javascript
+const app = new Seule({
+    el: '#app',
+    data:{text: "Water"},
+    handler($app, $scope){
+        const
+            btn = $scope().Create('li'),
+            Coffee = $scope('li').Element(1);
+
+        btn.Text($app.data.text).set();
+        $scope('button').Click(()=> btn.Move().before(Coffee))
+    }
+});
+```
+### [▶️ Try it Yourself](https://codepen.io/el-mehdi-lebbar/pen/XWpdMbW)
+  
