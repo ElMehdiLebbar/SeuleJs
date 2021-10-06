@@ -13,6 +13,32 @@ class Seule {
                     e = app.el.replace("#", "").replace(".", ""),
                     child = "";
 
+                Element.prototype._addEventListener = Element.prototype.addEventListener;
+                Element.prototype._removeEventListener = Element.prototype.removeEventListener;
+                Element.prototype.addEventListener = function(type,listener,useCapture=false) {
+                    this._addEventListener(type,listener,useCapture);
+                    if(!this.eventListenerList) this.eventListenerList = {};
+                    if(!this.eventListenerList[type]) this.eventListenerList[type] = [];
+                    this.eventListenerList[type].push( {type, listener, useCapture} );
+                };
+                Element.prototype.removeEventListener = function(type,listener,useCapture=false) {
+                    this._removeEventListener(type,listener,useCapture);
+                    if(!this.eventListenerList) this.eventListenerList = {};
+                    if(!this.eventListenerList[type]) this.eventListenerList[type] = [];
+                    for(let i=0; i<this.eventListenerList[type].length; i++){
+                        if( this.eventListenerList[type][i].listener===listener && this.eventListenerList[type][i].useCapture===useCapture){
+                            this.eventListenerList[type].splice(i, 1);
+                            break;
+                        }
+                    }
+                    if(this.eventListenerList[type].length===0) delete this.eventListenerList[type];
+                };
+                Element.prototype.getEventListeners = function(type){
+                    if(!this.eventListenerList) this.eventListenerList = {};
+                    if(type===undefined)  return this.eventListenerList;
+                    return this.eventListenerList[type];
+                };
+
                 class Root extends HTMLElement {
                     constructor() {
                         super();
@@ -124,6 +150,24 @@ class Seule {
                         return this.Each(function () {
                             this.parentNode.removeChild(this);
                         })
+                    }
+
+                    Duplicate(){
+                        let newEls = [],
+                            element,
+                            clone,
+                            event;
+                        this.Each(function () {
+                            element = new el(this);
+                            event = element.GetEvents();
+                            clone = this.cloneNode(true);
+                            for (const ev of event){
+                                clone.addEventListener(ev.type, ev.listener)
+                            }
+                            newEls.push(clone)
+                        });
+
+                        return  new el(newEls)
                     }
 
                     Replace(element){
@@ -346,6 +390,13 @@ class Seule {
                             check = true;
                         }, initial);
                         return this;
+                    }
+
+                    GetEvents(event){
+                        let events = [];
+                        for (const ev of Object.values(this.el[0].getEventListeners(event)))
+                            event ? events.push(ev) : events.push(ev[0]);
+                        return events
                     }
 
                     Visible() {
@@ -836,7 +887,7 @@ class Seule {
             app.handler(
                 this,
                 (s) => Find(s),
-                (s) => Find(document.querySelectorAll(s))
+                (s) => Find(s, true)
             );
         };
     }
