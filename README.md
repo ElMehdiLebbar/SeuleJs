@@ -10,7 +10,7 @@
 You can create an index.html file and include Seule with:
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.2.3.2.dev.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/ElMehdiLebbar/SeuleJs/seule.2.3.3.dev.js"></script>
 ```
 
 🔹 At the core of Seule.js is a system that enables us to declaratively render data to the DOM using straightforward template syntax:
