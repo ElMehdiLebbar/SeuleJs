@@ -185,7 +185,7 @@ $scoop([CSS selectors]).On([event:<String>], [handler:<Function>])
 ```html
 <div id='app'>
 
-    <img src="http://bit.ly/3flCDzm" width="150">
+    <img src="https://bit.ly/3mA0FbG" width="150">
 
     <button>Change the picture</button>
 
