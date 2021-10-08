@@ -49,11 +49,15 @@ class Seule {
                             linkElement = document.createElement("link");
                         linkElement.setAttribute("rel", "stylesheet");
 
-                        for (const link of links)
-                            if (link.getAttribute("href").includes("seule"))
-                                linkElement.setAttribute("href", link.getAttribute("href"));
-
-                        app.style && linkElement.setAttribute("href", app.style + ".css");
+                        if(app.style){
+                            if(app.style === "root"){
+                                for (const link of links)
+                                    if (link.getAttribute("href").includes(".css"))
+                                        linkElement.setAttribute("href", link.getAttribute("href"));
+                            }
+                            else linkElement.setAttribute("href", app.style);
+                        }
+                        
                         shadow.appendChild(linkElement);
                         let cl = el.cloneNode(true);
                         el.innerHTML = "";
