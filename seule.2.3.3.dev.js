@@ -1208,7 +1208,7 @@ class Seule {
         frameDoc.document.write(
             '<link href="' +
             options.style +
-            '.css" rel="stylesheet" type="text/css" />'
+            '" rel="stylesheet" type="text/css" />'
         );
         frameDoc.document.write(options.template);
         frameDoc.document.write("</body></html>");
@@ -1477,7 +1477,7 @@ class Seule {
                         if (options.style.length === 1) {
                             let linkElement = document.createElement("link");
                             linkElement.setAttribute("rel", "stylesheet");
-                            linkElement.setAttribute("href", options.style[0] + ".css");
+                            linkElement.setAttribute("href", options.style[0]);
                             shadow.appendChild(linkElement);
                         } else {
                             let style = document.createElement("style");
