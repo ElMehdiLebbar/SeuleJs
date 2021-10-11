@@ -43,27 +43,29 @@ class Seule {
                     constructor() {
                         super();
                         const shadow = this.attachShadow({
-                            mode: app.mode || "closed"
+                            mode: "closed"
                         });
-                        let links = document.querySelectorAll("head link"),
-                            linkElement = document.createElement("link");
-                        linkElement.setAttribute("rel", "stylesheet");
+                        let links = firstEl.context.querySelectorAll("head link");
 
                         if(app.style){
                             if(app.style === "root"){
                                 for (const link of links)
-                                    if (link.getAttribute("href").includes(".css"))
-                                        linkElement.setAttribute("href", link.getAttribute("href"));
+                                    if(link.getAttribute("about"))
+                                        if (link.getAttribute("about").includes("root")) {
+                                            const l = document.createElement("link");
+                                            l.setAttribute("rel", "stylesheet");
+                                            l.setAttribute("href", link.getAttribute("href"));
+                                            shadow.appendChild(l);
+                                        }
                             }
-                            else linkElement.setAttribute("href", app.style);
                         }
-                        
-                        shadow.appendChild(linkElement);
+
                         let cl = el.cloneNode(true);
                         el.innerHTML = "";
                         shadow.appendChild(cl);
-                        child = shadow.children[1];
-                        shadow.children[1].removeAttribute("id");
+                        child = shadow.children[shadow.children.length - 1];
+
+                        shadow.children[shadow.children.length - 1].removeAttribute("id");
                     }
                 }
 
