@@ -37,6 +37,87 @@ We have already created our very first Seule app! Click on the "Try it Yourself"
 
 <br>
 
+## ↩️ Styling Apps in Seule  
+
+Seule uses Shadow DOM, It allows us to ship self contained components along with their style and isolate the component from global style while "protecting" the host application from styles defined inside the component. 
+
+### Two Ways to Insert CSS
+
+By Adding Style property in the main Object, there are two ways of inserting a style sheet to Seule Component:
+
+• External
+• Internal
+
+#### External
+
+style property can have like a value the Url of the Style sheet.
+
+Each Seule Application must include a reference to the external style sheet file.
+
+#### 🔹 for exemple:
+
+```html
+<div id='app'></div>
+
+<div id='app2'></div>
+```
+
+
+```javascript
+const app = new Seule({
+  el: '#app',
+  style: './css/mystyle.css',
+  data:{
+    message: "Hello It's App number 1"    
+  }
+})
+
+const app2 = new Seule({
+  el: '#app2',
+  style: './css/mystyle2.css',
+  data:{
+    message: "Hello It's App number 2"    
+  }
+})
+```
+
+#### Internal
+
+🔹 By giving the style property root like a value we telling the program, the style sheet for the Application is the last <link> element, inside the <head> section of an HTML page:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/app.css">
+</head>
+<body>
+
+<div id='app'>
+    {{message}}
+</div>
+
+</body>
+</html>    
+```
+
+    
+
+```javascript
+const app = new Seule({
+  el: '#app',
+  style: 'root' //Style Sheet ./css/app.css applying for the app in this case,
+  data:{
+    message: "Hello World"    
+  }
+})
+```    
+    
+<br>
+
 ## ↩️ Bind element attributes 
 
 In addition to text interpolation, we can also bind **element attributes** like this:
