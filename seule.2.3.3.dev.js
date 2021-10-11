@@ -58,6 +58,11 @@ class Seule {
                                             shadow.appendChild(l);
                                         }
                             }
+                            else {
+                                const l = document.createElement("link");
+                                l.setAttribute("rel", "stylesheet");
+                                l.setAttribute("href", app.style);
+                            }
                         }
 
                         let cl = el.cloneNode(true);
