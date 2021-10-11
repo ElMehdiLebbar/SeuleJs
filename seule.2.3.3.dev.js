@@ -45,7 +45,7 @@ class Seule {
                         const shadow = this.attachShadow({
                             mode: app.mode || "closed"
                         });
-                        let links = document.querySelectorAll("link"),
+                        let links = document.querySelectorAll("head link"),
                             linkElement = document.createElement("link");
                         linkElement.setAttribute("rel", "stylesheet");
 
