@@ -45,8 +45,8 @@ Seule uses Shadow DOM, It allows us to ship self contained components along with
 
 By Adding Style property in the main Object, there are two ways of inserting a style sheet to Seule Component:
 
-• External
-• Internal
+* External
+* Internal
 
 #### External
 
