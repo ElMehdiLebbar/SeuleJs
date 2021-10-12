@@ -82,7 +82,7 @@ const app2 = new Seule({
 
 #### Internal
 
-🔹 By giving the style property root like a value we telling the program, the style sheet for the Application is the element that has the about attribute with value equal "root" , inside the section of an HTML page:
+🔹 By giving the style property root like a value we telling the program, the style sheet for the Application is the link element that has the about attribute with value equal the id of Seule application , inside the head section of an HTML page:
 
 ```html
 <!DOCTYPE html>
@@ -91,7 +91,7 @@ const app2 = new Seule({
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/app.css" about="root">
+    <link rel="stylesheet" href="./css/app.css" about="app">
 </head>
 <body>
 
