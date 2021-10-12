@@ -24,7 +24,6 @@ You can create an index.html file and include Seule with:
 ```javascript
 const app = new Seule({
     el: '#app',
-    style: 'root',
     data: {
         message : 'hello Seule'
     }
