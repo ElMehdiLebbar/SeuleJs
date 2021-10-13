@@ -1,4 +1,4 @@
-![Seule Logo](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/lg.png)
+![Seule Logo](https://raw.githubusercontent.com/ElMehdiLebbar/SeuleJs/master/s-lg.png)
 
 # 🔱 Introduction :octocat:
 🔰 Seule is a light-weight (19.6KB), blazing fast and feature-rich Javascript Framework. It makes things like HTML document traversal and manipulation, event handling, animation, and Ajax much simpler with an easy-to-use API that works across a multitude of browsers 🧙‍♂.
