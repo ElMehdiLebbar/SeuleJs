@@ -57,8 +57,6 @@ Each Seule Application must include a reference to the external style sheet file
 
 ```html
 <div id='app'></div>
-
-<div id='app2'></div>
 ```
 
 
@@ -68,14 +66,6 @@ const app = new Seule({
   style: './css/mystyle.css',
   data:{
     message: "Hello It's App number 1"    
-  }
-})
-
-const app2 = new Seule({
-  el: '#app2',
-  style: './css/mystyle2.css',
-  data:{
-    message: "Hello It's App number 2"    
   }
 })
 ```
