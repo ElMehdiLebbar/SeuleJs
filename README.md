@@ -81,7 +81,7 @@ const app = new Seule({
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/app.css" about="app">
+    <link rel="stylesheet" href="./css/app.css" about="app-style">
 </head>
 <body>
 
@@ -98,7 +98,7 @@ const app = new Seule({
 ```javascript
 const app = new Seule({
   el: '#app',
-  style: 'root' //Style Sheet ./css/app.css applying for the app in this case,
+  style: 'app-style' //Style Sheet ./css/app.css applying for the app in this case,
   data:{
     message: "Hello World"    
   }
